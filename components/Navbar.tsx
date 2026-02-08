@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, BarChart2 } from 'lucide-react';
-import { COMPANY_NAME, NAVIGATION_LINKS } from '../constants';
+import { Menu, X } from 'lucide-react';
+import { NAVIGATION_LINKS, COMPANY_NAME } from '../constants';
 
 export const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -31,10 +31,19 @@ export const Navbar: React.FC = () => {
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center">
             <Link to="/" className="flex items-center group">
-              <div className="bg-brand-900/50 p-2 rounded-lg border border-brand-800 group-hover:border-brand-500 transition duration-300 mr-3">
-                 <BarChart2 className="h-6 w-6 text-brand-400" />
+              {/* Logo Container - Adjusted size for new logo with tagline */}
+              <div className="bg-white/95 px-4 py-2 rounded-lg shadow-lg border border-gray-200 group-hover:bg-white transition duration-300">
+                 <img 
+                   src="/logo.png" 
+                   alt={COMPANY_NAME} 
+                   className="h-12 w-auto object-contain" 
+                   onError={(e) => {
+                     // Fallback if image is missing
+                     (e.target as HTMLImageElement).style.display = 'none';
+                     (e.target as HTMLImageElement).parentElement!.innerHTML = `<span class="font-bold text-gray-900 px-2">${COMPANY_NAME}</span>`;
+                   }}
+                 />
               </div>
-              <span className="font-heading font-bold text-xl text-white tracking-wide group-hover:text-brand-100 transition">{COMPANY_NAME}</span>
             </Link>
           </div>
           

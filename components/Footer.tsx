@@ -1,6 +1,5 @@
-
 import React from 'react';
-import { Mail, Phone, MapPin } from 'lucide-react';
+import { Mail, MapPin } from 'lucide-react';
 import { COMPANY_NAME } from '../constants';
 import { useData } from '../context/DataContext';
 
@@ -8,42 +7,67 @@ export const Footer: React.FC = () => {
   const { data } = useData();
 
   return (
-    <footer className="bg-gray-900 text-white pt-12 pb-8 border-t border-gray-800">
+    <footer className="bg-gray-900 text-white pt-16 pb-8 border-t border-gray-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
+          
+          {/* Brand Column */}
           <div>
-            <h3 className="text-xl font-bold mb-4 text-brand-400">{COMPANY_NAME}</h3>
-            <p className="text-gray-400 mb-4">
+            <div className="bg-white/95 px-5 py-3 rounded-lg shadow-sm border border-gray-200 inline-block mb-6">
+                 <img 
+                   src="/logo.png" 
+                   alt={COMPANY_NAME} 
+                   className="h-14 w-auto object-contain" 
+                 />
+            </div>
+            <p className="text-gray-400 leading-relaxed">
               Empowering MSMEs with innovative and affordable management consultancy services.
               Transforming businesses through data, automation, and strategy.
             </p>
           </div>
           
+          {/* Links Column */}
           <div>
-            <h3 className="text-lg font-semibold mb-4 text-white">Quick Links</h3>
-            <ul className="space-y-2 text-gray-400">
-              <li><a href="#/" className="hover:text-brand-400 transition">Home</a></li>
-              <li><a href="#/about" className="hover:text-brand-400 transition">About Us</a></li>
-              <li><a href="#/services" className="hover:text-brand-400 transition">Services</a></li>
-              <li><a href="#/media" className="hover:text-brand-400 transition">Media & Podcast</a></li>
-              <li><a href="#/contact" className="hover:text-brand-400 transition">Contact</a></li>
+            <h3 className="text-lg font-bold mb-6 text-white font-heading">Quick Links</h3>
+            <ul className="space-y-3 text-gray-400">
+              <li><a href="#/" className="hover:text-brand-400 transition flex items-center"><span className="w-1.5 h-1.5 bg-brand-500 rounded-full mr-2"></span>Home</a></li>
+              <li><a href="#/about" className="hover:text-brand-400 transition flex items-center"><span className="w-1.5 h-1.5 bg-brand-500 rounded-full mr-2"></span>About Us</a></li>
+              <li><a href="#/services" className="hover:text-brand-400 transition flex items-center"><span className="w-1.5 h-1.5 bg-brand-500 rounded-full mr-2"></span>Services</a></li>
+              <li><a href="#/media" className="hover:text-brand-400 transition flex items-center"><span className="w-1.5 h-1.5 bg-brand-500 rounded-full mr-2"></span>Media & Podcast</a></li>
+              <li><a href="#/contact" className="hover:text-brand-400 transition flex items-center"><span className="w-1.5 h-1.5 bg-brand-500 rounded-full mr-2"></span>Contact</a></li>
             </ul>
           </div>
           
+          {/* Contact Column */}
           <div>
-            <h3 className="text-lg font-semibold mb-4 text-white">Contact Info</h3>
-            <div className="space-y-3 text-gray-400">
-              <div className="flex items-start">
-                <Mail size={18} className="mr-3 mt-1 text-brand-400" />
-                <a href={`mailto:${data.config.contactEmail}`} className="hover:text-white transition">{data.config.contactEmail}</a>
+            <h3 className="text-lg font-bold mb-6 text-white font-heading">Contact Info</h3>
+            <div className="space-y-4 text-gray-400">
+              <div className="flex items-start group">
+                <div className="bg-gray-800 p-2 rounded-lg mr-3 group-hover:bg-brand-900/50 transition">
+                   <Mail size={18} className="text-brand-400" />
+                </div>
+                <div>
+                  <p className="text-xs uppercase tracking-widest text-gray-500 mb-1">Email</p>
+                  <a href={`mailto:${data.config.contactEmail}`} className="hover:text-white transition font-medium">{data.config.contactEmail}</a>
+                </div>
               </div>
-              <div className="flex items-start">
-                <UserIcon size={18} className="mr-3 mt-1 text-brand-400" />
-                <span>{data.config.founderName}</span>
+              <div className="flex items-start group">
+                <div className="bg-gray-800 p-2 rounded-lg mr-3 group-hover:bg-brand-900/50 transition">
+                   <UserIcon size={18} className="text-brand-400" />
+                </div>
+                <div>
+                   <p className="text-xs uppercase tracking-widest text-gray-500 mb-1">Founder</p>
+                   <span className="font-medium text-white">{data.config.founderName}</span>
+                </div>
               </div>
-               <div className="flex items-start">
-                <MapPin size={18} className="mr-3 mt-1 text-brand-400" />
-                <span>Chennai, India</span>
+               <div className="flex items-start group">
+                <div className="bg-gray-800 p-2 rounded-lg mr-3 group-hover:bg-brand-900/50 transition">
+                   <MapPin size={18} className="text-brand-400" />
+                </div>
+                <div>
+                   <p className="text-xs uppercase tracking-widest text-gray-500 mb-1">Headquarters</p>
+                   <span className="font-medium text-white">Chennai, India</span>
+                </div>
               </div>
             </div>
           </div>
@@ -53,6 +77,10 @@ export const Footer: React.FC = () => {
           <p className="text-gray-500 text-sm">
             © {new Date().getFullYear()} {COMPANY_NAME}. All rights reserved.
           </p>
+          <div className="flex space-x-6 mt-4 md:mt-0 text-sm text-gray-500">
+             <a href="#" className="hover:text-white">Privacy Policy</a>
+             <a href="#" className="hover:text-white">Terms of Service</a>
+          </div>
         </div>
       </div>
     </footer>
