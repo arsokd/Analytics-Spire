@@ -59,14 +59,16 @@ export const api = {
  */
 export const DEFAULT_SITE_DATA: SiteData = {
   config: {
-    heroTitle: "Identify. Innovate. Impact.",
-    heroSubtitle: "We help MSMEs and enterprises clarify their vision, automate their operations, and scale with financial precision.",
-    missionText: "To empower MSMEs in India with innovative and affordable management and business consultancy services.",
-    visionText: "To be the leading consultancy firm for MSMEs in India, renowned for transforming businesses through automation.",
-    aboutText: "Founded by industry veteran Anand Rengasamy, Analytics Spire leverages 30+ years of corporate experience.",
+    heroTitle: "Driving Excellence Through Expertise.",
+    heroSubtitle: "Empowering MSMEs and enterprises through data-driven innovation, strategic planning, and intelligent automation. Led by industry veterans with over 60 years of combined corporate leadership.",
+    missionText: "To empower MSMEs in India with innovative, data-driven, and affordable management and business consultancy services.",
+    visionText: "To be the leading catalyst for MSME transformation in India, renowned for driving sustainable growth through process innovation and intelligent automation.",
+    aboutText: "Analytics Spire is a management and business consultancy registered with Udayam, dedicated to addressing the unique challenges of service and manufacturing sectors. We bring three decades of cross-sector expertise to help businesses navigate the complexities of modern markets.",
     contactEmail: CONTACT_EMAIL,
     founderName: FOUNDER_NAME,
-    founderBio: "Seasoned Management Consultant with 30+ years of corporate experience across Sales, Marketing, and Analytics."
+    founderBio: "Anand Rengasamy is a seasoned Management and Business Consultant with over 30 years of corporate experience across diverse domains. He holds an Engineering degree from BITS, Pilani, and a Business Analytics specialization from IIM-K. He is an IOD certified Independent Director and a Machine Learning Specialist, dedicated to delivering innovative, data-driven solutions.",
+    partnerName: "Hemanth Kumar Guruswamy",
+    partnerBio: "Hemanth Kumar Guruswamy is a seasoned business leader with over three decades of leadership experience in telecommunications, technology, digital services, and large-scale business operations across India. An alumnus of IIM Ahmedabad (MBA) and College of Engineering Guindy (Electronics), he has served in senior leadership and CEO-level roles across leading organizations including Reliance Jio and Bharti Airtel."
   },
   services: SERVICES_DATA,
   events: EVENTS_DATA,

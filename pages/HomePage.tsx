@@ -12,36 +12,44 @@ export const HomePage: React.FC = () => {
   return (
     <div className="flex flex-col bg-black text-white font-sans">
       {/* Hero Section */}
-      <section className="relative min-h-[85vh] flex items-center pt-20 overflow-hidden">
-        {/* Abstract Background */}
-        <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-gradient-to-br from-gray-900 to-black z-10"></div>
-          <div className="absolute right-0 top-0 w-2/3 h-full bg-[url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80')] bg-cover bg-center opacity-20 grayscale mix-blend-overlay"></div>
+      <section className="relative min-h-screen flex items-center pt-20 overflow-hidden bg-[#030712]">
+        {/* Abstract Background Elements */}
+        <div className="absolute inset-0 z-0 overflow-hidden">
+          <div className="absolute top-1/4 right-0 w-[500px] h-[500px] bg-brand-900/20 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/2"></div>
+          <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-brand-600/10 rounded-full blur-[100px] -translate-x-1/2 translate-y-1/2"></div>
         </div>
 
-        <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col justify-center h-full">
-          <div className="border-l-4 border-brand-500 pl-8 mb-8">
-            <h2 className="text-brand-400 font-bold tracking-widest uppercase text-sm mb-2">Management Consulting 2025-2030</h2>
-            <h1 className="font-heading text-6xl md:text-7xl lg:text-8xl font-bold leading-tight tracking-tighter text-white">
-              {titleParts[0] ? <>{titleParts[0]}.<br /></> : null}
-              {titleParts[1] ? <>{titleParts[1]}.<br /></> : null}
-              {titleParts[2] ? <span className="text-brand-500">{titleParts[2]}.</span> : null}
-              {!titleParts[2] && !titleParts[1] && <span className="text-brand-500">{data.config.heroTitle}</span>}
-            </h1>
-          </div>
-          <p className="text-2xl text-gray-300 max-w-2xl font-light leading-relaxed mb-12 pl-9 border-l-4 border-transparent">
-            {data.config.heroSubtitle}
-          </p>
-          <div className="pl-9">
-            <Link 
-              to="/services" 
-              className="group inline-flex items-center text-xl font-bold text-white hover:text-brand-400 transition"
-            >
-              Explore our expertise
-              <span className="ml-3 bg-brand-600 group-hover:bg-brand-500 text-white p-2 rounded-full transition-transform group-hover:translate-x-2">
-                <ArrowRight size={24} />
-              </span>
-            </Link>
+        <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+          <div className="flex flex-col">
+            {/* Vertical Line and Content Wrapper */}
+            <div className="border-l-[3px] border-brand-500 pl-8 md:pl-12 py-4">
+              <h2 className="text-brand-400 font-bold tracking-[0.2em] uppercase text-xs md:text-sm mb-6">
+                Management Consulting 2025-2030
+              </h2>
+              
+              <div className="relative mb-10">
+                <h1 className="font-heading text-5xl md:text-7xl lg:text-[100px] font-bold leading-[0.9] tracking-tight text-white mb-2">
+                  Driving Excellence Through Expertise.
+                </h1>
+                <h1 className="font-heading text-5xl md:text-7xl lg:text-[100px] font-bold leading-[0.9] tracking-tight text-brand-500/80 select-none">
+                  Driving Excellence Through Expertise.
+                </h1>
+              </div>
+
+              <p className="text-lg md:text-xl text-gray-300 max-w-2xl font-light leading-relaxed mb-12">
+                Empowering <span className="text-white font-medium">MSMEs</span> and enterprises through data-driven innovation, strategic planning, and intelligent automation. Led by industry veterans with over <span className="text-white font-medium">60 years</span> of combined corporate leadership.
+              </p>
+
+              <Link 
+                to="/services" 
+                className="group flex items-center text-lg md:text-xl font-bold text-white hover:text-brand-400 transition-all duration-300"
+              >
+                Explore our expertise
+                <div className="ml-4 w-12 h-12 rounded-full bg-brand-600 flex items-center justify-center group-hover:bg-brand-500 transition-all duration-300 shadow-[0_0_20px_rgba(2,132,199,0.3)] group-hover:shadow-[0_0_30px_rgba(2,132,199,0.5)] group-hover:translate-x-2">
+                  <ArrowRight size={24} />
+                </div>
+              </Link>
+            </div>
           </div>
         </div>
       </section>

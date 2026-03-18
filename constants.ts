@@ -17,45 +17,68 @@ export const NAVIGATION_LINKS = [
 export const SERVICES_DATA: ServiceItem[] = [
   {
     id: '1',
-    title: 'Business Analytics & AI',
+    title: 'Business Analytics',
     category: 'Analytics',
-    description: 'Data-driven decision making frameworks, AI/GenAI applications, Predictive analytics, and BI systems.',
-    iconName: 'BarChart'
+    description: 'Bridging the gaps through data-driven solutions and market insight validation.',
+    iconName: 'BarChart',
+    details: [
+      'Analyzing Business & Market Insights',
+      'Validating Hypothesis through Market Research',
+      'Identifying and Bridging Operational Gaps',
+      'Data-Driven Decision Making'
+    ]
   },
   {
     id: '2',
     title: 'Business Automation',
     category: 'Technology',
-    description: 'Custom apps to digitize activities, automated dashboards, and strategic input from data analysis.',
-    iconName: 'Cpu'
+    description: 'Digitalizing business operations and creating dynamic, interactive dashboards for quantifiable output.',
+    iconName: 'Cpu',
+    details: [
+      'Setting Business Operation Processes',
+      'Digitalizing Business Operations',
+      'Dynamic & Interactive Dashboards',
+      'Quantifiable Output Measurement'
+    ]
   },
   {
     id: '3',
-    title: 'Strategic Consulting',
-    category: 'Consulting',
-    description: 'Business strategy development, market entry, competitive analysis, and growth planning.',
-    iconName: 'Compass'
+    title: 'Strategic Marketing',
+    category: 'Growth',
+    description: 'Comprehensive market research, brand management, and strategic digital marketing advice.',
+    iconName: 'Megaphone',
+    details: [
+      'Market Research & Analysis',
+      'Strategic Planning',
+      'Digital Marketing Advisory',
+      'Brand Management'
+    ]
   },
   {
     id: '4',
-    title: 'Operations Excellence',
+    title: 'Operational Excellence',
     category: 'Operations',
-    description: 'Process optimization, ERP system design, workflow improvement, and Quality Management Systems.',
-    iconName: 'Settings'
+    description: 'Optimizing supply chains and processes through technology integration and waste reduction.',
+    iconName: 'Settings',
+    details: [
+      'Process Optimization',
+      'Supply Chain Management',
+      'Quality Management Systems',
+      'Cost Management through Waste Reduction'
+    ]
   },
   {
     id: '5',
-    title: 'Financial Advisory',
+    title: 'Finance Management',
     category: 'Finance',
-    description: 'Financial modeling, business valuation, investment evaluation, and cost optimization.',
-    iconName: 'TrendingUp'
-  },
-  {
-    id: '6',
-    title: 'Sales & Marketing',
-    category: 'Growth',
-    description: 'CRM implementation, lead conversion optimization, and marketing strategy development.',
-    iconName: 'Megaphone'
+    description: 'Advanced financial modelling, budgeting, and cash flow management for informed scaling.',
+    iconName: 'TrendingUp',
+    details: [
+      'Budgeting, Planning & Forecasting',
+      'Cash Flow Management',
+      'Financial Reporting & Modelling',
+      'Interactive Financial Dashboards'
+    ]
   }
 ];
 
@@ -116,6 +139,15 @@ export const VIDEOS_DATA: VideoItem[] = [
     description: 'Practical demonstration of how GenAI can automate email responses and basic reporting.',
     youtubeUrl: 'https://www.youtube.com/watch?v=5NgNicANyqM'
   }
+];
+
+export const BRANDS = [
+  'Gmmco', 'Caterpillar', 'Rane TRW', 'TAFE', 'Claas', 'Sonalika', 'Escorts', 
+  'Focus Engineering', 'BMW', 'TVS', 'Amtrex', 'Mahindra', 'CNH Industrial'
+];
+
+export const TOOLS = [
+  'IBM SPSS', 'Excel', 'Looker Studio', 'SPSS Modeler', 'Power BI', 'Python', 'R Studio', 'Machine Learning', 'Google Workspace'
 ];
 
 export const VALUES = [

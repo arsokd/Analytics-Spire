@@ -47,15 +47,15 @@ export const Navbar: React.FC = () => {
             </Link>
           </div>
           
-          <div className="hidden md:flex items-center space-x-1">
+          <div className="hidden md:flex items-center space-x-4">
             {NAVIGATION_LINKS.map((link) => (
               <Link
                 key={link.path}
                 to={link.path}
-                className={`px-4 py-2 rounded-md text-sm font-medium transition-all duration-200 ${
+                className={`px-3 py-2 text-sm font-medium transition-all duration-200 ${
                   isActive(link.path) 
-                    ? 'text-white bg-gray-800 shadow-inner' 
-                    : 'text-gray-300 hover:text-white hover:bg-gray-800/50'
+                    ? 'text-white' 
+                    : 'text-gray-400 hover:text-white'
                 }`}
               >
                 {link.name}
@@ -64,7 +64,7 @@ export const Navbar: React.FC = () => {
             
             <Link
               to="/contact"
-              className="ml-4 px-6 py-2.5 rounded-full bg-brand-600 text-white text-sm font-semibold hover:bg-brand-500 transition shadow-[0_0_15px_rgba(2,132,199,0.5)] hover:shadow-[0_0_25px_rgba(2,132,199,0.6)] transform hover:-translate-y-0.5"
+              className="ml-6 px-8 py-3 rounded-full bg-gradient-to-r from-brand-600 to-brand-400 text-white text-sm font-bold hover:from-brand-500 hover:to-brand-300 transition-all duration-300 shadow-[0_0_20px_rgba(2,132,199,0.4)] hover:shadow-[0_0_30px_rgba(2,132,199,0.6)] transform hover:-translate-y-0.5 active:scale-95"
             >
               Get Started
             </Link>

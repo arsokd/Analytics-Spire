@@ -74,11 +74,11 @@ export const ServicesPage: React.FC = () => {
                   <div className="relative z-10 p-8">
                      <BookOpen className="w-10 h-10 text-brand-500 mb-6" />
                      <h3 className="font-heading text-2xl font-bold text-white mb-4">Training & Development</h3>
-                     <p className="text-gray-400 mb-6">Enhancing human capital through targeted workshops.</p>
+                     <p className="text-gray-400 mb-6">Trained more than 4000 professionals across Technical, Sales, Marketing, and Soft skills domains.</p>
                      <ul className="space-y-3 text-gray-300 border-l border-brand-900 pl-4">
                         <li>Leadership Development</li>
                         <li>Sales & Marketing Mastery</li>
-                        <li>Communication Skills</li>
+                        <li>Technical & Soft Skills Training</li>
                      </ul>
                   </div>
               </div>

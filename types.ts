@@ -47,6 +47,8 @@ export interface SiteConfig {
   contactEmail: string;
   founderName: string;
   founderBio: string;
+  partnerName?: string;
+  partnerBio?: string;
 }
 
 export interface SiteData {
