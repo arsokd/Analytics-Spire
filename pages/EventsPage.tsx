@@ -44,9 +44,17 @@ export const EventsPage: React.FC = () => {
               <div className="md:w-3/4">
                  <div className="overflow-hidden mb-6 rounded-sm">
                    <img 
-                    src={event.image} 
+                    src={event.imageUrl || event.image} 
                     alt={event.title} 
+                    referrerPolicy="no-referrer"
                     className="w-full h-80 object-cover transform group-hover:scale-105 transition duration-700 ease-in-out filter grayscale group-hover:grayscale-0"
+                    onError={(e) => {
+                      const target = e.target as HTMLImageElement;
+                      const fallback = "https://images.unsplash.com/photo-1544531586-fde5298cdd40?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80";
+                      if (target.src !== fallback) {
+                        target.src = fallback;
+                      }
+                    }}
                    />
                  </div>
                  <h3 className="font-heading text-3xl font-bold text-white mb-4 group-hover:text-brand-400 transition">{event.title}</h3>

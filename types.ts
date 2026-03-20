@@ -12,6 +12,7 @@ export interface ServiceItem {
   category: string;
   iconName: string;
   details?: string[]; // Optional array of strings for bullet points
+  imageUrl?: string; // Image from Google Sheet
 }
 
 export interface EventItem {
@@ -21,6 +22,7 @@ export interface EventItem {
   location: string;
   description: string;
   image: string;
+  imageUrl?: string; // Image from Google Sheet
 }
 
 export interface VideoItem {
@@ -49,6 +51,16 @@ export interface SiteConfig {
   founderBio: string;
   partnerName?: string;
   partnerBio?: string;
+  logoUrl?: string; // Logo from Google Sheet
+  founderImageUrl?: string;
+  partnerImageUrl?: string;
+  brandNames?: string; // Semicolon-separated list from Sheet
+  brandLogos?: string; // Semicolon-separated list of URLs from Sheet
+}
+
+export interface BrandAssociation {
+  name: string;
+  logo: string;
 }
 
 export interface SiteData {
@@ -56,6 +68,7 @@ export interface SiteData {
   services: ServiceItem[];
   events: EventItem[];
   videos: VideoItem[];
+  brands: BrandAssociation[];
 }
 
 export enum UserRole {

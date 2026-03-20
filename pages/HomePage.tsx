@@ -7,7 +7,8 @@ export const HomePage: React.FC = () => {
   const { data } = useData();
   
   // Helper to split title for styling if needed (e.g. Identify. Innovate. Impact.)
-  const titleParts = data.config.heroTitle.split('.');
+  const heroTitle = data.config.heroTitle || "Driving Excellence Through Expertise.";
+  const titleParts = heroTitle.split('.');
   
   return (
     <div className="flex flex-col bg-black text-white font-sans">
@@ -23,16 +24,18 @@ export const HomePage: React.FC = () => {
           <div className="flex flex-col">
             {/* Vertical Line and Content Wrapper */}
             <div className="border-l-[3px] border-brand-500 pl-8 md:pl-12 py-4">
-              <h2 className="text-brand-400 font-bold tracking-[0.2em] uppercase text-xs md:text-sm mb-6">
-                Management Consulting 2025-2030
-              </h2>
+              <div className="mb-8">
+                <h3 className="text-6xl md:text-[120px] font-black text-white tracking-tighter uppercase leading-none">
+                  Analytics Spire
+                </h3>
+              </div>
               
               <div className="relative mb-10">
-                <h1 className="font-heading text-5xl md:text-7xl lg:text-[100px] font-bold leading-[0.9] tracking-tight text-white mb-2">
-                  Driving Excellence Through Expertise.
+                <h1 className="font-heading text-5xl md:text-7xl lg:text-[100px] font-bold leading-[0.9] tracking-tight text-brand-500 relative z-10">
+                  {heroTitle}
                 </h1>
-                <h1 className="font-heading text-5xl md:text-7xl lg:text-[100px] font-bold leading-[0.9] tracking-tight text-brand-500/80 select-none">
-                  Driving Excellence Through Expertise.
+                <h1 className="absolute top-1 left-1 font-heading text-5xl md:text-7xl lg:text-[100px] font-bold leading-[0.9] tracking-tight text-brand-900/30 select-none z-0">
+                  {heroTitle}
                 </h1>
               </div>
 
@@ -55,42 +58,46 @@ export const HomePage: React.FC = () => {
       </section>
 
       {/* "So You Can" Section - The Why */}
-      <section className="bg-white text-black py-24">
+      <section className="bg-[#030712] py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="mb-16">
-            <h2 className="font-heading text-5xl font-bold mb-6 tracking-tight">So you can...</h2>
-            <div className="w-full h-px bg-gray-300"></div>
-          </div>
-          
-          <div className="grid md:grid-cols-3 gap-12">
-            <div className="group cursor-pointer">
-              <div className="mb-6 overflow-hidden">
-                <TrendingUp size={48} className="text-brand-600 mb-4 transform group-hover:scale-110 transition duration-500" />
+          <div className="bg-white text-black border-l-[3px] border-brand-500 pl-8 md:pl-12 py-16 pr-8 md:pr-12 shadow-2xl">
+            <div className="max-w-5xl">
+              <div className="mb-16">
+                <h2 className="font-heading text-5xl font-bold mb-6 tracking-tight">So you can...</h2>
+                <div className="w-full h-px bg-gray-300"></div>
               </div>
-              <h3 className="font-heading text-3xl font-bold mb-4 group-hover:text-brand-700 transition">Scale Confidently.</h3>
-              <p className="text-gray-600 text-lg leading-relaxed">
-                Move from survival to sustainable growth with financial clarity and strategic roadmaps designed for the Indian market.
-              </p>
-            </div>
-            
-            <div className="group cursor-pointer">
-              <div className="mb-6 overflow-hidden">
-                <Zap size={48} className="text-brand-600 mb-4 transform group-hover:scale-110 transition duration-500" />
+              
+              <div className="grid md:grid-cols-3 gap-12">
+                <div className="group cursor-pointer">
+                  <div className="mb-6 overflow-hidden">
+                    <TrendingUp size={48} className="text-brand-600 mb-4 transform group-hover:scale-110 transition duration-500" />
+                  </div>
+                  <h3 className="font-heading text-3xl font-bold mb-4 group-hover:text-brand-700 transition">Scale Confidently.</h3>
+                  <p className="text-gray-600 text-lg leading-relaxed">
+                    Move from survival to sustainable growth with financial clarity and strategic roadmaps designed for the Indian market.
+                  </p>
+                </div>
+                
+                <div className="group cursor-pointer">
+                  <div className="mb-6 overflow-hidden">
+                    <Zap size={48} className="text-brand-600 mb-4 transform group-hover:scale-110 transition duration-500" />
+                  </div>
+                  <h3 className="font-heading text-3xl font-bold mb-4 group-hover:text-brand-700 transition">Automate Everything.</h3>
+                  <p className="text-gray-600 text-lg leading-relaxed">
+                    Replace manual chaos with streamlined digital workflows. We build custom apps and dashboards that work for you.
+                  </p>
+                </div>
+                
+                <div className="group cursor-pointer">
+                  <div className="mb-6 overflow-hidden">
+                    <Globe size={48} className="text-brand-600 mb-4 transform group-hover:scale-110 transition duration-500" />
+                  </div>
+                  <h3 className="font-heading text-3xl font-bold mb-4 group-hover:text-brand-700 transition">Lead the Market.</h3>
+                  <p className="text-gray-600 text-lg leading-relaxed">
+                    Leverage over 30 years of corporate experience to convert data to make smarter decisions, outperform competitors, and secure your legacy.
+                  </p>
+                </div>
               </div>
-              <h3 className="font-heading text-3xl font-bold mb-4 group-hover:text-brand-700 transition">Automate Everything.</h3>
-              <p className="text-gray-600 text-lg leading-relaxed">
-                Replace manual chaos with streamlined digital workflows. We build custom apps and dashboards that work for you.
-              </p>
-            </div>
-            
-            <div className="group cursor-pointer">
-              <div className="mb-6 overflow-hidden">
-                <Globe size={48} className="text-brand-600 mb-4 transform group-hover:scale-110 transition duration-500" />
-              </div>
-              <h3 className="font-heading text-3xl font-bold mb-4 group-hover:text-brand-700 transition">Lead the Market.</h3>
-              <p className="text-gray-600 text-lg leading-relaxed">
-                Leverage 30+ years of corporate data to make decisions that outpace competitors and secure your legacy.
-              </p>
             </div>
           </div>
         </div>
@@ -123,26 +130,30 @@ export const HomePage: React.FC = () => {
       </section>
 
       {/* Stats Section */}
-      <section className="bg-brand-600 text-white py-20">
+      <section className="bg-[#030712] py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-           <div className="grid grid-cols-2 md:grid-cols-4 gap-12 text-center">
-              <div className="flex flex-col items-center">
-                 <span className="font-heading text-5xl md:text-6xl font-bold mb-2">30+</span>
-                 <span className="text-sm uppercase tracking-widest font-semibold text-brand-100">Years Experience</span>
-              </div>
-              <div className="flex flex-col items-center">
-                 <span className="font-heading text-5xl md:text-6xl font-bold mb-2">{data.services.length}+</span>
-                 <span className="text-sm uppercase tracking-widest font-semibold text-brand-100">Service Areas</span>
-              </div>
-              <div className="flex flex-col items-center">
-                 <span className="font-heading text-5xl md:text-6xl font-bold mb-2">100+</span>
-                 <span className="text-sm uppercase tracking-widest font-semibold text-brand-100">Projects</span>
-              </div>
-              <div className="flex flex-col items-center">
-                 <span className="font-heading text-5xl md:text-6xl font-bold mb-2">AI</span>
-                 <span className="text-sm uppercase tracking-widest font-semibold text-brand-100">Driven Solutions</span>
-              </div>
-           </div>
+          <div className="bg-brand-600 text-white border-l-[3px] border-brand-500 pl-8 md:pl-12 py-16 pr-8 md:pr-12 shadow-2xl">
+            <div className="max-w-5xl">
+               <div className="grid grid-cols-2 md:grid-cols-4 gap-12 text-center">
+                  <div className="flex flex-col items-center">
+                     <span className="font-heading text-5xl md:text-6xl font-bold mb-2">30+</span>
+                     <span className="text-sm uppercase tracking-widest font-semibold text-brand-100">Years Experience</span>
+                  </div>
+                  <div className="flex flex-col items-center">
+                     <span className="font-heading text-5xl md:text-6xl font-bold mb-2">{data.services.length}+</span>
+                     <span className="text-sm uppercase tracking-widest font-semibold text-brand-100">Service Areas</span>
+                  </div>
+                  <div className="flex flex-col items-center">
+                     <span className="font-heading text-5xl md:text-6xl font-bold mb-2">100+</span>
+                     <span className="text-sm uppercase tracking-widest font-semibold text-brand-100">Projects</span>
+                  </div>
+                  <div className="flex flex-col items-center">
+                     <span className="font-heading text-5xl md:text-6xl font-bold mb-2">AI</span>
+                     <span className="text-sm uppercase tracking-widest font-semibold text-brand-100">Driven Solutions</span>
+                  </div>
+               </div>
+            </div>
+          </div>
         </div>
       </section>
 

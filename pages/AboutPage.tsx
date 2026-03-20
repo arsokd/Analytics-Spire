@@ -1,6 +1,6 @@
 import React from 'react';
 import { BookOpen, Briefcase, GraduationCap, Target } from 'lucide-react';
-import { VALUES, BRANDS, TOOLS } from '../constants';
+import { VALUES, BUSINESS_ASSOCIATIONS, TOOLS } from '../constants';
 import { useData } from '../context/DataContext';
 
 export const AboutPage: React.FC = () => {
@@ -23,26 +23,33 @@ export const AboutPage: React.FC = () => {
         <div className="grid md:grid-cols-2 gap-12 mb-20">
           <div className="bg-gray-900 p-8 rounded-2xl shadow-md border border-gray-800">
             <div className="flex items-center mb-6">
-              <div className="bg-blue-900/30 p-3 rounded-lg text-blue-400 mr-4">
-                <Target size={24} />
-              </div>
-              <h2 className="font-heading text-2xl font-bold text-white">Mission</h2>
-            </div>
-            <p className="text-gray-300 leading-relaxed">
-              {data.config.missionText}
-            </p>
-          </div>
-          
-          <div className="bg-gray-900 p-8 rounded-2xl shadow-md border border-gray-800">
-            <div className="flex items-center mb-6">
               <div className="bg-green-900/30 p-3 rounded-lg text-green-400 mr-4">
                 <BookOpen size={24} />
               </div>
               <h2 className="font-heading text-2xl font-bold text-white">Vision</h2>
             </div>
-            <p className="text-gray-300 leading-relaxed">
-              {data.config.visionText}
+            <p className="text-gray-300 leading-relaxed text-lg">
+              To become India's most trusted growth partner for MSMEs, enabling sustainable, technology-driven, and globally competitive enterprises.
             </p>
+          </div>
+
+          <div className="bg-gray-900 p-8 rounded-2xl shadow-md border border-gray-800">
+            <div className="flex items-center mb-6">
+              <div className="bg-blue-900/30 p-3 rounded-lg text-blue-400 mr-4">
+                <Target size={24} />
+              </div>
+              <h2 className="font-heading text-2xl font-bold text-white">Mission</h2>
+            </div>
+            <p className="text-gray-300 leading-relaxed mb-4">
+              To empower MSMEs with strategic, financial, operational, and technology-driven solutions that:
+            </p>
+            <ul className="space-y-3 text-gray-400">
+              <li className="flex items-start"><span className="mr-2 text-blue-500">•</span> Drive sustainable and scalable business growth</li>
+              <li className="flex items-start"><span className="mr-2 text-blue-500">•</span> Enhance productivity, efficiency, and profitability</li>
+              <li className="flex items-start"><span className="mr-2 text-blue-500">•</span> Bridge the technology and capability gap</li>
+              <li className="flex items-start"><span className="mr-2 text-blue-500">•</span> Strengthen market competitiveness and resilience</li>
+              <li className="flex items-start"><span className="mr-2 text-blue-500">•</span> Enable data-driven decision-making and long-term value creation</li>
+            </ul>
           </div>
         </div>
 
@@ -58,17 +65,18 @@ export const AboutPage: React.FC = () => {
                   <div className="text-center w-full">
                     <div className="relative w-48 h-48 mx-auto mb-6">
                       <img 
-                        src="/partner.png" 
+                        src={data.config.partnerImageUrl || `https://ui-avatars.com/api/?name=${encodeURIComponent(data.config.partnerName || 'Partner')}&background=10b981&color=fff&bold=true`} 
                         alt={data.config.partnerName} 
-                        className="w-full h-full rounded-full object-cover object-top border-4 border-emerald-500 shadow-[0_0_20px_rgba(16,185,129,0.3)]"
+                        className="w-full h-full rounded-full object-cover object-center border-4 border-emerald-500 shadow-[0_0_20px_rgba(16,185,129,0.3)]"
+                        referrerPolicy="no-referrer"
                         onError={(e) => {
-                           (e.target as HTMLImageElement).style.display = 'none';
-                           (e.target as HTMLImageElement).nextElementSibling!.classList.remove('hidden');
+                           const target = e.target as HTMLImageElement;
+                           const fallback = `https://ui-avatars.com/api/?name=${encodeURIComponent(data.config.partnerName || 'Partner')}&background=10b981&color=fff&bold=true`;
+                           if (target.src !== fallback) {
+                             target.src = fallback;
+                           }
                         }}
                       />
-                      <div className="hidden absolute inset-0 w-full h-full bg-gray-700 rounded-full flex items-center justify-center text-gray-400 border-4 border-gray-600">
-                        <span className="text-4xl font-bold">HG</span>
-                      </div>
                     </div>
                     
                     <h3 className="font-heading text-2xl font-bold text-white">{data.config.partnerName}</h3>
@@ -117,17 +125,18 @@ export const AboutPage: React.FC = () => {
                 <div className="text-center w-full">
                   <div className="relative w-48 h-48 mx-auto mb-6">
                     <img 
-                      src="/founder.png" 
+                      src={data.config.founderImageUrl || `https://ui-avatars.com/api/?name=${encodeURIComponent(data.config.founderName || 'Founder')}&background=0ea5e9&color=fff&bold=true`} 
                       alt={data.config.founderName} 
                       className="w-full h-full rounded-full object-cover object-top border-4 border-brand-500 shadow-[0_0_20px_rgba(14,165,233,0.3)]"
+                      referrerPolicy="no-referrer"
                       onError={(e) => {
-                         (e.target as HTMLImageElement).style.display = 'none';
-                         (e.target as HTMLImageElement).nextElementSibling!.classList.remove('hidden');
+                         const target = e.target as HTMLImageElement;
+                         const fallback = `https://ui-avatars.com/api/?name=${encodeURIComponent(data.config.founderName || 'Founder')}&background=0ea5e9&color=fff&bold=true`;
+                         if (target.src !== fallback) {
+                           target.src = fallback;
+                         }
                       }}
                     />
-                    <div className="hidden absolute inset-0 w-full h-full bg-gray-700 rounded-full flex items-center justify-center text-gray-400 border-4 border-gray-600">
-                      <span className="text-4xl font-bold">AR</span>
-                    </div>
                   </div>
                   
                   <h3 className="font-heading text-2xl font-bold text-white">{data.config.founderName}</h3>
@@ -187,13 +196,101 @@ export const AboutPage: React.FC = () => {
 
         {/* Brand Associations */}
         <div className="mb-20">
-          <h2 className="font-heading text-3xl font-bold text-white mb-10 text-center">Brand Associations</h2>
-          <div className="flex flex-wrap justify-center gap-4">
-            {BRANDS.map((brand, idx) => (
-              <span key={idx} className="bg-gray-900 border border-gray-800 px-6 py-3 rounded-xl text-gray-300 font-medium hover:border-brand-500 hover:text-white transition cursor-default">
-                {brand}
-              </span>
+          <h2 className="font-heading text-3xl font-bold text-white mb-10 text-center">Professional Brand Associations</h2>
+          <div className="flex flex-wrap justify-center gap-8">
+            {data.brands?.map((brand, idx) => (
+              <div key={idx} className="group flex flex-col items-center">
+                <div className="w-40 h-28 bg-white/5 border border-gray-800 rounded-xl p-6 flex items-center justify-center group-hover:border-brand-500 transition-all duration-300">
+                  <img 
+                    src={brand.logo} 
+                    alt={brand.name} 
+                    className="max-w-full max-h-full object-contain transition-all duration-300"
+                    referrerPolicy="no-referrer"
+                    onError={(e) => {
+                      (e.target as HTMLImageElement).src = `https://ui-avatars.com/api/?name=${encodeURIComponent(brand.name)}&background=111827&color=3b82f6&bold=true`;
+                    }}
+                  />
+                </div>
+                <span className="mt-2 text-sm font-bold text-white transition-colors">{brand.name}</span>
+              </div>
             ))}
+          </div>
+        </div>
+
+        <div className="mb-20">
+          <h2 className="font-heading text-3xl font-bold text-white mb-10 text-center">Business Associations</h2>
+          
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="bg-gray-900 p-8 rounded-2xl border border-gray-800">
+              <div className="flex flex-col items-center mb-6">
+                <div className="w-20 h-20 bg-white/10 rounded-full flex items-center justify-center mb-3 border border-gray-700">
+                  <span className="text-brand-400 font-bold text-xl">FE</span>
+                </div>
+                <h3 className="font-heading text-xl font-bold text-brand-400 text-center">Associated through Focus Engineering</h3>
+              </div>
+              <div className="flex flex-wrap justify-center gap-6">
+                {BUSINESS_ASSOCIATIONS.throughFocus.map((brand, idx) => (
+                  <div key={idx} className="group flex flex-col items-center">
+                    <div className="w-32 h-20 bg-white/5 border border-gray-800 rounded-lg p-4 flex items-center justify-center group-hover:border-brand-500 transition-all duration-300">
+                      <img 
+                        src={brand.logo} 
+                        alt={brand.name} 
+                        className="max-w-full max-h-full object-contain transition-all duration-300"
+                        referrerPolicy="no-referrer"
+                        onError={(e) => {
+                          (e.target as HTMLImageElement).src = `https://ui-avatars.com/api/?name=${encodeURIComponent(brand.name)}&background=111827&color=3b82f6&bold=true`;
+                        }}
+                      />
+                    </div>
+                    <span className="mt-2 text-xs font-bold text-white">{brand.name}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="bg-gray-900 p-8 rounded-2xl border border-gray-800">
+              <h3 className="font-heading text-xl font-bold text-brand-400 mb-6 text-center">Associated through A&H Solutions</h3>
+              <div className="flex flex-wrap justify-center gap-6">
+                {BUSINESS_ASSOCIATIONS.throughAH.map((brand, idx) => (
+                  <div key={idx} className="group flex flex-col items-center">
+                    <div className="w-32 h-20 bg-white/5 border border-gray-800 rounded-lg p-4 flex items-center justify-center group-hover:border-brand-500 transition-all duration-300">
+                      <img 
+                        src={brand.logo} 
+                        alt={brand.name} 
+                        className="max-w-full max-h-full object-contain transition-all duration-300"
+                        referrerPolicy="no-referrer"
+                        onError={(e) => {
+                          (e.target as HTMLImageElement).src = `https://ui-avatars.com/api/?name=${encodeURIComponent(brand.name)}&background=111827&color=3b82f6&bold=true`;
+                        }}
+                      />
+                    </div>
+                    <span className="mt-2 text-xs font-bold text-white">{brand.name}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="bg-gray-900 p-8 rounded-2xl border border-gray-800">
+              <h3 className="font-heading text-xl font-bold text-brand-400 mb-6 text-center">Direct Brand Associations</h3>
+              <div className="flex flex-wrap justify-center gap-6">
+                {BUSINESS_ASSOCIATIONS.direct.map((brand, idx) => (
+                  <div key={idx} className="group flex flex-col items-center">
+                    <div className="w-32 h-20 bg-white/5 border border-gray-800 rounded-lg p-4 flex items-center justify-center group-hover:border-brand-500 transition-all duration-300">
+                      <img 
+                        src={brand.logo} 
+                        alt={brand.name} 
+                        className="max-w-full max-h-full object-contain transition-all duration-300"
+                        referrerPolicy="no-referrer"
+                        onError={(e) => {
+                          (e.target as HTMLImageElement).src = `https://ui-avatars.com/api/?name=${encodeURIComponent(brand.name)}&background=111827&color=3b82f6&bold=true`;
+                        }}
+                      />
+                    </div>
+                    <span className="mt-2 text-xs font-bold text-white">{brand.name}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
 

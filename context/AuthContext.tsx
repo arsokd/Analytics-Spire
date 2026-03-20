@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 import { User, UserRole } from '../types';
+import { api } from '../services/api';
 
 interface AuthContextType {
   user: User | null;
@@ -36,25 +37,13 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   }, []);
 
   const login = async (email: string, pass: string): Promise<boolean> => {
-    // SIMULATED LOGIN FOR DEMO
-    // In a real app, this would verify against Google Sheets or a Backend
-    return new Promise((resolve) => {
-      setTimeout(() => {
-        if (email === 'admin@analyticsspire.com' && pass === 'admin123') {
-          const newUser: User = { email, name: 'Anand Rengasamy', role: 'admin' as UserRole.ADMIN };
-          setUser(newUser);
-          localStorage.setItem('analyticsSpireUser', JSON.stringify(newUser));
-          resolve(true);
-        } else if (email === 'client@test.com' && pass === 'client123') {
-           const newUser: User = { email, name: 'Test Client', role: 'client' as UserRole.CLIENT };
-           setUser(newUser);
-           localStorage.setItem('analyticsSpireUser', JSON.stringify(newUser));
-           resolve(true);
-        } else {
-          resolve(false);
-        }
-      }, 800);
-    });
+    const verifiedUser = await api.verifyLogin(email, pass);
+    if (verifiedUser) {
+      setUser(verifiedUser);
+      localStorage.setItem('analyticsSpireUser', JSON.stringify(verifiedUser));
+      return true;
+    }
+    return false;
   };
 
   const logout = () => {

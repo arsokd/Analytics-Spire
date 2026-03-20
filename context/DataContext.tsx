@@ -37,6 +37,7 @@ export const DataProvider: React.FC<DataProviderProps> = ({ children }) => {
         services: fetchedData.services?.length > 0 ? fetchedData.services : DEFAULT_SITE_DATA.services,
         events: fetchedData.events?.length > 0 ? fetchedData.events : DEFAULT_SITE_DATA.events,
         videos: fetchedData.videos?.length > 0 ? fetchedData.videos : DEFAULT_SITE_DATA.videos,
+        brands: fetchedData.brands?.length > 0 ? fetchedData.brands : DEFAULT_SITE_DATA.brands,
       });
     }
     setIsLoading(false);

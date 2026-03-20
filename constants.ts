@@ -1,6 +1,15 @@
 
 import { ServiceItem, VideoItem } from './types';
 
+// HOW TO USE GOOGLE SHEETS AS THE DATABASE:
+// 1. Open Google Sheets (https://sheets.google.com)
+// 2. Create a new sheet named "Analytics Spire Database"
+// 3. Create tabs named "Services", "Users", "Events", "Videos"
+// 4. Fill in the columns as defined in the constants.ts file
+// 5. Go to File > Share > Publish to the web
+// 6. Select "Entire Document" and "Comma-separated values (.csv)"
+// 7. Copy the link and paste it in the services/googleSheets.ts file
+
 export const COMPANY_NAME = "Analytics Spire";
 export const FOUNDER_NAME = "Anand Rengasamy";
 export const CONTACT_EMAIL = "ars.okd@gmail.com";
@@ -141,10 +150,35 @@ export const VIDEOS_DATA: VideoItem[] = [
   }
 ];
 
-export const BRANDS = [
-  'Gmmco', 'Caterpillar', 'Rane TRW', 'TAFE', 'Claas', 'Sonalika', 'Escorts', 
-  'Focus Engineering', 'BMW', 'TVS', 'Amtrex', 'Mahindra', 'CNH Industrial'
+export const PROFESSIONAL_BRANDS = [
+  { name: 'BMW', logo: 'https://lh3.googleusercontent.com/d/1lkFjVLDB7DK0h8bzOC_o-A0R4hrtWMIS' },
+  { name: 'Caterpillar', logo: 'https://lh3.googleusercontent.com/d/17XyjHr_7Edq_YAx2En4maLtD_Qsp-ix3' },
+  { name: 'Claas', logo: 'https://lh3.googleusercontent.com/d/1YzhcuMByl5NOXqYr5BoaEuvxa0CXbetT' },
+  { name: 'CNH', logo: 'https://lh3.googleusercontent.com/d/1vWv7o5Us6nHdPisI7mY5syBsXHQ-WjDy' },
+  { name: 'Escorts - Kubota', logo: 'https://lh3.googleusercontent.com/d/1IGRFphw8NIfeq5WY_RKMfvmSul0-xz-Z' },
+  { name: 'GMMCO', logo: 'https://lh3.googleusercontent.com/d/1U-I_q2uzG8U6PlyhWlUMLFMOPQob4f2k' },
+  { name: 'M&M', logo: 'https://lh3.googleusercontent.com/d/1rFT_zPsGNJspZ_44eMid0-CtvPoadlOb' },
+  { name: 'Rane TRW', logo: 'https://lh3.googleusercontent.com/d/1klJEx42v9iLPeXwON3n7ogfHuGL1Cj0y' },
+  { name: 'Sonalika', logo: 'https://lh3.googleusercontent.com/d/1rIEix77Fz0-eyFGcaOAFnHu5Yu7DQYir' },
+  { name: 'TAFE', logo: 'https://lh3.googleusercontent.com/d/1BodYf6LQ0sTMy1tU2G7EjBvmig--XD3b' },
+  { name: 'TVS', logo: 'https://lh3.googleusercontent.com/d/15gn-wcgSKIa5NdEL0dKC4aZNUg2Xj6Tk' },
+  { name: 'Vasaantham Traders', logo: 'https://lh3.googleusercontent.com/d/1D7SLAfr2AOruwq4y6aeb-xHdYkFsCSgp' }
 ];
+
+export const BUSINESS_ASSOCIATIONS = {
+  throughFocus: [
+    { name: 'BMW', logo: 'https://lh3.googleusercontent.com/d/1lkFjVLDB7DK0h8bzOC_o-A0R4hrtWMIS' },
+    { name: 'TVS', logo: 'https://lh3.googleusercontent.com/d/15gn-wcgSKIa5NdEL0dKC4aZNUg2Xj6Tk' }
+  ],
+  throughAH: [
+    { name: 'Mahindra', logo: 'https://lh3.googleusercontent.com/d/1rFT_zPsGNJspZ_44eMid0-CtvPoadlOb' }
+  ],
+  direct: [
+    { name: 'Amtrex (Dubai)', logo: 'https://lh3.googleusercontent.com/d/1Ep9gWS9CGtkJpb_AZ1OuYdqRO747ENA4' },
+    { name: 'CNH Industrial', logo: 'https://lh3.googleusercontent.com/d/1vWv7o5Us6nHdPisI7mY5syBsXHQ-WjDy' },
+    { name: 'Vasaantham Traders', logo: 'https://lh3.googleusercontent.com/d/1D7SLAfr2AOruwq4y6aeb-xHdYkFsCSgp' }
+  ]
+};
 
 export const TOOLS = [
   'IBM SPSS', 'Excel', 'Looker Studio', 'SPSS Modeler', 'Power BI', 'Python', 'R Studio', 'Machine Learning', 'Google Workspace'

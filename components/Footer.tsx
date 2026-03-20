@@ -13,11 +13,19 @@ export const Footer: React.FC = () => {
           
           {/* Brand Column */}
           <div>
-            <div className="bg-white/95 px-5 py-3 rounded-lg shadow-sm border border-gray-200 inline-block mb-6">
+            <div className="bg-white/95 px-8 py-6 rounded-2xl shadow-2xl border border-gray-200 inline-block mb-8">
                  <img 
-                   src="/logo.png" 
+                   src={data.config.logoUrl || `https://ui-avatars.com/api/?name=${encodeURIComponent(COMPANY_NAME)}&background=0284c7&color=fff&bold=true`} 
                    alt={COMPANY_NAME} 
-                   className="h-14 w-auto object-contain" 
+                   className="h-40 w-auto object-contain" 
+                   referrerPolicy="no-referrer"
+                   onError={(e) => {
+                     const target = e.target as HTMLImageElement;
+                     const fallback = `https://ui-avatars.com/api/?name=${encodeURIComponent(COMPANY_NAME)}&background=0284c7&color=fff&bold=true`;
+                     if (target.src !== fallback) {
+                       target.src = fallback;
+                     }
+                   }}
                  />
             </div>
             <p className="text-gray-400 leading-relaxed">

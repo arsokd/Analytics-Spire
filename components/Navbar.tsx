@@ -2,8 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 import { NAVIGATION_LINKS, COMPANY_NAME } from '../constants';
+import { useData } from '../context/DataContext';
 
 export const Navbar: React.FC = () => {
+  const { data } = useData();
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
@@ -28,21 +30,32 @@ export const Navbar: React.FC = () => {
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
+        <div className="flex justify-between items-center h-40">
           <div className="flex items-center">
             <Link to="/" className="flex items-center group">
-              {/* Logo Container - Adjusted size for new logo with tagline */}
-              <div className="bg-white/95 px-4 py-2 rounded-lg shadow-lg border border-gray-200 group-hover:bg-white transition duration-300">
+              {/* 
+                  HOW TO CHANGE THE LOGO:
+                  1. Upload your logo image to the "public" folder and name it "logo.png"
+                  2. OR change the "src" below to a web link (e.g., "https://example.com/logo.png")
+              */}
+              <div className="bg-white/95 px-6 py-4 rounded-xl shadow-2xl border border-gray-200 group-hover:bg-white transition duration-300 flex items-center">
                  <img 
-                   src="/logo.png" 
+                   src={data.config.logoUrl || `https://ui-avatars.com/api/?name=${encodeURIComponent(COMPANY_NAME)}&background=0284c7&color=fff&bold=true`} 
                    alt={COMPANY_NAME} 
-                   className="h-12 w-auto object-contain" 
+                   className="h-32 w-auto object-contain" 
+                   referrerPolicy="no-referrer"
                    onError={(e) => {
                      // Fallback if image is missing
-                     (e.target as HTMLImageElement).style.display = 'none';
-                     (e.target as HTMLImageElement).parentElement!.innerHTML = `<span class="font-bold text-gray-900 px-2">${COMPANY_NAME}</span>`;
+                     const target = e.target as HTMLImageElement;
+                     const fallback = `https://ui-avatars.com/api/?name=${encodeURIComponent(COMPANY_NAME)}&background=0284c7&color=fff&bold=true`;
+                     if (target.src !== fallback) {
+                       target.src = fallback;
+                     }
                    }}
                  />
+                 <span className="ml-6 text-5xl font-black text-gray-900 tracking-tighter hidden sm:block">
+                   {COMPANY_NAME}
+                 </span>
               </div>
             </Link>
           </div>

@@ -42,6 +42,16 @@ export const ServicesPage: React.FC = () => {
                     <Icon className="w-12 h-12 text-brand-500" />
                     <span className="text-xs font-bold text-gray-600 uppercase tracking-widest">{service.category}</span>
                   </div>
+                  {service.imageUrl && (
+                    <div className="mb-6 overflow-hidden rounded-lg h-48">
+                      <img 
+                        src={service.imageUrl} 
+                        alt={service.title} 
+                        className="w-full h-full object-cover transform group-hover:scale-105 transition duration-500"
+                        referrerPolicy="no-referrer"
+                      />
+                    </div>
+                  )}
                   <h3 className="font-heading text-3xl font-bold text-white mb-4 group-hover:text-brand-100 transition">{service.title}</h3>
                   <p className="text-gray-400 text-lg font-light leading-relaxed mb-8">{service.description}</p>
                 </div>
