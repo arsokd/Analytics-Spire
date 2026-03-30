@@ -30,7 +30,7 @@ export const Navbar: React.FC = () => {
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-40">
+        <div className="flex justify-between items-center h-20">
           <div className="flex items-center">
             <Link to="/" className="flex items-center group">
               {/* 
@@ -38,11 +38,13 @@ export const Navbar: React.FC = () => {
                   1. Upload your logo image to the "public" folder and name it "logo.png"
                   2. OR change the "src" below to a web link (e.g., "https://example.com/logo.png")
               */}
-              <div className="bg-white/95 px-6 py-4 rounded-xl shadow-2xl border border-gray-200 group-hover:bg-white transition duration-300 flex items-center">
+              <div className="bg-white/95 px-4 py-2 rounded-lg shadow-xl border border-gray-200 group-hover:bg-white transition duration-300 flex items-center">
                  <img 
                    src={data.config.logoUrl || `https://ui-avatars.com/api/?name=${encodeURIComponent(COMPANY_NAME)}&background=0284c7&color=fff&bold=true`} 
                    alt={COMPANY_NAME} 
-                   className="h-32 w-auto object-contain" 
+                   width={48}
+                   height={48}
+                   className="h-12 w-auto object-contain" 
                    referrerPolicy="no-referrer"
                    onError={(e) => {
                      // Fallback if image is missing
@@ -53,7 +55,7 @@ export const Navbar: React.FC = () => {
                      }
                    }}
                  />
-                 <span className="ml-6 text-5xl font-black text-gray-900 tracking-tighter hidden sm:block">
+                 <span className="ml-3 text-2xl font-black text-gray-900 tracking-tighter hidden sm:block">
                    {COMPANY_NAME}
                  </span>
               </div>
