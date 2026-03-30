@@ -9,6 +9,7 @@ import { ServicesPage } from './pages/ServicesPage';
 import { ContactPage } from './pages/ContactPage';
 import { EventsPage } from './pages/EventsPage';
 import { MediaPage } from './pages/MediaPage';
+import { PaymentPage } from './pages/PaymentPage';
 import { DataProvider } from './context/DataContext';
 
 const App: React.FC = () => {
@@ -25,6 +26,7 @@ const App: React.FC = () => {
               <Route path="/media" element={<MediaPage />} />
               <Route path="/events" element={<EventsPage />} />
               <Route path="/contact" element={<ContactPage />} />
+              <Route path="/payment" element={<PaymentPage />} />
               <Route path="*" element={<Navigate to="/" replace />} />
             </Routes>
           </main>

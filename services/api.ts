@@ -15,6 +15,7 @@ export const DEFAULT_SITE_DATA: SiteData = {
     contactEmail: CONTACT_EMAIL,
     founderName: FOUNDER_NAME,
     founderBio: "Anand Rengasamy is a seasoned Management and Business Consultant with over 30 years of corporate experience across diverse domains. He holds an Engineering degree from BITS, Pilani, and a Business Analytics specialization from IIM-K. He is an IOD certified Independent Director and a Machine Learning Specialist, dedicated to delivering innovative, data-driven solutions.",
+    founderImageUrl: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
     partnerName: "Hemanth Kumar Guruswamy",
     partnerBio: "Hemanth Kumar Guruswamy is a seasoned business leader with over three decades of leadership experience in telecommunications, technology, digital services, and large-scale business operations across India. An alumnus of IIM Ahmedabad (MBA) and College of Engineering Guindy (Electronics), he has served in senior leadership and CEO-level roles across leading organizations including Reliance Jio and Bharti Airtel.",
     partnerImageUrl: "https://lh3.googleusercontent.com/d/1rocca0kuvjo5qZkti10p72Pn2N1PblMv",
@@ -150,7 +151,16 @@ export const api = {
           if (data.events && Array.isArray(data.events)) {
             data.events = data.events.map((event: any) => ({
               ...event,
-              imageUrl: formatGoogleDriveUrl(event.imageUrl)
+              imageUrl: formatGoogleDriveUrl(event.imageUrl || event.image)
+            }));
+          }
+
+          if (data.videos && Array.isArray(data.videos)) {
+            data.videos = data.videos.map((video: any) => ({
+              ...video,
+              id: video.id || Math.random().toString(36).substr(2, 9),
+              youtubeUrl: video.youtubeUrl || video.url || video.YouTubeUrl || video.URL || '',
+              category: video.category || 'Training'
             }));
           }
           
@@ -158,13 +168,17 @@ export const api = {
           if (data.config) {
             const mergedConfig = { ...DEFAULT_SITE_DATA.config };
             
-            // Overwrite with fetched data if present
-            Object.keys(data.config).forEach(key => {
-              const val = data.config[key as keyof typeof data.config];
-              if (val && val !== '') {
-                (mergedConfig as any)[key] = val;
-              }
-            });
+            // Handle both object (Key/Value) and array (Horizontal row) formats
+            const configSource = Array.isArray(data.config) ? data.config[0] : data.config;
+            
+            if (configSource) {
+              Object.keys(configSource).forEach(key => {
+                const val = configSource[key];
+                if (val && val !== '') {
+                  (mergedConfig as any)[key] = val;
+                }
+              });
+            }
 
             // Parse dynamic brands from all rows
             const configArray = Array.isArray(data.config) ? data.config : [data.config];
@@ -204,9 +218,9 @@ export const api = {
                 founderImageUrl: formatGoogleDriveUrl(mergedConfig.founderImageUrl || ''),
                 partnerImageUrl: formatGoogleDriveUrl(mergedConfig.partnerImageUrl || ''),
               },
-              services: data.services || SERVICES_DATA,
-              events: data.events || EVENTS_DATA,
-              videos: data.videos || VIDEOS_DATA,
+              services: (data.services && data.services.length > 0) ? data.services : SERVICES_DATA,
+              events: (data.events && data.events.length > 0) ? data.events : EVENTS_DATA,
+              videos: (data.videos && data.videos.length > 0) ? data.videos : VIDEOS_DATA,
               brands: mergedBrands,
             };
           }
@@ -220,6 +234,8 @@ export const api = {
     try {
       const configRows = await fetchCsv('0');
       const servicesRows = await fetchCsv(); 
+      const eventsRows = await fetchCsv('1594951475'); // Placeholder GID for Events tab
+      const videosRows = await fetchCsv('123456789'); // Placeholder GID for Videos tab
 
       if (configRows && configRows.length > 0) {
         const config = configRows[0];
@@ -273,8 +289,17 @@ export const api = {
             ...s,
             details: typeof s.details === 'string' ? s.details.split(';').map((d: string) => d.trim()) : []
           })) : SERVICES_DATA,
-          events: EVENTS_DATA,
-          videos: VIDEOS_DATA,
+          events: (eventsRows && eventsRows.length > 0) ? eventsRows.map((e: any) => ({
+            ...e,
+            imageUrl: formatGoogleDriveUrl(e.imageUrl || e.image)
+          })) : EVENTS_DATA,
+          videos: (videosRows && videosRows.length > 0) ? videosRows.map((v: any) => ({
+            id: v.id,
+            title: v.title,
+            category: v.category,
+            description: v.description,
+            youtubeUrl: v.youtubeUrl || v.url
+          })) : VIDEOS_DATA,
           brands: mergedBrands,
         };
       }

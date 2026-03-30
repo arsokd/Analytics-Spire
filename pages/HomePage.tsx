@@ -129,6 +129,45 @@ export const HomePage: React.FC = () => {
         </div>
       </section>
 
+      {/* Recent Engagements Section */}
+      {data.events.length > 0 && (
+        <section className="py-24 bg-black">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="flex justify-between items-end mb-12">
+              <div>
+                <h2 className="text-brand-500 font-bold tracking-widest uppercase text-sm mb-4">Our Impact</h2>
+                <h2 className="font-heading text-4xl font-bold text-white">Recent Engagements</h2>
+              </div>
+              <Link to="/events" className="text-white border-b border-brand-500 pb-1 hover:text-brand-400 transition">View all events</Link>
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-12">
+              {data.events.slice(0, 2).map((event, idx) => (
+                <div key={idx} className="group relative overflow-hidden">
+                  <div className="aspect-video overflow-hidden rounded-sm mb-6">
+                    <img 
+                      src={event.imageUrl || event.image} 
+                      alt={event.title}
+                      className="w-full h-full object-cover transform group-hover:scale-105 transition duration-700 filter grayscale group-hover:grayscale-0"
+                      referrerPolicy="no-referrer"
+                    />
+                  </div>
+                  <div className="flex items-center text-brand-500 text-sm font-bold uppercase tracking-widest mb-3">
+                    <span className="mr-4">{event.date}</span>
+                    <span>{event.location}</span>
+                  </div>
+                  <h3 className="font-heading text-2xl font-bold text-white mb-4 group-hover:text-brand-400 transition">{event.title}</h3>
+                  <p className="text-gray-400 line-clamp-2 mb-6">{event.description}</p>
+                  <Link to="/events" className="inline-flex items-center text-white font-bold text-sm uppercase tracking-widest border-b border-white pb-1 group-hover:border-brand-500 group-hover:text-brand-500 transition">
+                    Read More <ArrowRight size={16} className="ml-2" />
+                  </Link>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* Stats Section */}
       <section className="bg-[#030712] py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

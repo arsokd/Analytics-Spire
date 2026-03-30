@@ -194,6 +194,38 @@ export const AboutPage: React.FC = () => {
           </div>
         </div>
 
+        {/* Training Gallery Section */}
+        <div className="mb-20">
+          <h2 className="font-heading text-3xl font-bold text-white mb-4 text-center">Training in Action</h2>
+          <p className="text-gray-400 text-center mb-10 max-w-2xl mx-auto">
+            Visual highlights from our workshops, summits, and on-site training sessions across India.
+          </p>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            {data.events.slice(0, 4).map((event, idx) => (
+              <div key={idx} className="group relative aspect-square overflow-hidden rounded-xl border border-gray-800">
+                <img 
+                  src={event.imageUrl || event.image} 
+                  alt={event.title}
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 filter grayscale group-hover:grayscale-0"
+                  referrerPolicy="no-referrer"
+                  onError={(e) => {
+                    (e.target as HTMLImageElement).src = "https://images.unsplash.com/photo-1544531586-fde5298cdd40?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80";
+                  }}
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
+                  <p className="text-xs font-bold text-brand-400 uppercase tracking-widest mb-1">{event.date}</p>
+                  <p className="text-sm font-bold text-white line-clamp-1">{event.title}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+          <div className="mt-8 text-center">
+            <a href="#/events" className="text-brand-400 font-bold uppercase tracking-widest text-sm hover:text-white transition border-b border-brand-400 pb-1">
+              View All Engagements
+            </a>
+          </div>
+        </div>
+
         {/* Brand Associations */}
         <div className="mb-20">
           <h2 className="font-heading text-3xl font-bold text-white mb-10 text-center">Professional Brand Associations</h2>

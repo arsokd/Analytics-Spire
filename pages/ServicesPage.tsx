@@ -1,9 +1,9 @@
 import React from 'react';
-import { BarChart, Cpu, Compass, Settings, TrendingUp, Megaphone, BookOpen, Search } from 'lucide-react';
+import { BarChart, Cpu, Compass, Settings, TrendingUp, Megaphone, BookOpen, Search, Package } from 'lucide-react';
 import { useData } from '../context/DataContext';
 
 const icons: Record<string, any> = {
-  BarChart, Cpu, Compass, Settings, TrendingUp, Megaphone, BookOpen, Search
+  BarChart, Cpu, Compass, Settings, TrendingUp, Megaphone, BookOpen, Search, Package
 };
 
 export const ServicesPage: React.FC = () => {

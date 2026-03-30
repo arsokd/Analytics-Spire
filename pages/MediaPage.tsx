@@ -14,9 +14,10 @@ export const MediaPage: React.FC = () => {
     return id ? `https://www.youtube.com/embed/${id}` : null;
   };
 
-  const filteredVideos = data.videos.filter(video => 
-    filter === 'All' || video.category === filter
-  );
+  const filteredVideos = data.videos.filter(video => {
+    if (filter === 'All') return true;
+    return video.category?.toLowerCase() === filter.toLowerCase();
+  });
 
   return (
     <div className="bg-black min-h-screen text-white font-sans pb-24">

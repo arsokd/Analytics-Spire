@@ -20,6 +20,7 @@ export const NAVIGATION_LINKS = [
   { name: 'Services', path: '/services' },
   { name: 'Media', path: '/media' },
   { name: 'Events', path: '/events' },
+  { name: 'Payment', path: '/payment' },
   { name: 'Contact', path: '/contact' },
 ];
 
@@ -87,6 +88,19 @@ export const SERVICES_DATA: ServiceItem[] = [
       'Cash Flow Management',
       'Financial Reporting & Modelling',
       'Interactive Financial Dashboards'
+    ]
+  },
+  {
+    id: '6',
+    title: 'Inventory Management',
+    category: 'Operations',
+    description: 'Optimizing stock levels, reducing carrying costs, and improving order fulfillment through data-driven tracking and analysis.',
+    iconName: 'Package',
+    details: [
+      'Real-time Stock Tracking',
+      'Demand Forecasting',
+      'Warehouse Optimization',
+      'Just-in-Time (JIT) Implementation'
     ]
   }
 ];
