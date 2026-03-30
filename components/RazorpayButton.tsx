@@ -71,6 +71,7 @@ export const RazorpayButton: React.FC<RazorpayButtonProps> = ({
   return (
     <button
       onClick={handlePayment}
+      aria-label={`Pay ${amount} ${currency} with Razorpay`}
       className={`bg-brand-600 hover:bg-brand-500 text-white font-bold py-3 px-8 rounded-lg transition-all duration-300 shadow-lg shadow-brand-900/20 flex items-center justify-center space-x-2 ${className}`}
     >
       <svg className="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">

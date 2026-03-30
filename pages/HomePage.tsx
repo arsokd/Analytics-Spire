@@ -25,18 +25,18 @@ export const HomePage: React.FC = () => {
             {/* Vertical Line and Content Wrapper */}
             <div className="border-l-[3px] border-brand-500 pl-8 md:pl-12 py-4">
               <div className="mb-8">
-                <h3 className="text-6xl md:text-[120px] font-black text-white tracking-tighter uppercase leading-none">
+                <h1 className="text-6xl md:text-[120px] font-black text-white tracking-tighter uppercase leading-none">
                   Analytics Spire
-                </h3>
+                </h1>
               </div>
               
               <div className="relative mb-10">
-                <h1 className="font-heading text-5xl md:text-7xl lg:text-[100px] font-bold leading-[0.9] tracking-tight text-brand-500 relative z-10">
+                <h2 className="font-heading text-5xl md:text-7xl lg:text-[100px] font-bold leading-[0.9] tracking-tight text-brand-500 relative z-10">
                   {heroTitle}
-                </h1>
-                <h1 className="absolute top-1 left-1 font-heading text-5xl md:text-7xl lg:text-[100px] font-bold leading-[0.9] tracking-tight text-brand-900/30 select-none z-0">
+                </h2>
+                <span className="absolute top-1 left-1 font-heading text-5xl md:text-7xl lg:text-[100px] font-bold leading-[0.9] tracking-tight text-brand-900/30 select-none z-0" aria-hidden="true">
                   {heroTitle}
-                </h1>
+                </span>
               </div>
 
               <p className="text-lg md:text-xl text-gray-300 max-w-2xl font-light leading-relaxed mb-12">
@@ -148,6 +148,8 @@ export const HomePage: React.FC = () => {
                     <img 
                       src={event.imageUrl || event.image} 
                       alt={event.title}
+                      width={800}
+                      height={450}
                       className="w-full h-full object-cover transform group-hover:scale-105 transition duration-700 filter grayscale group-hover:grayscale-0"
                       referrerPolicy="no-referrer"
                     />

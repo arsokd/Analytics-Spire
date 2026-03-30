@@ -68,7 +68,7 @@ export const Navbar: React.FC = () => {
                 className={`px-3 py-2 text-sm font-medium transition-all duration-200 ${
                   isActive(link.path) 
                     ? 'text-white' 
-                    : 'text-gray-400 hover:text-white'
+                    : 'text-gray-300 hover:text-white'
                 }`}
               >
                 {link.name}
@@ -87,6 +87,8 @@ export const Navbar: React.FC = () => {
             <button
               onClick={() => setIsOpen(!isOpen)}
               className="text-gray-300 hover:text-white focus:outline-none p-2 rounded-md hover:bg-gray-800"
+              aria-label={isOpen ? "Close menu" : "Open menu"}
+              aria-expanded={isOpen}
             >
               {isOpen ? <X size={24} /> : <Menu size={24} />}
             </button>

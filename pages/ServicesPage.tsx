@@ -20,7 +20,7 @@ export const ServicesPage: React.FC = () => {
       {/* Services Hero */}
       <div className="relative pt-32 pb-20 border-b border-gray-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-           <h2 className="text-brand-500 font-bold tracking-widest uppercase text-sm mb-4">Capabilities</h2>
+           <p className="text-brand-500 font-bold tracking-widest uppercase text-sm mb-4">Capabilities</p>
            <h1 className="font-heading text-5xl md:text-7xl font-bold text-white mb-8">
              End-to-End Solutions.
            </h1>
@@ -47,6 +47,8 @@ export const ServicesPage: React.FC = () => {
                       <img 
                         src={service.imageUrl} 
                         alt={service.title} 
+                        width={600}
+                        height={400}
                         className="w-full h-full object-cover transform group-hover:scale-105 transition duration-500"
                         referrerPolicy="no-referrer"
                       />

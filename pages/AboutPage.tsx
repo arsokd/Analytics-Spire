@@ -67,6 +67,8 @@ export const AboutPage: React.FC = () => {
                       <img 
                         src={data.config.partnerImageUrl || `https://ui-avatars.com/api/?name=${encodeURIComponent(data.config.partnerName || 'Partner')}&background=10b981&color=fff&bold=true`} 
                         alt={data.config.partnerName} 
+                        width={192}
+                        height={192}
                         className="w-full h-full rounded-full object-cover object-center border-4 border-emerald-500 shadow-[0_0_20px_rgba(16,185,129,0.3)]"
                         referrerPolicy="no-referrer"
                         onError={(e) => {
@@ -127,6 +129,8 @@ export const AboutPage: React.FC = () => {
                     <img 
                       src={data.config.founderImageUrl || `https://ui-avatars.com/api/?name=${encodeURIComponent(data.config.founderName || 'Founder')}&background=0ea5e9&color=fff&bold=true`} 
                       alt={data.config.founderName} 
+                      width={192}
+                      height={192}
                       className="w-full h-full rounded-full object-cover object-top border-4 border-brand-500 shadow-[0_0_20px_rgba(14,165,233,0.3)]"
                       referrerPolicy="no-referrer"
                       onError={(e) => {
@@ -206,6 +210,8 @@ export const AboutPage: React.FC = () => {
                 <img 
                   src={event.imageUrl || event.image} 
                   alt={event.title}
+                  width={400}
+                  height={400}
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 filter grayscale group-hover:grayscale-0"
                   referrerPolicy="no-referrer"
                   onError={(e) => {
@@ -236,6 +242,8 @@ export const AboutPage: React.FC = () => {
                   <img 
                     src={brand.logo} 
                     alt={brand.name} 
+                    width={160}
+                    height={112}
                     className="max-w-full max-h-full object-contain transition-all duration-300"
                     referrerPolicy="no-referrer"
                     onError={(e) => {
