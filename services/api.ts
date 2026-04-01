@@ -8,17 +8,23 @@ import { SERVICES_DATA, EVENTS_DATA, VIDEOS_DATA, COMPANY_NAME, FOUNDER_NAME, CO
 export const DEFAULT_SITE_DATA: SiteData = {
   config: {
     heroTitle: "Driving Excellence Through Expertise.",
-    heroSubtitle: "Empowering MSMEs and enterprises through data-driven innovation, strategic planning, and intelligent automation. Led by industry expertise with over 30 years of corporate leadership.",
+    heroSubtitle: "Empowering MSMEs and enterprises through data-driven innovation, strategic planning, and intelligent automation. Led by industry expertise with decades of corporate leadership.",
     missionText: "To empower MSMEs with strategic, financial, operational, and technology-driven solutions that drive sustainable and scalable business growth, enhance productivity, efficiency, and profitability, bridge the technology and capability gap, strengthen market competitiveness and resilience, and enable data-driven decision-making and long-term value creation.",
-    visionText: "To become India's most trusted growth partner for MSMEs, enabling sustainable, technology-driven, and globally competitive enterprises.",
-    aboutText: "Analytics Spire is a management and business consultancy registered with Udayam, dedicated to addressing the unique challenges of service and manufacturing sectors. We bring three decades of cross-sector expertise to help businesses navigate the complexities of modern markets.",
+    visionText: "To be the most affordable and trusted consulting partner for MSMEs, providing realistic, data-driven strategies that turn small businesses into sustainable, growth-oriented enterprises.",
+    aboutText: "Analytics Spire is a management and business consultancy registered with Udayam, dedicated to addressing the unique challenges of service and manufacturing sectors. We bring decades of cross-sector expertise to help businesses navigate the complexities of modern markets.",
     contactEmail: CONTACT_EMAIL,
     founderName: FOUNDER_NAME,
-    founderBio: "Anand Rengasamy is a seasoned Management and Business Consultant with over 30 years of corporate experience across diverse domains. He holds an Engineering degree from BITS, Pilani, and a Business Analytics specialization from IIM-K. He is an IOD certified Independent Director and a Machine Learning Specialist, dedicated to delivering innovative, data-driven solutions.",
+    founderBio: "Anand Rengasamy is a seasoned Business consultant and Business coach with decades of corporate experience across diverse domains. He holds an Engineering degree from BITS, Pilani, and a Business Analytics specialization from IIM-K. He is an IOD certified Independent Director and a Machine Learning Specialist, dedicated to delivering innovative, data-driven solutions.",
     founderImageUrl: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
     partnerName: "",
     partnerBio: "",
     partnerImageUrl: "",
+    /* 
+    // TEMPORARILY REMOVED - RESTORE LATER
+    partnerName: "Hemanth Kumar Guruswamy",
+    partnerBio: "Hemanth Kumar Guruswamy is a seasoned business leader with over three decades of leadership experience in telecommunications, technology, digital services, and large-scale business operations across India. An alumnus of IIM Ahmedabad (MBA) and College of Engineering Guindy (Electronics), he has served in senior leadership and CEO-level roles across leading organizations including Reliance Jio and Bharti Airtel.",
+    partnerImageUrl: "https://lh3.googleusercontent.com/d/1rocca0kuvjo5qZkti10p72Pn2N1PblMv",
+    */
     logoUrl: "https://ui-avatars.com/api/?name=Analytics+Spire&background=0284c7&color=fff&bold=true&size=512",
     brandNames: PROFESSIONAL_BRANDS.map(b => b.name).join(';'),
     brandLogos: PROFESSIONAL_BRANDS.map(b => b.logo).join(';')

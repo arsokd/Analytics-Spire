@@ -12,11 +12,12 @@ import { ServiceItem, VideoItem } from './types';
 
 export const COMPANY_NAME = "Analytics Spire";
 export const FOUNDER_NAME = "Anand Rengasamy";
-export const CONTACT_EMAIL = "ars.okd@gmail.com";
+export const CONTACT_EMAIL = "info@analyticsspire.com";
 
 export const NAVIGATION_LINKS = [
   { name: 'Home', path: '/' },
   { name: 'About', path: '/about' },
+  { name: 'Expertise', path: '/expertise' },
   { name: 'Services', path: '/services' },
   { name: 'Media', path: '/media' },
   { name: 'Events', path: '/events' },
@@ -33,7 +34,7 @@ export const SERVICES_DATA: ServiceItem[] = [
     iconName: 'BarChart',
     details: [
       'Analyzing Business & Market Insights',
-      'Validating Hypothesis through Market Research',
+      'Validating Hypothesis through Market Estimation & Consumer Behaviour',
       'Identifying and Bridging Operational Gaps',
       'Data-Driven Decision Making'
     ]
@@ -55,13 +56,12 @@ export const SERVICES_DATA: ServiceItem[] = [
     id: '3',
     title: 'Strategic Marketing',
     category: 'Growth',
-    description: 'Comprehensive market research, brand management, and strategic digital marketing advice.',
+    description: 'Comprehensive market estimation, consumer behaviour analysis, and strategic digital marketing advice.',
     iconName: 'Megaphone',
     details: [
-      'Market Research & Analysis',
+      'Market Estimation & Consumer Behaviour Analysis',
       'Strategic Planning',
-      'Digital Marketing Advisory',
-      'Brand Management'
+      'Digital Marketing Advisory'
     ]
   },
   {
@@ -99,8 +99,7 @@ export const SERVICES_DATA: ServiceItem[] = [
     details: [
       'Real-time Stock Tracking',
       'Demand Forecasting',
-      'Warehouse Optimization',
-      'Just-in-Time (JIT) Implementation'
+      'Warehouse Optimization'
     ]
   }
 ];

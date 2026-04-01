@@ -100,11 +100,11 @@ export const ServicesPage: React.FC = () => {
                   <div className="absolute inset-0 bg-gray-900 transform -skew-x-12 translate-x-4"></div>
                   <div className="relative z-10 p-8">
                      <Search className="w-10 h-10 text-brand-500 mb-6" />
-                     <h3 className="font-heading text-2xl font-bold text-white mb-4">Market Research</h3>
-                     <p className="text-gray-400 mb-6">Deep-dive intelligence for strategic positioning.</p>
+                     <h3 className="font-heading text-2xl font-bold text-white mb-4">Market Estimation & Consumer Behaviour</h3>
+                     <p className="text-gray-400 mb-6">Deep-dive intelligence for strategic positioning and understanding customer dynamics.</p>
                      <ul className="space-y-3 text-gray-300 border-l border-brand-900 pl-4">
-                        <li>Market Trend Identification</li>
-                        <li>Customer Preference Analysis</li>
+                        <li>Market Size Estimation</li>
+                        <li>Consumer Behaviour Analysis</li>
                         <li>Competitive Intelligence</li>
                      </ul>
                   </div>

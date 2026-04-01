@@ -29,7 +29,7 @@ export const AboutPage: React.FC = () => {
               <h2 className="font-heading text-2xl font-bold text-white">Vision</h2>
             </div>
             <p className="text-gray-300 leading-relaxed text-lg">
-              To become India's most trusted growth partner for MSMEs, enabling sustainable, technology-driven, and globally competitive enterprises.
+              To be the most affordable and trusted consulting partner for MSMEs, providing realistic, data-driven strategies that turn small businesses into sustainable, growth-oriented enterprises.
             </p>
           </div>
 
@@ -148,10 +148,10 @@ export const AboutPage: React.FC = () => {
                 </div>
               </div>
               <div className="md:w-2/3 p-8 md:p-12">
-                <h3 className="font-heading text-2xl font-bold mb-6 text-white">Founder's Vision</h3>
-                <p className="text-gray-300 mb-6 text-lg leading-relaxed">
-                  {data.config.founderBio}
-                </p>
+                  <h3 className="font-heading text-2xl font-bold mb-6 text-white">Founder's Vision</h3>
+                  <p className="text-gray-300 mb-6 text-lg leading-relaxed">
+                    Anand Rengasamy is a seasoned Business consultant and Business coach with decades of corporate experience across diverse domains. He is dedicated to delivering innovative, data-driven solutions that empower MSMEs to scale efficiently and sustainably.
+                  </p>
                 
                 <div className="grid md:grid-cols-2 gap-8 mt-8">
                   <div>
@@ -185,18 +185,7 @@ export const AboutPage: React.FC = () => {
           </div>
         </div>
 
-        {/* Core Values */}
-        <div className="mb-20">
-          <h2 className="font-heading text-3xl font-bold text-white mb-10 text-center">Our Core Values</h2>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {VALUES.map((val, idx) => (
-              <div key={idx} className="bg-gray-900 border border-gray-800 p-6 rounded-lg hover:border-brand-500 hover:shadow-lg hover:shadow-brand-900/10 transition group">
-                <h3 className="font-heading text-lg font-bold text-brand-400 mb-2 group-hover:text-brand-300">{val.title}</h3>
-                <p className="text-gray-400 text-sm group-hover:text-gray-300">{val.text}</p>
-              </div>
-            ))}
-          </div>
-        </div>
+
 
         {/* Training Gallery Section */}
         <div className="mb-20">

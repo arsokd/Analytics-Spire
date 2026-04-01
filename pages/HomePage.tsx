@@ -25,9 +25,12 @@ export const HomePage: React.FC = () => {
             {/* Vertical Line and Content Wrapper */}
             <div className="border-l-[3px] border-brand-500 pl-8 md:pl-12 py-4">
               <div className="mb-8">
-                <h1 className="text-6xl md:text-[120px] font-black text-white tracking-tighter uppercase leading-none">
+                <h1 className="text-4xl md:text-6xl font-black text-white tracking-tighter uppercase leading-none">
                   Analytics Spire
                 </h1>
+                <p className="text-brand-400 font-bold text-lg md:text-xl mt-2 tracking-wide">
+                  Turn your Business into Growth Machine
+                </p>
               </div>
               
               <div className="relative mb-10">
@@ -40,7 +43,7 @@ export const HomePage: React.FC = () => {
               </div>
 
               <p className="text-lg md:text-xl text-gray-300 max-w-2xl font-light leading-relaxed mb-12">
-                Empowering <span className="text-white font-medium">MSMEs</span> and enterprises through data-driven innovation, strategic planning, and intelligent automation. Led by industry veterans with over <span className="text-white font-medium">60 years</span> of combined corporate leadership.
+                Empowering <span className="text-white font-medium">MSMEs</span> and enterprises through data-driven innovation, strategic planning, and intelligent automation. Led by industry veterans with <span className="text-white font-medium">decades of experience</span> in corporate leadership.
               </p>
 
               <Link 
@@ -82,9 +85,9 @@ export const HomePage: React.FC = () => {
                   <div className="mb-6 overflow-hidden">
                     <Zap size={48} className="text-brand-600 mb-4 transform group-hover:scale-110 transition duration-500" />
                   </div>
-                  <h3 className="font-heading text-3xl font-bold mb-4 group-hover:text-brand-700 transition">Automate Everything.</h3>
+                  <h3 className="font-heading text-3xl font-bold mb-4 group-hover:text-brand-700 transition">Automate for Controls.</h3>
                   <p className="text-gray-600 text-lg leading-relaxed">
-                    Replace manual chaos with streamlined digital workflows. We build custom apps and dashboards that work for you.
+                    Replace manual chaos with streamlined digital workflows. We build dashboards and apps that work for you.
                   </p>
                 </div>
                 
@@ -94,7 +97,7 @@ export const HomePage: React.FC = () => {
                   </div>
                   <h3 className="font-heading text-3xl font-bold mb-4 group-hover:text-brand-700 transition">Lead the Market.</h3>
                   <p className="text-gray-600 text-lg leading-relaxed">
-                    Leverage over 30 years of corporate experience to convert data to make smarter decisions, outperform competitors, and secure your legacy.
+                    Leverage decades of corporate leadership to transform raw data into actionable insights, enabling you to make smarter decisions, outperform competitors, and secure a lasting legacy.
                   </p>
                 </div>
               </div>
@@ -177,8 +180,8 @@ export const HomePage: React.FC = () => {
             <div className="max-w-5xl">
                <div className="grid grid-cols-2 md:grid-cols-4 gap-12 text-center">
                   <div className="flex flex-col items-center">
-                     <span className="font-heading text-5xl md:text-6xl font-bold mb-2">30+</span>
-                     <span className="text-sm uppercase tracking-widest font-semibold text-brand-100">Years Experience</span>
+                     <span className="font-heading text-4xl md:text-5xl font-bold mb-2">Decades</span>
+                     <span className="text-sm uppercase tracking-widest font-semibold text-brand-100">Experience</span>
                   </div>
                   <div className="flex flex-col items-center">
                      <span className="font-heading text-5xl md:text-6xl font-bold mb-2">{data.services.length}+</span>
