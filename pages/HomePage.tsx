@@ -28,7 +28,7 @@ export const HomePage: React.FC = () => {
                 <h1 className="text-4xl md:text-6xl font-black text-white tracking-tighter uppercase leading-none">
                   Analytics Spire
                 </h1>
-                <p className="text-brand-400 font-bold text-lg md:text-xl mt-2 tracking-wide">
+                <p className="bg-gradient-to-r from-amber-400 to-yellow-200 bg-clip-text text-transparent font-extrabold text-3xl md:text-5xl mt-6 tracking-tight uppercase">
                   Turn your Business into Growth Machine
                 </p>
               </div>

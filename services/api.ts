@@ -33,6 +33,26 @@ export const DEFAULT_SITE_DATA: SiteData = {
   events: EVENTS_DATA,
   videos: VIDEOS_DATA,
   brands: PROFESSIONAL_BRANDS,
+  experts: [
+    {
+      id: "1",
+      name: "Industry Veteran 1",
+      function: "Supply Chain & Logistics",
+      expertise: "Strategic Sourcing, Warehouse Management",
+      experience: "35+ Years",
+      imageUrl: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80",
+      bio: "Expert in optimizing global supply chains for automotive and manufacturing sectors."
+    },
+    {
+      id: "2",
+      name: "Industry Veteran 2",
+      function: "Financial Strategy",
+      expertise: "Corporate Finance, Risk Management",
+      experience: "30+ Years",
+      imageUrl: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80",
+      bio: "Seasoned CFO with experience in scaling MSMEs to mid-market enterprises."
+    }
+  ],
 };
 
 // YOUR DEPLOYED GOOGLE APPS SCRIPT WEB APP URL
@@ -169,6 +189,13 @@ export const api = {
               category: video.category || 'Training'
             }));
           }
+
+          if (data.experts && Array.isArray(data.experts)) {
+            data.experts = data.experts.map((expert: any) => ({
+              ...expert,
+              imageUrl: formatGoogleDriveUrl(expert.imageUrl)
+            }));
+          }
           
           // Ensure config has all required fields and only overwrite if values are present
           if (data.config) {
@@ -228,6 +255,7 @@ export const api = {
               events: (data.events && data.events.length > 0) ? data.events : EVENTS_DATA,
               videos: (data.videos && data.videos.length > 0) ? data.videos : VIDEOS_DATA,
               brands: mergedBrands,
+              experts: (data.experts && data.experts.length > 0) ? data.experts : DEFAULT_SITE_DATA.experts,
             };
           }
         }
@@ -242,6 +270,7 @@ export const api = {
       const servicesRows = await fetchCsv(); 
       const eventsRows = await fetchCsv('1594951475'); // Placeholder GID for Events tab
       const videosRows = await fetchCsv('123456789'); // Placeholder GID for Videos tab
+      const expertsRows = await fetchCsv('987654321'); // Placeholder GID for Experts tab
 
       if (configRows && configRows.length > 0) {
         const config = configRows[0];
@@ -307,6 +336,10 @@ export const api = {
             youtubeUrl: v.youtubeUrl || v.url
           })) : VIDEOS_DATA,
           brands: mergedBrands,
+          experts: (expertsRows && expertsRows.length > 0) ? expertsRows.map((e: any) => ({
+            ...e,
+            imageUrl: formatGoogleDriveUrl(e.imageUrl)
+          })) : DEFAULT_SITE_DATA.experts,
         };
       }
     } catch (error) {

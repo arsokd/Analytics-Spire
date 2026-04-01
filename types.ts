@@ -63,12 +63,23 @@ export interface BrandAssociation {
   logo: string;
 }
 
+export interface ExpertItem {
+  id: string;
+  name: string;
+  function: string;
+  expertise: string;
+  experience: string;
+  imageUrl: string;
+  bio: string;
+}
+
 export interface SiteData {
   config: SiteConfig;
   services: ServiceItem[];
   events: EventItem[];
   videos: VideoItem[];
   brands: BrandAssociation[];
+  experts: ExpertItem[];
 }
 
 export enum UserRole {

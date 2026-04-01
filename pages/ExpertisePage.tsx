@@ -5,25 +5,7 @@ import { Briefcase, User } from 'lucide-react';
 export const ExpertisePage: React.FC = () => {
   const { data } = useData();
 
-  // Sample data for experts if not provided in data
-  const experts = [
-    {
-      name: "Industry Veteran 1",
-      function: "Supply Chain & Logistics",
-      expertise: "Strategic Sourcing, Warehouse Management",
-      experience: "35+ Years",
-      imageUrl: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80",
-      bio: "Expert in optimizing global supply chains for automotive and manufacturing sectors."
-    },
-    {
-      name: "Industry Veteran 2",
-      function: "Financial Strategy",
-      expertise: "Corporate Finance, Risk Management",
-      experience: "30+ Years",
-      imageUrl: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80",
-      bio: "Seasoned CFO with experience in scaling MSMEs to mid-market enterprises."
-    }
-  ];
+  const experts = data.experts;
 
   return (
     <div className="bg-black min-h-screen pb-24 font-sans text-white">
