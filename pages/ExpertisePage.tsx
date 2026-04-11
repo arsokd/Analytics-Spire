@@ -5,7 +5,7 @@ import { Briefcase, User } from 'lucide-react';
 export const ExpertisePage: React.FC = () => {
   const { data } = useData();
 
-  const experts = data.experts;
+  const experts = data.experts || [];
 
   return (
     <div className="bg-black min-h-screen pb-24 font-sans text-white">
