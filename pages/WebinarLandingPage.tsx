@@ -1,5 +1,9 @@
 import React from 'react';
-import { CheckCircle2, Clock, Calendar, Video, ArrowRight, AlertCircle, TrendingUp, Zap, ShieldCheck } from 'lucide-react';
+import { 
+  CheckCircle2, Clock, Calendar, Video, ArrowRight, AlertCircle, 
+  TrendingDown, Users, FileText, Zap, ShieldCheck, Target, 
+  Activity, BarChart, Lock
+} from 'lucide-react';
 
 export const WebinarLandingPage: React.FC = () => {
   return (
@@ -19,141 +23,220 @@ export const WebinarLandingPage: React.FC = () => {
         <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gray-900 border border-gray-800 text-brand-400 text-sm font-bold mb-8">
             <AlertCircle size={16} />
-            <span>Exclusive 90-Minute Live Webinar</span>
+            <span>Exclusive 1.5-Hour Masterclass</span>
           </div>
           
-          <h1 className="text-5xl md:text-7xl font-black text-white tracking-tight leading-[1.1] mb-6">
-            Turn your MSME Business into <br className="hidden md:block" />
-            <span className="bg-gradient-to-r from-amber-400 to-yellow-200 bg-clip-text text-transparent">Growth Machine</span>
+          <h1 className="text-5xl md:text-7xl font-black text-white tracking-tight leading-[1.1] mb-8">
+            Is Your Business Running You, or <br className="hidden md:block" />
+            <span className="bg-gradient-to-r from-amber-400 to-yellow-200 bg-clip-text text-transparent">Are You Running Your Business?</span>
           </h1>
           
           <p className="text-xl md:text-2xl text-gray-400 max-w-3xl mx-auto font-light leading-relaxed mb-10">
-            Stop working <span className="text-white font-semibold italic">in</span> your business and start working <span className="text-white font-semibold italic">on</span> it. Learn the exact systems to automate operations, increase margins, and scale without the daily chaos.
+            Transform your MSME from daily chaos and cash flow stress into a predictable, scalable, and system-driven machine. <strong className="text-white font-medium">Learn the exact framework to step out of daily operations and scale profitably.</strong>
           </p>
-
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-6 mb-12">
-            <div className="flex items-center gap-3 text-gray-300 bg-gray-900/50 px-6 py-3 rounded-xl border border-gray-800">
-              <Calendar className="text-brand-500" />
-              <span className="font-medium">[Date to be announced]</span>
-            </div>
-            <div className="flex items-center gap-3 text-gray-300 bg-gray-900/50 px-6 py-3 rounded-xl border border-gray-800">
-              <Clock className="text-brand-500" />
-              <span className="font-medium">[Time to be announced]</span>
-            </div>
-            <div className="flex items-center gap-3 text-gray-300 bg-gray-900/50 px-6 py-3 rounded-xl border border-gray-800">
-              <Video className="text-brand-500" />
-              <span className="font-medium">Live on Zoom</span>
-            </div>
-          </div>
 
           <div className="flex flex-col items-center">
             <button className="group relative inline-flex items-center justify-center gap-3 px-8 py-5 bg-gradient-to-r from-amber-500 to-yellow-400 text-black text-xl font-black rounded-full overflow-hidden transition-transform hover:scale-105 active:scale-95 shadow-[0_0_40px_rgba(245,158,11,0.3)]">
               <span className="relative z-10 flex items-center gap-2">
-                Register Now for Just Rs. 99 <ArrowRight className="group-hover:translate-x-1 transition-transform" />
+                Fix Your Business Now – Register for Just ₹99 <ArrowRight className="group-hover:translate-x-1 transition-transform" />
               </span>
               <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-in-out"></div>
             </button>
-            <p className="mt-4 text-gray-500 text-sm">
-              <span className="line-through mr-2">Regular Price: Rs. 1,999</span> 
-              <span className="text-green-400 font-medium">Save 95% Today</span>
+            <p className="mt-4 text-gray-400 text-sm font-medium">
+              Designed strictly for Indian MSME Owners
             </p>
           </div>
         </div>
       </section>
 
-      {/* The Problem Section */}
+      {/* Problem/Agitation Section */}
       <section className="py-20 bg-gray-950 border-y border-gray-900">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">Does this sound like you?</h2>
-            <div className="w-24 h-1 bg-brand-500 mx-auto rounded-full"></div>
+            <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">Does This Sound Like Your Daily Reality?</h2>
+            <p className="text-xl text-gray-400 max-w-3xl mx-auto">
+              As an MSME owner, you work harder and harder every year, but the results don't reflect your effort. Do you face these critical pain points?
+            </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
               {
-                icon: <Clock size={32} className="text-red-400" />,
-                title: "The 14-Hour Grind",
-                desc: "You are the hardest working person in your company, but growth has stagnated. If you step away, operations halt."
+                icon: <Lock size={28} className="text-red-400" />,
+                title: "The 'Owner Trap'",
+                desc: "You are busy all day, but if you leave for a 4-day vacation, the business stops. You act as an employee, not an owner."
               },
               {
-                icon: <TrendingUp size={32} className="text-red-400" />,
-                title: "Shrinking Margins",
-                desc: "Revenue might be coming in, but profits are leaking due to inefficiencies, poor tracking, and manual errors."
+                icon: <TrendingDown size={28} className="text-red-400" />,
+                title: "Unpredictable Sales",
+                desc: "You have no reliable lead generation engine, making your monthly sales completely unpredictable."
               },
               {
-                icon: <Zap size={32} className="text-red-400" />,
-                title: "Constant Firefighting",
-                desc: "Instead of planning for the next quarter, you spend your days solving daily operational crises and managing people."
+                icon: <Activity size={28} className="text-red-400" />,
+                title: "Cash Flow Stress",
+                desc: "The P&L shows a profit, but your bank account is empty. Cash is always tight, tracked mentally or on WhatsApp."
+              },
+              {
+                icon: <Target size={28} className="text-red-400" />,
+                title: "Ops by 'Gut Feeling'",
+                desc: "You make decisions based on guesswork rather than real-time data, leading to dead stock or inventory shortages."
+              },
+              {
+                icon: <Users size={28} className="text-red-400" />,
+                title: "Team Dependency",
+                desc: "The team doesn't perform when you aren't around, forcing you into a state of constant firefighting."
+              },
+              {
+                icon: <FileText size={28} className="text-red-400" />,
+                title: "Compliance Fear",
+                desc: "You live in constant fear of GST notices, regulatory penalties, or missing critical financial deadlines."
               }
             ].map((item, idx) => (
-              <div key={idx} className="bg-gray-900 p-8 rounded-2xl border border-gray-800 hover:border-gray-700 transition-colors">
-                <div className="mb-6 bg-gray-950 w-16 h-16 rounded-full flex items-center justify-center border border-gray-800">
+              <div key={idx} className="bg-gray-900 p-8 rounded-2xl border border-gray-800 hover:border-red-900/50 transition-colors">
+                <div className="mb-6 bg-gray-950 w-14 h-14 rounded-full flex items-center justify-center border border-gray-800">
                   {item.icon}
                 </div>
                 <h3 className="text-xl font-bold text-white mb-3">{item.title}</h3>
-                <p className="text-gray-400 leading-relaxed">{item.desc}</p>
+                <p className="text-gray-400 leading-relaxed text-sm">{item.desc}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* The Solution / What You'll Learn */}
-      <section className="py-24 relative overflow-hidden">
+      {/* The "Aha!" Moment */}
+      <section className="py-20 relative overflow-hidden bg-brand-950/20">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-3xl md:text-5xl font-black text-white mb-8 leading-tight">
+            Your Market Isn't the Problem.<br/>
+            Your Team Isn't the Problem.<br/>
+            <span className="text-brand-500">You Are Missing Systems.</span>
+          </h2>
+          <p className="text-xl text-gray-300 mb-12 leading-relaxed">
+            Businesses don't fail just because of problems; they fail because the same problems repeat. Your struggles are not random. Low sales, cash stress, and daily chaos are just <strong className="text-white">symptoms of missing or broken business functions.</strong>
+          </p>
+          
+          <div className="grid sm:grid-cols-3 gap-6 text-left">
+            <div className="bg-gray-900/80 p-6 rounded-xl border border-gray-800">
+              <div className="text-red-400 font-bold mb-2">Symptom: Low Sales?</div>
+              <div className="text-gray-300 text-sm">Root Cause: You have a broken Sales & Marketing function.</div>
+            </div>
+            <div className="bg-gray-900/80 p-6 rounded-xl border border-gray-800">
+              <div className="text-red-400 font-bold mb-2">Symptom: Cash Stress?</div>
+              <div className="text-gray-300 text-sm">Root Cause: You have a missing Finance forecast.</div>
+            </div>
+            <div className="bg-gray-900/80 p-6 rounded-xl border border-gray-800">
+              <div className="text-red-400 font-bold mb-2">Symptom: Daily Chaos?</div>
+              <div className="text-gray-300 text-sm">Root Cause: You have no Standard Operating Procedures (SOPs).</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* The Solution Section (Teaser) */}
+      <section className="py-24 bg-black border-t border-gray-900">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-2 gap-16 items-center">
-            <div>
-              <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 leading-tight">
-                What you will learn in this <span className="text-brand-500">90-minute</span> masterclass:
-              </h2>
-              <p className="text-gray-400 text-lg mb-8">
-                No fluff. No generic advice. Just battle-tested frameworks used by industry veterans to scale businesses efficiently.
-              </p>
-              
-              <div className="space-y-6">
-                {[
-                  "The 3-Step Framework to automate repetitive daily tasks.",
-                  "How to build a 'Self-Managing' team that doesn't rely on your constant supervision.",
-                  "Financial Clarity: Identifying the hidden profit leaks in your MSME.",
-                  "The exact blueprint to transition from an 'Operator' to a 'Business Owner'."
-                ].map((point, idx) => (
-                  <div key={idx} className="flex items-start gap-4">
-                    <div className="mt-1 bg-brand-500/20 p-1 rounded-full">
-                      <CheckCircle2 className="text-brand-500" size={20} />
-                    </div>
-                    <p className="text-gray-300 text-lg">{point}</p>
-                  </div>
-                ))}
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
+              Introducing the <span className="text-amber-500">MSME Transformation Framework</span>
+            </h2>
+            <p className="text-xl text-gray-400 max-w-3xl mx-auto">
+              In this 1.5-hour intensive webinar, you will uncover the exact blueprint to fix your business. We will guide you through our proprietary 5-step process:
+            </p>
+          </div>
+
+          <div className="space-y-4 max-w-3xl mx-auto">
+            {[
+              { step: "1", title: "Diagnose", desc: "Find exactly what is broken in your current setup." },
+              { step: "2", title: "Design", desc: "Define a clear blueprint for how your business should run, without you." },
+              { step: "3", title: "Systems", desc: "Put structured processes in place so work becomes repeatable." },
+              { step: "4", title: "Automate", desc: "Learn how to reduce manual effort (HR, payroll, lead generation) to ensure faster execution." },
+              { step: "5", title: "Control & Scale", desc: "Grow your revenue without breaking your business or sacrificing quality." }
+            ].map((item, idx) => (
+              <div key={idx} className="flex items-start gap-6 bg-gray-900/50 p-6 rounded-2xl border border-gray-800">
+                <div className="flex-shrink-0 w-12 h-12 bg-brand-500/20 text-brand-500 font-black text-xl rounded-full flex items-center justify-center border border-brand-500/30">
+                  {item.step}
+                </div>
+                <div>
+                  <h3 className="text-xl font-bold text-white mb-2">{item.title}</h3>
+                  <p className="text-gray-400">{item.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Value / ROI Section */}
+      <section className="py-20 bg-gray-950 border-y border-gray-900">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">What Happens After You Fix Your Systems?</h2>
+            <p className="text-xl text-gray-400 max-w-3xl mx-auto">
+              This webinar provides 8 Structured Solutions for your 8 Biggest Pain Points. By implementing these strategies, you can expect to:
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-8">
+            {[
+              { title: "Stop 10-25% of Revenue Leakage", desc: "Plug the hidden holes in your sales funnel." },
+              { title: "Free Up Working Capital", desc: "Unlock 2 to 4 months of blocked cash trapped in bad inventory and operations." },
+              { title: "Gain 15-20% Productivity", desc: "Get absolute clarity on who is performing in your team and who isn't." },
+              { title: "Finally Gain Control", desc: "Transition from a state of 'Chaos & Firefighting' to 'Predictability & Visibility'." }
+            ].map((item, idx) => (
+              <div key={idx} className="flex items-start gap-4">
+                <div className="mt-1 bg-green-500/20 p-1 rounded-full flex-shrink-0">
+                  <CheckCircle2 className="text-green-500" size={24} />
+                </div>
+                <div>
+                  <h3 className="text-xl font-bold text-white mb-2">{item.title}</h3>
+                  <p className="text-gray-400">{item.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Final CTA Section */}
+      <section className="py-24 relative overflow-hidden text-center">
+        <div className="absolute inset-0 z-0">
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-brand-900/20 rounded-full blur-[120px]"></div>
+        </div>
+        
+        <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-4xl md:text-6xl font-black text-white mb-6">
+            Stop Running on the Track While Your Athletes Watch.
+          </h2>
+          <p className="text-xl text-gray-300 mb-12">
+            It is time to step out of the daily grind and become a true business coach. See the light at the end of the tunnel.
+          </p>
+
+          <div className="bg-gray-900 border border-gray-800 rounded-3xl p-8 md:p-12 max-w-2xl mx-auto shadow-2xl">
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-6 mb-10 text-left">
+              <div>
+                <div className="text-gray-500 text-sm mb-1">Duration</div>
+                <div className="text-white font-bold flex items-center gap-2"><Clock size={16} className="text-brand-500"/> 1.5 Hours</div>
+              </div>
+              <div>
+                <div className="text-gray-500 text-sm mb-1">Audience</div>
+                <div className="text-white font-bold flex items-center gap-2"><Users size={16} className="text-brand-500"/> MSME Owners</div>
+              </div>
+              <div className="col-span-2 md:col-span-1">
+                <div className="text-gray-500 text-sm mb-1">Investment</div>
+                <div className="text-amber-400 font-black text-2xl">₹99</div>
               </div>
             </div>
-            
-            <div className="relative">
-              <div className="absolute inset-0 bg-gradient-to-tr from-brand-600 to-amber-500 rounded-3xl blur-2xl opacity-20"></div>
-              <div className="bg-gray-900 border border-gray-800 rounded-3xl p-8 relative z-10">
-                <h3 className="text-2xl font-bold text-white mb-6 text-center">Reserve Your Seat</h3>
-                <div className="space-y-4 mb-8">
-                  <div className="flex justify-between items-center py-3 border-b border-gray-800">
-                    <span className="text-gray-400">Webinar Value</span>
-                    <span className="text-white font-medium line-through">Rs. 1,999</span>
-                  </div>
-                  <div className="flex justify-between items-center py-3 border-b border-gray-800">
-                    <span className="text-gray-400">Early Action Bonus</span>
-                    <span className="text-brand-400 font-medium">Included</span>
-                  </div>
-                  <div className="flex justify-between items-center py-3">
-                    <span className="text-white font-bold text-xl">Today's Price</span>
-                    <span className="text-amber-400 font-black text-3xl">Rs. 99</span>
-                  </div>
-                </div>
-                <button className="w-full py-4 bg-amber-500 hover:bg-amber-400 text-black text-lg font-bold rounded-xl transition-colors shadow-lg">
-                  Click Here to Pay Rs. 99
-                </button>
-                <div className="mt-4 flex items-center justify-center gap-2 text-gray-500 text-sm">
-                  <ShieldCheck size={16} />
-                  <span>100% Secure Payment</span>
-                </div>
-              </div>
+
+            <button className="w-full group relative inline-flex items-center justify-center gap-3 px-8 py-5 bg-gradient-to-r from-amber-500 to-yellow-400 text-black text-xl font-black rounded-xl overflow-hidden transition-transform hover:scale-105 active:scale-95 shadow-[0_0_40px_rgba(245,158,11,0.3)]">
+              <span className="relative z-10 flex items-center gap-2">
+                Claim Your Spot Now & Fix Your Business! <ArrowRight className="group-hover:translate-x-1 transition-transform" />
+              </span>
+              <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-in-out"></div>
+            </button>
+            <div className="mt-6 flex items-center justify-center gap-2 text-gray-500 text-sm">
+              <ShieldCheck size={16} />
+              <span>100% Secure Payment</span>
             </div>
           </div>
         </div>
@@ -161,3 +244,4 @@ export const WebinarLandingPage: React.FC = () => {
     </div>
   );
 };
+
