@@ -63,41 +63,34 @@ export const WebinarLandingPage: React.FC = () => {
             {[
               {
                 icon: <Lock size={28} className="text-red-400" />,
-                title: "The 'Owner Trap'",
-                desc: "You are busy all day, but if you leave for a 4-day vacation, the business stops. You act as an employee, not an owner."
+                title: "The 'Owner Trap'"
               },
               {
                 icon: <TrendingDown size={28} className="text-red-400" />,
-                title: "Unpredictable Sales",
-                desc: "You have no reliable lead generation engine, making your monthly sales completely unpredictable."
+                title: "Unpredictable Sales"
               },
               {
                 icon: <Activity size={28} className="text-red-400" />,
-                title: "Cash Flow Stress",
-                desc: "The P&L shows a profit, but your bank account is empty. Cash is always tight, tracked mentally or on WhatsApp."
+                title: "Cash Flow Stress"
               },
               {
                 icon: <Target size={28} className="text-red-400" />,
-                title: "Ops by 'Gut Feeling'",
-                desc: "You make decisions based on guesswork rather than real-time data, leading to dead stock or inventory shortages."
+                title: "Operating by 'Gut Feeling'"
               },
               {
                 icon: <Users size={28} className="text-red-400" />,
-                title: "Team Dependency",
-                desc: "The team doesn't perform when you aren't around, forcing you into a state of constant firefighting."
+                title: "Team Dependency"
               },
               {
                 icon: <FileText size={28} className="text-red-400" />,
-                title: "Compliance Fear",
-                desc: "You live in constant fear of GST notices, regulatory penalties, or missing critical financial deadlines."
+                title: "Compliance Fear"
               }
             ].map((item, idx) => (
-              <div key={idx} className="bg-gray-900 p-8 rounded-2xl border border-gray-800 hover:border-red-900/50 transition-colors">
+              <div key={idx} className="bg-gray-900 p-8 rounded-2xl border border-gray-800 hover:border-red-900/50 transition-colors flex flex-col items-center text-center">
                 <div className="mb-6 bg-gray-950 w-14 h-14 rounded-full flex items-center justify-center border border-gray-800">
                   {item.icon}
                 </div>
-                <h3 className="text-xl font-bold text-white mb-3">{item.title}</h3>
-                <p className="text-gray-400 leading-relaxed text-sm">{item.desc}</p>
+                <h3 className="text-xl font-bold text-white">{item.title}</h3>
               </div>
             ))}
           </div>
@@ -110,24 +103,24 @@ export const WebinarLandingPage: React.FC = () => {
           <h2 className="text-3xl md:text-5xl font-black text-white mb-8 leading-tight">
             Your Market Isn't the Problem.<br/>
             Your Team Isn't the Problem.<br/>
-            <span className="text-brand-500">You Are Missing Systems.</span>
+            <span className="text-brand-500">You don't have good systems.</span>
           </h2>
           <p className="text-xl text-gray-300 mb-12 leading-relaxed">
             Businesses don't fail just because of problems; they fail because the same problems repeat. Your struggles are not random. Low sales, cash stress, and daily chaos are just <strong className="text-white">symptoms of missing or broken business functions.</strong>
           </p>
           
-          <div className="grid sm:grid-cols-3 gap-6 text-left">
+          <div className="grid sm:grid-cols-3 gap-6 text-center">
             <div className="bg-gray-900/80 p-6 rounded-xl border border-gray-800">
-              <div className="text-red-400 font-bold mb-2">Symptom: Low Sales?</div>
-              <div className="text-gray-300 text-sm">Root Cause: You have a broken Sales & Marketing function.</div>
+              <div className="text-red-400 font-bold mb-2 text-lg">Symptom: Low Sales?</div>
+              <div className="text-gray-300 font-medium">Root Cause: ?</div>
             </div>
             <div className="bg-gray-900/80 p-6 rounded-xl border border-gray-800">
-              <div className="text-red-400 font-bold mb-2">Symptom: Cash Stress?</div>
-              <div className="text-gray-300 text-sm">Root Cause: You have a missing Finance forecast.</div>
+              <div className="text-red-400 font-bold mb-2 text-lg">Symptom: Cash Stress?</div>
+              <div className="text-gray-300 font-medium">Root Cause: ?</div>
             </div>
             <div className="bg-gray-900/80 p-6 rounded-xl border border-gray-800">
-              <div className="text-red-400 font-bold mb-2">Symptom: Daily Chaos?</div>
-              <div className="text-gray-300 text-sm">Root Cause: You have no Standard Operating Procedures (SOPs).</div>
+              <div className="text-red-400 font-bold mb-2 text-lg">Symptom: Daily Chaos?</div>
+              <div className="text-gray-300 font-medium">Root Cause: ?</div>
             </div>
           </div>
         </div>
@@ -138,7 +131,8 @@ export const WebinarLandingPage: React.FC = () => {
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
-              Introducing the <span className="text-amber-500">MSME Transformation Framework</span>
+              Introducing the <br className="hidden md:block" />
+              <span className="text-amber-500">MSME Growth Engine</span>
             </h2>
             <p className="text-xl text-gray-400 max-w-3xl mx-auto">
               In this 1.5-hour intensive webinar, you will uncover the exact blueprint to fix your business. We will guide you through our proprietary 5-step process:
@@ -147,20 +141,17 @@ export const WebinarLandingPage: React.FC = () => {
 
           <div className="space-y-4 max-w-3xl mx-auto">
             {[
-              { step: "1", title: "Diagnose", desc: "Find exactly what is broken in your current setup." },
-              { step: "2", title: "Design", desc: "Define a clear blueprint for how your business should run, without you." },
-              { step: "3", title: "Systems", desc: "Put structured processes in place so work becomes repeatable." },
-              { step: "4", title: "Automate", desc: "Learn how to reduce manual effort (HR, payroll, lead generation) to ensure faster execution." },
-              { step: "5", title: "Control & Scale", desc: "Grow your revenue without breaking your business or sacrificing quality." }
+              { step: "1", title: "Diagnose" },
+              { step: "2", title: "Design" },
+              { step: "3", title: "Systems" },
+              { step: "4", title: "Automate" },
+              { step: "5", title: "Control & Scale" }
             ].map((item, idx) => (
-              <div key={idx} className="flex items-start gap-6 bg-gray-900/50 p-6 rounded-2xl border border-gray-800">
+              <div key={idx} className="flex items-center gap-6 bg-gray-900/50 p-6 rounded-2xl border border-gray-800">
                 <div className="flex-shrink-0 w-12 h-12 bg-brand-500/20 text-brand-500 font-black text-xl rounded-full flex items-center justify-center border border-brand-500/30">
                   {item.step}
                 </div>
-                <div>
-                  <h3 className="text-xl font-bold text-white mb-2">{item.title}</h3>
-                  <p className="text-gray-400">{item.desc}</p>
-                </div>
+                <h3 className="text-2xl font-bold text-white">{item.title}</h3>
               </div>
             ))}
           </div>
@@ -173,7 +164,7 @@ export const WebinarLandingPage: React.FC = () => {
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">What Happens After You Fix Your Systems?</h2>
             <p className="text-xl text-gray-400 max-w-3xl mx-auto">
-              This webinar provides 8 Structured Solutions for your 8 Biggest Pain Points. By implementing these strategies, you can expect to:
+              This webinar provides Seven Structured Solutions for your Seven Biggest Pain Points. By implementing these strategies, you can expect to:
             </p>
           </div>
 
@@ -206,7 +197,7 @@ export const WebinarLandingPage: React.FC = () => {
         
         <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-4xl md:text-6xl font-black text-white mb-6">
-            Stop Running on the Track While Your Athletes Watch.
+            Coach should not Run on the Track While Your Athletes Watch, continuously.
           </h2>
           <p className="text-xl text-gray-300 mb-12">
             It is time to step out of the daily grind and become a true business coach. See the light at the end of the tunnel.
