@@ -144,11 +144,10 @@ export const AboutPage: React.FC = () => {
                   </div>
                   
                   <h3 className="font-heading text-2xl font-bold text-white">{data.config.founderName}</h3>
-                  <p className="text-brand-400 font-medium text-lg mt-1">Founder & CEO</p>
                 </div>
               </div>
               <div className="md:w-2/3 p-8 md:p-12">
-                  <h3 className="font-heading text-2xl font-bold mb-6 text-white">Founder's Vision</h3>
+                  <h3 className="font-heading text-2xl font-bold mb-6 text-white">Vision</h3>
                   <p className="text-gray-300 mb-6 text-lg leading-relaxed">
                     Anand Rengasamy is a seasoned Business consultant and Business coach with decades of corporate experience across diverse domains. He is dedicated to delivering innovative, data-driven solutions that empower MSMEs to scale efficiently and sustainably.
                   </p>
