@@ -106,36 +106,36 @@ export const SERVICES_DATA: ServiceItem[] = [
 
 export const EVENTS_DATA = [
   {
-    id: 1,
+    id: "1",
     title: "MSME Digital Transformation Summit",
     date: "August 2024",
-    location: "Chennai Trade Centre",
     description: "Keynote address on leveraging AI for small business growth, attended by over 200 industry leaders.",
-    image: "https://images.unsplash.com/photo-1544531586-fde5298cdd40?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+    imageUrl: "https://images.unsplash.com/photo-1544531586-fde5298cdd40?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+    category: "Summit"
   },
   {
-    id: 2,
+    id: "2",
     title: "Financial Literacy Workshop for Manufacturers",
     date: "June 2024",
-    location: "Coimbatore",
     description: "A hands-on workshop helping manufacturing unit owners understand balance sheets and cash flow management strategies.",
-    image: "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+    imageUrl: "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+    category: "Workshop"
   },
   {
-    id: 3,
+    id: "3",
     title: "Strategic Consulting Panel: Automotive Future",
     date: "March 2024",
-    location: "Pune",
     description: "Lead panel discussion on the future of automotive supply chains and dealer network optimization in the EV era.",
-    image: "https://images.unsplash.com/photo-1559223607-a43c990ed9aa?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+    imageUrl: "https://images.unsplash.com/photo-1559223607-a43c990ed9aa?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+    category: "Panel"
   },
    {
-    id: 4,
+    id: "4",
     title: "Agri-Tech Process Optimization Drive",
     date: "January 2024",
-    location: "Hyderabad",
     description: "Consulting engagement with leading Agri-tech firms to streamline operations and field data collection.",
-    image: "https://images.unsplash.com/photo-1625246333195-f819618bba1e?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+    imageUrl: "https://images.unsplash.com/photo-1625246333195-f819618bba1e?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+    category: "Consulting"
   }
 ];
 

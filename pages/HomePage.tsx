@@ -149,7 +149,7 @@ export const HomePage: React.FC = () => {
                 <div key={idx} className="group relative overflow-hidden">
                   <div className="aspect-video overflow-hidden rounded-sm mb-6">
                     <img 
-                      src={event.imageUrl || event.image} 
+                      src={event.imageUrl} 
                       alt={event.title}
                       width={800}
                       height={450}
@@ -159,7 +159,7 @@ export const HomePage: React.FC = () => {
                   </div>
                   <div className="flex items-center text-brand-500 text-sm font-bold uppercase tracking-widest mb-3">
                     <span className="mr-4">{event.date}</span>
-                    <span>{event.location}</span>
+                    <span>{event.category}</span>
                   </div>
                   <h3 className="font-heading text-2xl font-bold text-white mb-4 group-hover:text-brand-400 transition">{event.title}</h3>
                   <p className="text-gray-400 line-clamp-2 mb-6">{event.description}</p>

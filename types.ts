@@ -16,13 +16,12 @@ export interface ServiceItem {
 }
 
 export interface EventItem {
-  id: number | string;
+  id: string;
   title: string;
   date: string;
-  location: string;
   description: string;
-  image: string;
-  imageUrl?: string; // Image from Google Sheet
+  imageUrl: string;
+  category: string;
 }
 
 export interface VideoItem {

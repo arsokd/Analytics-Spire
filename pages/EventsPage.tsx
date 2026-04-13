@@ -1,5 +1,5 @@
 import React from 'react';
-import { Calendar, MapPin, ArrowRight } from 'lucide-react';
+import { Calendar, Tag, ArrowRight } from 'lucide-react';
 import { useData } from '../context/DataContext';
 
 export const EventsPage: React.FC = () => {
@@ -35,8 +35,8 @@ export const EventsPage: React.FC = () => {
                     {event.date}
                  </div>
                  <div className="text-gray-500 flex items-center text-sm">
-                    <MapPin className="w-4 h-4 mr-2" />
-                    {event.location}
+                    <Tag className="w-4 h-4 mr-2" />
+                    {event.category}
                  </div>
               </div>
 
@@ -44,7 +44,7 @@ export const EventsPage: React.FC = () => {
               <div className="md:w-3/4">
                  <div className="overflow-hidden mb-6 rounded-sm">
                    <img 
-                    src={event.imageUrl || event.image} 
+                    src={event.imageUrl} 
                     alt={event.title} 
                     referrerPolicy="no-referrer"
                     className="w-full h-80 object-cover transform group-hover:scale-105 transition duration-700 ease-in-out filter grayscale group-hover:grayscale-0"

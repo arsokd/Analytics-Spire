@@ -196,7 +196,7 @@ export const AboutPage: React.FC = () => {
             {data.events.slice(0, 4).map((event, idx) => (
               <div key={idx} className="group relative aspect-square overflow-hidden rounded-xl border border-gray-800">
                 <img 
-                  src={event.imageUrl || event.image} 
+                  src={event.imageUrl} 
                   alt={event.title}
                   width={400}
                   height={400}
