@@ -129,13 +129,15 @@ export const PaymentPage: React.FC = () => {
                 </div>
 
                 {/* Razorpay disabled temporarily */}
-                {/* 
-                <RazorpayButton 
-                  amount={amount} 
-                  description={`Payment for ${selectedService}`}
-                  className="w-full py-5 text-lg mb-8"
-                />
-                */}
+                <div id="payment-methods">
+                  {/* 
+                  <RazorpayButton 
+                    amount={amount} 
+                    description={`Payment for ${selectedService}`}
+                    className="w-full py-5 text-lg mb-8"
+                  />
+                  */}
+                </div>
 
                 {/* QR Code Section - Primary Payment Method */}
                 <div className="bg-gray-900/50 border border-brand-500/30 rounded-2xl p-8 text-center shadow-lg shadow-brand-500/5">
