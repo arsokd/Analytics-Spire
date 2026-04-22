@@ -1,11 +1,19 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { RazorpayButton } from '../components/RazorpayButton';
 import { CreditCard, ShieldCheck, Zap, CheckCircle2 } from 'lucide-react';
 
 export const PaymentPage: React.FC = () => {
   const [amount, setAmount] = useState<number>(99);
   const [selectedService, setSelectedService] = useState<string>('Webinar - Turn your MSME business into a Growth Machine');
+
+  useEffect(() => {
+    // Automatically scroll to payment methods when landing on this page
+    const paymentElement = document.getElementById('payment-methods');
+    if (paymentElement) {
+      paymentElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+  }, []);
 
   const services = [
     { name: 'Webinar - Turn your MSME business into a Growth Machine', price: 99, originalPrice: 999, description: 'Limited time offer price' },
