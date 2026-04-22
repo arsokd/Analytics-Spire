@@ -17,7 +17,6 @@ export const CONTACT_EMAIL = "info@analyticsspire.com";
 export const NAVIGATION_LINKS = [
   { name: 'Home', path: '/' },
   { name: 'About', path: '/about' },
-  { name: 'Expertise', path: '/expertise' },
   { name: 'Services', path: '/services' },
   { name: 'Media', path: '/media' },
   { name: 'Events', path: '/events' },

@@ -16,15 +16,9 @@ export const DEFAULT_SITE_DATA: SiteData = {
     founderName: FOUNDER_NAME,
     founderBio: "Anand Rengasamy is a seasoned Business consultant and Business coach with decades of corporate experience across diverse domains. He holds an Engineering degree from BITS, Pilani, and a Business Analytics specialization from IIM-K. He is an IOD certified Independent Director and a Machine Learning Specialist, dedicated to delivering innovative, data-driven solutions.",
     founderImageUrl: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
-    partnerName: "",
-    partnerBio: "",
-    partnerImageUrl: "",
-    /* 
-    // TEMPORARILY REMOVED - RESTORE LATER
     partnerName: "Hemanth Kumar Guruswamy",
     partnerBio: "Hemanth Kumar Guruswamy is a seasoned business leader with over three decades of leadership experience in telecommunications, technology, digital services, and large-scale business operations across India. An alumnus of IIM Ahmedabad (MBA) and College of Engineering Guindy (Electronics), he has served in senior leadership and CEO-level roles across leading organizations including Reliance Jio and Bharti Airtel.",
     partnerImageUrl: "https://lh3.googleusercontent.com/d/1rocca0kuvjo5qZkti10p72Pn2N1PblMv",
-    */
     logoUrl: "https://ui-avatars.com/api/?name=Analytics+Spire&background=0284c7&color=fff&bold=true&size=512",
     brandNames: PROFESSIONAL_BRANDS.map(b => b.name).join(';'),
     brandLogos: PROFESSIONAL_BRANDS.map(b => b.logo).join(';')

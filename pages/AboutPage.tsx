@@ -82,7 +82,6 @@ export const AboutPage: React.FC = () => {
                     </div>
                     
                     <h3 className="font-heading text-2xl font-bold text-white">{data.config.partnerName}</h3>
-                    <p className="text-emerald-400 font-medium text-lg mt-1">Partner</p>
                   </div>
                 </div>
                 <div className="md:w-2/3 p-8 md:p-12">
