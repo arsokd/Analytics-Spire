@@ -37,12 +37,15 @@ export const WebinarLandingPage: React.FC = () => {
           </p>
 
           <div className="flex flex-col items-center">
-            <button className="group relative inline-flex items-center justify-center gap-3 px-8 py-5 bg-gradient-to-r from-amber-500 to-yellow-400 text-black text-xl font-black rounded-full overflow-hidden transition-transform hover:scale-105 active:scale-95 shadow-[0_0_40px_rgba(245,158,11,0.3)]">
+            <a 
+              href="#/payment"
+              className="group relative inline-flex items-center justify-center gap-3 px-8 py-5 bg-gradient-to-r from-amber-500 to-yellow-400 text-black text-xl font-black rounded-full overflow-hidden transition-transform hover:scale-105 active:scale-95 shadow-[0_0_40px_rgba(245,158,11,0.3)]"
+            >
               <span className="relative z-10 flex items-center gap-2">
                 Fix Your Business Now – Register for Just ₹99 <ArrowRight className="group-hover:translate-x-1 transition-transform" />
               </span>
               <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-in-out"></div>
-            </button>
+            </a>
             <p className="mt-4 text-gray-400 text-sm font-medium">
               Designed strictly for Indian MSME Owners
             </p>
@@ -220,12 +223,15 @@ export const WebinarLandingPage: React.FC = () => {
               </div>
             </div>
 
-            <button className="w-full group relative inline-flex items-center justify-center gap-3 px-8 py-5 bg-gradient-to-r from-amber-500 to-yellow-400 text-black text-xl font-black rounded-xl overflow-hidden transition-transform hover:scale-105 active:scale-95 shadow-[0_0_40px_rgba(245,158,11,0.3)]">
+            <a 
+              href="#/payment"
+              className="w-full group relative inline-flex items-center justify-center gap-3 px-8 py-5 bg-gradient-to-r from-amber-500 to-yellow-400 text-black text-xl font-black rounded-xl overflow-hidden transition-transform hover:scale-105 active:scale-95 shadow-[0_0_40px_rgba(245,158,11,0.3)]"
+            >
               <span className="relative z-10 flex items-center gap-2">
                 Claim Your Spot Now & Fix Your Business! <ArrowRight className="group-hover:translate-x-1 transition-transform" />
               </span>
               <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-in-out"></div>
-            </button>
+            </a>
             <div className="mt-6 flex items-center justify-center gap-2 text-gray-500 text-sm">
               <ShieldCheck size={16} />
               <span>100% Secure Payment</span>
