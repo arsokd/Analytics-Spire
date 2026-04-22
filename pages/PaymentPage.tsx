@@ -7,6 +7,8 @@ export const PaymentPage: React.FC = () => {
   const [amount, setAmount] = useState<number>(99);
   const [selectedService, setSelectedService] = useState<string>('Webinar - Turn your MSME business into a Growth Machine');
 
+  const upiLink = `upi://pay?pa=priyaanand3009-1@oksbi&pn=${encodeURIComponent('Analytics Spire')}&am=${amount}&cu=INR`;
+
   useEffect(() => {
     // Automatically scroll to payment methods when landing on this page
     const paymentElement = document.getElementById('payment-methods');
@@ -156,9 +158,9 @@ export const PaymentPage: React.FC = () => {
                   
                   <div className="bg-white p-4 rounded-xl inline-block mb-4 shadow-lg border-2 border-brand-500/20">
                     {/* DYNAMIC UPI QR CODE */}
-                    <a href={`upi://pay?pa=priyaanand3009-1@oksbi&pn=Analytics Spire&am=${amount}&cu=INR`} className="cursor-pointer block">
+                    <a href={upiLink} className="cursor-pointer block">
                       <img 
-                        src={`https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=${encodeURIComponent(`upi://pay?pa=priyaanand3009-1@oksbi&pn=Analytics Spire&am=${amount}&cu=INR`)}`} 
+                        src={`https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=${encodeURIComponent(upiLink)}`} 
                         alt="Payment QR Code" 
                         className="w-48 h-48 md:w-56 md:h-56"
                       />
@@ -168,14 +170,25 @@ export const PaymentPage: React.FC = () => {
                   {/* MOBILE-ONLY: TAP TO PAY BUTTON */}
                   <div className="md:hidden px-4 mb-6">
                     <a 
-                      href={`upi://pay?pa=priyaanand3009-1@oksbi&pn=Analytics Spire&am=${amount}&cu=INR`}
+                      href={upiLink}
                       className="w-full flex items-center justify-center gap-3 bg-brand-500 hover:bg-brand-600 text-white py-4 rounded-xl font-bold transition-all shadow-lg active:scale-95"
                     >
                       <Zap size={20} />
                       Open UPI App to Pay
                     </a>
-                    <p className="text-gray-400 text-[10px] mt-2 italic px-4 leading-tight">
-                      *Tapping this will open your GPay, PhonePe, or Paytm automatically.
+                    
+                    <button 
+                      onClick={() => {
+                        navigator.clipboard.writeText('priyaanand3009-1@oksbi');
+                        alert('UPI ID Copied! You can now paste it in your GPay/PhonePe.');
+                      }}
+                      className="w-full mt-3 flex items-center justify-center gap-2 bg-gray-800 text-gray-300 py-3 rounded-xl text-sm border border-gray-700 hover:bg-gray-700"
+                    >
+                      Copy UPI ID (Fallback)
+                    </button>
+                    
+                    <p className="text-gray-400 text-[10px] mt-4 italic px-4 leading-tight">
+                      *Tapping "Open UPI App" launches GPay/PhonePe automatically. If it doesn't work on your device, use "Copy UPI ID".
                     </p>
                   </div>
                   
