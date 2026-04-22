@@ -122,11 +122,51 @@ export const PaymentPage: React.FC = () => {
                   </div>
                 </div>
 
+                {/* Razorpay disabled temporarily */}
+                {/* 
                 <RazorpayButton 
                   amount={amount} 
                   description={`Payment for ${selectedService}`}
-                  className="w-full py-5 text-lg"
+                  className="w-full py-5 text-lg mb-8"
                 />
+                */}
+
+                {/* QR Code Section - Primary Payment Method */}
+                <div className="bg-gray-900/50 border border-brand-500/30 rounded-2xl p-8 text-center shadow-lg shadow-brand-500/5">
+                  <h3 className="text-white font-bold mb-6 flex items-center justify-center text-xl">
+                    <span className="w-3 h-3 bg-brand-500 rounded-full mr-3 animate-pulse"></span>
+                    Pay via QR Code
+                  </h3>
+                  
+                  <div className="bg-white p-4 rounded-xl inline-block mb-4 shadow-lg border-2 border-brand-500/20">
+                    {/* DYNAMIC UPI QR CODE - Generated using your UPI ID */}
+                    <img 
+                      src={`https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=${encodeURIComponent(`upi://pay?pa=priyaanand3009-1@oksbi&pn=Analytics Spire&am=${amount}&cu=INR`)}`} 
+                      alt="Payment QR Code" 
+                      className="w-48 h-48 md:w-56 md:h-56"
+                    />
+                  </div>
+                  
+                  <div className="space-y-2 mb-6">
+                    <p className="text-white font-bold text-lg">Analytics Spire</p>
+                    <div className="inline-flex items-center bg-brand-500/10 px-3 py-1 rounded-full border border-brand-500/30">
+                      <span className="text-brand-400 text-xs font-mono">priyaanand3009-1@oksbi</span>
+                    </div>
+                    <p className="text-gray-500 text-sm">Scan to pay <span className="text-white font-bold">₹{amount.toLocaleString()}</span> via UPI</p>
+                  </div>
+
+                  <div className="mt-6 pt-6 border-t border-gray-800">
+                    <p className="text-xs text-gray-500 mb-3 uppercase tracking-widest font-bold">Bank Details</p>
+                    <div className="grid grid-cols-2 gap-2 text-left text-xs bg-black/40 p-3 rounded-lg">
+                      <span className="text-gray-500">Bank:</span>
+                      <span className="text-gray-300">State Bank of India</span>
+                      <span className="text-gray-500">A/C No:</span>
+                      <span className="text-gray-300">XXXXXXXXXXXX</span>
+                      <span className="text-gray-500">IFSC:</span>
+                      <span className="text-gray-300">SBIN0010515</span>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
