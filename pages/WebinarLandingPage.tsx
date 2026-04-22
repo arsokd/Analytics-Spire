@@ -26,9 +26,10 @@ export const WebinarLandingPage: React.FC = () => {
             <span>Exclusive 1.5-Hour Masterclass</span>
           </div>
           
-          <h1 className="text-5xl md:text-7xl font-black text-white tracking-tight leading-[1.1] mb-8">
-            Is Your Business Running You, or <br className="hidden md:block" />
-            <span className="bg-gradient-to-r from-amber-400 to-yellow-200 bg-clip-text text-transparent">Are You Running Your Business?</span>
+          <h1 className="text-5xl md:text-7xl font-black text-white tracking-tight leading-tight mb-8">
+            Is Your Business Running You, <br />
+            <span className="text-brand-500 block my-4 text-3xl md:text-5xl">or</span>
+            <span className="bg-gradient-to-r from-amber-400 to-yellow-200 bg-clip-text text-transparent italic">Are You Running Your Business?</span>
           </h1>
           
           <p className="text-xl md:text-2xl text-gray-400 max-w-3xl mx-auto font-light leading-relaxed mb-10">
