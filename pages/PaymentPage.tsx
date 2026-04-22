@@ -155,15 +155,31 @@ export const PaymentPage: React.FC = () => {
                   </h3>
                   
                   <div className="bg-white p-4 rounded-xl inline-block mb-4 shadow-lg border-2 border-brand-500/20">
-                    {/* DYNAMIC UPI QR CODE - Generated using your UPI ID */}
-                    <img 
-                      src={`https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=${encodeURIComponent(`upi://pay?pa=priyaanand3009-1@oksbi&pn=Analytics Spire&am=${amount}&cu=INR`)}`} 
-                      alt="Payment QR Code" 
-                      className="w-48 h-48 md:w-56 md:h-56"
-                    />
+                    {/* DYNAMIC UPI QR CODE */}
+                    <a href={`upi://pay?pa=priyaanand3009-1@oksbi&pn=Analytics Spire&am=${amount}&cu=INR`} className="cursor-pointer block">
+                      <img 
+                        src={`https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=${encodeURIComponent(`upi://pay?pa=priyaanand3009-1@oksbi&pn=Analytics Spire&am=${amount}&cu=INR`)}`} 
+                        alt="Payment QR Code" 
+                        className="w-48 h-48 md:w-56 md:h-56"
+                      />
+                    </a>
                   </div>
                   
-                  <div className="space-y-2 mb-6">
+                  {/* MOBILE-ONLY: TAP TO PAY BUTTON */}
+                  <div className="md:hidden px-4 mb-6">
+                    <a 
+                      href={`upi://pay?pa=priyaanand3009-1@oksbi&pn=Analytics Spire&am=${amount}&cu=INR`}
+                      className="w-full flex items-center justify-center gap-3 bg-brand-500 hover:bg-brand-600 text-white py-4 rounded-xl font-bold transition-all shadow-lg active:scale-95"
+                    >
+                      <Zap size={20} />
+                      Open UPI App to Pay
+                    </a>
+                    <p className="text-gray-400 text-[10px] mt-2 italic px-4 leading-tight">
+                      *Tapping this will open your GPay, PhonePe, or Paytm automatically.
+                    </p>
+                  </div>
+                  
+                  <div className="space-y-2 mb-6 hidden md:block">
                     <p className="text-white font-bold text-lg">Analytics Spire</p>
                     <div className="inline-flex items-center bg-brand-500/10 px-3 py-1 rounded-full border border-brand-500/30">
                       <span className="text-brand-400 text-xs font-mono">priyaanand3009-1@oksbi</span>
