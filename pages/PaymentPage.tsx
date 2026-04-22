@@ -4,10 +4,11 @@ import { RazorpayButton } from '../components/RazorpayButton';
 import { CreditCard, ShieldCheck, Zap, CheckCircle2 } from 'lucide-react';
 
 export const PaymentPage: React.FC = () => {
-  const [amount, setAmount] = useState<number>(1000);
-  const [selectedService, setSelectedService] = useState<string>('Consultation');
+  const [amount, setAmount] = useState<number>(99);
+  const [selectedService, setSelectedService] = useState<string>('Webinar - Turn your MSME business into a Growth Machine');
 
   const services = [
+    { name: 'Webinar - Turn your MSME business into a Growth Machine', price: 99, originalPrice: 999, description: 'Limited time offer price' },
     { name: 'Consultation', price: 1000, description: '1-hour strategy session' },
     { name: 'Inventory Audit', price: 5000, description: 'Full warehouse audit' },
     { name: 'Training Workshop', price: 15000, description: 'Full day team training' },
@@ -75,9 +76,14 @@ export const PaymentPage: React.FC = () => {
                           <h4 className="text-white font-bold">{service.name}</h4>
                           <p className="text-gray-500 text-xs">{service.description}</p>
                         </div>
-                        {service.price > 0 && (
-                          <span className="text-brand-400 font-bold">₹{service.price.toLocaleString()}</span>
-                        )}
+                        <div className="flex flex-col items-end">
+                          {service.originalPrice && (
+                            <span className="text-gray-500 line-through text-xs">₹{service.originalPrice.toLocaleString()}</span>
+                          )}
+                          {service.price > 0 && (
+                            <span className="text-brand-400 font-bold">₹{service.price.toLocaleString()}</span>
+                          )}
+                        </div>
                         {selectedService === service.name && (
                           <CheckCircle2 className="w-5 h-5 text-brand-500 ml-2" />
                         )}
