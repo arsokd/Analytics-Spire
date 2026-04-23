@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, TrendingUp, Shield, Users, Globe, BarChart, Zap } from 'lucide-react';
+import { ArrowRight, TrendingUp, Shield, Users, Globe, BarChart, Zap, Video, BookOpen } from 'lucide-react';
 import { useData } from '../context/DataContext';
 
 export const HomePage: React.FC = () => {
@@ -46,13 +46,38 @@ export const HomePage: React.FC = () => {
                 Empowering <span className="text-white font-medium">MSMEs</span> and enterprises through data-driven innovation, strategic planning, and intelligent automation. Led by industry veterans with <span className="text-white font-medium">decades of experience</span> in corporate leadership.
               </p>
 
+              {/* Action Buttons */}
+              <div className="flex flex-wrap gap-6 mb-12">
+                <a 
+                  href="https://anandrengasamy.graphy.com/sessions"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group flex items-center gap-4 bg-brand-600 hover:bg-brand-500 text-white px-8 py-4 rounded-sm font-bold text-lg transition-all shadow-[0_0_20px_rgba(2,132,199,0.3)] hover:shadow-[0_0_30px_rgba(2,132,199,0.5)]"
+                >
+                  <Video size={24} />
+                  Join Webinar
+                  <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
+                </a>
+
+                <a 
+                  href="https://anandrengasamy.graphy.com/courses"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group flex items-center gap-4 bg-white/5 hover:bg-white/10 text-white border border-white/20 px-8 py-4 rounded-sm font-bold text-lg transition-all"
+                >
+                  <BookOpen size={24} className="text-brand-400" />
+                  Our Courses
+                  <div className="w-2 h-2 rounded-full bg-brand-500 group-hover:animate-ping"></div>
+                </a>
+              </div>
+
               <Link 
                 to="/services" 
-                className="group flex items-center text-lg md:text-xl font-bold text-white hover:text-brand-400 transition-all duration-300"
+                className="group flex items-center text-lg md:text-xl font-bold text-gray-400 hover:text-white transition-all duration-300"
               >
-                Explore our expertise
-                <div className="ml-4 w-12 h-12 rounded-full bg-brand-600 flex items-center justify-center group-hover:bg-brand-500 transition-all duration-300 shadow-[0_0_20px_rgba(2,132,199,0.3)] group-hover:shadow-[0_0_30px_rgba(2,132,199,0.5)] group-hover:translate-x-2">
-                  <ArrowRight size={24} />
+                Explore our full expertise
+                <div className="ml-4 w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center group-hover:bg-brand-600 transition-all duration-300 group-hover:translate-x-2">
+                  <ArrowRight size={20} />
                 </div>
               </Link>
             </div>
