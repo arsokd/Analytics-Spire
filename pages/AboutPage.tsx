@@ -85,7 +85,6 @@ export const AboutPage: React.FC = () => {
                   </div>
                 </div>
                 <div className="md:w-2/3 p-8 md:p-12">
-                  <h3 className="font-heading text-2xl font-bold mb-6 text-white">Partner's Expertise</h3>
                   <p className="text-gray-300 mb-6 text-lg leading-relaxed">
                     {data.config.partnerBio}
                   </p>
@@ -146,7 +145,6 @@ export const AboutPage: React.FC = () => {
                 </div>
               </div>
               <div className="md:w-2/3 p-8 md:p-12">
-                  <h3 className="font-heading text-2xl font-bold mb-6 text-white">Vision</h3>
                   <p className="text-gray-300 mb-6 text-lg leading-relaxed">
                     Anand Rengasamy is a seasoned Business consultant and Business coach with decades of corporate experience across diverse domains. He is dedicated to delivering innovative, data-driven solutions that empower MSMEs to scale efficiently and sustainably.
                   </p>
