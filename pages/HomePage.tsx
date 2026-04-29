@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, TrendingUp, Shield, Users, Globe, BarChart, Zap, Video, BookOpen } from 'lucide-react';
+import { SEO } from '../components/SEO';
 import { useData } from '../context/DataContext';
 
 export const HomePage: React.FC = () => {
@@ -12,6 +13,11 @@ export const HomePage: React.FC = () => {
   
   return (
     <div className="flex flex-col bg-black text-white font-sans">
+      <SEO 
+        title="MSME Business Consulting & Coaching India | Turn Business into Growth Machine"
+        description="Analytics Spire led by Anand Rengasamy provides business coaching, consultancy, and automation for MSMEs. Scale your business with data-driven innovation."
+        keywords="MSME Business Consultant India, Business Coach Chennai, Automation for Small Business, Anand Rengasamy, Analytics Spire"
+      />
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center pt-20 overflow-hidden bg-[#030712]">
         {/* Abstract Background Elements */}

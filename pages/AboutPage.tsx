@@ -2,12 +2,18 @@ import React from 'react';
 import { BookOpen, Briefcase, GraduationCap, Target } from 'lucide-react';
 import { VALUES, BUSINESS_ASSOCIATIONS, TOOLS } from '../constants';
 import { useData } from '../context/DataContext';
+import { SEO } from '../components/SEO';
 
 export const AboutPage: React.FC = () => {
   const { data } = useData();
 
   return (
     <div className="bg-gray-950">
+      <SEO 
+        title="About Anand Rengasamy | Founder of Analytics Spire"
+        description="Meet Anand Rengasamy, a seasoned MSME business consultant and growth coach. Learn about the vision and expertise behind Analytics Spire."
+        keywords="Anand Rengasamy, Business Consultant Chennai, MSME Growth Coach, Analytics Spire Founder"
+      />
       {/* Header */}
       <div className="bg-gray-900 py-16 border-b border-gray-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

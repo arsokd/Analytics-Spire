@@ -1,6 +1,7 @@
 import React from 'react';
 import { BarChart, Cpu, Compass, Settings, TrendingUp, Megaphone, BookOpen, Search, Package } from 'lucide-react';
 import { useData } from '../context/DataContext';
+import { SEO } from '../components/SEO';
 
 const icons: Record<string, any> = {
   BarChart, Cpu, Compass, Settings, TrendingUp, Megaphone, BookOpen, Search, Package
@@ -17,6 +18,11 @@ export const ServicesPage: React.FC = () => {
 
   return (
     <div className="bg-black min-h-screen pb-24 font-sans text-white">
+      <SEO 
+        title="Business Consulting & Automation Services | Analytics Spire"
+        description="Our comprehensive business services include MSME consulting, process automation, data analytics, and digital transformation strategy."
+        keywords="Business Automation Services, MSME Consulting India, Process Optimization, Digital Transformation Consultant Chennai"
+      />
       {/* Services Hero */}
       <div className="relative pt-32 pb-20 border-b border-gray-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
