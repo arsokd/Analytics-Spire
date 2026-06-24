@@ -554,9 +554,19 @@ export const MoringaLandingPage: React.FC = () => {
                       {availableDates.map((date, idx) => {
                         const isSelected = selectedDate?.toDateString() === date.toDateString();
                         let language = '';
-                        if (date.getDay() === 2) language = 'English';
-                        if (date.getDay() === 4) language = 'Tamil';
-                        if (date.getDay() === 6) language = 'Hindi';
+                        let langColorClass = '';
+                        if (date.getDay() === 2) {
+                          language = 'English';
+                          langColorClass = isSelected ? 'bg-white text-blue-700' : 'bg-blue-900/40 text-blue-400 border border-blue-800/50';
+                        }
+                        if (date.getDay() === 4) {
+                          language = 'Tamil';
+                          langColorClass = isSelected ? 'bg-white text-orange-700' : 'bg-orange-900/40 text-orange-400 border border-orange-800/50';
+                        }
+                        if (date.getDay() === 6) {
+                          language = 'Hindi';
+                          langColorClass = isSelected ? 'bg-white text-purple-700' : 'bg-purple-900/40 text-purple-400 border border-purple-800/50';
+                        }
 
                         return (
                           <button
@@ -565,18 +575,18 @@ export const MoringaLandingPage: React.FC = () => {
                             onClick={() => {
                               setSelectedDate(date);
                             }}
-                            className={`p-3 rounded-xl border text-center transition-all flex flex-col items-center justify-center ${isSelected ? 'bg-emerald-600 border-emerald-500 text-white font-bold shadow' : 'bg-gray-950 border-gray-800 text-gray-300 hover:border-gray-700'}`}
+                            className={`p-3 rounded-xl border text-center transition-all flex flex-col items-center justify-center ${isSelected ? 'bg-emerald-600 border-emerald-500 text-white font-bold shadow-lg scale-105' : 'bg-gray-950 border-gray-800 text-gray-300 hover:border-gray-600 hover:bg-gray-900'}`}
                           >
-                            <div className={`text-[10px] font-mono uppercase ${isSelected ? 'text-emerald-100' : 'text-gray-400'}`}>
+                            <div className={`text-xs font-mono uppercase ${isSelected ? 'text-emerald-100' : 'text-gray-400'}`}>
                               {date.toLocaleDateString('en-IN', { weekday: 'short' })}
                             </div>
-                            <div className="text-lg font-extrabold mt-0.5">
+                            <div className="text-2xl font-extrabold mt-0.5">
                               {date.getDate()}
                             </div>
-                            <div className={`text-[9px] mt-0.5 ${isSelected ? 'text-emerald-200' : 'text-gray-400'}`}>
+                            <div className={`text-[11px] mt-0.5 uppercase tracking-wider font-semibold ${isSelected ? 'text-emerald-100' : 'text-gray-500'}`}>
                               {date.toLocaleDateString('en-IN', { month: 'short' })}
                             </div>
-                            <div className={`mt-1.5 px-2 py-0.5 rounded text-[8px] font-bold uppercase tracking-widest ${isSelected ? 'bg-white text-emerald-700' : 'bg-gray-900 text-brand-500'}`}>
+                            <div className={`mt-2 px-2.5 py-1 rounded-md text-[10px] font-bold uppercase tracking-widest w-full text-center ${langColorClass}`}>
                               {language}
                             </div>
                           </button>
