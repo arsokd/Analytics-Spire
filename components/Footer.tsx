@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Mail, MapPin } from 'lucide-react';
 import { COMPANY_NAME } from '../constants';
 import { useData } from '../context/DataContext';
@@ -38,11 +39,11 @@ export const Footer: React.FC = () => {
           <div>
             <h3 className="text-lg font-bold mb-6 text-white font-heading">Quick Links</h3>
             <ul className="space-y-3 text-gray-400">
-              <li><a href="#/" className="hover:text-brand-400 transition flex items-center"><span className="w-1.5 h-1.5 bg-brand-500 rounded-full mr-2"></span>Home</a></li>
-              <li><a href="#/about" className="hover:text-brand-400 transition flex items-center"><span className="w-1.5 h-1.5 bg-brand-500 rounded-full mr-2"></span>About Us</a></li>
-              <li><a href="#/services" className="hover:text-brand-400 transition flex items-center"><span className="w-1.5 h-1.5 bg-brand-500 rounded-full mr-2"></span>Services</a></li>
-              <li><a href="#/media" className="hover:text-brand-400 transition flex items-center"><span className="w-1.5 h-1.5 bg-brand-500 rounded-full mr-2"></span>Media & Podcast</a></li>
-              <li><a href="#/contact" className="hover:text-brand-400 transition flex items-center"><span className="w-1.5 h-1.5 bg-brand-500 rounded-full mr-2"></span>Contact</a></li>
+              <li><Link to="/" className="hover:text-brand-400 transition flex items-center"><span className="w-1.5 h-1.5 bg-brand-500 rounded-full mr-2"></span>Home</Link></li>
+              <li><Link to="/about" className="hover:text-brand-400 transition flex items-center"><span className="w-1.5 h-1.5 bg-brand-500 rounded-full mr-2"></span>About Us</Link></li>
+              <li><Link to="/services" className="hover:text-brand-400 transition flex items-center"><span className="w-1.5 h-1.5 bg-brand-500 rounded-full mr-2"></span>Services</Link></li>
+              <li><Link to="/media" className="hover:text-brand-400 transition flex items-center"><span className="w-1.5 h-1.5 bg-brand-500 rounded-full mr-2"></span>Media & Podcast</Link></li>
+              <li><Link to="/contact" className="hover:text-brand-400 transition flex items-center"><span className="w-1.5 h-1.5 bg-brand-500 rounded-full mr-2"></span>Contact</Link></li>
             </ul>
           </div>
           

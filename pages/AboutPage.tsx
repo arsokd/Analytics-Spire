@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { BookOpen, Briefcase, GraduationCap, Target } from 'lucide-react';
 import { VALUES, BUSINESS_ASSOCIATIONS, TOOLS } from '../constants';
 import { useData } from '../context/DataContext';
@@ -6,6 +7,9 @@ import { SEO } from '../components/SEO';
 
 export const AboutPage: React.FC = () => {
   const { data } = useData();
+
+  // Set to true to show Hemanth Kumar Guruswamy's profile, or false to temporarily hide it
+  const showPartnerProfile = false;
 
   return (
     <div className="bg-gray-950">
@@ -65,7 +69,7 @@ export const AboutPage: React.FC = () => {
           
           <div className="space-y-12">
             {/* Partner Profile */}
-            {data.config.partnerName && (
+            {showPartnerProfile && data.config.partnerName && (
               <div className="bg-gray-900 rounded-2xl overflow-hidden shadow-sm flex flex-col md:flex-row border border-gray-800">
                 <div className="md:w-1/3 bg-gray-800 min-h-[300px] flex items-center justify-center p-8">
                   <div className="text-center w-full">
@@ -217,9 +221,9 @@ export const AboutPage: React.FC = () => {
             ))}
           </div>
           <div className="mt-8 text-center">
-            <a href="#/events" className="text-brand-400 font-bold uppercase tracking-widest text-sm hover:text-white transition border-b border-brand-400 pb-1">
+            <Link to="/events" className="text-brand-400 font-bold uppercase tracking-widest text-sm hover:text-white transition border-b border-brand-400 pb-1">
               View All Engagements
-            </a>
+            </Link>
           </div>
         </div>
 

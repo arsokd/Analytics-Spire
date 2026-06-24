@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { HashRouter, Routes, Route, Navigate, useLocation } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
 import { HomePage } from './pages/HomePage';
@@ -11,11 +11,12 @@ import { EventsPage } from './pages/EventsPage';
 import { MediaPage } from './pages/MediaPage';
 import { PaymentPage } from './pages/PaymentPage';
 import { WebinarLandingPage } from './pages/WebinarLandingPage';
+import { MoringaLandingPage } from './pages/MoringaLandingPage';
 import { DataProvider } from './context/DataContext';
 
 const AppContent: React.FC = () => {
   const location = useLocation();
-  const isLandingPage = location.pathname === '/webinar';
+  const isLandingPage = location.pathname === '/webinar' || location.pathname === '/moringa';
 
   return (
     <div className="flex flex-col min-h-screen bg-gray-950 text-gray-100 font-sans selection:bg-brand-500 selection:text-white">
@@ -30,6 +31,7 @@ const AppContent: React.FC = () => {
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/payment" element={<PaymentPage />} />
           <Route path="/webinar" element={<WebinarLandingPage />} />
+          <Route path="/moringa" element={<MoringaLandingPage />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </main>
@@ -41,9 +43,9 @@ const AppContent: React.FC = () => {
 const App: React.FC = () => {
   return (
     <DataProvider>
-      <HashRouter>
+      <BrowserRouter>
         <AppContent />
-      </HashRouter>
+      </BrowserRouter>
     </DataProvider>
   );
 };

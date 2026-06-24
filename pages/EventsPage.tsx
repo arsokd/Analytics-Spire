@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Calendar, Tag, ArrowRight } from 'lucide-react';
 import { useData } from '../context/DataContext';
 
@@ -75,12 +76,12 @@ export const EventsPage: React.FC = () => {
              <p className="text-gray-400 max-w-2xl mx-auto mb-10 text-lg">
                Empower your team or industry cluster with specialized training in Business Analytics, Financial Literacy, and Process Automation.
              </p>
-             <a 
-               href="#/contact" 
+             <Link 
+               to="/contact" 
                className="inline-flex items-center bg-white text-black px-10 py-4 font-bold uppercase tracking-widest hover:bg-gray-200 transition"
              >
                Enquire Now <ArrowRight className="ml-2" />
-             </a>
+             </Link>
         </div>
       </div>
     </div>
