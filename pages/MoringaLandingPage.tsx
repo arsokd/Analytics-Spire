@@ -64,6 +64,11 @@ export const MoringaLandingPage: React.FC = () => {
       day: 'numeric'
     });
 
+    let selectedLanguage = 'English';
+    if (selectedDate.getDay() === 2) selectedLanguage = 'English';
+    if (selectedDate.getDay() === 4) selectedLanguage = 'Tamil';
+    if (selectedDate.getDay() === 6) selectedLanguage = 'Hindi';
+
     const leadData = {
       type: 'MORINGA_DEMO',
       timestamp: new Date().toISOString(),
@@ -72,6 +77,7 @@ export const MoringaLandingPage: React.FC = () => {
       phone: bookingPhone,
       company: bookingCompany || 'N/A',
       demoDate: formattedDate,
+      language: selectedLanguage,
       notes: bookingNotes || 'N/A'
     };
 
