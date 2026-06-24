@@ -31,10 +31,9 @@ export const MoringaLandingPage: React.FC = () => {
     const today = new Date();
     today.setHours(0, 0, 0, 0);
     
-    let daysAdded = 0;
     let currentDay = 1;
     
-    while (daysAdded < 6 && currentDay < 30) {
+    while (currentDay <= 30) {
       const nextDate = new Date(today);
       nextDate.setDate(today.getDate() + currentDay);
       
@@ -42,7 +41,6 @@ export const MoringaLandingPage: React.FC = () => {
       // Tuesday (2), Thursday (4), Saturday (6)
       if (day === 2 || day === 4 || day === 6) {
         dates.push(nextDate);
-        daysAdded++;
       }
       currentDay++;
     }
