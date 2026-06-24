@@ -549,10 +549,15 @@ export const MoringaLandingPage: React.FC = () => {
 
                   {/* Step 1: Select Date */}
                   <div className="space-y-3">
-                    <label className="block text-xs text-gray-400 font-mono uppercase tracking-wider">Step 1: Select a Tuesday, Thursday, or Saturday</label>
+                    <label className="block text-xs text-gray-400 font-mono uppercase tracking-wider">Step 1: Select a Tuesday (English), Thursday (Tamil), or Saturday (Hindi)</label>
                     <div className="grid grid-cols-3 sm:grid-cols-4 gap-2">
                       {availableDates.map((date, idx) => {
                         const isSelected = selectedDate?.toDateString() === date.toDateString();
+                        let language = '';
+                        if (date.getDay() === 2) language = 'English';
+                        if (date.getDay() === 4) language = 'Tamil';
+                        if (date.getDay() === 6) language = 'Hindi';
+
                         return (
                           <button
                             type="button"
@@ -560,16 +565,19 @@ export const MoringaLandingPage: React.FC = () => {
                             onClick={() => {
                               setSelectedDate(date);
                             }}
-                            className={`p-3 rounded-xl border text-center transition-all ${isSelected ? 'bg-emerald-600 border-emerald-500 text-white font-bold shadow' : 'bg-gray-950 border-gray-800 text-gray-300 hover:border-gray-700'}`}
+                            className={`p-3 rounded-xl border text-center transition-all flex flex-col items-center justify-center ${isSelected ? 'bg-emerald-600 border-emerald-500 text-white font-bold shadow' : 'bg-gray-950 border-gray-800 text-gray-300 hover:border-gray-700'}`}
                           >
-                            <div className="text-[10px] font-mono uppercase text-gray-400">
+                            <div className={`text-[10px] font-mono uppercase ${isSelected ? 'text-emerald-100' : 'text-gray-400'}`}>
                               {date.toLocaleDateString('en-IN', { weekday: 'short' })}
                             </div>
                             <div className="text-lg font-extrabold mt-0.5">
                               {date.getDate()}
                             </div>
-                            <div className="text-[9px] text-gray-400 mt-0.5">
+                            <div className={`text-[9px] mt-0.5 ${isSelected ? 'text-emerald-200' : 'text-gray-400'}`}>
                               {date.toLocaleDateString('en-IN', { month: 'short' })}
+                            </div>
+                            <div className={`mt-1.5 px-2 py-0.5 rounded text-[8px] font-bold uppercase tracking-widest ${isSelected ? 'bg-white text-emerald-700' : 'bg-gray-900 text-brand-500'}`}>
+                              {language}
                             </div>
                           </button>
                         );
