@@ -13,15 +13,8 @@ export const MoringaLandingPage: React.FC = () => {
   // Navigation tabs for features
   const [activeTab, setActiveTab] = useState<'farm' | 'finance' | 'unique'>('farm');
   
-  // States for interactive pricing calculator
-  const [farmSize, setFarmSize] = useState<number>(5);
-  const [numPlots, setNumPlots] = useState<number>(10);
-  const [numUsers, setNumUsers] = useState<number>(3);
-  const [calculatedPlan, setCalculatedPlan] = useState<'basic' | 'advanced' | 'pro'>('advanced');
-
   // Booking states
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
-  const [selectedTime, setSelectedTime] = useState<string>('');
   const [bookingName, setBookingName] = useState<string>('');
   const [bookingEmail, setBookingEmail] = useState<string>('');
   const [bookingPhone, setBookingPhone] = useState<string>('');
@@ -31,31 +24,23 @@ export const MoringaLandingPage: React.FC = () => {
   const [bookingSuccess, setBookingSuccess] = useState<boolean>(false);
   const [errorMsg, setErrorMsg] = useState<string>('');
 
-  // Calendar dates generation (Next 14 days, excluding Sundays)
   const [availableDates, setAvailableDates] = useState<Date[]>([]);
-  const timeSlots = [
-    "10:00 AM - 10:30 AM",
-    "11:00 AM - 11:30 AM",
-    "02:00 PM - 02:30 PM",
-    "03:00 PM - 03:30 PM",
-    "04:00 PM - 04:30 PM",
-    "05:00 PM - 05:30 PM"
-  ];
 
   useEffect(() => {
     const dates: Date[] = [];
     const today = new Date();
+    today.setHours(0, 0, 0, 0);
     
-    // Generate dates starting tomorrow for 14 days
     let daysAdded = 0;
     let currentDay = 1;
     
-    while (daysAdded < 12 && currentDay < 25) {
-      const nextDate = new Date();
+    while (daysAdded < 6 && currentDay < 30) {
+      const nextDate = new Date(today);
       nextDate.setDate(today.getDate() + currentDay);
       
-      // 0 is Sunday
-      if (nextDate.getDay() !== 0) {
+      const day = nextDate.getDay();
+      // Tuesday (2), Thursday (4), Saturday (6)
+      if (day === 2 || day === 4 || day === 6) {
         dates.push(nextDate);
         daysAdded++;
       }
@@ -64,21 +49,10 @@ export const MoringaLandingPage: React.FC = () => {
     setAvailableDates(dates);
   }, []);
 
-  // Sync pricing recommendations based on farm size & plots
-  useEffect(() => {
-    if (farmSize <= 1 && numPlots <= 5 && numUsers <= 3) {
-      setCalculatedPlan('basic');
-    } else if (farmSize <= 5 && numPlots <= 30 && numUsers <= 10) {
-      setCalculatedPlan('advanced');
-    } else {
-      setCalculatedPlan('pro');
-    }
-  }, [farmSize, numPlots, numUsers]);
-
   const handleBookingSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!selectedDate || !selectedTime || !bookingName || !bookingEmail || !bookingPhone) {
-      setErrorMsg('Please fill in all required fields, including Date and Time slot.');
+    if (!selectedDate || !bookingName || !bookingEmail || !bookingPhone) {
+      setErrorMsg('Please select a date and fill in all required fields.');
       return;
     }
 
@@ -98,7 +72,7 @@ export const MoringaLandingPage: React.FC = () => {
       email: bookingEmail,
       phone: bookingPhone,
       company: bookingCompany || 'Moringa Farm/Business',
-      notes: `Requested Demo for Moringa ERP on ${formattedDate} at ${selectedTime}. Farm details: Size - ${farmSize} acres, Plots - ${numPlots}, Message: ${bookingNotes}`,
+      notes: `Requested Demo Registration for ${formattedDate} at 3:00 PM IST. Message: ${bookingNotes}`,
       timestamp: new Date().toISOString()
     };
 
@@ -108,7 +82,7 @@ export const MoringaLandingPage: React.FC = () => {
       if (success) {
         setBookingSuccess(true);
       } else {
-        setErrorMsg('There was a small network glitch. Please try booking again.');
+        setErrorMsg('There was a small network glitch. Please try registering again.');
       }
     } catch (err) {
       console.error(err);
@@ -122,34 +96,16 @@ export const MoringaLandingPage: React.FC = () => {
   const getGoogleCalendarLink = () => {
     if (!selectedDate) return '#';
     
-    // Parse start and end time
     const dateStr = selectedDate.toISOString().split('T')[0]; // YYYY-MM-DD
-    let startHour = '10';
-    let startMin = '00';
-    let endHour = '10';
-    let endMin = '30';
-
-    if (selectedTime.includes('11:00')) {
-      startHour = '11'; startMin = '00'; endHour = '11'; endMin = '30';
-    } else if (selectedTime.includes('02:00')) {
-      startHour = '14'; startMin = '00'; endHour = '14'; endMin = '30';
-    } else if (selectedTime.includes('03:00')) {
-      startHour = '15'; startMin = '00'; endHour = '15'; endMin = '30';
-    } else if (selectedTime.includes('04:00')) {
-      startHour = '16'; startMin = '00'; endHour = '16'; endMin = '30';
-    } else if (selectedTime.includes('05:00')) {
-      startHour = '17'; startMin = '00'; endHour = '17'; endMin = '30';
-    }
-
-    // Google Calendar template format: YYYYMMDDTHHMMSSZ
-    // For simplicity, we convert to UTC-ish or leave standard. 
-    // We'll format as local time format YYYYMMDDTHHMMSS
-    const startFormatted = `${dateStr.replace(/-/g, '')}T${startHour}${startMin}00`;
-    const endFormatted = `${dateStr.replace(/-/g, '')}T${endHour}${endMin}00`;
+    
+    // 3:00 PM to 4:00 PM IST
+    // We format as local time format YYYYMMDDTHHMMSS
+    const startFormatted = `${dateStr.replace(/-/g, '')}T150000`;
+    const endFormatted = `${dateStr.replace(/-/g, '')}T160000`;
 
     const title = encodeURIComponent("Moringa ERP Personalized Demo — Analytics Spire");
     const details = encodeURIComponent(
-      `Hello ${bookingName},\n\nThank you for booking a demo for Moringa ERP business software!\n\nDetails of the session:\n- Date: ${selectedDate.toLocaleDateString()}\n- Time Slot: ${selectedTime}\n- Organizer: Anand Rengasamy (ars.okd@gmail.com)\n\nWe will showcase how to manage your crops, track QC, streamline invoicing, and view real-time profitability (IFRS P&L).\n\nSee you then!`
+      `Hello ${bookingName},\n\nThank you for booking a demo for Moringa ERP business software!\n\nDetails of the session:\n- Date: ${selectedDate.toLocaleDateString()}\n- Time Slot: 3:00 PM - 4:00 PM IST\n- Organizer: Anand Rengasamy (ars.okd@gmail.com)\n\nWe will showcase how to manage your crops, track QC, streamline invoicing, and view real-time profitability (IFRS P&L).\n\nSee you then!`
     );
     const location = encodeURIComponent("Google Meet (link will be sent to your email)");
     const addsh = encodeURIComponent("ars.okd@gmail.com");
@@ -184,7 +140,7 @@ export const MoringaLandingPage: React.FC = () => {
               href="#book-demo" 
               className="px-4 py-2 bg-emerald-600 hover:bg-emerald-500 text-white text-sm font-bold rounded-lg transition-all shadow-md shadow-emerald-900/30"
             >
-              Book a Demo
+              Register for Demo
             </a>
           </div>
         </div>
@@ -241,7 +197,7 @@ export const MoringaLandingPage: React.FC = () => {
                   href="#book-demo" 
                   className="px-8 py-4 bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-center rounded-xl transition-all hover:translate-y-[-2px] active:translate-y-0 shadow-lg shadow-emerald-900/30 flex items-center justify-center gap-2"
                 >
-                  Book a Free 30-Min Demo <ArrowRight size={18} />
+                  Register for Free 30-Min Demo <ArrowRight size={18} />
                 </a>
                 <a 
                   href="#modules" 
@@ -465,251 +421,22 @@ export const MoringaLandingPage: React.FC = () => {
         </div>
       </section>
 
-      {/* Pricing Section with Interactive Calculator */}
-      <section className="py-20 bg-gray-950">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <p className="text-emerald-400 font-mono text-xs uppercase tracking-widest mb-3">Simple, Transparent Pricing</p>
-            <h2 className="text-3xl sm:text-4xl font-heading font-extrabold text-white">No Hidden Charges. Scale as You Grow.</h2>
-            <p className="text-gray-400 mt-4 leading-relaxed">
-              Find the perfect plan for your business. Use the sliding calculator below to see which plan matches your current farm and user scale.
-            </p>
-          </div>
-
-          {/* Sliding Scale Interactive Calculator */}
-          <div className="bg-gray-900/60 border border-gray-800 rounded-3xl p-6 sm:p-10 mb-12 max-w-4xl mx-auto">
-            <h3 className="text-xl font-heading font-bold text-white mb-8 text-center flex items-center justify-center gap-2">
-              <Sprout className="text-emerald-400" size={20} />
-              Calculate Your Plan Recommendation
-            </h3>
-
-            <div className="grid md:grid-cols-3 gap-8 mb-8">
-              {/* Sliders */}
-              <div className="space-y-6 md:col-span-2">
-                {/* Farm Size */}
-                <div className="space-y-2">
-                  <div className="flex justify-between text-sm">
-                    <span className="text-gray-300 font-medium">Number of Farms</span>
-                    <span className="text-emerald-400 font-bold">{farmSize} {farmSize === 1 ? 'Farm' : 'Farms'}</span>
-                  </div>
-                  <input 
-                    type="range" 
-                    min="1" 
-                    max="15" 
-                    value={farmSize} 
-                    onChange={(e) => setFarmSize(Number(e.target.value))}
-                    className="w-full h-2 bg-gray-800 rounded-lg appearance-none cursor-pointer accent-emerald-500" 
-                  />
-                  <div className="flex justify-between text-[10px] text-gray-500 font-mono">
-                    <span>1 Farm</span>
-                    <span>5 Farms</span>
-                    <span>10 Farms</span>
-                    <span>15 Farms</span>
-                  </div>
-                </div>
-
-                {/* Plot Size */}
-                <div className="space-y-2">
-                  <div className="flex justify-between text-sm">
-                    <span className="text-gray-300 font-medium">Number of Plots / Batches</span>
-                    <span className="text-emerald-400 font-bold">{numPlots} Plots</span>
-                  </div>
-                  <input 
-                    type="range" 
-                    min="1" 
-                    max="100" 
-                    value={numPlots} 
-                    onChange={(e) => setNumPlots(Number(e.target.value))}
-                    className="w-full h-2 bg-gray-800 rounded-lg appearance-none cursor-pointer accent-emerald-500" 
-                  />
-                  <div className="flex justify-between text-[10px] text-gray-500 font-mono">
-                    <span>1 Plot</span>
-                    <span>30 Plots</span>
-                    <span>60 Plots</span>
-                    <span>100+ Plots</span>
-                  </div>
-                </div>
-
-                {/* Users Count */}
-                <div className="space-y-2">
-                  <div className="flex justify-between text-sm">
-                    <span className="text-gray-300 font-medium">App Users (Staff)</span>
-                    <span className="text-emerald-400 font-bold">{numUsers} Users</span>
-                  </div>
-                  <input 
-                    type="range" 
-                    min="1" 
-                    max="30" 
-                    value={numUsers} 
-                    onChange={(e) => setNumUsers(Number(e.target.value))}
-                    className="w-full h-2 bg-gray-800 rounded-lg appearance-none cursor-pointer accent-emerald-500" 
-                  />
-                  <div className="flex justify-between text-[10px] text-gray-500 font-mono">
-                    <span>1 User</span>
-                    <span>10 Users</span>
-                    <span>20 Users</span>
-                    <span>30+ Users</span>
-                  </div>
-                </div>
-              </div>
-
-              {/* Recommendation Display */}
-              <div className="bg-emerald-950/20 border border-emerald-500/20 p-6 rounded-2xl flex flex-col justify-between items-center text-center">
-                <div>
-                  <span className="text-xs text-emerald-400 font-bold uppercase tracking-wider">Recommended Plan</span>
-                  <h4 className="text-3xl font-heading font-black text-white mt-2 capitalize">{calculatedPlan}</h4>
-                  <p className="text-xs text-gray-400 mt-2 leading-relaxed">
-                    Based on your input, this plan provides the most cost-effective and secure scaling bounds.
-                  </p>
-                </div>
-                
-                <div className="mt-6 w-full">
-                  <div className="text-3xl font-mono font-bold text-emerald-400">
-                    {calculatedPlan === 'basic' ? '₹499' : calculatedPlan === 'advanced' ? '₹1,499' : '₹3,999'}
-                    <span className="text-xs text-gray-400 font-sans font-normal"> / month</span>
-                  </div>
-                  <a 
-                    href="#book-demo"
-                    className="block w-full text-center mt-4 py-2.5 bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs rounded-xl transition-all"
-                  >
-                    Select Plan & Book Demo
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Three Pricing Plan Cards */}
-          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            
-            {/* Basic Plan */}
-            <div className={`bg-gray-900 border rounded-2xl p-8 flex flex-col justify-between transition-all ${calculatedPlan === 'basic' ? 'border-emerald-500 ring-1 ring-emerald-500/20 scale-105' : 'border-gray-800 hover:border-gray-700'}`}>
-              <div>
-                <span className="text-gray-400 text-xs font-mono uppercase font-bold tracking-wider">For Growers starting out</span>
-                <h3 className="text-2xl font-heading font-bold text-white mt-1">Basic</h3>
-                <div className="text-3xl font-mono font-extrabold text-emerald-400 mt-4">
-                  ₹499<span className="text-sm text-gray-400 font-sans font-normal">/month</span>
-                </div>
-                <p className="text-xs text-gray-400 mt-2 italic">Prices subject to change without notice</p>
-                
-                <ul className="mt-8 space-y-4 text-sm text-gray-300">
-                  <li className="flex gap-2.5 items-center">
-                    <CheckCircle className="text-emerald-500 flex-shrink-0" size={16} />
-                    <span>1 Farm • 5 plots • 3 users</span>
-                  </li>
-                  <li className="flex gap-2.5 items-center">
-                    <CheckCircle className="text-emerald-500 flex-shrink-0" size={16} />
-                    <span>Basic Crop Mapping & Tracking</span>
-                  </li>
-                  <li className="flex gap-2.5 items-center">
-                    <CheckCircle className="text-emerald-500 flex-shrink-0" size={16} />
-                    <span>Daily Attendance Logging</span>
-                  </li>
-                  <li className="flex gap-2.5 items-center">
-                    <CheckCircle className="text-emerald-500 flex-shrink-0" size={16} />
-                    <span>Operations Logs & Workflows</span>
-                  </li>
-                </ul>
-              </div>
-              
-              <a 
-                href="#book-demo" 
-                className="mt-8 block w-full py-3 bg-gray-800 hover:bg-gray-700 text-center text-white text-sm font-bold rounded-xl transition-colors"
-              >
-                Book Demo
-              </a>
-            </div>
-
-            {/* Advanced Plan (Most Popular) */}
-            <div className={`bg-gray-900 border rounded-2xl p-8 flex flex-col justify-between relative transition-all ${calculatedPlan === 'advanced' ? 'border-emerald-500 ring-2 ring-emerald-500/20 scale-105' : 'border-emerald-500/30'}`}>
-              <div className="absolute top-0 right-1/2 translate-x-1/2 translate-y-[-50%] bg-emerald-600 text-white font-bold text-[10px] uppercase tracking-widest px-4 py-1 rounded-full shadow">
-                Most Popular
-              </div>
-
-              <div>
-                <span className="text-gray-400 text-xs font-mono uppercase font-bold tracking-wider">For Professional Farms</span>
-                <h3 className="text-2xl font-heading font-bold text-white mt-1">Advanced</h3>
-                <div className="text-3xl font-mono font-extrabold text-emerald-400 mt-4">
-                  ₹1,499<span className="text-sm text-gray-400 font-sans font-normal">/month</span>
-                </div>
-                <p className="text-xs text-gray-400 mt-2 italic">Prices subject to change without notice</p>
-                
-                <ul className="mt-8 space-y-4 text-sm text-gray-300">
-                  <li className="flex gap-2.5 items-center">
-                    <CheckCircle className="text-emerald-500 flex-shrink-0" size={16} />
-                    <span className="font-semibold text-white">5 Farms • 30 plots • 10 users</span>
-                  </li>
-                  <li className="flex gap-2.5 items-center">
-                    <CheckCircle className="text-emerald-500 flex-shrink-0" size={16} />
-                    <span>All Basic Features Included</span>
-                  </li>
-                  <li className="flex gap-2.5 items-center">
-                    <CheckCircle className="text-emerald-500 flex-shrink-0" size={16} />
-                    <span>Pest & Disease Logs with Photos</span>
-                  </li>
-                  <li className="flex gap-2.5 items-center">
-                    <CheckCircle className="text-emerald-500 flex-shrink-0" size={16} />
-                    <span>Batch Quality Control (QC)</span>
-                  </li>
-                  <li className="flex gap-2.5 items-center">
-                    <CheckCircle className="text-emerald-500 flex-shrink-0" size={16} />
-                    <span>Processing & Inventory Manager</span>
-                  </li>
-                </ul>
-              </div>
-              
-              <a 
-                href="#book-demo" 
-                className="mt-8 block w-full py-3 bg-emerald-600 hover:bg-emerald-500 text-center text-white text-sm font-bold rounded-xl transition-all shadow shadow-emerald-900/30"
-              >
-                Book Demo
-              </a>
-            </div>
-
-            {/* Pro Plan */}
-            <div className={`bg-gray-900 border rounded-2xl p-8 flex flex-col justify-between transition-all ${calculatedPlan === 'pro' ? 'border-emerald-500 ring-1 ring-emerald-500/20 scale-105' : 'border-gray-800 hover:border-gray-700'}`}>
-              <div>
-                <span className="text-gray-400 text-xs font-mono uppercase font-bold tracking-wider">Enterprise-Ready Control</span>
-                <h3 className="text-2xl font-heading font-bold text-white mt-1">Pro</h3>
-                <div className="text-3xl font-mono font-extrabold text-emerald-400 mt-4">
-                  ₹3,999<span className="text-sm text-gray-400 font-sans font-normal">/month</span>
-                </div>
-                <p className="text-xs text-gray-400 mt-2 italic">Prices subject to change without notice</p>
-                
-                <ul className="mt-8 space-y-4 text-sm text-gray-300">
-                  <li className="flex gap-2.5 items-center">
-                    <CheckCircle className="text-emerald-500 flex-shrink-0" size={16} />
-                    <span className="font-semibold text-white">Unlimited Everything</span>
-                  </li>
-                  <li className="flex gap-2.5 items-center">
-                    <CheckCircle className="text-emerald-500 flex-shrink-0" size={16} />
-                    <span>Full Sales Chain Integration</span>
-                  </li>
-                  <li className="flex gap-2.5 items-center">
-                    <CheckCircle className="text-emerald-500 flex-shrink-0" size={16} />
-                    <span>GST Invoices & One-Click Tally Export</span>
-                  </li>
-                  <li className="flex gap-2.5 items-center">
-                    <CheckCircle className="text-emerald-500 flex-shrink-0" size={16} />
-                    <span>IFRS Balance Sheet, Cash Flow, & P&L</span>
-                  </li>
-                  <li className="flex gap-2.5 items-center">
-                    <CheckCircle className="text-emerald-500 flex-shrink-0" size={16} />
-                    <span>Video QC Evidence Storage</span>
-                  </li>
-                </ul>
-              </div>
-              
-              <a 
-                href="#book-demo" 
-                className="mt-8 block w-full py-3 bg-gray-800 hover:bg-gray-700 text-center text-white text-sm font-bold rounded-xl transition-colors"
-              >
-                Book Demo
-              </a>
-            </div>
-
-          </div>
+      {/* Mid-page Demo CTA Banner */}
+      <section className="py-16 bg-emerald-950/20 border-t border-emerald-900/30">
+        <div className="max-w-4xl mx-auto px-4 text-center">
+          <h2 className="text-3xl font-heading font-extrabold text-white mb-4">
+            Stop Guessing. Start Seeing.
+          </h2>
+          <p className="text-gray-300 mb-8 max-w-2xl mx-auto leading-relaxed">
+            Every farm is different. We want to show you exactly how Moringa ERP can solve your specific challenges. No pressure, no obligations—just a clear demonstration of what's possible.
+          </p>
+          <a 
+            href="#book-demo" 
+            className="inline-flex items-center gap-2 px-8 py-4 bg-emerald-600 hover:bg-emerald-500 text-white font-bold rounded-xl transition-all shadow-lg shadow-emerald-900/30"
+          >
+            <CalendarIcon size={18} />
+            Schedule Your Personalized Demo Now
+          </a>
         </div>
       </section>
 
@@ -724,7 +451,7 @@ export const MoringaLandingPage: React.FC = () => {
               <div className="space-y-4">
                 <p className="text-emerald-400 font-mono text-xs uppercase tracking-widest">Get Started Live</p>
                 <h2 className="text-3xl sm:text-4xl font-heading font-extrabold text-white leading-tight">
-                  Book a Free 30-Minute Live Demo Session
+                  Register for a Free Live Demo Session
                 </h2>
                 <p className="text-gray-400 leading-relaxed">
                   We set up a screen share, run the software on your realistic farm metrics, and demonstrate exactly how you can stop losing revenue to unorganized paperwork.
@@ -755,13 +482,13 @@ export const MoringaLandingPage: React.FC = () => {
                     <Info size={18} />
                   </div>
                   <p className="text-xs text-gray-400 leading-relaxed">
-                    Once booked, your schedule is securely written to our spreadsheet database, and we'll instantly generate an calendar invite link for you.
+                    Once registered, your schedule is securely written to our spreadsheet database, and we'll instantly generate an calendar invite link for you.
                   </p>
                 </div>
               </div>
             </div>
 
-            {/* Booking Right: Calendar Component */}
+            {/* Booking Right: Registration Component */}
             <div className="lg:col-span-7 bg-gray-900 border border-gray-800 rounded-3xl p-6 sm:p-10 shadow-xl relative">
               
               {bookingSuccess ? (
@@ -772,9 +499,9 @@ export const MoringaLandingPage: React.FC = () => {
                   </div>
                   
                   <div className="space-y-2">
-                    <h3 className="text-2xl font-heading font-bold text-white">Demo Scheduled Successfully!</h3>
+                    <h3 className="text-2xl font-heading font-bold text-white">Registration Successful!</h3>
                     <p className="text-gray-400 max-w-md mx-auto text-sm leading-relaxed">
-                      Thank you, <strong className="text-white">{bookingName}</strong>. Your requested slot on <strong className="text-emerald-400">{selectedDate?.toLocaleDateString('en-IN', { weekday: 'long', month: 'long', day: 'numeric' })}</strong> at <strong className="text-emerald-400">{selectedTime}</strong> has been saved directly to our calendar system.
+                      Thank you, <strong className="text-white">{bookingName}</strong>. You have successfully registered for the open demo session on <strong className="text-emerald-400">{selectedDate?.toLocaleDateString('en-IN', { weekday: 'long', month: 'long', day: 'numeric' })}</strong>. A calendar invite with the meeting link will be sent to your email shortly.
                     </p>
                   </div>
 
@@ -799,7 +526,6 @@ export const MoringaLandingPage: React.FC = () => {
                     onClick={() => {
                       setBookingSuccess(false);
                       setSelectedDate(null);
-                      setSelectedTime('');
                       setBookingName('');
                       setBookingEmail('');
                       setBookingPhone('');
@@ -808,18 +534,13 @@ export const MoringaLandingPage: React.FC = () => {
                     }}
                     className="text-sm text-emerald-400 hover:text-emerald-300 font-bold transition-colors"
                   >
-                    ← Book another slot or edit details
+                    ← Register another participant
                   </button>
                 </div>
               ) : (
                 // Interactive Booking Steps
                 <form onSubmit={handleBookingSubmit} className="space-y-6">
                   
-                  <h3 className="text-lg font-heading font-bold text-white border-b border-gray-800 pb-3 flex items-center gap-2">
-                    <CalendarIcon size={18} className="text-emerald-400" />
-                    Select a Date & Available Slot:
-                  </h3>
-
                   {errorMsg && (
                     <div className="p-3 bg-red-950/20 border border-red-900/50 text-red-400 rounded-lg text-xs flex gap-2 items-start">
                       <AlertTriangle className="flex-shrink-0 mt-0.5" size={14} />
@@ -829,7 +550,7 @@ export const MoringaLandingPage: React.FC = () => {
 
                   {/* Step 1: Select Date */}
                   <div className="space-y-3">
-                    <label className="block text-xs text-gray-400 font-mono uppercase tracking-wider">Step 1: Choose Date</label>
+                    <label className="block text-xs text-gray-400 font-mono uppercase tracking-wider">Step 1: Select a Tuesday, Thursday, or Saturday</label>
                     <div className="grid grid-cols-3 sm:grid-cols-4 gap-2">
                       {availableDates.map((date, idx) => {
                         const isSelected = selectedDate?.toDateString() === date.toDateString();
@@ -839,7 +560,6 @@ export const MoringaLandingPage: React.FC = () => {
                             key={idx}
                             onClick={() => {
                               setSelectedDate(date);
-                              setSelectedTime('');
                             }}
                             className={`p-3 rounded-xl border text-center transition-all ${isSelected ? 'bg-emerald-600 border-emerald-500 text-white font-bold shadow' : 'bg-gray-950 border-gray-800 text-gray-300 hover:border-gray-700'}`}
                           >
@@ -858,38 +578,20 @@ export const MoringaLandingPage: React.FC = () => {
                     </div>
                   </div>
 
-                  {/* Step 2: Select Time Slot (Enabled only if date is selected) */}
+                  {/* Step 2: Time Slot */}
                   <div className="space-y-3">
                     <label className="block text-xs text-gray-400 font-mono uppercase tracking-wider">
-                      Step 2: Choose 30-Min Time Slot (IST)
+                      Step 2: Time Slot (IST)
                     </label>
-                    {!selectedDate ? (
-                      <div className="p-4 bg-gray-950 border border-gray-800 rounded-xl text-center text-xs text-gray-500 font-medium italic">
-                        Please select a date from above first to view times.
-                      </div>
-                    ) : (
-                      <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
-                        {timeSlots.map((slot, idx) => {
-                          const isSelected = selectedTime === slot;
-                          return (
-                            <button
-                              type="button"
-                              key={idx}
-                              onClick={() => setSelectedTime(slot)}
-                              className={`p-3 rounded-xl border text-center text-xs font-semibold transition-all ${isSelected ? 'bg-emerald-600 border-emerald-500 text-white font-bold shadow' : 'bg-gray-950 border-gray-800 text-gray-300 hover:border-gray-700'}`}
-                            >
-                              <Clock size={12} className="inline mr-1 text-emerald-400" />
-                              {slot}
-                            </button>
-                          );
-                        })}
-                      </div>
-                    )}
+                    <div className="p-4 bg-gray-950 border border-emerald-900/50 rounded-xl text-center text-sm text-emerald-400 font-bold flex justify-center items-center gap-2">
+                      <Clock size={16} />
+                      3:00 PM - 4:00 PM
+                    </div>
                   </div>
 
                   {/* Step 3: Fill in details */}
-                  <div className="space-y-4 border-t border-gray-800 pt-6">
-                    <h3 className="text-sm font-heading font-bold text-white uppercase tracking-wider">Step 3: Tell Us About Your Business</h3>
+                  <div className="space-y-4 pt-2">
+                    <h3 className="text-sm font-heading font-bold text-white uppercase tracking-wider">Step 3: Register for the Demo Session</h3>
                     
                     <div className="grid sm:grid-cols-2 gap-4">
                       {/* Name */}
@@ -966,11 +668,11 @@ export const MoringaLandingPage: React.FC = () => {
                     {isSubmitting ? (
                       <>
                         <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
-                        <span>Securing Slot...</span>
+                        <span>Registering...</span>
                       </>
                     ) : (
                       <>
-                        <span>Confirm and Book Demo Session</span>
+                        <span>Register for Open Demo</span>
                         <ArrowRight size={18} />
                       </>
                     )}
