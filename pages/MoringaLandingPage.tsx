@@ -65,13 +65,14 @@ export const MoringaLandingPage: React.FC = () => {
     });
 
     const leadData = {
-      source: 'Moringa ERP Landing Page',
+      type: 'MORINGA_DEMO',
+      timestamp: new Date().toISOString(),
       name: bookingName,
       email: bookingEmail,
       phone: bookingPhone,
-      company: bookingCompany || 'Moringa Farm/Business',
-      notes: `Requested Demo Registration for ${formattedDate} at 3:00 PM IST. Message: ${bookingNotes}`,
-      timestamp: new Date().toISOString()
+      company: bookingCompany || 'N/A',
+      demoDate: formattedDate,
+      notes: bookingNotes || 'N/A'
     };
 
     try {
