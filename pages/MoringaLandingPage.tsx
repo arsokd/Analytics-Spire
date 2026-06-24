@@ -113,7 +113,7 @@ export const MoringaLandingPage: React.FC = () => {
   };
 
   return (
-    <div className="bg-gray-950 min-h-screen text-gray-100 font-sans antialiased selection:bg-emerald-500 selection:text-white">
+    <div className="bg-gray-950 min-h-screen text-gray-100 font-oswald antialiased selection:bg-emerald-500 selection:text-white">
       
       {/* Top Standalone Header */}
       <header className="border-b border-gray-900 bg-gray-950/80 backdrop-blur sticky top-0 z-50">
@@ -124,20 +124,20 @@ export const MoringaLandingPage: React.FC = () => {
             </div>
             <div>
               <div className="flex items-center gap-2">
-                <span className="font-heading font-bold text-xl text-white tracking-tight">Moringa ERP</span>
-                <span className="bg-emerald-500/10 text-emerald-400 text-[10px] px-2 py-0.5 rounded font-bold uppercase tracking-wider border border-emerald-500/20">Made for India</span>
+                <span className="font-oswald font-bold text-2xl text-white tracking-tight">Moringa ERP</span>
+                <span className="bg-emerald-500/10 text-emerald-400 text-xs px-2 py-0.5 rounded font-bold uppercase tracking-wider border border-emerald-500/20">Made for India</span>
               </div>
-              <p className="text-xs text-gray-400">By Analytics Spire</p>
+              <p className="text-sm text-gray-400">By Analytics Spire</p>
             </div>
           </div>
           
           <div className="flex items-center gap-4">
-            <Link to="/" className="text-gray-400 hover:text-white text-sm font-medium transition-colors hidden sm:inline-flex items-center gap-1">
+            <Link to="/" className="text-gray-400 hover:text-white text-base font-semibold transition-colors hidden sm:inline-flex items-center gap-1">
               <ArrowLeft size={16} /> Main Website
             </Link>
             <a 
               href="#book-demo" 
-              className="px-4 py-2 bg-emerald-600 hover:bg-emerald-500 text-white text-sm font-bold rounded-lg transition-all shadow-md shadow-emerald-900/30"
+              className="px-4 py-2 bg-emerald-600 hover:bg-emerald-500 text-white text-base font-bold rounded-lg transition-all shadow-md shadow-emerald-900/30"
             >
               Register for Demo
             </a>
@@ -158,17 +158,17 @@ export const MoringaLandingPage: React.FC = () => {
             
             {/* Hero Left Content */}
             <div className="lg:col-span-7 space-y-8">
-              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-900/30 border border-emerald-500/20 text-emerald-400 text-xs font-bold uppercase tracking-wider">
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-900/30 border border-emerald-500/20 text-emerald-400 text-sm font-bold uppercase tracking-wider">
                 <Sparkles size={14} className="animate-pulse" />
                 <span>All-in-One Moringa Business Software</span>
               </div>
 
-              <h1 className="text-4xl sm:text-5xl md:text-6xl font-heading font-black text-white leading-tight tracking-tight">
+              <h1 className="text-5xl sm:text-6xl md:text-7xl font-oswald font-black text-white leading-tight tracking-tight">
                 Run your <span className="bg-gradient-to-r from-emerald-400 via-green-400 to-emerald-200 bg-clip-text text-transparent">Moringa</span> business <br className="hidden sm:block" />
-                <span className="font-light italic text-emerald-100">smarter.</span>
+                <span className="font-normal italic text-emerald-100">smarter.</span>
               </h1>
 
-              <p className="text-lg md:text-xl text-gray-300 font-light leading-relaxed max-w-2xl">
+              <p className="text-xl md:text-2xl text-gray-300 font-normal leading-relaxed max-w-2xl">
                 From seed to sale — manage farm operations, processing batches, quality checks, GST invoicing, payroll, and instant P&L reporting in a single, simple-to-use cloud & offline-capable app. Built specifically for India’s Moringa growers.
               </p>
 
@@ -183,8 +183,8 @@ export const MoringaLandingPage: React.FC = () => {
                   <div key={idx} className="flex gap-3 items-start bg-gray-900/50 p-4 rounded-xl border border-gray-800/80">
                     <CheckCircle2 className="text-emerald-500 w-5 h-5 flex-shrink-0 mt-0.5" />
                     <div>
-                      <h4 className="font-bold text-white text-sm">{usp.text}</h4>
-                      <p className="text-xs text-gray-400 mt-0.5">{usp.desc}</p>
+                      <h4 className="font-bold text-white text-base">{usp.text}</h4>
+                      <p className="text-sm text-gray-400 mt-0.5">{usp.desc}</p>
                     </div>
                   </div>
                 ))}
@@ -207,7 +207,7 @@ export const MoringaLandingPage: React.FC = () => {
               </div>
 
               {/* Bottom taglines */}
-              <div className="flex flex-wrap items-center gap-6 text-xs text-gray-400 font-mono">
+              <div className="flex flex-wrap items-center gap-6 text-sm text-gray-400 font-mono">
                 <span>⚡ Multi-Tenant</span>
                 <span>•</span>
                 <span>📱 Progressive Web App (PWA)</span>
@@ -229,35 +229,35 @@ export const MoringaLandingPage: React.FC = () => {
                     <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
                     <div className="w-3 h-3 rounded-full bg-green-500"></div>
                   </div>
-                  <span className="text-xs text-emerald-400 font-mono">moringa-erp.netlify.app</span>
+                  <span className="text-sm text-emerald-400 font-mono">moringa-erp.netlify.app</span>
                 </div>
 
                 {/* Simulated App Screen */}
                 <div className="space-y-4">
                   <div className="bg-gray-950 p-4 rounded-xl border border-gray-800">
                     <div className="flex justify-between items-center mb-3">
-                      <span className="text-xs text-gray-400 font-medium">FARM STATUS OVERVIEW</span>
-                      <span className="text-[10px] text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded font-mono">ONLINE</span>
+                      <span className="text-sm text-gray-400 font-semibold">FARM STATUS OVERVIEW</span>
+                      <span className="text-xs text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded font-mono">ONLINE</span>
                     </div>
                     <div className="grid grid-cols-3 gap-3">
                       <div className="bg-gray-900 p-2.5 rounded border border-gray-800 text-center">
-                        <div className="text-xs text-gray-400">Total Plots</div>
-                        <div className="text-lg font-bold text-white mt-1">30 Plots</div>
+                        <div className="text-sm text-gray-400">Total Plots</div>
+                        <div className="text-xl font-bold text-white mt-1">30 Plots</div>
                       </div>
                       <div className="bg-gray-900 p-2.5 rounded border border-gray-800 text-center">
-                        <div className="text-xs text-gray-400">Actively Sown</div>
-                        <div className="text-lg font-bold text-emerald-400 mt-1">82.5 Ac</div>
+                        <div className="text-sm text-gray-400">Actively Sown</div>
+                        <div className="text-xl font-bold text-emerald-400 mt-1">82.5 Ac</div>
                       </div>
                       <div className="bg-gray-900 p-2.5 rounded border border-gray-800 text-center">
-                        <div className="text-xs text-gray-400">Harvest Ready</div>
-                        <div className="text-lg font-bold text-yellow-500 mt-1">5 Plots</div>
+                        <div className="text-sm text-gray-400">Harvest Ready</div>
+                        <div className="text-xl font-bold text-yellow-500 mt-1">5 Plots</div>
                       </div>
                     </div>
                   </div>
 
                   {/* Feature list in hero right */}
                   <div className="space-y-3">
-                    <div className="flex justify-between items-center text-xs text-gray-400 px-1">
+                    <div className="flex justify-between items-center text-sm text-gray-400 px-1">
                       <span>KEY CAPABILITIES</span>
                       <span>STATUS</span>
                     </div>
@@ -268,16 +268,16 @@ export const MoringaLandingPage: React.FC = () => {
                         { title: "One-Click Tally XML Export", badge: "GST Ready" },
                         { title: "Role-Based Worker App", badge: "Offline Enabled" }
                       ].map((item, idx) => (
-                        <div key={idx} className="flex justify-between items-center p-3 text-sm">
-                          <span className="text-gray-200 font-medium">{item.title}</span>
-                          <span className="text-[10px] bg-emerald-500/10 text-emerald-400 font-semibold px-2 py-0.5 rounded border border-emerald-500/10">{item.badge}</span>
+                        <div key={idx} className="flex justify-between items-center p-3 text-base">
+                          <span className="text-gray-200 font-semibold">{item.title}</span>
+                          <span className="text-xs bg-emerald-500/10 text-emerald-400 font-semibold px-2 py-0.5 rounded border border-emerald-500/10">{item.badge}</span>
                         </div>
                       ))}
                     </div>
                   </div>
 
                   {/* Core Value Statement Quote */}
-                  <div className="bg-emerald-950/20 border border-emerald-900/30 p-4 rounded-xl text-xs text-emerald-300 leading-relaxed italic">
+                  <div className="bg-emerald-950/20 border border-emerald-900/30 p-4 rounded-xl text-sm text-emerald-300 leading-relaxed italic">
                     "Most Moringa farmers lose money not in the field — but in the paperwork. We close every gap from crop to cash."
                   </div>
                 </div>
@@ -292,8 +292,8 @@ export const MoringaLandingPage: React.FC = () => {
       {/* Target Audience / "Built For" Section */}
       <section className="py-16 bg-gray-950 border-t border-gray-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <p className="text-emerald-400 font-mono text-xs uppercase tracking-widest mb-3">Engineered for the Industry</p>
-          <h2 className="text-2xl sm:text-3xl font-heading font-extrabold text-white mb-10">Moringa ERP is Purpose-Built For:</h2>
+          <p className="text-emerald-400 font-mono text-sm uppercase tracking-widest mb-3">Engineered for the Industry</p>
+          <h2 className="text-3xl sm:text-4xl font-oswald font-extrabold text-white mb-10">Moringa ERP is Purpose-Built For:</h2>
           
           <div className="flex flex-wrap justify-center gap-3 max-w-5xl mx-auto">
             {[
@@ -306,7 +306,7 @@ export const MoringaLandingPage: React.FC = () => {
             ].map((audience, idx) => (
               <span 
                 key={idx} 
-                className="px-5 py-3 bg-gray-900 border border-gray-800 text-gray-200 font-medium rounded-xl text-sm flex items-center gap-2 hover:border-emerald-500/30 transition-colors"
+                className="px-5 py-3 bg-gray-900 border border-gray-800 text-gray-200 font-semibold rounded-xl text-base flex items-center gap-2 hover:border-emerald-500/30 transition-colors"
               >
                 <div className="w-2 h-2 rounded-full bg-emerald-500"></div>
                 {audience}
@@ -321,7 +321,7 @@ export const MoringaLandingPage: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <div className="text-center max-w-3xl mx-auto mb-14">
-            <h2 className="text-3xl sm:text-4xl font-heading font-extrabold text-white">Full-Suite Crop to Cash Control</h2>
+            <h2 className="text-4xl sm:text-5xl font-oswald font-extrabold text-white">Full-Suite Crop to Cash Control</h2>
             <p className="text-gray-400 mt-4 leading-relaxed">
               Moringa ERP covers 20+ specialized modules. We don't believe in generic paddy or sugarcane templates. Everything inside is fine-tuned to the unique metrics of Moringa.
             </p>
@@ -332,19 +332,19 @@ export const MoringaLandingPage: React.FC = () => {
             <div className="inline-flex p-1 bg-gray-900 rounded-xl border border-gray-800 gap-1">
               <button 
                 onClick={() => setActiveTab('farm')}
-                className={`px-5 py-2.5 rounded-lg text-sm font-bold transition-all ${activeTab === 'farm' ? 'bg-emerald-600 text-white shadow-md' : 'text-gray-400 hover:text-white'}`}
+                className={`px-5 py-2.5 rounded-lg text-base font-bold transition-all ${activeTab === 'farm' ? 'bg-emerald-600 text-white shadow-md' : 'text-gray-400 hover:text-white'}`}
               >
                 🌾 Farm & Field Operations
               </button>
               <button 
                 onClick={() => setActiveTab('finance')}
-                className={`px-5 py-2.5 rounded-lg text-sm font-bold transition-all ${activeTab === 'finance' ? 'bg-emerald-600 text-white shadow-md' : 'text-gray-400 hover:text-white'}`}
+                className={`px-5 py-2.5 rounded-lg text-base font-bold transition-all ${activeTab === 'finance' ? 'bg-emerald-600 text-white shadow-md' : 'text-gray-400 hover:text-white'}`}
               >
                 💼 Sales, Finance & Compliance
               </button>
               <button 
                 onClick={() => setActiveTab('unique')}
-                className={`px-5 py-2.5 rounded-lg text-sm font-bold transition-all ${activeTab === 'unique' ? 'bg-emerald-600 text-white shadow-md' : 'text-gray-400 hover:text-white'}`}
+                className={`px-5 py-2.5 rounded-lg text-base font-bold transition-all ${activeTab === 'unique' ? 'bg-emerald-600 text-white shadow-md' : 'text-gray-400 hover:text-white'}`}
               >
                 ⭐ Why Moringa ERP?
               </button>
@@ -366,8 +366,8 @@ export const MoringaLandingPage: React.FC = () => {
                   <div className="w-12 h-12 bg-emerald-500/10 rounded-xl flex items-center justify-center border border-emerald-500/20 mb-5">
                     {item.icon}
                   </div>
-                  <h3 className="text-lg font-bold text-white mb-2">{item.title}</h3>
-                  <p className="text-sm text-gray-400 leading-relaxed">{item.desc}</p>
+                  <h3 className="text-xl font-bold text-white mb-2">{item.title}</h3>
+                  <p className="text-base text-gray-400 leading-relaxed">{item.desc}</p>
                 </div>
               ))}
             </div>
@@ -388,8 +388,8 @@ export const MoringaLandingPage: React.FC = () => {
                   <div className="w-12 h-12 bg-emerald-500/10 rounded-xl flex items-center justify-center border border-emerald-500/20 mb-5">
                     {item.icon}
                   </div>
-                  <h3 className="text-lg font-bold text-white mb-2">{item.title}</h3>
-                  <p className="text-sm text-gray-400 leading-relaxed">{item.desc}</p>
+                  <h3 className="text-xl font-bold text-white mb-2">{item.title}</h3>
+                  <p className="text-base text-gray-400 leading-relaxed">{item.desc}</p>
                 </div>
               ))}
             </div>
@@ -409,8 +409,8 @@ export const MoringaLandingPage: React.FC = () => {
                     {idx + 1}
                   </div>
                   <div>
-                    <h3 className="text-lg font-bold text-white mb-2">{item.title}</h3>
-                    <p className="text-sm text-gray-400 leading-relaxed">{item.desc}</p>
+                    <h3 className="text-xl font-bold text-white mb-2">{item.title}</h3>
+                    <p className="text-base text-gray-400 leading-relaxed">{item.desc}</p>
                   </div>
                 </div>
               ))}
@@ -423,7 +423,7 @@ export const MoringaLandingPage: React.FC = () => {
       {/* Mid-page Demo CTA Banner */}
       <section className="py-16 bg-emerald-950/20 border-t border-emerald-900/30">
         <div className="max-w-4xl mx-auto px-4 text-center">
-          <h2 className="text-3xl font-heading font-extrabold text-white mb-4">
+          <h2 className="text-4xl font-oswald font-extrabold text-white mb-4">
             Stop Guessing. Start Seeing.
           </h2>
           <p className="text-gray-300 mb-8 max-w-2xl mx-auto leading-relaxed">
@@ -448,8 +448,8 @@ export const MoringaLandingPage: React.FC = () => {
             {/* Booking Left: Information */}
             <div className="lg:col-span-5 space-y-8">
               <div className="space-y-4">
-                <p className="text-emerald-400 font-mono text-xs uppercase tracking-widest">Get Started Live</p>
-                <h2 className="text-3xl sm:text-4xl font-heading font-extrabold text-white leading-tight">
+                <p className="text-emerald-400 font-mono text-sm uppercase tracking-widest">Get Started Live</p>
+                <h2 className="text-4xl sm:text-5xl font-oswald font-extrabold text-white leading-tight">
                   Register for a Free Live Demo Session
                 </h2>
                 <p className="text-gray-400 leading-relaxed">
@@ -459,18 +459,18 @@ export const MoringaLandingPage: React.FC = () => {
 
               {/* Direct owner details */}
               <div className="space-y-4 bg-gray-900 border border-gray-800 p-6 rounded-2xl">
-                <h3 className="font-bold text-white text-sm">Demo Organizer Contact:</h3>
+                <h3 className="font-bold text-white text-base">Demo Organizer Contact:</h3>
                 
                 <div className="space-y-3">
-                  <div className="flex items-center gap-3 text-sm text-gray-300">
+                  <div className="flex items-center gap-3 text-base text-gray-300">
                     <Mail size={16} className="text-emerald-500" />
                     <span>ars.okd@gmail.com</span>
                   </div>
-                  <div className="flex items-center gap-3 text-sm text-gray-300">
+                  <div className="flex items-center gap-3 text-base text-gray-300">
                     <Laptop size={16} className="text-emerald-500" />
                     <span>moringa-erp.netlify.app</span>
                   </div>
-                  <div className="flex items-center gap-3 text-sm text-gray-300">
+                  <div className="flex items-center gap-3 text-base text-gray-300">
                     <MapPin size={16} className="text-emerald-500" />
                     <span>Chennai, India (MSME Coaching Expert)</span>
                   </div>
@@ -480,7 +480,7 @@ export const MoringaLandingPage: React.FC = () => {
                   <div className="w-10 h-10 rounded-full bg-emerald-600/10 flex items-center justify-center flex-shrink-0 text-emerald-400">
                     <Info size={18} />
                   </div>
-                  <p className="text-xs text-gray-400 leading-relaxed">
+                  <p className="text-sm text-gray-400 leading-relaxed">
                     Once registered, your schedule is securely written to our spreadsheet database, and we'll instantly generate an calendar invite link for you.
                   </p>
                 </div>
@@ -498,15 +498,15 @@ export const MoringaLandingPage: React.FC = () => {
                   </div>
                   
                   <div className="space-y-2">
-                    <h3 className="text-2xl font-heading font-bold text-white">Registration Successful!</h3>
-                    <p className="text-gray-400 max-w-md mx-auto text-sm leading-relaxed">
+                    <h3 className="text-3xl font-oswald font-bold text-white">Registration Successful!</h3>
+                    <p className="text-gray-400 max-w-md mx-auto text-base leading-relaxed">
                       Thank you, <strong className="text-white">{bookingName}</strong>. You have successfully registered for the open demo session on <strong className="text-emerald-400">{selectedDate?.toLocaleDateString('en-IN', { weekday: 'long', month: 'long', day: 'numeric' })}</strong>. A calendar invite with the meeting link will be sent to your email shortly.
                     </p>
                   </div>
 
                   {/* Add to Google Calendar Action Button */}
                   <div className="bg-gray-950 p-6 rounded-2xl border border-gray-800/80 max-w-md mx-auto space-y-4">
-                    <p className="text-xs text-gray-400 leading-relaxed">
+                    <p className="text-sm text-gray-400 leading-relaxed">
                       Click the button below to instantly populate this event directly in your personal Google Calendar and send an invitation to <strong className="text-white">ars.okd@gmail.com</strong>.
                     </p>
                     
@@ -514,7 +514,7 @@ export const MoringaLandingPage: React.FC = () => {
                       href={getGoogleCalendarLink()}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2.5 px-6 py-3.5 bg-white hover:bg-gray-100 text-black font-black text-sm rounded-xl transition-all shadow-md"
+                      className="inline-flex items-center gap-2.5 px-6 py-3.5 bg-white hover:bg-gray-100 text-black font-black text-base rounded-xl transition-all shadow-md"
                     >
                       <CalendarIcon size={18} className="text-emerald-600" />
                       Add to Google Calendar
@@ -531,7 +531,7 @@ export const MoringaLandingPage: React.FC = () => {
                       setBookingCompany('');
                       setBookingNotes('');
                     }}
-                    className="text-sm text-emerald-400 hover:text-emerald-300 font-bold transition-colors"
+                    className="text-base text-emerald-400 hover:text-emerald-300 font-bold transition-colors"
                   >
                     ← Register another participant
                   </button>
@@ -541,7 +541,7 @@ export const MoringaLandingPage: React.FC = () => {
                 <form onSubmit={handleBookingSubmit} className="space-y-6">
                   
                   {errorMsg && (
-                    <div className="p-3 bg-red-950/20 border border-red-900/50 text-red-400 rounded-lg text-xs flex gap-2 items-start">
+                    <div className="p-3 bg-red-950/20 border border-red-900/50 text-red-400 rounded-lg text-sm flex gap-2 items-start">
                       <AlertTriangle className="flex-shrink-0 mt-0.5" size={14} />
                       <span>{errorMsg}</span>
                     </div>
@@ -549,7 +549,7 @@ export const MoringaLandingPage: React.FC = () => {
 
                   {/* Step 1: Select Date */}
                   <div className="space-y-3">
-                    <label className="block text-xs text-gray-400 font-mono uppercase tracking-wider">Step 1: Select a Tuesday (English), Thursday (Tamil), or Saturday (Hindi)</label>
+                    <label className="block text-sm text-gray-400 font-mono uppercase tracking-wider">Step 1: Select a Tuesday (English), Thursday (Tamil), or Saturday (Hindi)</label>
                     <div className="grid grid-cols-3 sm:grid-cols-4 gap-2">
                       {availableDates.map((date, idx) => {
                         const isSelected = selectedDate?.toDateString() === date.toDateString();
@@ -577,16 +577,16 @@ export const MoringaLandingPage: React.FC = () => {
                             }}
                             className={`p-3 rounded-xl border text-center transition-all flex flex-col items-center justify-center ${isSelected ? 'bg-emerald-600 border-emerald-500 text-white font-bold shadow-lg scale-105' : 'bg-gray-950 border-gray-800 text-gray-300 hover:border-gray-600 hover:bg-gray-900'}`}
                           >
-                            <div className={`text-xs font-mono uppercase ${isSelected ? 'text-emerald-100' : 'text-gray-400'}`}>
+                            <div className={`text-sm font-mono uppercase ${isSelected ? 'text-emerald-100' : 'text-gray-400'}`}>
                               {date.toLocaleDateString('en-IN', { weekday: 'short' })}
                             </div>
-                            <div className="text-2xl font-extrabold mt-0.5">
+                            <div className="text-3xl font-extrabold mt-0.5">
                               {date.getDate()}
                             </div>
-                            <div className={`text-[11px] mt-0.5 uppercase tracking-wider font-semibold ${isSelected ? 'text-emerald-100' : 'text-gray-500'}`}>
+                            <div className={`text-xs mt-0.5 uppercase tracking-wider font-semibold ${isSelected ? 'text-emerald-100' : 'text-gray-500'}`}>
                               {date.toLocaleDateString('en-IN', { month: 'short' })}
                             </div>
-                            <div className={`mt-2 px-2.5 py-1 rounded-md text-[10px] font-bold uppercase tracking-widest w-full text-center ${langColorClass}`}>
+                            <div className={`mt-2 px-2.5 py-1 rounded-md text-xs font-bold uppercase tracking-widest w-full text-center ${langColorClass}`}>
                               {language}
                             </div>
                           </button>
@@ -597,10 +597,10 @@ export const MoringaLandingPage: React.FC = () => {
 
                   {/* Step 2: Time Slot */}
                   <div className="space-y-3">
-                    <label className="block text-xs text-gray-400 font-mono uppercase tracking-wider">
+                    <label className="block text-sm text-gray-400 font-mono uppercase tracking-wider">
                       Step 2: Time Slot (IST)
                     </label>
-                    <div className="p-4 bg-gray-950 border border-emerald-900/50 rounded-xl text-center text-sm text-emerald-400 font-bold flex justify-center items-center gap-2">
+                    <div className="p-4 bg-gray-950 border border-emerald-900/50 rounded-xl text-center text-base text-emerald-400 font-bold flex justify-center items-center gap-2">
                       <Clock size={16} />
                       3:00 PM - 4:00 PM
                     </div>
@@ -608,70 +608,70 @@ export const MoringaLandingPage: React.FC = () => {
 
                   {/* Step 3: Fill in details */}
                   <div className="space-y-4 pt-2">
-                    <h3 className="text-sm font-heading font-bold text-white uppercase tracking-wider">Step 3: Register for the Demo Session</h3>
+                    <h3 className="text-base font-oswald font-bold text-white uppercase tracking-wider">Step 3: Register for the Demo Session</h3>
                     
                     <div className="grid sm:grid-cols-2 gap-4">
                       {/* Name */}
                       <div className="space-y-1">
-                        <label className="block text-xs text-gray-400 font-medium">Your Name *</label>
+                        <label className="block text-sm text-gray-400 font-semibold">Your Name *</label>
                         <input 
                           type="text" 
                           required
                           value={bookingName}
                           onChange={(e) => setBookingName(e.target.value)}
                           placeholder="Anand Rengasamy"
-                          className="w-full px-4 py-2.5 bg-gray-950 border border-gray-800 rounded-lg text-sm text-gray-100 placeholder-gray-600 focus:border-emerald-500 focus:outline-none transition-colors"
+                          className="w-full px-4 py-2.5 bg-gray-950 border border-gray-800 rounded-lg text-base text-gray-100 placeholder-gray-600 focus:border-emerald-500 focus:outline-none transition-colors"
                         />
                       </div>
                       
                       {/* Company */}
                       <div className="space-y-1">
-                        <label className="block text-xs text-gray-400 font-medium">Farm / Business Name</label>
+                        <label className="block text-sm text-gray-400 font-semibold">Farm / Business Name</label>
                         <input 
                           type="text" 
                           value={bookingCompany}
                           onChange={(e) => setBookingCompany(e.target.value)}
                           placeholder="Moringa Agri Farms"
-                          className="w-full px-4 py-2.5 bg-gray-950 border border-gray-800 rounded-lg text-sm text-gray-100 placeholder-gray-600 focus:border-emerald-500 focus:outline-none transition-colors"
+                          className="w-full px-4 py-2.5 bg-gray-950 border border-gray-800 rounded-lg text-base text-gray-100 placeholder-gray-600 focus:border-emerald-500 focus:outline-none transition-colors"
                         />
                       </div>
 
                       {/* Email */}
                       <div className="space-y-1">
-                        <label className="block text-xs text-gray-400 font-medium">Email Address *</label>
+                        <label className="block text-sm text-gray-400 font-semibold">Email Address *</label>
                         <input 
                           type="email" 
                           required
                           value={bookingEmail}
                           onChange={(e) => setBookingEmail(e.target.value)}
                           placeholder="owner@myfarm.com"
-                          className="w-full px-4 py-2.5 bg-gray-950 border border-gray-800 rounded-lg text-sm text-gray-100 placeholder-gray-600 focus:border-emerald-500 focus:outline-none transition-colors"
+                          className="w-full px-4 py-2.5 bg-gray-950 border border-gray-800 rounded-lg text-base text-gray-100 placeholder-gray-600 focus:border-emerald-500 focus:outline-none transition-colors"
                         />
                       </div>
 
                       {/* Phone */}
                       <div className="space-y-1">
-                        <label className="block text-xs text-gray-400 font-medium">Phone Number *</label>
+                        <label className="block text-sm text-gray-400 font-semibold">Phone Number *</label>
                         <input 
                           type="tel" 
                           required
                           value={bookingPhone}
                           onChange={(e) => setBookingPhone(e.target.value)}
                           placeholder="+91 98765 43210"
-                          className="w-full px-4 py-2.5 bg-gray-950 border border-gray-800 rounded-lg text-sm text-gray-100 placeholder-gray-600 focus:border-emerald-500 focus:outline-none transition-colors"
+                          className="w-full px-4 py-2.5 bg-gray-950 border border-gray-800 rounded-lg text-base text-gray-100 placeholder-gray-600 focus:border-emerald-500 focus:outline-none transition-colors"
                         />
                       </div>
                     </div>
 
                     {/* Custom Notes */}
                     <div className="space-y-1">
-                      <label className="block text-xs text-gray-400 font-medium">What specific challenges or crops do you want to show on the demo?</label>
+                      <label className="block text-sm text-gray-400 font-semibold">What specific challenges or crops do you want to show on the demo?</label>
                       <textarea 
                         rows={3}
                         value={bookingNotes}
                         onChange={(e) => setBookingNotes(e.target.value)}
                         placeholder="e.g. tracking moisture level at QC, exporter compliance, tally bookkeeping, etc..."
-                        className="w-full px-4 py-2.5 bg-gray-950 border border-gray-800 rounded-lg text-sm text-gray-100 placeholder-gray-600 focus:border-emerald-500 focus:outline-none transition-colors resize-none"
+                        className="w-full px-4 py-2.5 bg-gray-950 border border-gray-800 rounded-lg text-base text-gray-100 placeholder-gray-600 focus:border-emerald-500 focus:outline-none transition-colors resize-none"
                       />
                     </div>
                   </div>
@@ -695,7 +695,7 @@ export const MoringaLandingPage: React.FC = () => {
                     )}
                   </button>
 
-                  <p className="text-[10px] text-gray-500 text-center">
+                  <p className="text-xs text-gray-500 text-center">
                     By submitting, your details will be recorded in the Google Sheets CRM securely.
                   </p>
                 </form>
@@ -710,16 +710,16 @@ export const MoringaLandingPage: React.FC = () => {
       {/* Footer Quote banner */}
       <section className="bg-emerald-950/20 py-16 border-t border-gray-900">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
-          <p className="text-lg sm:text-xl text-emerald-300 italic font-medium">
+          <p className="text-xl sm:text-2xl text-emerald-300 italic font-semibold">
             "Your farm manager logs field expenses from the field. Your accountant sees the full P&L from the office. Your buyer gets a GST invoice with a QC report attached. Everyone gets exactly what they need — nothing more, nothing less."
           </p>
           <div className="w-12 h-0.5 bg-emerald-500 mx-auto"></div>
-          <p className="text-xs text-gray-400 font-mono">Led by Anand Rengasamy • Analytics Spire Partner</p>
+          <p className="text-sm text-gray-400 font-mono">Led by Anand Rengasamy • Analytics Spire Partner</p>
         </div>
       </section>
 
       {/* Copyright Footer */}
-      <footer className="bg-gray-950 border-t border-gray-900 py-8 text-center text-xs text-gray-500">
+      <footer className="bg-gray-950 border-t border-gray-900 py-8 text-center text-sm text-gray-500">
         <div className="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row justify-between items-center gap-4">
           <p>© 2026 Analytics Spire. All Rights Reserved.</p>
           <div className="flex gap-4">
