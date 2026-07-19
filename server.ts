@@ -134,7 +134,136 @@ async function startServer() {
       description: 'Make secure payments for your MSME business consulting, coaching sessions, or specialized training programs with Analytics Spire.',
       h1: 'Secure payment for consulting and training',
       content: 'Pay for your consulting services securely via Razorpay. Choose a service or enter a custom amount.'
+    },
+    '/webinar': {
+      title: 'MSME Business Growth Webinar Masterclass | Analytics Spire',
+      description: 'Is your business running you or are you running your business? Register for our exclusive 1.5-hour masterclass for Indian MSMEs for just ₹99.',
+      h1: 'Is Your Business Running You, or Are You Running Your Business?',
+      content: 'Transform your MSME from daily chaos and cash flow stress into a predictable, scalable, and system-driven machine. Learn the exact framework to step out of daily operations.'
+    },
+    '/moringa': {
+      title: 'Moringa ERP Business Management Software | Analytics Spire',
+      description: 'Run your Moringa farming, quality control, invoicing, accounting, and export business smarter with our dedicated Moringa ERP custom solution.',
+      h1: 'All-in-One Moringa Business Management Software',
+      content: 'Run your Moringa business smarter. Custom business tools to track crops, maintain strict QC checklists, and view real-time IFRS profit & loss statements.'
     }
+  };
+
+  const organizationSchema = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Analytics Spire",
+    "alternateName": "Anand Rengasamy Business Consulting & Automation",
+    "url": "https://www.analyticsspire.com",
+    "logo": "https://ui-avatars.com/api/?name=Analytics+Spire&background=0284c7&color=fff&bold=true&size=512",
+    "description": "Analytics Spire helps Indian MSMEs cut costs and scale with data-driven consulting and AI automation. Led by Anand Rengasamy.",
+    "founder": {
+      "@type": "Person",
+      "name": "Anand Rengasamy",
+      "jobTitle": "Founder & Principal Consultant",
+      "alumniOf": "BITS Pilani"
+    },
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Chennai",
+      "addressRegion": "Tamil Nadu",
+      "addressCountry": "IN"
+    },
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "+91-9000000000",
+      "contactType": "customer service",
+      "areaServed": "IN",
+      "availableLanguage": ["en", "ta"]
+    },
+    "sameAs": [
+      "https://www.linkedin.com/in/anandrengasamy",
+      "https://twitter.com/analyticsspire"
+    ]
+  };
+
+  const serviceSchema = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "serviceType": "MSME Business Consulting and Automation",
+    "provider": {
+      "@type": "Organization",
+      "name": "Analytics Spire",
+      "url": "https://www.analyticsspire.com"
+    },
+    "areaServed": {
+      "@type": "Country",
+      "name": "IN"
+    },
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "MSME Automation & Consulting Catalog",
+      "itemListElement": [
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Business Automation & CRM Setup",
+            "description": "No-code/low-code customized CRM setups, automatic lead capture, and tele-calling cloud integration."
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Business Analytics & Dashboards",
+            "description": "Dynamic, interactive Google Looker Studio or Power BI dashboard development for operational and financial analytics."
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Inventory & Supply Chain Optimization",
+            "description": "Automated reorder triggers, scrap logs, and real-time stock levels tracking."
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Finance & Payroll Management",
+            "description": "Budgeting, planning, automated biometric/GPS attendance logs, and statutory PF/ESIC payroll systems."
+          }
+        }
+      ]
+    }
+  };
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How can Analytics Spire help my MSME reduce costs?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "We audit your manual workflows, find process bottlenecks and operational scrap, and implement low-cost no-code automated pipelines that optimize your inventory, supply chain, and employee hours."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can we integrate our existing Tele-CRM with our website?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes! We build customized API bridges and cloud code triggers that connect landing pages and Meta Lead Ads directly to your Tele-CRM, distributing leads instantly."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What industries does Anand Rengasamy serve?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Anand has extensive consulting and engineering leadership experience across automotive, agri-tech, manufacturing, retail trading, and digital service MSMEs across India."
+        }
+      }
+    ]
   };
 
   // Setup Vite development server or production static serving
@@ -156,14 +285,62 @@ async function startServer() {
       if (fs.existsSync(indexPath)) {
         let html = fs.readFileSync(indexPath, 'utf-8');
         
-        // Dynamic Meta replacement for SEO bots
+        // Dynamic Meta replacement for SEO bots (highly robust regex patterns)
         html = html.replace(
-          /<title>.*?<\/title>/,
+          /<title>[^]*?<\/title>/i,
           `<title>${metadata.title}</title>`
         );
         html = html.replace(
-          /<meta name="description" content=".*?" \/>/,
+          /<meta\s+name=["']description["']\s+content=["'][^]*?["']\s*\/?>/i,
           `<meta name="description" content="${metadata.description}" />`
+        );
+        
+        // Dynamic Canonical Tag injection
+        const canonicalUrl = `https://www.analyticsspire.com${requestPath === '/' ? '' : requestPath}`;
+        const canonicalTag = `<link rel="canonical" href="${canonicalUrl}" />`;
+        
+        // Dynamic JSON-LD Structured Data selection and injection
+        let schemaToInject: any = organizationSchema;
+        if (requestPath.includes('/services')) {
+          schemaToInject = serviceSchema;
+        } else if (requestPath === '/' || requestPath === '') {
+          // Home page gets Organization & FAQ
+          schemaToInject = [organizationSchema, faqSchema];
+        } else {
+          // Generate Breadcrumb List
+          const pathParts = requestPath.split('/').filter(Boolean);
+          const breadcrumbList = [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://www.analyticsspire.com"
+            }
+          ];
+          pathParts.forEach((part, index) => {
+            const pageName = part.charAt(0).toUpperCase() + part.slice(1);
+            breadcrumbList.push({
+              "@type": "ListItem",
+              "position": index + 2,
+              "name": pageName,
+              "item": `https://www.analyticsspire.com/${pathParts.slice(0, index + 1).join('/')}`
+            });
+          });
+          schemaToInject = {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": breadcrumbList
+          };
+        }
+        
+        const schemaString = Array.isArray(schemaToInject)
+          ? schemaToInject.map(s => `<script type="application/ld+json">${JSON.stringify(s)}</script>`).join('\n')
+          : `<script type="application/ld+json">${JSON.stringify(schemaToInject)}</script>`;
+
+        // Inject inside the head
+        html = html.replace(
+          '</head>',
+          `  ${canonicalTag}\n  ${schemaString}\n</head>`
         );
         
         // Inject pre-rendered semantic HTML fallback inside #root for crawlers to pick up immediately
@@ -179,7 +356,9 @@ async function startServer() {
               <a href="/media">Media</a> | 
               <a href="/events">Events</a> | 
               <a href="/contact">Contact</a> | 
-              <a href="/payment">Payment</a>
+              <a href="/payment">Payment</a> |
+              <a href="/webinar">Webinar Masterclass</a> |
+              <a href="/moringa">Moringa ERP</a>
             </nav>
           </div>
         `;
