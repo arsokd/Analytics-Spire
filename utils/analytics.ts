@@ -3,7 +3,7 @@
  * Replace 'G-XXXXXXXXXX' in index.html with your actual GA4 Measurement ID.
  */
 
-export const GA_MEASUREMENT_ID = 'G-XXXXXXXXXX';
+export const GA_MEASUREMENT_ID = 'G-H2R4LRTCKP';
 
 // Helper to check if gtag is loaded
 const isGtagAvailable = (): boolean => {

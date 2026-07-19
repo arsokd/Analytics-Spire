@@ -66,7 +66,7 @@ export const ContactPage: React.FC = () => {
     setIsSubmitting(false);
 
     if (success) {
-      trackEvent('contact_form_submission', {
+      trackEvent('contact_form_submit', {
         businessCategory: formData.businessCategory,
         employeeCount: formData.employeeCount,
         turnover: formData.turnover

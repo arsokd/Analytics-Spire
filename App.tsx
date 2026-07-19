@@ -27,7 +27,15 @@ const AppContent: React.FC = () => {
     
     // Explicit event for payment page visits
     if (location.pathname === '/payment') {
-      trackEvent('payment_page_visit', {
+      trackEvent('payment_page_view', {
+        referrer: document.referrer || 'direct'
+      });
+    }
+
+    // Explicit event for webinar page visits
+    if (location.pathname === '/webinar') {
+      trackEvent('webinar_click', {
+        trigger: 'page_view',
         referrer: document.referrer || 'direct'
       });
     }
@@ -58,7 +66,7 @@ const AppContent: React.FC = () => {
         href="https://wa.me/917200072302"
         target="_blank"
         rel="noopener noreferrer"
-        onClick={() => trackEvent('whatsapp_chat_click', { destination: '917200072302' })}
+        onClick={() => trackEvent('whatsapp_click', { destination: '917200072302' })}
         className="fixed bottom-6 right-6 z-50 flex items-center justify-center bg-[#25D366] hover:bg-[#20ba5a] text-white p-4 rounded-full shadow-[0_4px_14px_rgba(37,211,102,0.4)] hover:shadow-[0_6px_20px_rgba(37,211,102,0.6)] transition-all duration-300 hover:scale-110 active:scale-95 group"
         aria-label="Chat with us on WhatsApp"
       >

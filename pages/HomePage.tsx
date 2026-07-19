@@ -62,7 +62,7 @@ export const HomePage: React.FC = () => {
                   href="https://anandrengasamy.graphy.com/sessions"
                   target="_blank"
                   rel="noopener noreferrer"
-                  onClick={() => trackEvent('webinar_registration_click', { position: 'hero_home' })}
+                  onClick={() => trackEvent('webinar_click', { position: 'hero_home' })}
                   className="group flex items-center gap-4 bg-brand-600 hover:bg-brand-500 text-white px-8 py-4 rounded-sm font-bold text-lg transition-all shadow-[0_0_20px_rgba(2,132,199,0.3)] hover:shadow-[0_0_30px_rgba(2,132,199,0.5)]"
                 >
                   <Video size={24} />
