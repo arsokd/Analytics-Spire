@@ -51,7 +51,8 @@ export const DEFAULT_SITE_DATA: SiteData = {
 const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwZ6VMQ9pE3xL27G3lfGekMtTi63I8rlUDr09l1LnzFq0yyhAuqP9qcQ1idh-s9pTUh/exec';
 
 // YOUR PUBLISHED GOOGLE SHEET CSV URL (Fallback)
-const GOOGLE_SHEET_CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTZjboQWYPOi8yo_eQdgvYZRgcJvbzA_tRS4Um4yFuB1447qLFmHe6WX71CwBRtJj84ZEAfeX__T8gm/pub?output=csv';
+// User Google Sheet: https://docs.google.com/spreadsheets/d/1h6QysYNFFQFINXIr4rhM_IswYs050FmpPp9ErhUDgQM/edit?gid=1070647635#gid=1070647635
+const GOOGLE_SHEET_CSV_URL = 'https://docs.google.com/spreadsheets/d/1h6QysYNFFQFINXIr4rhM_IswYs050FmpPp9ErhUDgQM/export?format=csv';
 
 /**
  * Helper to fetch CSV data from your Google Sheet (Fallback method)

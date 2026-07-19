@@ -10,12 +10,12 @@ import Papa from 'papaparse';
 // 6. Select "Entire Document" and "Comma-separated values (.csv)"
 // 7. Copy the link and paste it below in GOOGLE_SHEET_CSV_URL
 
-const GOOGLE_SHEET_CSV_URL = 'YOUR_GOOGLE_SHEET_CSV_URL_HERE';
+const GOOGLE_SHEET_CSV_URL = 'https://docs.google.com/spreadsheets/d/1h6QysYNFFQFINXIr4rhM_IswYs050FmpPp9ErhUDgQM/export?format=csv';
 
 export const fetchSheetData = async (tabName: string) => {
   try {
     // If no URL is provided, return null to use local constants
-    if (GOOGLE_SHEET_CSV_URL === 'YOUR_GOOGLE_SHEET_CSV_URL_HERE') {
+    if (!GOOGLE_SHEET_CSV_URL) {
       return null;
     }
 
