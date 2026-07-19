@@ -12,6 +12,7 @@ import { MediaPage } from './pages/MediaPage';
 import { PaymentPage } from './pages/PaymentPage';
 import { WebinarLandingPage } from './pages/WebinarLandingPage';
 import { MoringaLandingPage } from './pages/MoringaLandingPage';
+import { BlogPage } from './pages/BlogPage';
 import { DataProvider } from './context/DataContext';
 
 const AppContent: React.FC = () => {
@@ -32,6 +33,7 @@ const AppContent: React.FC = () => {
           <Route path="/payment" element={<PaymentPage />} />
           <Route path="/webinar" element={<WebinarLandingPage />} />
           <Route path="/moringa" element={<MoringaLandingPage />} />
+          <Route path="/blog" element={<BlogPage />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </main>

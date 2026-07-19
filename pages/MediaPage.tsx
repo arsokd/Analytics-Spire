@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { Play, Mic, MonitorPlay } from 'lucide-react';
 import { useData } from '../context/DataContext';
+import { SEO } from '../components/SEO';
 
 export const MediaPage: React.FC = () => {
   const { data } = useData();
@@ -21,12 +22,19 @@ export const MediaPage: React.FC = () => {
 
   return (
     <div className="bg-black min-h-screen text-white font-sans pb-24">
+      <SEO 
+        title="MSME Training & Business Podcasts | Analytics Spire"
+        description="Watch and listen to expert business training videos, financial literacy workshops, and small business growth podcasts by Anand Rengasamy."
+        keywords="MSME Training, Business Podcasts, Anand Rengasamy, Analytics Spire, Financial Literacy"
+        url="https://www.analyticsspire.com/media"
+        schemaType="Breadcrumb"
+      />
       {/* Header */}
       <div className="relative pt-32 pb-20 border-b border-gray-900 bg-gray-950">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
            <h2 className="text-brand-500 font-bold tracking-widest uppercase text-sm mb-4">Knowledge Hub</h2>
-           <h1 className="font-heading text-5xl md:text-7xl font-bold text-white mb-6">
-             Watch & Listen
+           <h1 className="font-heading text-4xl md:text-6xl font-bold text-white mb-6">
+             MSME training videos and business podcasts
            </h1>
            <p className="text-xl text-gray-400 max-w-2xl mx-auto font-light">
              Expert insights on business transformation, financial literacy, and AI adoption.

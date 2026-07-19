@@ -14,9 +14,11 @@ export const HomePage: React.FC = () => {
   return (
     <div className="flex flex-col bg-black text-white font-sans">
       <SEO 
-        title="MSME Business Consulting & Coaching India | Turn Business into Growth Machine"
-        description="Analytics Spire led by Anand Rengasamy provides business coaching, consultancy, and automation for MSMEs. Scale your business with data-driven innovation."
-        keywords="MSME Business Consultant India, Business Coach Chennai, Automation for Small Business, Anand Rengasamy, Analytics Spire"
+        title="MSME Business Consultant & Automation Expert | Analytics Spire"
+        description="Analytics Spire helps Indian MSMEs cut costs and scale with data-driven consulting and AI automation. Led by Anand Rengasamy. Book a free consultation."
+        keywords="MSME Business Consultant India, Business Coach Chennai, Automation for Small Business, Anand Rengasamy, Analytics Spire, Low Code CRM"
+        url="https://www.analyticsspire.com"
+        schemaType="Organization"
       />
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center pt-20 overflow-hidden bg-[#030712]">
@@ -31,10 +33,11 @@ export const HomePage: React.FC = () => {
             {/* Vertical Line and Content Wrapper */}
             <div className="border-l-[3px] border-brand-500 pl-8 md:pl-12 py-4">
               <div className="mb-8">
-                <h1 className="text-4xl md:text-6xl font-black text-white tracking-tighter uppercase leading-none">
-                  Analytics Spire
+                <span className="text-lg md:text-xl font-bold text-brand-500 uppercase tracking-widest block mb-2">Analytics Spire</span>
+                <h1 className="text-4xl md:text-6xl font-black text-white tracking-tighter uppercase leading-tight">
+                  Business consulting and automation for MSMEs across India
                 </h1>
-                <p className="bg-gradient-to-r from-amber-400 to-yellow-200 bg-clip-text text-transparent font-extrabold text-3xl md:text-5xl mt-6 tracking-tight uppercase">
+                <p className="bg-gradient-to-r from-amber-400 to-yellow-200 bg-clip-text text-transparent font-extrabold text-2xl md:text-3xl mt-4 tracking-tight uppercase">
                   Turn your Business into Growth Machine
                 </p>
               </div>
@@ -181,9 +184,10 @@ export const HomePage: React.FC = () => {
                   <div className="aspect-video overflow-hidden rounded-sm mb-6">
                     <img 
                       src={event.imageUrl} 
-                      alt={event.title}
+                      alt={`${event.title} - MSME training event by Analytics Spire`}
                       width={800}
                       height={450}
+                      loading="lazy"
                       className="w-full h-full object-cover transform group-hover:scale-105 transition duration-700 filter grayscale group-hover:grayscale-0"
                       referrerPolicy="no-referrer"
                     />

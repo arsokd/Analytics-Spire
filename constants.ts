@@ -18,6 +18,7 @@ export const NAVIGATION_LINKS = [
   { name: 'Home', path: '/' },
   { name: 'About', path: '/about' },
   { name: 'Services', path: '/services' },
+  { name: 'Blog', path: '/blog' },
   { name: 'Media', path: '/media' },
   { name: 'Events', path: '/events' },
   { name: 'Payment', path: '/payment' },

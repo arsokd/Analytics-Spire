@@ -48,8 +48,6 @@ export interface SiteConfig {
   contactEmail: string;
   founderName: string;
   founderBio: string;
-  partnerName?: string;
-  partnerBio?: string;
   logoUrl?: string; // Logo from Google Sheet
   founderImageUrl?: string;
   partnerImageUrl?: string;

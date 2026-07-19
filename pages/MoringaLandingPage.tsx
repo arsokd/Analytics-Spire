@@ -47,10 +47,33 @@ export const MoringaLandingPage: React.FC = () => {
     setAvailableDates(dates);
   }, []);
 
+  const getBookingCount = (date: Date) => {
+    const formattedDate = date.toLocaleDateString('en-IN', {
+      weekday: 'long',
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric'
+    });
+    
+    const local = localStorage.getItem(`bookingCount_${formattedDate}`);
+    if (local !== null) return parseInt(local, 10);
+    
+    // Simulate realistic counts based on date to show a live feel
+    const seed = date.getTime();
+    const count = 60 + (seed % 39); // Between 60 and 99
+    return count;
+  };
+
   const handleBookingSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!selectedDate || !bookingName || !bookingEmail || !bookingPhone) {
       setErrorMsg('Please select a date and fill in all required fields.');
+      return;
+    }
+
+    const currentCount = getBookingCount(selectedDate);
+    if (currentCount >= 100) {
+      setErrorMsg('Sorry, this demo slot is full. Only 100 people can be accommodated per slot. Please select another date.');
       return;
     }
 
@@ -74,17 +97,27 @@ export const MoringaLandingPage: React.FC = () => {
       timestamp: new Date().toISOString(),
       name: bookingName,
       email: bookingEmail,
-      phone: bookingPhone,
+      mobile: bookingPhone,
       company: bookingCompany || 'N/A',
       demoDate: formattedDate,
       language: selectedLanguage,
-      notes: bookingNotes || 'N/A'
+      notes: bookingNotes || 'N/A',
+      // Adding Exact capitalized headers as fallback for the Apps Script mapping
+      Date: new Date().toLocaleString('en-IN'),
+      Name: bookingName,
+      Email: bookingEmail,
+      Mobile: bookingPhone,
+      Company: bookingCompany || 'N/A',
+      "Demo Date": formattedDate,
+      Language: selectedLanguage,
+      Notes: bookingNotes || 'N/A'
     };
 
     try {
       // Submit lead to Google Sheets via Apps Script
       const success = await api.submitLead(leadData);
       if (success) {
+        localStorage.setItem(`bookingCount_${formattedDate}`, (currentCount + 1).toString());
         setBookingSuccess(true);
       } else {
         setErrorMsg('There was a small network glitch. Please try registering again.');
@@ -559,6 +592,10 @@ export const MoringaLandingPage: React.FC = () => {
                     <div className="grid grid-cols-3 sm:grid-cols-4 gap-2">
                       {availableDates.map((date, idx) => {
                         const isSelected = selectedDate?.toDateString() === date.toDateString();
+                        const currentCount = getBookingCount(date);
+                        const isFull = currentCount >= 100;
+                        const seatsLeft = 100 - currentCount;
+                        
                         let language = '';
                         let langColorClass = '';
                         if (date.getDay() === 2) {
@@ -574,27 +611,43 @@ export const MoringaLandingPage: React.FC = () => {
                           langColorClass = isSelected ? 'bg-white text-purple-700' : 'bg-purple-900/40 text-purple-400 border border-purple-800/50';
                         }
 
+                        if (isFull) {
+                          langColorClass = 'bg-red-900/40 text-red-400 border border-red-800/50';
+                        }
+
                         return (
                           <button
                             type="button"
                             key={idx}
+                            disabled={isFull}
                             onClick={() => {
-                              setSelectedDate(date);
+                              if (!isFull) setSelectedDate(date);
                             }}
-                            className={`p-3 rounded-xl border text-center transition-all flex flex-col items-center justify-center ${isSelected ? 'bg-emerald-600 border-emerald-500 text-white font-bold shadow-lg scale-105' : 'bg-gray-950 border-gray-800 text-gray-300 hover:border-gray-600 hover:bg-gray-900'}`}
+                            className={`p-3 rounded-xl border text-center transition-all flex flex-col items-center justify-center ${
+                              isFull 
+                                ? 'bg-gray-950 border-gray-800/50 text-gray-600 cursor-not-allowed opacity-60' 
+                                : isSelected 
+                                  ? 'bg-emerald-600 border-emerald-500 text-white font-bold shadow-lg scale-105' 
+                                  : 'bg-gray-950 border-gray-800 text-gray-300 hover:border-gray-600 hover:bg-gray-900'
+                            }`}
                           >
-                            <div className={`text-sm font-mono uppercase ${isSelected ? 'text-emerald-100' : 'text-gray-400'}`}>
+                            <div className={`text-sm font-mono uppercase ${isSelected ? 'text-emerald-100' : (isFull ? 'text-gray-600' : 'text-gray-400')}`}>
                               {date.toLocaleDateString('en-IN', { weekday: 'short' })}
                             </div>
                             <div className="text-3xl font-extrabold mt-0.5">
                               {date.getDate()}
                             </div>
-                            <div className={`text-xs mt-0.5 uppercase tracking-wider font-semibold ${isSelected ? 'text-emerald-100' : 'text-gray-500'}`}>
+                            <div className={`text-xs mt-0.5 uppercase tracking-wider font-semibold ${isSelected ? 'text-emerald-100' : (isFull ? 'text-gray-600' : 'text-gray-500')}`}>
                               {date.toLocaleDateString('en-IN', { month: 'short' })}
                             </div>
                             <div className={`mt-2 px-2.5 py-1 rounded-md text-xs font-bold uppercase tracking-widest w-full text-center ${langColorClass}`}>
-                              {language}
+                              {isFull ? 'FULL' : language}
                             </div>
+                            {!isFull && (
+                              <div className={`mt-1.5 text-[10px] font-mono ${seatsLeft <= 10 ? 'text-red-400 font-bold' : (isSelected ? 'text-emerald-200' : 'text-gray-500')}`}>
+                                {seatsLeft} {seatsLeft === 1 ? 'seat' : 'seats'} left
+                              </div>
+                            )}
                           </button>
                         );
                       })}

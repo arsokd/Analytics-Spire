@@ -1,5 +1,6 @@
 import express from 'express';
 import path from 'path';
+import fs from 'fs';
 import { createServer as createViteServer } from 'vite';
 
 async function startServer() {
@@ -10,6 +11,57 @@ async function startServer() {
   app.get('/api/health', (req, res) => {
     res.json({ status: 'ok', time: new Date().toISOString() });
   });
+
+  const PAGE_METADATA: Record<string, { title: string; description: string; h1: string; content: string }> = {
+    '/': {
+      title: 'MSME Business Consultant & Automation Expert | Analytics Spire',
+      description: 'Analytics Spire helps Indian MSMEs cut costs and scale with data-driven consulting and AI automation. Led by Anand Rengasamy. Book a free consultation.',
+      h1: 'Business consulting and automation for MSMEs across India',
+      content: 'Analytics Spire helps Indian MSMEs cut costs and scale with data-driven consulting and AI automation. Led by Anand Rengasamy. Turn your Business into Growth Machine.'
+    },
+    '/about': {
+      title: 'About Anand Rengasamy | MSME Consultant, Analytics Spire',
+      description: '30+ years of engineering experience turned into practical MSME consulting. Meet Anand Rengasamy, founder of Analytics Spire, and our approach to growth.',
+      h1: 'Meet the consultant behind Analytics Spire',
+      content: 'Anand Rengasamy Founder & Principal Consultant with BITS Pilani background. 30+ years of corporate engineering experience turned into actionable, low-cost growth strategies for Indian MSMEs.'
+    },
+    '/services': {
+      title: 'MSME Automation Services: CRM, Inventory, Payroll | Analytics Spire',
+      description: "Explore Analytics Spire's no-code automation services for MSMEs — CRM, telecalling, inventory, attendance, payroll, and finance systems. See what fits your business.",
+      h1: 'Automation and consulting services for growing MSMEs',
+      content: "Explore Analytics Spire's no-code automation services for MSMEs — CRM, telecalling, inventory, attendance, payroll, and finance systems. See what fits your business."
+    },
+    '/blog': {
+      title: 'MSME Business Growth Blog | Analytics Spire',
+      description: 'Read expert insights, real case studies, and guide articles on MSME business consulting, growth strategies, and no-code automation systems.',
+      h1: 'Latest articles, guides, and insights on MSME growth',
+      content: 'Read expert insights, real case studies, and guide articles on MSME business consulting, growth strategies, and no-code automation systems.'
+    },
+    '/contact': {
+      title: 'Contact Analytics Spire | Book a Free MSME Consultation',
+      description: 'Ready to automate and grow your MSME? Contact Analytics Spire for a free consultation with Anand Rengasamy. Serving businesses across India.',
+      h1: 'Get in touch with Analytics Spire',
+      content: 'Ready to automate and grow your MSME? Contact Analytics Spire for a free consultation with Anand Rengasamy. Serving businesses across India. Securely verify your identity and share your business landscape for a preliminary assessment.'
+    },
+    '/media': {
+      title: 'MSME Training & Business Podcasts | Analytics Spire',
+      description: 'Watch and listen to expert business training videos, financial literacy workshops, and small business growth podcasts by Anand Rengasamy.',
+      h1: 'MSME training videos and business podcasts',
+      content: 'Watch and listen to expert business training videos, financial literacy workshops, and small business growth podcasts by Anand Rengasamy.'
+    },
+    '/events': {
+      title: 'MSME Digital Transformation Workshops & Seminars | Analytics Spire',
+      description: 'Join our upcoming digital transformation workshops, financial literacy panels, and small business growth summits across India.',
+      h1: 'Upcoming events and workshops for Indian MSMEs',
+      content: 'Join our upcoming digital transformation workshops, financial literacy panels, and small business growth summits across India.'
+    },
+    '/payment': {
+      title: 'Secure Consultation Payment | Analytics Spire',
+      description: 'Make secure payments for your MSME business consulting, coaching sessions, or specialized training programs with Analytics Spire.',
+      h1: 'Secure payment for consulting and training',
+      content: 'Pay for your consulting services securely via Razorpay. Choose a service or enter a custom amount.'
+    }
+  };
 
   // Setup Vite development server or production static serving
   if (process.env.NODE_ENV !== 'production') {
@@ -23,7 +75,51 @@ async function startServer() {
     app.use(express.static(distPath));
     
     app.get('*all', (req, res) => {
-      res.sendFile(path.join(distPath, 'index.html'));
+      const requestPath = req.path.replace(/\/$/, '') || '/';
+      const metadata = PAGE_METADATA[requestPath] || PAGE_METADATA['/'];
+      
+      const indexPath = path.join(distPath, 'index.html');
+      if (fs.existsSync(indexPath)) {
+        let html = fs.readFileSync(indexPath, 'utf-8');
+        
+        // Dynamic Meta replacement for SEO bots
+        html = html.replace(
+          /<title>.*?<\/title>/,
+          `<title>${metadata.title}</title>`
+        );
+        html = html.replace(
+          /<meta name="description" content=".*?" \/>/,
+          `<meta name="description" content="${metadata.description}" />`
+        );
+        
+        // Inject pre-rendered semantic HTML fallback inside #root for crawlers to pick up immediately
+        const preRenderedContent = `
+          <div style="display:none" aria-hidden="true">
+            <h1>${metadata.h1}</h1>
+            <p>${metadata.content}</p>
+            <nav>
+              <a href="/">Home</a> | 
+              <a href="/about">About</a> | 
+              <a href="/services">Services</a> | 
+              <a href="/blog">Blog</a> | 
+              <a href="/media">Media</a> | 
+              <a href="/events">Events</a> | 
+              <a href="/contact">Contact</a> | 
+              <a href="/payment">Payment</a>
+            </nav>
+          </div>
+        `;
+        
+        html = html.replace(
+          '<div id="root"></div>',
+          `<div id="root">${preRenderedContent}</div>`
+        );
+        
+        res.setHeader('Content-Type', 'text/html');
+        res.status(200).send(html);
+      } else {
+        res.sendFile(indexPath);
+      }
     });
   }
 
@@ -33,3 +129,4 @@ async function startServer() {
 }
 
 startServer();
+

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Mail, MapPin, Send, Phone, Building2, Users, AlertCircle, IndianRupee, Lock, ShieldCheck, ArrowRight, X, Loader2 } from 'lucide-react';
 import { useData } from '../context/DataContext';
 import { api } from '../services/api';
+import { SEO } from '../components/SEO';
 
 type FormStep = 'contact' | 'otp' | 'details' | 'success';
 
@@ -72,11 +73,18 @@ export const ContactPage: React.FC = () => {
 
   return (
     <div className="bg-black min-h-screen py-10 md:py-20 text-white font-sans">
+      <SEO 
+        title="Contact Analytics Spire | Book a Free MSME Consultation"
+        description="Ready to automate and grow your MSME? Contact Analytics Spire for a free consultation with Anand Rengasamy. Serving businesses across India."
+        keywords="Contact Analytics Spire, Book MSME Consultation, Anand Rengasamy, Chennai, India"
+        url="https://www.analyticsspire.com/contact"
+        schemaType="Breadcrumb"
+      />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header Section */}
         <div className="mb-16 border-l-4 border-brand-500 pl-8">
-          <h1 className="font-heading text-4xl md:text-6xl font-bold text-white mb-4 tracking-tight">Share Your Profile</h1>
+          <h1 className="font-heading text-4xl md:text-6xl font-bold text-white mb-4 tracking-tight">Get in touch with Analytics Spire</h1>
           <p className="text-xl text-gray-400 max-w-2xl font-light">
             Securely verify your identity and share your business landscape for a preliminary assessment.
           </p>

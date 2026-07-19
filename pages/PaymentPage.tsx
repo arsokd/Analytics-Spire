@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { RazorpayButton } from '../components/RazorpayButton';
 import { CreditCard, ShieldCheck, Zap, CheckCircle2 } from 'lucide-react';
+import { SEO } from '../components/SEO';
 
 export const PaymentPage: React.FC = () => {
   const [amount, setAmount] = useState<number>(99);
@@ -35,10 +36,17 @@ export const PaymentPage: React.FC = () => {
 
   return (
     <div className="bg-gray-950 min-h-screen pt-12 pb-24 px-4 sm:px-6 lg:px-8 font-sans">
+      <SEO 
+        title="Secure Consultation Payment | Analytics Spire"
+        description="Make secure payments for your MSME business consulting, coaching sessions, or specialized training programs with Analytics Spire."
+        keywords="Secure Payment, Razorpay, MSME Consulting, Analytics Spire"
+        url="https://www.analyticsspire.com/payment"
+        schemaType="Breadcrumb"
+      />
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-16 animate-fadeIn">
           <h1 className="text-4xl md:text-5xl font-heading font-bold text-white mb-4 tracking-tight">
-            Secure <span className="text-brand-500">Payments</span>
+            Secure payment for consulting and training
           </h1>
           <p className="text-gray-400 text-lg max-w-2xl mx-auto">
             Pay for your consulting services securely via Razorpay. Choose a service or enter a custom amount.

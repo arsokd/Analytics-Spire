@@ -8,20 +8,20 @@ import { SEO } from '../components/SEO';
 export const AboutPage: React.FC = () => {
   const { data } = useData();
 
-  // Set to true to show Hemanth Kumar Guruswamy's profile, or false to temporarily hide it
-  const showPartnerProfile = false;
-
   return (
     <div className="bg-gray-950">
       <SEO 
-        title="About Anand Rengasamy | Founder of Analytics Spire"
-        description="Meet Anand Rengasamy, a seasoned MSME business consultant and growth coach. Learn about the vision and expertise behind Analytics Spire."
-        keywords="Anand Rengasamy, Business Consultant Chennai, MSME Growth Coach, Analytics Spire Founder"
+        title="About Anand Rengasamy | MSME Consultant, Analytics Spire"
+        description="30+ years of engineering experience turned into practical MSME consulting. Meet Anand Rengasamy, founder of Analytics Spire, and our approach to growth."
+        keywords="Anand Rengasamy, Business Consultant Chennai, MSME Growth Coach, Analytics Spire Founder, BITS Pilani"
+        url="https://www.analyticsspire.com/about"
+        schemaType="Breadcrumb"
       />
       {/* Header */}
       <div className="bg-gray-900 py-16 border-b border-gray-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h1 className="font-heading text-4xl font-bold text-white mb-4">About Us</h1>
+          <p className="text-brand-500 font-bold tracking-widest uppercase text-sm mb-2">Our Founder</p>
+          <h1 className="font-heading text-4xl md:text-5xl font-bold text-white mb-4">Meet the consultant behind Analytics Spire</h1>
           <p className="text-xl text-gray-400 max-w-3xl">
             {data.config.aboutText}
           </p>
@@ -68,67 +68,6 @@ export const AboutPage: React.FC = () => {
           <h2 className="font-heading text-3xl font-bold text-white mb-10 text-center">Our Leadership</h2>
           
           <div className="space-y-12">
-            {/* Partner Profile */}
-            {showPartnerProfile && data.config.partnerName && (
-              <div className="bg-gray-900 rounded-2xl overflow-hidden shadow-sm flex flex-col md:flex-row border border-gray-800">
-                <div className="md:w-1/3 bg-gray-800 min-h-[300px] flex items-center justify-center p-8">
-                  <div className="text-center w-full">
-                    <div className="relative w-48 h-48 mx-auto mb-6">
-                      <img 
-                        src={data.config.partnerImageUrl || `https://ui-avatars.com/api/?name=${encodeURIComponent(data.config.partnerName || 'Partner')}&background=10b981&color=fff&bold=true`} 
-                        alt={data.config.partnerName} 
-                        width={192}
-                        height={192}
-                        className="w-full h-full rounded-full object-cover object-center border-4 border-emerald-500 shadow-[0_0_20px_rgba(16,185,129,0.3)]"
-                        referrerPolicy="no-referrer"
-                        onError={(e) => {
-                           const target = e.target as HTMLImageElement;
-                           const fallback = `https://ui-avatars.com/api/?name=${encodeURIComponent(data.config.partnerName || 'Partner')}&background=10b981&color=fff&bold=true`;
-                           if (target.src !== fallback) {
-                             target.src = fallback;
-                           }
-                        }}
-                      />
-                    </div>
-                    
-                    <h3 className="font-heading text-2xl font-bold text-white">{data.config.partnerName}</h3>
-                  </div>
-                </div>
-                <div className="md:w-2/3 p-8 md:p-12">
-                  <p className="text-gray-300 mb-6 text-lg leading-relaxed">
-                    {data.config.partnerBio}
-                  </p>
-                  
-                  <div className="grid md:grid-cols-2 gap-8 mt-8">
-                    <div>
-                      <h4 className="flex items-center font-bold text-white mb-3 text-lg">
-                        <Target className="w-6 h-6 text-emerald-400 mr-2" />
-                        Focus Areas
-                      </h4>
-                      <ul className="space-y-3 text-gray-400">
-                        <li className="flex items-start"><span className="mr-2 text-emerald-500">•</span> Strategic Business Transformation</li>
-                        <li className="flex items-start"><span className="mr-2 text-emerald-500">•</span> Operational Excellence & Efficiency</li>
-                        <li className="flex items-start"><span className="mr-2 text-emerald-500">•</span> Growth Strategy & Scaling</li>
-                      </ul>
-                    </div>
-                    
-                    <div>
-                      <h4 className="flex items-center font-bold text-white mb-3 text-lg">
-                        <Briefcase className="w-6 h-6 text-emerald-400 mr-2" />
-                        Core Competencies
-                      </h4>
-                      <p className="text-sm text-gray-400 mb-3">Specialized in driving impact through:</p>
-                      <div className="flex flex-wrap gap-2">
-                        {['Process Optimization', 'Change Management', 'Financial Precision', 'Digital Strategy', 'Leadership Development'].map(skill => (
-                          <span key={skill} className="bg-gray-800 border border-gray-700 px-3 py-1 rounded-md text-sm text-gray-300 hover:border-emerald-500 hover:text-white transition cursor-default">{skill}</span>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            )}
-
             {/* Founder Profile */}
             <div className="bg-gray-900 rounded-2xl overflow-hidden shadow-sm flex flex-col md:flex-row-reverse border border-gray-800">
               <div className="md:w-1/3 bg-gray-800 min-h-[300px] flex items-center justify-center p-8">
@@ -136,7 +75,7 @@ export const AboutPage: React.FC = () => {
                   <div className="relative w-48 h-48 mx-auto mb-6">
                     <img 
                       src={data.config.founderImageUrl || `https://ui-avatars.com/api/?name=${encodeURIComponent(data.config.founderName || 'Founder')}&background=0ea5e9&color=fff&bold=true`} 
-                      alt={data.config.founderName} 
+                      alt="Anand Rengasamy - MSME Business Consultant and Automation Expert, Founder of Analytics Spire" 
                       width={192}
                       height={192}
                       className="w-full h-full rounded-full object-cover object-top border-4 border-brand-500 shadow-[0_0_20px_rgba(14,165,233,0.3)]"
