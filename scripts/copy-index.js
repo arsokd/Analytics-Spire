@@ -3,18 +3,35 @@ import path from 'path';
 
 const DOMAIN = 'https://www.analyticsspire.com';
 
-// Dynamically read routes from App.tsx
+// Dynamically read routes from App.tsx using multiple fallback locations
 let routes = [];
 try {
-  const appFile = path.resolve(process.cwd(), 'App.tsx');
-  if (fs.existsSync(appFile)) {
+  const possiblePaths = [
+    path.join(path.dirname(import.meta.dirname || ''), 'App.tsx'),
+    path.resolve(process.cwd(), 'App.tsx'),
+    path.resolve(process.cwd(), 'src', 'App.tsx')
+  ];
+
+  let appFile = '';
+  for (const p of possiblePaths) {
+    if (fs.existsSync(p)) {
+      appFile = p;
+      break;
+    }
+  }
+
+  if (appFile) {
     const appContent = fs.readFileSync(appFile, 'utf-8');
-    const routeRegex = /<Route\s+[^>]*path=["']\/([^"']*)["']/gi;
+    // Highly resilient regex matching path="..." or path='...' with or without leading slashes
+    const routeRegex = /path=["']\/?([^"']*)["']/gi;
     let match;
     const routesSet = new Set();
     while ((match = routeRegex.exec(appContent)) !== null) {
-      const p = match[1].trim();
-      if (p !== '' && p !== '*') {
+      let p = match[1].trim();
+      if (p.endsWith('/')) {
+        p = p.slice(0, -1);
+      }
+      if (p !== '' && p !== '*' && p !== '/*') {
         routesSet.add(p);
       }
     }

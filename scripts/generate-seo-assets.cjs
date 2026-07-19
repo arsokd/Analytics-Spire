@@ -3,23 +3,42 @@ const path = require('path');
 
 const DOMAIN = 'https://www.analyticsspire.com';
 
-// 1. Dynamically read routes from App.tsx
+// 1. Dynamically read routes from App.tsx using multiple fallback locations
 let discoveredRoutes = [];
 try {
-  const appFile = path.join(__dirname, '..', 'App.tsx');
-  if (fs.existsSync(appFile)) {
+  const possiblePaths = [
+    path.join(__dirname, '..', 'App.tsx'),
+    path.resolve(process.cwd(), 'App.tsx'),
+    path.resolve(process.cwd(), 'src', 'App.tsx')
+  ];
+
+  let appFile = '';
+  for (const p of possiblePaths) {
+    if (fs.existsSync(p)) {
+      appFile = p;
+      break;
+    }
+  }
+
+  if (appFile) {
+    console.log(`Scanning router file for dynamic sitemap generation: ${appFile}`);
     const appContent = fs.readFileSync(appFile, 'utf-8');
-    // Regex matches <Route ... path="/something" ...> or <Route path="/something" ...>
-    const routeRegex = /<Route\s+[^>]*path=["']\/([^"']*)["']/gi;
+    // Highly resilient regex matching path="..." or path='...' with or without leading slashes
+    const routeRegex = /path=["']\/?([^"']*)["']/gi;
     let match;
     const routesSet = new Set();
     while ((match = routeRegex.exec(appContent)) !== null) {
-      const p = match[1].trim();
-      if (p !== '*') {
+      let p = match[1].trim();
+      if (p.endsWith('/')) {
+        p = p.slice(0, -1);
+      }
+      if (p !== '*' && p !== '/*') {
         routesSet.add(p);
       }
     }
     discoveredRoutes = Array.from(routesSet);
+  } else {
+    console.warn('Could not locate App.tsx in any of the standard paths.');
   }
 } catch (err) {
   console.error('Error reading/parsing App.tsx:', err);
