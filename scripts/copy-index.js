@@ -2,7 +2,32 @@ import fs from 'fs';
 import path from 'path';
 
 const DOMAIN = 'https://www.analyticsspire.com';
-const routes = ['about', 'services', 'blog', 'media', 'events', 'contact', 'payment', 'webinar', 'moringa'];
+
+// Dynamically read routes from App.tsx
+let routes = [];
+try {
+  const appFile = path.resolve(process.cwd(), 'App.tsx');
+  if (fs.existsSync(appFile)) {
+    const appContent = fs.readFileSync(appFile, 'utf-8');
+    const routeRegex = /<Route\s+[^>]*path=["']\/([^"']*)["']/gi;
+    let match;
+    const routesSet = new Set();
+    while ((match = routeRegex.exec(appContent)) !== null) {
+      const p = match[1].trim();
+      if (p !== '' && p !== '*') {
+        routesSet.add(p);
+      }
+    }
+    routes = Array.from(routesSet);
+  }
+} catch (err) {
+  console.error('Error parsing routes from App.tsx in copy-index.js:', err);
+}
+
+if (routes.length === 0) {
+  routes = ['about', 'services', 'blog', 'media', 'events', 'contact', 'payment', 'webinar', 'moringa'];
+}
+
 const distDir = path.resolve(process.cwd(), 'dist');
 const indexFile = path.resolve(distDir, 'index.html');
 
