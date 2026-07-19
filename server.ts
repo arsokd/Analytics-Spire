@@ -19,10 +19,17 @@ async function startServer() {
       if (!response.ok) {
         throw new Error(`Google Script returned status ${response.status}`);
       }
+      const contentType = response.headers.get('content-type') || '';
+      if (contentType.includes('text/html')) {
+        return res.status(403).json({ 
+          error: 'Access Denied / Misconfigured Web App', 
+          message: 'The Google Apps Script returned HTML instead of JSON. This usually means "Who has access" is set to "Only myself" instead of "Anyone". Please redeploy your script in Google Sheets and choose "Anyone" for access.' 
+        });
+      }
       const data = await response.json();
       res.json(data);
     } catch (error: any) {
-      console.error('Proxy site-data fetch failed:', error);
+      console.error('Proxy site-data fetch failed gracefully:', error.message);
       res.status(500).json({ error: 'Proxy fetch failed', message: error.message });
     }
   });
@@ -39,10 +46,17 @@ async function startServer() {
       if (!response.ok) {
         throw new Error(`Google Script returned status ${response.status}`);
       }
+      const contentType = response.headers.get('content-type') || '';
+      if (contentType.includes('text/html')) {
+        return res.status(403).json({ 
+          error: 'Access Denied / Misconfigured Web App', 
+          message: 'The Google Apps Script returned HTML instead of JSON. This usually means "Who has access" is set to "Only myself" instead of "Anyone". Please redeploy your script in Google Sheets and choose "Anyone" for access.' 
+        });
+      }
       const data = await response.json();
       res.json(data);
     } catch (error: any) {
-      console.error('Proxy verify-login failed:', error);
+      console.error('Proxy verify-login failed gracefully:', error.message);
       res.status(500).json({ error: 'Proxy login verification failed', message: error.message });
     }
   });
@@ -57,10 +71,17 @@ async function startServer() {
         },
         body: JSON.stringify(req.body)
       });
+      const contentType = response.headers.get('content-type') || '';
+      if (contentType.includes('text/html')) {
+        return res.status(403).json({ 
+          error: 'Access Denied / Misconfigured Web App', 
+          message: 'The Google Apps Script returned HTML instead of JSON. This usually means "Who has access" is set to "Only myself" instead of "Anyone". Please redeploy your script in Google Sheets and choose "Anyone" for access.' 
+        });
+      }
       const responseText = await response.text();
       res.send(responseText);
     } catch (error: any) {
-      console.error('Proxy submit-lead failed:', error);
+      console.error('Proxy submit-lead failed gracefully:', error.message);
       res.status(500).json({ error: 'Proxy lead submission failed', message: error.message });
     }
   });

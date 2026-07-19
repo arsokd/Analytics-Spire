@@ -122,7 +122,7 @@ const fetchCsv = async (gid?: string) => {
       }, {});
     });
   } catch (error) {
-    console.error("CSV fetch error:", error);
+    console.warn("CSV fetch error:", error);
     return null;
   }
 };
@@ -169,7 +169,7 @@ export const api = {
           dataFetched = true;
         }
       } catch (error) {
-        console.error("Direct Apps Script fetch failed:", error);
+        console.warn("Direct Apps Script fetch failed/skipped (CORS fallback expected):", error);
       }
     }
 
@@ -271,7 +271,7 @@ export const api = {
           };
         }
       } catch (error) {
-        console.error("Error processing fetched site data:", error);
+        console.warn("Error processing fetched site data:", error);
       }
     }
 
