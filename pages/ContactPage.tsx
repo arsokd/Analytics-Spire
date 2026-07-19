@@ -14,6 +14,7 @@ export const ContactPage: React.FC = () => {
   const [generatedOtp, setGeneratedOtp] = useState('');
   const [showDemoOtp, setShowDemoOtp] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
   
   const [formData, setFormData] = useState({
     name: '',
@@ -54,6 +55,7 @@ export const ContactPage: React.FC = () => {
   const handleSubmitProfile = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setSubmitError(null);
     
     // Prepare data for Google Sheets
     const submissionData = {
@@ -62,18 +64,24 @@ export const ContactPage: React.FC = () => {
       ...formData
     };
 
-    const success = await api.submitLead(submissionData);
-    setIsSubmitting(false);
+    try {
+      const success = await api.submitLead(submissionData);
+      setIsSubmitting(false);
 
-    if (success) {
-      trackEvent('contact_form_submit', {
-        businessCategory: formData.businessCategory,
-        employeeCount: formData.employeeCount,
-        turnover: formData.turnover
-      });
-      setStep('success');
-    } else {
-      alert("There was an error submitting your profile. Please try again.");
+      if (success) {
+        trackEvent('contact_form_submit', {
+          businessCategory: formData.businessCategory,
+          employeeCount: formData.employeeCount,
+          turnover: formData.turnover
+        });
+        setStep('success');
+      } else {
+        setSubmitError("Something went wrong, please try again or WhatsApp us directly.");
+      }
+    } catch (error) {
+      console.error("Form submission error:", error);
+      setIsSubmitting(false);
+      setSubmitError("Something went wrong, please try again or WhatsApp us directly.");
     }
   };
 
@@ -165,6 +173,15 @@ export const ContactPage: React.FC = () => {
                    <div className="group md:col-span-2"><label htmlFor="turnover" className="block text-xs font-bold text-brand-500 uppercase tracking-widest mb-2">Annual Turnover (INR)</label><div className="flex items-center border-b border-gray-600 focus-within:border-brand-500"><IndianRupee className="text-gray-500 mr-2" size={20} /><input id="turnover" type="text" name="turnover" required value={formData.turnover} onChange={handleChange} className="w-full bg-transparent py-3 text-white text-lg focus:outline-none" placeholder="e.g. 5 Crores"/></div></div>
                    <div className="group md:col-span-2"><label htmlFor="keyIssues" className="block text-xs font-bold text-brand-500 uppercase tracking-widest mb-2">Key Challenges *</label><textarea id="keyIssues" name="keyIssues" required rows={4} value={formData.keyIssues} onChange={handleChange} className="w-full bg-gray-800 p-4 border-l-2 border-gray-600 text-white text-lg focus:border-brand-500 focus:outline-none"></textarea></div>
                 </div>
+                {submitError && (
+                  <div className="p-4 bg-red-950/40 border border-red-500/50 rounded text-red-200 flex items-start gap-3 my-4">
+                    <AlertCircle className="w-5 h-5 text-red-400 mt-0.5 flex-shrink-0" />
+                    <div>
+                      <p className="font-bold text-sm">Submission Failed</p>
+                      <p className="text-sm text-gray-300 mt-0.5">{submitError}</p>
+                    </div>
+                  </div>
+                )}
                 <div className="pt-6">
                   <button type="submit" disabled={isSubmitting} className="w-full bg-brand-600 hover:bg-brand-500 text-white py-5 font-bold text-sm uppercase tracking-widest transition flex items-center justify-center">
                     {isSubmitting ? <><Loader2 className="animate-spin mr-2"/> Submitting...</> : <>Submit for Analysis <Send size={18} className="ml-2" /></>}
