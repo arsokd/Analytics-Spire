@@ -12,6 +12,59 @@ async function startServer() {
     res.json({ status: 'ok', time: new Date().toISOString() });
   });
 
+  // Google Apps Script Proxy for Site Data
+  app.get('/api/site-data', async (req, res) => {
+    try {
+      const response = await fetch('https://script.google.com/macros/s/AKfycbwZ6VMQ9pE3xL27G3lfGekMtTi63I8rlUDr09l1LnzFq0yyhAuqP9qcQ1idh-s9pTUh/exec');
+      if (!response.ok) {
+        throw new Error(`Google Script returned status ${response.status}`);
+      }
+      const data = await response.json();
+      res.json(data);
+    } catch (error: any) {
+      console.error('Proxy site-data fetch failed:', error);
+      res.status(500).json({ error: 'Proxy fetch failed', message: error.message });
+    }
+  });
+
+  // Google Apps Script Proxy for Login Verification
+  app.get('/api/verify-login', async (req, res) => {
+    const { email, pass } = req.query;
+    if (!email || !pass) {
+      return res.status(400).json({ error: 'Email and password are required' });
+    }
+    try {
+      const targetUrl = `https://script.google.com/macros/s/AKfycbwZ6VMQ9pE3xL27G3lfGekMtTi63I8rlUDr09l1LnzFq0yyhAuqP9qcQ1idh-s9pTUh/exec?action=login&email=${encodeURIComponent(String(email))}&pass=${encodeURIComponent(String(pass))}`;
+      const response = await fetch(targetUrl);
+      if (!response.ok) {
+        throw new Error(`Google Script returned status ${response.status}`);
+      }
+      const data = await response.json();
+      res.json(data);
+    } catch (error: any) {
+      console.error('Proxy verify-login failed:', error);
+      res.status(500).json({ error: 'Proxy login verification failed', message: error.message });
+    }
+  });
+
+  // Google Apps Script Proxy for Lead Submission
+  app.post('/api/submit-lead', express.json(), async (req, res) => {
+    try {
+      const response = await fetch('https://script.google.com/macros/s/AKfycbwZ6VMQ9pE3xL27G3lfGekMtTi63I8rlUDr09l1LnzFq0yyhAuqP9qcQ1idh-s9pTUh/exec', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(req.body)
+      });
+      const responseText = await response.text();
+      res.send(responseText);
+    } catch (error: any) {
+      console.error('Proxy submit-lead failed:', error);
+      res.status(500).json({ error: 'Proxy lead submission failed', message: error.message });
+    }
+  });
+
   const PAGE_METADATA: Record<string, { title: string; description: string; h1: string; content: string }> = {
     '/': {
       title: 'MSME Business Consultant & Automation Expert | Analytics Spire',

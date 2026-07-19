@@ -147,111 +147,131 @@ export const api = {
    * Fetches all site content (Config, Services, Events, Videos) from Google Sheets
    */
   fetchSiteData: async (): Promise<SiteData | null> => {
-    // 1. Try Apps Script first (Best method)
-    if (GOOGLE_SCRIPT_URL) {
+    // 1. Try Apps Script via Server Proxy or Direct fetch (Best method)
+    let data: any = null;
+    let dataFetched = false;
+
+    try {
+      const response = await fetch('/api/site-data');
+      if (response.ok) {
+        data = await response.json();
+        dataFetched = true;
+      }
+    } catch (e) {
+      console.warn("Server proxy fetch failed, trying direct Google Script fetch:", e);
+    }
+
+    if (!dataFetched && GOOGLE_SCRIPT_URL) {
       try {
         const response = await fetch(GOOGLE_SCRIPT_URL);
         if (response.ok) {
-          const data = await response.json();
-          
-          // Process details if they are strings (from Google Sheets)
-          if (data.services && Array.isArray(data.services)) {
-            data.services = data.services.map((service: any) => ({
-              ...service,
-              imageUrl: formatGoogleDriveUrl(service.imageUrl),
-              details: typeof service.details === 'string' 
-                ? service.details.split(';').map((s: string) => s.trim()) 
-                : (Array.isArray(service.details) ? service.details : [])
-            }));
-          }
-
-          if (data.events && Array.isArray(data.events)) {
-            data.events = data.events.map((event: any) => ({
-              ...event,
-              imageUrl: formatGoogleDriveUrl(event.imageUrl || event.image)
-            }));
-          }
-
-          if (data.videos && Array.isArray(data.videos)) {
-            data.videos = data.videos.map((video: any) => ({
-              ...video,
-              id: video.id || Math.random().toString(36).substr(2, 9),
-              youtubeUrl: video.youtubeUrl || video.url || video.YouTubeUrl || video.URL || '',
-              category: video.category || 'Training'
-            }));
-          }
-
-          if (data.experts && Array.isArray(data.experts)) {
-            data.experts = data.experts.map((expert: any) => ({
-              ...expert,
-              imageUrl: formatGoogleDriveUrl(expert.imageUrl)
-            }));
-          }
-          
-          // Ensure config has all required fields and only overwrite if values are present
-          if (data.config) {
-            const mergedConfig = { ...DEFAULT_SITE_DATA.config };
-            
-            // Handle both object (Key/Value) and array (Horizontal row) formats
-            const configSource = Array.isArray(data.config) ? data.config[0] : data.config;
-            
-            if (configSource) {
-              Object.keys(configSource).forEach(key => {
-                const val = configSource[key];
-                if (val && val !== '') {
-                  (mergedConfig as any)[key] = val;
-                }
-              });
-            }
-
-            // Parse dynamic brands from all rows
-            const configArray = Array.isArray(data.config) ? data.config : [data.config];
-            const brands: BrandAssociation[] = [];
-
-            configArray.forEach((row: any) => {
-              const brandNameVal = row.brandName || row.brandNames || '';
-              const brandLogoVal = row.brandLogo || row.brandLogos || '';
-              
-              const names = brandNameVal ? brandNameVal.split(';').map((s: string) => s.trim()).filter(Boolean) : [];
-              const logos = brandLogoVal ? brandLogoVal.split(';').map((s: string) => s.trim()).filter(Boolean) : [];
-              
-              if (names.length > 0) {
-                names.forEach((name: string, i: number) => {
-                  brands.push({
-                    name,
-                    logo: formatGoogleDriveUrl(logos[i] || `https://ui-avatars.com/api/?name=${encodeURIComponent(name)}&background=111827&color=3b82f6&bold=true`)
-                  });
-                });
-              }
-            });
-
-            // Merge dynamic brands with defaults, avoiding duplicates by name
-            // Also filter out Amtrex from the professional list as per user request
-            const mergedBrands = [...brands].filter(b => b.name.toLowerCase() !== 'amtrex (dubai)');
-            PROFESSIONAL_BRANDS.forEach(defaultBrand => {
-              if (defaultBrand.name.toLowerCase() !== 'amtrex (dubai)' && 
-                  !mergedBrands.some(b => b.name.toLowerCase() === defaultBrand.name.toLowerCase())) {
-                mergedBrands.push(defaultBrand);
-              }
-            });
-
-            return {
-              config: {
-                ...mergedConfig,
-                logoUrl: formatGoogleDriveUrl(mergedConfig.logoUrl || ''),
-                founderImageUrl: formatGoogleDriveUrl(mergedConfig.founderImageUrl || ''),
-                partnerImageUrl: formatGoogleDriveUrl(mergedConfig.partnerImageUrl || ''),
-              },
-              services: (data.services && data.services.length > 0) ? data.services : SERVICES_DATA,
-              events: (data.events && data.events.length > 0) ? data.events : EVENTS_DATA,
-              videos: (data.videos && data.videos.length > 0) ? data.videos : VIDEOS_DATA,
-              brands: mergedBrands,
-              experts: (data.experts && data.experts.length > 0) ? data.experts : DEFAULT_SITE_DATA.experts,
-            };
-          }
+          data = await response.json();
+          dataFetched = true;
         }
       } catch (error) {
-        console.error("Apps Script fetch failed, falling back to CSV:", error);
+        console.error("Direct Apps Script fetch failed:", error);
+      }
+    }
+
+    if (dataFetched && data) {
+      try {
+        // Process details if they are strings (from Google Sheets)
+        if (data.services && Array.isArray(data.services)) {
+          data.services = data.services.map((service: any) => ({
+            ...service,
+            imageUrl: formatGoogleDriveUrl(service.imageUrl),
+            details: typeof service.details === 'string' 
+              ? service.details.split(';').map((s: string) => s.trim()) 
+              : (Array.isArray(service.details) ? service.details : [])
+          }));
+        }
+
+        if (data.events && Array.isArray(data.events)) {
+          data.events = data.events.map((event: any) => ({
+            ...event,
+            imageUrl: formatGoogleDriveUrl(event.imageUrl || event.image)
+          }));
+        }
+
+        if (data.videos && Array.isArray(data.videos)) {
+          data.videos = data.videos.map((video: any) => ({
+            ...video,
+            id: video.id || Math.random().toString(36).substr(2, 9),
+            youtubeUrl: video.youtubeUrl || video.url || video.YouTubeUrl || video.URL || '',
+            category: video.category || 'Training'
+          }));
+        }
+
+        if (data.experts && Array.isArray(data.experts)) {
+          data.experts = data.experts.map((expert: any) => ({
+            ...expert,
+            imageUrl: formatGoogleDriveUrl(expert.imageUrl)
+          }));
+        }
+        
+        // Ensure config has all required fields and only overwrite if values are present
+        if (data.config) {
+          const mergedConfig = { ...DEFAULT_SITE_DATA.config };
+          
+          // Handle both object (Key/Value) and array (Horizontal row) formats
+          const configSource = Array.isArray(data.config) ? data.config[0] : data.config;
+          
+          if (configSource) {
+            Object.keys(configSource).forEach(key => {
+              const val = configSource[key];
+              if (val && val !== '') {
+                (mergedConfig as any)[key] = val;
+              }
+            });
+          }
+
+          // Parse dynamic brands from all rows
+          const configArray = Array.isArray(data.config) ? data.config : [data.config];
+          const brands: BrandAssociation[] = [];
+
+          configArray.forEach((row: any) => {
+            const brandNameVal = row.brandName || row.brandNames || '';
+            const brandLogoVal = row.brandLogo || row.brandLogos || '';
+            
+            const names = brandNameVal ? brandNameVal.split(';').map((s: string) => s.trim()).filter(Boolean) : [];
+            const logos = brandLogoVal ? brandLogoVal.split(';').map((s: string) => s.trim()).filter(Boolean) : [];
+            
+            if (names.length > 0) {
+              names.forEach((name: string, i: number) => {
+                brands.push({
+                  name,
+                  logo: formatGoogleDriveUrl(logos[i] || `https://ui-avatars.com/api/?name=${encodeURIComponent(name)}&background=111827&color=3b82f6&bold=true`)
+                });
+              });
+            }
+          });
+
+          // Merge dynamic brands with defaults, avoiding duplicates by name
+          // Also filter out Amtrex from the professional list as per user request
+          const mergedBrands = [...brands].filter(b => b.name.toLowerCase() !== 'amtrex (dubai)');
+          PROFESSIONAL_BRANDS.forEach(defaultBrand => {
+            if (defaultBrand.name.toLowerCase() !== 'amtrex (dubai)' && 
+                !mergedBrands.some(b => b.name.toLowerCase() === defaultBrand.name.toLowerCase())) {
+              mergedBrands.push(defaultBrand);
+            }
+          });
+
+          return {
+            config: {
+              ...mergedConfig,
+              logoUrl: formatGoogleDriveUrl(mergedConfig.logoUrl || ''),
+              founderImageUrl: formatGoogleDriveUrl(mergedConfig.founderImageUrl || ''),
+              partnerImageUrl: formatGoogleDriveUrl(mergedConfig.partnerImageUrl || ''),
+            },
+            services: (data.services && data.services.length > 0) ? data.services : SERVICES_DATA,
+            events: (data.events && data.events.length > 0) ? data.events : EVENTS_DATA,
+            videos: (data.videos && data.videos.length > 0) ? data.videos : VIDEOS_DATA,
+            brands: mergedBrands,
+            experts: (data.experts && data.experts.length > 0) ? data.experts : DEFAULT_SITE_DATA.experts,
+          };
+        }
+      } catch (error) {
+        console.error("Error processing fetched site data:", error);
       }
     }
 
@@ -343,7 +363,18 @@ export const api = {
    * Verifies user credentials against Google Sheets
    */
   verifyLogin: async (email: string, pass: string): Promise<any | null> => {
-    // 1. Try Apps Script first (Secure method)
+    // 1. Try our Server-side Proxy first to bypass CORS (Best method)
+    try {
+      const response = await fetch(`/api/verify-login?email=${encodeURIComponent(email)}&pass=${encodeURIComponent(pass)}`);
+      if (response.ok) {
+        const result = await response.json();
+        if (result.success) return result.user;
+      }
+    } catch (e) {
+      console.warn("Server proxy login failed, trying direct Google Script login:", e);
+    }
+
+    // 2. Try Apps Script first directly (Fallback)
     if (GOOGLE_SCRIPT_URL) {
       try {
         const response = await fetch(`${GOOGLE_SCRIPT_URL}?action=login&email=${encodeURIComponent(email)}&pass=${encodeURIComponent(pass)}`);
@@ -380,6 +411,23 @@ export const api = {
    * Submits the contact/lead form to Google Sheets
    */
   submitLead: async (formData: any): Promise<boolean> => {
+    // 1. Try our Server-side Proxy first to bypass CORS (Best method)
+    try {
+      const response = await fetch('/api/submit-lead', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+      if (response.ok) {
+        return true;
+      }
+    } catch (e) {
+      console.warn("Server proxy lead submission failed, trying direct Google Script:", e);
+    }
+
+    // 2. Try Apps Script directly (Fallback)
     if (!GOOGLE_SCRIPT_URL || GOOGLE_SCRIPT_URL.includes('INSERT_YOUR')) {
       console.warn("Google Sheet URL not configured. Form data logged to console.", formData);
       return true; // Simulate success
@@ -398,7 +446,7 @@ export const api = {
       });
       return true;
     } catch (error) {
-      console.error("Failed to submit lead:", error);
+      console.error("Failed to submit lead directly:", error);
       return false;
     }
   }
