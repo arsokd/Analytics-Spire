@@ -19,15 +19,18 @@ async function startServer() {
       if (!response.ok) {
         throw new Error(`Google Script returned status ${response.status}`);
       }
-      const contentType = response.headers.get('content-type') || '';
-      if (contentType.includes('text/html')) {
-        return res.status(403).json({ 
+      
+      const text = await response.text();
+      try {
+        const data = JSON.parse(text);
+        res.json(data);
+      } catch (parseError) {
+        console.error('Failed to parse Google Apps Script response as JSON:', text.substring(0, 500));
+        res.status(403).json({ 
           error: 'Access Denied / Misconfigured Web App', 
-          message: 'The Google Apps Script returned HTML instead of JSON. This usually means "Who has access" is set to "Only myself" instead of "Anyone". Please redeploy your script in Google Sheets and choose "Anyone" for access.' 
+          message: 'The Google Apps Script returned HTML or invalid JSON instead of the expected data structure. Please ensure the Web App is deployed with Access set to "Anyone".'
         });
       }
-      const data = await response.json();
-      res.json(data);
     } catch (error: any) {
       console.error('Proxy site-data fetch failed gracefully:', error.message);
       res.status(500).json({ error: 'Proxy fetch failed', message: error.message });
@@ -46,15 +49,18 @@ async function startServer() {
       if (!response.ok) {
         throw new Error(`Google Script returned status ${response.status}`);
       }
-      const contentType = response.headers.get('content-type') || '';
-      if (contentType.includes('text/html')) {
-        return res.status(403).json({ 
+
+      const text = await response.text();
+      try {
+        const data = JSON.parse(text);
+        res.json(data);
+      } catch (parseError) {
+        console.error('Failed to parse login verification response as JSON:', text.substring(0, 500));
+        res.status(403).json({ 
           error: 'Access Denied / Misconfigured Web App', 
-          message: 'The Google Apps Script returned HTML instead of JSON. This usually means "Who has access" is set to "Only myself" instead of "Anyone". Please redeploy your script in Google Sheets and choose "Anyone" for access.' 
+          message: 'The Google Apps Script login verification returned HTML or invalid JSON instead of the expected data structure. Please ensure the Web App is deployed with Access set to "Anyone".'
         });
       }
-      const data = await response.json();
-      res.json(data);
     } catch (error: any) {
       console.error('Proxy verify-login failed gracefully:', error.message);
       res.status(500).json({ error: 'Proxy login verification failed', message: error.message });
@@ -71,15 +77,25 @@ async function startServer() {
         },
         body: JSON.stringify(req.body)
       });
-      const contentType = response.headers.get('content-type') || '';
-      if (contentType.includes('text/html')) {
-        return res.status(403).json({ 
-          error: 'Access Denied / Misconfigured Web App', 
-          message: 'The Google Apps Script returned HTML instead of JSON. This usually means "Who has access" is set to "Only myself" instead of "Anyone". Please redeploy your script in Google Sheets and choose "Anyone" for access.' 
-        });
+      if (!response.ok) {
+        throw new Error(`Google Script returned status ${response.status}`);
       }
-      const responseText = await response.text();
-      res.send(responseText);
+
+      const text = await response.text();
+      try {
+        const data = JSON.parse(text);
+        res.json(data);
+      } catch (parseError) {
+        // If the Apps Script returned plain text "Success" instead of JSON, package it as valid JSON
+        if (text.trim().toLowerCase().includes('html') || text.trim().startsWith('<')) {
+          res.status(403).json({ 
+            error: 'Access Denied / Misconfigured Web App', 
+            message: 'The Google Apps Script returned HTML instead of JSON. Please ensure Access is set to "Anyone".'
+          });
+        } else {
+          res.json({ success: true, message: text.trim() });
+        }
+      }
     } catch (error: any) {
       console.error('Proxy submit-lead failed gracefully:', error.message);
       res.status(500).json({ error: 'Proxy lead submission failed', message: error.message });

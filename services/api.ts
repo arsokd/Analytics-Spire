@@ -155,8 +155,13 @@ export const api = {
     try {
       const response = await fetch('/api/site-data');
       if (response.ok) {
-        data = await response.json();
-        dataFetched = true;
+        const contentType = response.headers.get('content-type') || '';
+        if (contentType.toLowerCase().includes('application/json')) {
+          data = await response.json();
+          dataFetched = true;
+        } else {
+          console.warn("Server proxy site-data returned non-JSON content-type:", contentType);
+        }
       }
     } catch (e) {
       console.warn("Server proxy fetch failed, trying direct Google Script fetch:", e);
@@ -368,8 +373,13 @@ export const api = {
     try {
       const response = await fetch(`/api/verify-login?email=${encodeURIComponent(email)}&pass=${encodeURIComponent(pass)}`);
       if (response.ok) {
-        const result = await response.json();
-        if (result.success) return result.user;
+        const contentType = response.headers.get('content-type') || '';
+        if (contentType.toLowerCase().includes('application/json')) {
+          const result = await response.json();
+          if (result.success) return result.user;
+        } else {
+          console.warn("Server proxy login verification returned non-JSON content-type:", contentType);
+        }
       }
     } catch (e) {
       console.warn("Server proxy login failed, trying direct Google Script login:", e);
@@ -422,7 +432,12 @@ export const api = {
         body: JSON.stringify(formData),
       });
       if (response.ok) {
-        return true;
+        const contentType = response.headers.get('content-type') || '';
+        if (contentType.toLowerCase().includes('application/json')) {
+          const result = await response.json();
+          return result.success || false;
+        }
+        return true; // Assume success if plain text is returned from legacy setups
       }
     } catch (e) {
       console.warn("Server proxy lead submission failed, trying direct Google Script:", e);
