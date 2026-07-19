@@ -119,6 +119,41 @@ export const ServicesPage: React.FC = () => {
               </div>
            </div>
         </div>
+
+        {/* Shorter Testimonials / Client Impact Section */}
+        <div className="mt-24 mb-12">
+           <div className="mb-12 border-b border-gray-800 pb-4">
+              <span className="text-sm font-bold text-brand-500 uppercase tracking-widest block mb-2">Proven Results</span>
+              <h2 className="font-heading text-3xl font-bold text-white">Our Real-World Impact</h2>
+              <p className="text-gray-400 text-sm mt-2">Demonstrated operational and financial performance improvements for Indian MSMEs.</p>
+           </div>
+
+           <div className="grid md:grid-cols-3 gap-6">
+              <div className="bg-gray-900 border border-gray-800/80 p-6 rounded-sm flex flex-col justify-between">
+                 <div>
+                    <span className="text-brand-400 font-mono text-sm font-bold block mb-2">20% Cost Reduction</span>
+                    <p className="text-gray-300 text-sm italic mb-4">"Analytics Spire helped us map our entire assembly line and identify bottlenecks. The automation was seamless."</p>
+                 </div>
+                 <p className="text-xs text-gray-500 font-bold border-t border-gray-800 pt-3 mt-2">Precision Components (Manufacturing)</p>
+              </div>
+              
+              <div className="bg-gray-900 border border-gray-800/80 p-6 rounded-sm flex flex-col justify-between">
+                 <div>
+                    <span className="text-brand-400 font-mono text-sm font-bold block mb-2">15 Hours Saved/Week</span>
+                    <p className="text-gray-300 text-sm italic mb-4">"With their customized CRM dashboard, our sales and inventory operations are now on autopilot."</p>
+                 </div>
+                 <p className="text-xs text-gray-500 font-bold border-t border-gray-800 pt-3 mt-2">Apex Global Traders (Trading & Retail)</p>
+              </div>
+
+              <div className="bg-gray-900 border border-gray-800/80 p-6 rounded-sm flex flex-col justify-between">
+                 <div>
+                    <span className="text-brand-400 font-mono text-sm font-bold block mb-2">35% Revenue Growth</span>
+                    <p className="text-gray-300 text-sm italic mb-4">"Their business consulting and market strategy enabled us to secure multiple enterprise clients."</p>
+                 </div>
+                 <p className="text-xs text-gray-500 font-bold border-t border-gray-800 pt-3 mt-2">InnovateTech Services (IT Services)</p>
+              </div>
+           </div>
+        </div>
       </div>
     </div>
   );

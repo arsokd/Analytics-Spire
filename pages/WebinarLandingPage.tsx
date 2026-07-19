@@ -5,6 +5,7 @@ import {
   TrendingDown, Users, FileText, Zap, ShieldCheck, Target, 
   Activity, BarChart, Lock
 } from 'lucide-react';
+import { trackEvent } from '../utils/analytics';
 
 export const WebinarLandingPage: React.FC = () => {
   return (
@@ -40,6 +41,7 @@ export const WebinarLandingPage: React.FC = () => {
           <div className="flex flex-col items-center">
             <Link 
               to="/payment"
+              onClick={() => trackEvent('webinar_registration_click', { position: 'hero_webinar_landing' })}
               className="group relative inline-flex items-center justify-center gap-3 px-8 py-5 bg-gradient-to-r from-amber-500 to-yellow-400 text-black text-xl font-black rounded-full overflow-hidden transition-transform hover:scale-105 active:scale-95 shadow-[0_0_40px_rgba(245,158,11,0.3)]"
             >
               <span className="relative z-10 flex items-center gap-2">
@@ -226,6 +228,7 @@ export const WebinarLandingPage: React.FC = () => {
 
             <Link 
               to="/payment"
+              onClick={() => trackEvent('webinar_registration_click', { position: 'footer_webinar_landing' })}
               className="w-full group relative inline-flex items-center justify-center gap-3 px-8 py-5 bg-gradient-to-r from-amber-500 to-yellow-400 text-black text-xl font-black rounded-xl overflow-hidden transition-transform hover:scale-105 active:scale-95 shadow-[0_0_40px_rgba(245,158,11,0.3)]"
             >
               <span className="relative z-10 flex items-center gap-2">

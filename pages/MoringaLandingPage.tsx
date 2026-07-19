@@ -8,6 +8,7 @@ import {
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { api } from '../services/api';
+import { trackEvent } from '../utils/analytics';
 
 export const MoringaLandingPage: React.FC = () => {
   // Navigation tabs for features
@@ -118,6 +119,10 @@ export const MoringaLandingPage: React.FC = () => {
       const success = await api.submitLead(leadData);
       if (success) {
         localStorage.setItem(`bookingCount_${formattedDate}`, (currentCount + 1).toString());
+        trackEvent('moringa_demo_registration', {
+          language: selectedLanguage,
+          demoDate: formattedDate
+        });
         setBookingSuccess(true);
       } else {
         setErrorMsg('There was a small network glitch. Please try registering again.');

@@ -45,6 +45,14 @@ if (routes.length === 0) {
   routes = ['about', 'services', 'blog', 'media', 'events', 'contact', 'payment', 'webinar', 'moringa'];
 }
 
+// Explicitly ensure the 9 subpages are always present in addition to dynamically discovered routes
+const coreSubPages = ['about', 'services', 'blog', 'media', 'events', 'contact', 'payment', 'webinar', 'moringa'];
+coreSubPages.forEach(p => {
+  if (!routes.includes(p)) {
+    routes.push(p);
+  }
+});
+
 const distDir = path.resolve(process.cwd(), 'dist');
 const indexFile = path.resolve(distDir, 'index.html');
 

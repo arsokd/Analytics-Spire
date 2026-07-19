@@ -49,6 +49,14 @@ if (discoveredRoutes.length === 0) {
   discoveredRoutes = ['', 'about', 'services', 'blog', 'media', 'events', 'contact', 'payment', 'webinar', 'moringa'];
 }
 
+// Explicitly ensure the 10 core pages are always present in addition to dynamically discovered routes
+const corePages = ['', 'about', 'services', 'blog', 'media', 'events', 'contact', 'payment', 'webinar', 'moringa'];
+corePages.forEach(p => {
+  if (!discoveredRoutes.includes(p)) {
+    discoveredRoutes.push(p);
+  }
+});
+
 // Ensure root is in there and normalize
 if (!discoveredRoutes.includes('')) {
   discoveredRoutes.unshift('');

@@ -1,8 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, TrendingUp, Shield, Users, Globe, BarChart, Zap, Video, BookOpen } from 'lucide-react';
+import { ArrowRight, TrendingUp, Shield, Users, Globe, BarChart, Zap, Video, BookOpen, Quote } from 'lucide-react';
 import { SEO } from '../components/SEO';
 import { useData } from '../context/DataContext';
+import { trackEvent } from '../utils/analytics';
 
 export const HomePage: React.FC = () => {
   const { data } = useData();
@@ -61,6 +62,7 @@ export const HomePage: React.FC = () => {
                   href="https://anandrengasamy.graphy.com/sessions"
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={() => trackEvent('webinar_registration_click', { position: 'hero_home' })}
                   className="group flex items-center gap-4 bg-brand-600 hover:bg-brand-500 text-white px-8 py-4 rounded-sm font-bold text-lg transition-all shadow-[0_0_20px_rgba(2,132,199,0.3)] hover:shadow-[0_0_30px_rgba(2,132,199,0.5)]"
                 >
                   <Video size={24} />
@@ -252,6 +254,80 @@ export const HomePage: React.FC = () => {
                Contact Us
              </Link>
            </div>
+        </div>
+      </section>
+
+      {/* Testimonials / Client Results Section */}
+      <section className="bg-gray-900 py-24 border-t border-gray-800">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="mb-16 text-center md:text-left">
+            <span className="text-sm font-bold text-brand-500 uppercase tracking-widest block mb-3">Client Results</span>
+            <h2 className="font-heading text-4xl md:text-5xl font-bold text-white tracking-tight">
+              Testimonials & Case Studies
+            </h2>
+            <p className="text-gray-400 text-lg mt-4 max-w-2xl font-light">
+              See how we help small and medium enterprises optimize their operations, scale their revenue, and achieve sustainable growth.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {/* Card 1 */}
+            <div className="bg-black border border-gray-800/80 p-8 rounded-sm hover:border-brand-500/50 transition-all duration-300 flex flex-col justify-between">
+              <div>
+                <div className="flex justify-between items-start mb-6">
+                  <div className="bg-brand-950 border border-brand-800/50 px-4 py-2 rounded-sm">
+                    <span className="text-brand-400 font-mono font-bold text-lg">Result: -20% Cost</span>
+                  </div>
+                  <Quote className="text-brand-500/40 w-8 h-8" />
+                </div>
+                <p className="text-gray-300 italic text-base leading-relaxed mb-6">
+                  "Analytics Spire helped us map our entire assembly line and identify critical bottlenecks. The automation was seamless."
+                </p>
+              </div>
+              <div className="border-t border-gray-800 pt-6 mt-6">
+                <h4 className="font-heading font-bold text-white text-lg">Precision Components Pvt. Ltd.</h4>
+                <p className="text-gray-500 text-sm">Manufacturing MSME, Chennai</p>
+              </div>
+            </div>
+
+            {/* Card 2 */}
+            <div className="bg-black border border-gray-800/80 p-8 rounded-sm hover:border-brand-500/50 transition-all duration-300 flex flex-col justify-between">
+              <div>
+                <div className="flex justify-between items-start mb-6">
+                  <div className="bg-brand-950 border border-brand-800/50 px-4 py-2 rounded-sm">
+                    <span className="text-brand-400 font-mono font-bold text-lg">Result: 15h Saved/Wk</span>
+                  </div>
+                  <Quote className="text-brand-500/40 w-8 h-8" />
+                </div>
+                <p className="text-gray-300 italic text-base leading-relaxed mb-6">
+                  "With their customized CRM dashboard, our sales and inventory operations are now on autopilot. We have eliminated human errors."
+                </p>
+              </div>
+              <div className="border-t border-gray-800 pt-6 mt-6">
+                <h4 className="font-heading font-bold text-white text-lg">Apex Global Traders</h4>
+                <p className="text-gray-500 text-sm">Trading & Retail MSME, Bangalore</p>
+              </div>
+            </div>
+
+            {/* Card 3 */}
+            <div className="bg-black border border-gray-800/80 p-8 rounded-sm hover:border-brand-500/50 transition-all duration-300 flex flex-col justify-between">
+              <div>
+                <div className="flex justify-between items-start mb-6">
+                  <div className="bg-brand-950 border border-brand-800/50 px-4 py-2 rounded-sm">
+                    <span className="text-brand-400 font-mono font-bold text-lg">Result: +35% Revenue</span>
+                  </div>
+                  <Quote className="text-brand-500/40 w-8 h-8" />
+                </div>
+                <p className="text-gray-300 italic text-base leading-relaxed mb-6">
+                  "Their business consulting and market strategy enabled us to secure multiple enterprise clients within six months."
+                </p>
+              </div>
+              <div className="border-t border-gray-800 pt-6 mt-6">
+                <h4 className="font-heading font-bold text-white text-lg">InnovateTech Services</h4>
+                <p className="text-gray-500 text-sm">IT Services MSME, Hyderabad</p>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
     </div>

@@ -3,6 +3,7 @@ import { Mail, MapPin, Send, Phone, Building2, Users, AlertCircle, IndianRupee, 
 import { useData } from '../context/DataContext';
 import { api } from '../services/api';
 import { SEO } from '../components/SEO';
+import { trackEvent } from '../utils/analytics';
 
 type FormStep = 'contact' | 'otp' | 'details' | 'success';
 
@@ -65,6 +66,11 @@ export const ContactPage: React.FC = () => {
     setIsSubmitting(false);
 
     if (success) {
+      trackEvent('contact_form_submission', {
+        businessCategory: formData.businessCategory,
+        employeeCount: formData.employeeCount,
+        turnover: formData.turnover
+      });
       setStep('success');
     } else {
       alert("There was an error submitting your profile. Please try again.");
