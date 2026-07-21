@@ -9,6 +9,7 @@ interface SEOProps {
   url?: string;
   type?: string;
   schemaType?: 'Organization' | 'Service' | 'FAQPage' | 'Breadcrumb' | 'ProfessionalService';
+  additionalSchemas?: any[];
 }
 
 export const SEO: React.FC<SEOProps> = ({
@@ -18,7 +19,8 @@ export const SEO: React.FC<SEOProps> = ({
   image = "https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
   url = "https://analyticsspire.com",
   type = "website",
-  schemaType
+  schemaType,
+  additionalSchemas
 }) => {
   const siteTitle = title.includes("Analytics Spire") ? title : `${title} | Analytics Spire`;
   const canonicalUrl = url.endsWith('/') ? url : `${url}/`;
@@ -229,6 +231,13 @@ export const SEO: React.FC<SEOProps> = ({
           {JSON.stringify(getBreadcrumbs())}
         </script>
       )}
+
+      {/* Additional custom schemas */}
+      {additionalSchemas && additionalSchemas.map((schema, index) => (
+        <script key={index} type="application/ld+json">
+          {JSON.stringify(schema)}
+        </script>
+      ))}
     </Helmet>
   );
 };

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useSearchParams } from 'react-router-dom';
+import { Link, useSearchParams, useParams, useNavigate } from 'react-router-dom';
 import { Calendar, User, ArrowLeft, ArrowRight, Clock, BookOpen, ChevronRight } from 'lucide-react';
 import { SEO } from '../components/SEO';
 
@@ -13,13 +13,213 @@ interface BlogPost {
   content: React.ReactNode;
   seoTitle: string;
   seoDesc: string;
+  additionalSchemas?: any[];
 }
 
 export const BlogPage: React.FC = () => {
+  const { slug } = useParams();
+  const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
-  const currentSlug = searchParams.get('post');
+  const currentSlug = slug || searchParams.get('post');
 
   const blogPosts: BlogPost[] = [
+    {
+      title: "No-Code Automation for Small Manufacturing Businesses in India: A Practical Starter Guide",
+      slug: "no-code-automation-manufacturing-msme-india",
+      date: "July 20, 2026",
+      readTime: "7 min read",
+      category: "Automation",
+      summary: "A practical, no-jargon guide to no-code automation for small manufacturing businesses in India. Automate attendance, stock, orders and reports — no coding needed.",
+      seoTitle: "No-Code Automation for Small Manufacturing MSMEs in India",
+      seoDesc: "A practical, no-jargon guide to no-code automation for small manufacturing businesses in India. Automate attendance, stock, orders and reports — no coding needed.",
+      additionalSchemas: [
+        {
+          "@context": "https://schema.org",
+          "@type": "Article",
+          "headline": "No-Code Automation for Small Manufacturing Businesses in India: A Practical Starter Guide",
+          "author": {
+            "@type": "Person",
+            "name": "Anand Rengasamy"
+          },
+          "datePublished": "2026-07-20",
+          "dateModified": "2026-07-20",
+          "image": "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1200&q=80",
+          "publisher": {
+            "@type": "Organization",
+            "name": "Analytics Spire",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://ui-avatars.com/api/?name=Analytics+Spire&background=0284c7&color=fff&bold=true&size=512"
+            }
+          }
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "Do I need any coding or technical skills to use no-code automation?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "No. These tools are built for non-technical business owners. If you can use WhatsApp and a spreadsheet, you can start."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How much does it cost to automate a small manufacturing business?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "You can begin at zero cost using free tools like Google Sheets and WhatsApp Business, and only pay for advanced apps or automation as your needs grow. It scales with you."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Will automation replace my workers?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "No — it removes repetitive data-entry and chasing, so your people spend time on higher-value work like production quality and customer service."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How long does it take to see results?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Most owners see time savings within the first two to four weeks of automating a single process like attendance or stock tracking."
+              }
+            }
+          ]
+        }
+      ],
+      content: (
+        <article className="space-y-6 text-gray-300 leading-relaxed text-lg">
+          <img 
+            src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1200&q=80" 
+            alt="Small manufacturing MSME owner in India using a no-code automation app on a smartphone." 
+            className="w-full h-72 object-cover rounded-xl my-6 border border-gray-800" 
+          />
+          <p>
+            If you run a small manufacturing unit in India, your day probably involves an attendance register at the gate, stock counts scribbled in a notebook, order enquiries buried in WhatsApp, and someone re-typing everything into Tally at month-end. It works — but it eats hours, invites mistakes, and keeps you doing data-entry instead of growing the business. This is exactly where no-code automation for a small business in India changes the game: you get software to do the repetitive work for you, without hiring a developer or writing a single line of code.
+          </p>
+          <p>
+            This guide explains, in plain language, what no-code automation is, which parts of a manufacturing MSME you should automate first, the affordable tools that work well in the Indian context, and a simple step-by-step way to begin.
+          </p>
+
+          <h2 className="text-2xl font-bold text-white mt-8 mb-4">What "no-code automation" actually means</h2>
+          <p>
+            "No-code" tools let you build apps and automations by clicking, dragging, and filling in forms — the way you'd build a slide or a spreadsheet — instead of programming. "Automation" simply means the software does a task automatically once you set it up: for example, the moment a worker marks attendance on a phone, it updates the payroll sheet on its own.
+          </p>
+          <p>
+            Put together, no-code automation lets a non-technical business owner replace manual registers, repeated data entry, and follow-up chasing with simple systems that run themselves. You stay in control; the software just removes the drudgery.
+          </p>
+
+          <h2 className="text-2xl font-bold text-white mt-8 mb-4">Why it matters especially for Indian manufacturing MSMEs</h2>
+          <p>
+            Three reasons make this a strong fit for small manufacturers in India:
+          </p>
+          <ul className="list-disc pl-6 space-y-2 text-gray-400">
+            <li><strong>Cost.</strong> Most of these tools have free or low-cost plans, so you can start without a big investment — important when margins are tight.</li>
+            <li><strong>Mobile-first.</strong> Your supervisors and workers already use smartphones and WhatsApp. No-code apps run on the same phones, so adoption is easy.</li>
+            <li><strong>Less dependency on one person.</strong> When your stock, orders, and attendance live in a shared system instead of one manager's notebook, the business keeps running even when someone is on leave.</li>
+          </ul>
+
+          <h2 className="text-2xl font-bold text-white mt-8 mb-4">The 5 processes to automate first</h2>
+          <p>
+            You don't need to automate everything at once. Start with the tasks that waste the most time or cause the most errors.
+          </p>
+
+          <h3 className="text-xl font-bold text-white mt-6 mb-3">1. Attendance and payroll</h3>
+          <p>
+            Replace the paper register with a simple mobile check-in. Even a free Google Form or a low-cost attendance app can record who came in, calculate hours and overtime, and feed a payroll sheet automatically — cutting hours of month-end calculation and reducing disputes.
+          </p>
+
+          <h3 className="text-xl font-bold text-white mt-6 mb-3">2. Stock and inventory tracking</h3>
+          <p>
+            Move your stock notebook into a shared sheet or a simple inventory app. You can set it to flag when raw material drops below a reorder level, so you never halt production because something ran out unnoticed.
+          </p>
+
+          <h3 className="text-xl font-bold text-white mt-6 mb-3">3. Order and lead management on WhatsApp</h3>
+          <p>
+            Most MSME enquiries come through WhatsApp. WhatsApp Business (free) lets you set up quick replies, catalogues, and labels so no enquiry slips through the cracks. Connected to a simple sheet, every lead gets logged and followed up.
+          </p>
+
+          <h3 className="text-xl font-bold text-white mt-6 mb-3">4. Quotations and invoices</h3>
+          <p>
+            Instead of retyping the same quotation formats, use templates that auto-fill customer and product details, and connect the final figures into Tally so your accounts stay updated without double entry.
+          </p>
+
+          <h3 className="text-xl font-bold text-white mt-6 mb-3">5. Daily production and job tracking</h3>
+          <p>
+            Give supervisors a simple form or app to log daily production, machine downtime, or job status. That data rolls up into a live dashboard, so you can see your unit's performance from your phone instead of waiting for end-of-day reports.
+          </p>
+
+          <h2 className="text-2xl font-bold text-white mt-8 mb-4">Affordable no-code tools that work well in India</h2>
+          <p>
+            You can run most of the above with a small, practical toolkit:
+          </p>
+          <ul className="list-disc pl-6 space-y-2 text-gray-400">
+            <li><strong>Google Sheets + Google Forms</strong> — free, familiar, and powerful for tracking and simple automation.</li>
+            <li><strong>WhatsApp Business</strong> — free; the front door for most MSME customer communication.</li>
+            <li><strong>Zoho</strong> — an Indian software suite with affordable CRM, inventory, and forms, built with local businesses in mind.</li>
+            <li><strong>No-code app builders (such as Glide or AppSheet)</strong> — turn a spreadsheet into a mobile app your team can use, with free or low-cost tiers.</li>
+            <li><strong>Automation connectors (such as Make, Zapier, or n8n)</strong> — the "glue" that passes information between your tools automatically.</li>
+            <li><strong>Tally</strong> — keep it as your accounts backbone, and connect your automations to it rather than replacing it.</li>
+          </ul>
+          <p>
+            Start with what's free (Sheets and WhatsApp Business), and add paid tools only when a specific need justifies the cost.
+          </p>
+
+          <h2 className="text-2xl font-bold text-white mt-8 mb-4">How to get started — a simple 5-step plan</h2>
+          <ol className="list-decimal pl-6 space-y-2 text-gray-400">
+            <li><strong>Pick ONE painful process.</strong> Choose the task that wastes the most time this month — often attendance or stock.</li>
+            <li><strong>Map how it works today.</strong> Write down each step and who does it. This shows you exactly what to automate.</li>
+            <li><strong>Choose one simple tool.</strong> Match the tool to the task; don't over-buy. Free first.</li>
+            <li><strong>Run a small pilot.</strong> Test it with one team or one product line for two weeks before rolling it out.</li>
+            <li><strong>Train your team and expand.</strong> Once it's working and people are comfortable, automate the next process.</li>
+          </ol>
+          <p>
+            Small steps beat a big-bang overhaul. Each win frees up time and builds your team's confidence for the next one.
+          </p>
+
+          <h2 className="text-2xl font-bold text-white mt-8 mb-4">Common mistakes to avoid</h2>
+          <ul className="list-disc pl-6 space-y-2 text-gray-400">
+            <li><strong>Automating a broken process.</strong> Fix a messy workflow first, then automate it — otherwise you just speed up the mess.</li>
+            <li><strong>Buying too many tools at once.</strong> Start lean; add tools only when a real need appears.</li>
+            <li><strong>Skipping team training.</strong> The best system fails if your people aren't shown how to use it. Keep it simple and support them.</li>
+            <li><strong>No single owner.</strong> Assign one person to own each automation so it's maintained and improved.</li>
+          </ul>
+
+          <h2 className="text-2xl font-bold text-white mt-8 mb-4">Frequently asked questions</h2>
+          <div className="space-y-4">
+            <div>
+              <p className="font-semibold text-white">Do I need any coding or technical skills to use no-code automation?</p>
+              <p className="text-gray-400">No. These tools are built for non-technical business owners. If you can use WhatsApp and a spreadsheet, you can start.</p>
+            </div>
+            <div>
+              <p className="font-semibold text-white">How much does it cost to automate a small manufacturing business?</p>
+              <p className="text-gray-400">You can begin at zero cost using free tools like Google Sheets and WhatsApp Business, and only pay for advanced apps or automation as your needs grow. It scales with you.</p>
+            </div>
+            <div>
+              <p className="font-semibold text-white">Will automation replace my workers?</p>
+              <p className="text-gray-400">No — it removes repetitive data-entry and chasing, so your people spend time on higher-value work like production quality and customer service.</p>
+            </div>
+            <div>
+              <p className="font-semibold text-white">How long does it take to see results?</p>
+              <p className="text-gray-400">Most owners see time savings within the first two to four weeks of automating a single process like attendance or stock tracking.</p>
+            </div>
+          </div>
+
+          <h2 className="text-2xl font-bold text-white mt-8 mb-4">Ready to automate your manufacturing unit?</h2>
+          <p>
+            No-code automation lets a small manufacturer in India cut manual work, reduce errors, and free up hours — starting with tools you may already have. The key is to begin with one process and grow from there.
+          </p>
+          <p>
+            At Analytics Spire, we help Indian MSMEs identify exactly where automation will save the most time and money, and set it up for you end to end. <Link to="/contact" className="text-brand-400 underline hover:text-white transition">Book a free consultation</Link> to map your first automation, or <Link to="/services" className="text-brand-400 underline hover:text-white transition">explore our services</Link> to see how we work.
+          </p>
+        </article>
+      )
+    },
     {
       title: "How Indian MSMEs Can Leverage Intelligent CRM Systems to Double Lead Conversions",
       slug: "crm-systems-lead-conversion",
@@ -167,7 +367,8 @@ export const BlogPage: React.FC = () => {
       <SEO 
         title={currentPost ? currentPost.seoTitle : "MSME Growth & Automation Blog | Analytics Spire"}
         description={currentPost ? currentPost.seoDesc : "Practical tips on business automation, cost-cutting and scaling for Indian MSME owners. Insights from consultant Anand Rengasamy at Analytics Spire."}
-        url={`https://analyticsspire.com/blog${currentSlug ? `?post=${currentSlug}` : ''}`}
+        url={currentSlug ? `https://analyticsspire.com/blog/${currentSlug}` : "https://analyticsspire.com/blog"}
+        additionalSchemas={currentPost?.additionalSchemas}
       />
 
       {/* Hero Banner */}
@@ -176,7 +377,7 @@ export const BlogPage: React.FC = () => {
           {currentPost ? (
             <div>
               <button 
-                onClick={() => setSearchParams({})} 
+                onClick={() => navigate('/blog')} 
                 className="inline-flex items-center text-brand-400 hover:text-white mb-6 font-bold uppercase tracking-wider text-xs transition"
               >
                 <ArrowLeft size={16} className="mr-2" /> Back to Insights
@@ -239,9 +440,9 @@ export const BlogPage: React.FC = () => {
                     <div key={index} className="group border-b border-gray-800 pb-4 last:border-0 last:pb-0">
                       <span className="text-xs font-bold text-brand-500 uppercase tracking-wider">{post.category}</span>
                       <h4 className="font-heading font-bold text-white group-hover:text-brand-400 transition text-md mt-1 mb-2 line-clamp-2">
-                        <button onClick={() => setSearchParams({ post: post.slug })} className="text-left w-full">
+                        <Link to={`/blog/${post.slug}`} className="text-left w-full block">
                           {post.title}
-                        </button>
+                        </Link>
                       </h4>
                       <p className="text-xs text-gray-400">{post.date}</p>
                     </div>
@@ -273,12 +474,12 @@ export const BlogPage: React.FC = () => {
                     </div>
                     <span className="ml-2.5 text-sm text-gray-300 font-medium">{blogPosts[0].date}</span>
                   </div>
-                  <button 
-                    onClick={() => setSearchParams({ post: blogPosts[0].slug })}
+                  <Link 
+                    to={`/blog/${blogPosts[0].slug}`}
                     className="inline-flex items-center text-brand-400 hover:text-white font-bold uppercase tracking-wider text-sm transition"
                   >
                     Read Article <ArrowRight size={16} className="ml-1.5" />
-                  </button>
+                  </Link>
                 </div>
               </div>
               <div className="lg:w-1/2 relative bg-brand-950 flex items-center justify-center p-12 border-t lg:border-t-0 lg:border-l border-gray-800">
@@ -307,9 +508,9 @@ export const BlogPage: React.FC = () => {
                       </span>
                     </div>
                     <h3 className="font-heading text-xl font-bold text-white mb-3 hover:text-brand-400 transition">
-                      <button onClick={() => setSearchParams({ post: post.slug })} className="text-left">
+                      <Link to={`/blog/${post.slug}`} className="text-left block">
                         {post.title}
-                      </button>
+                      </Link>
                     </h3>
                     <p className="text-gray-400 text-sm font-light leading-relaxed mb-6">
                       {post.summary}
@@ -317,12 +518,12 @@ export const BlogPage: React.FC = () => {
                   </div>
                   <div className="flex items-center justify-between border-t border-gray-800 pt-4 mt-auto">
                     <span className="text-xs text-gray-500">{post.date}</span>
-                    <button 
-                      onClick={() => setSearchParams({ post: post.slug })}
+                    <Link 
+                      to={`/blog/${post.slug}`}
                       className="text-brand-400 hover:text-white font-bold text-xs uppercase tracking-wider transition"
                     >
                       Read More →
-                    </button>
+                    </Link>
                   </div>
                 </div>
               ))}

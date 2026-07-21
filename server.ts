@@ -110,26 +110,32 @@ async function startServer() {
       content: 'Analytics Spire helps Indian MSMEs cut costs and scale with data-driven consulting and AI automation. Led by Anand Rengasamy. Turn your Business into Growth Machine.'
     },
     '/about': {
-      title: 'About Anand Rengasamy | MSME Consultant, Analytics Spire',
-      description: '30+ years of engineering experience turned into practical MSME consulting. Meet Anand Rengasamy, founder of Analytics Spire, and our approach to growth.',
+      title: 'About Analytics Spire | MSME Consultant Anand Rengasamy',
+      description: 'Meet Anand Rengasamy and Analytics Spire. 30 years of engineering and business experience helping Indian MSMEs grow through consulting, coaching and automation.',
       h1: 'Meet the consultant behind Analytics Spire',
       content: 'Anand Rengasamy Founder & Principal Consultant with BITS Pilani background. 30+ years of corporate engineering experience turned into actionable, low-cost growth strategies for Indian MSMEs.'
     },
     '/services': {
-      title: 'MSME Automation Services: CRM, Inventory, Payroll | Analytics Spire',
-      description: "Explore Analytics Spire's no-code automation services for MSMEs — CRM, telecalling, inventory, attendance, payroll, and finance systems. See what fits your business.",
+      title: 'MSME Consulting, Coaching & Automation Services | Analytics Spire',
+      description: 'Explore Analytics Spire\'s consulting, coaching and no-code automation services for Indian MSMEs. Cut costs and scale faster. Book a free consultation today.',
       h1: 'Automation and consulting services for growing MSMEs',
       content: "Explore Analytics Spire's no-code automation services for MSMEs — CRM, telecalling, inventory, attendance, payroll, and finance systems. See what fits your business."
     },
     '/blog': {
-      title: 'MSME Business Growth Blog | Analytics Spire',
-      description: 'Read expert insights, real case studies, and guide articles on MSME business consulting, growth strategies, and no-code automation systems.',
+      title: 'MSME Growth & Automation Blog | Analytics Spire',
+      description: 'Practical tips on business automation, cost-cutting and scaling for Indian MSME owners. Insights from consultant Anand Rengasamy at Analytics Spire.',
       h1: 'Latest articles, guides, and insights on MSME growth',
       content: 'Read expert insights, real case studies, and guide articles on MSME business consulting, growth strategies, and no-code automation systems.'
     },
+    '/blog/no-code-automation-manufacturing-msme-india': {
+      title: 'No-Code Automation for Small Manufacturing MSMEs in India',
+      description: 'A practical, no-jargon guide to no-code automation for small manufacturing businesses in India. Automate attendance, stock, orders and reports — no coding needed.',
+      h1: 'No-Code Automation for Small Manufacturing Businesses in India: A Practical Starter Guide',
+      content: 'If you run a small manufacturing unit in India, your day probably involves an attendance register at the gate, stock counts scribbled in a notebook, order enquiries buried in WhatsApp, and someone re-typing everything into Tally at month-end. This is exactly where no-code automation for a small business in India changes the game: you get software to do the repetitive work for you, without hiring a developer or writing a single line of code.'
+    },
     '/contact': {
-      title: 'Contact Analytics Spire | Book a Free MSME Consultation',
-      description: 'Ready to automate and grow your MSME? Contact Analytics Spire for a free consultation with Anand Rengasamy. Serving businesses across India.',
+      title: 'Contact Analytics Spire | Free MSME Consultation',
+      description: 'Get in touch with Analytics Spire for a free consultation. Business consulting, coaching and automation for MSMEs across India. Call or message us today.',
       h1: 'Get in touch with Analytics Spire',
       content: 'Ready to automate and grow your MSME? Contact Analytics Spire for a free consultation with Anand Rengasamy. Serving businesses across India. Securely verify your identity and share your business landscape for a preliminary assessment.'
     },

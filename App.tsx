@@ -56,6 +56,8 @@ const AppContent: React.FC = () => {
           <Route path="/webinar" element={<WebinarLandingPage />} />
           <Route path="/moringa" element={<MoringaLandingPage />} />
           <Route path="/blog" element={<BlogPage />} />
+          <Route path="/blog/no-code-automation-manufacturing-msme-india" element={<BlogPage />} />
+          <Route path="/blog/:slug" element={<BlogPage />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </main>
