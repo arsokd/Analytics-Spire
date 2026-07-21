@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useSearchParams, useParams, useNavigate } from 'react-router-dom';
+import { Link, useSearchParams, useParams, useNavigate, useLocation } from 'react-router-dom';
 import { Calendar, User, ArrowLeft, ArrowRight, Clock, BookOpen, ChevronRight } from 'lucide-react';
 import { SEO } from '../components/SEO';
 
@@ -18,9 +18,15 @@ interface BlogPost {
 
 export const BlogPage: React.FC = () => {
   const { slug } = useParams();
+  const location = useLocation();
   const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
-  const currentSlug = slug || searchParams.get('post');
+  
+  // Resolve slug dynamically even if matched by a static route
+  let currentSlug = slug || searchParams.get('post');
+  if (!currentSlug && location.pathname.startsWith('/blog/')) {
+    currentSlug = location.pathname.substring('/blog/'.length);
+  }
 
   const blogPosts: BlogPost[] = [
     {
