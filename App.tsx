@@ -57,6 +57,13 @@ const AppContent: React.FC = () => {
           <Route path="/moringa" element={<MoringaLandingPage />} />
           <Route path="/blog" element={<BlogPage />} />
           <Route path="/blog/automate-small-manufacturing-business-india" element={<BlogPage />} />
+          <Route path="/blog/business-analytics-for-msme-india" element={<BlogPage />} />
+          <Route path="/blog/cash-flow-management-small-business-india" element={<BlogPage />} />
+          <Route path="/blog/reduce-inventory-costs-small-business-india" element={<BlogPage />} />
+          <Route path="/blog/digital-marketing-for-msme-india" element={<BlogPage />} />
+          <Route path="/blog/improve-operational-efficiency-msme-india" element={<BlogPage />} />
+          <Route path="/blog/employee-training-msme-india" element={<BlogPage />} />
+          <Route path="/blog/market-size-estimation-consumer-behaviour-india" element={<BlogPage />} />
           <Route path="/blog/:slug" element={<BlogPage />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
