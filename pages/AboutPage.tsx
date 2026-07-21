@@ -14,7 +14,7 @@ export const AboutPage: React.FC = () => {
         title="About Analytics Spire | MSME Consultant Anand Rengasamy"
         description="Meet Anand Rengasamy and Analytics Spire. 30 years of engineering and business experience helping Indian MSMEs grow through consulting, coaching and automation."
         keywords="Anand Rengasamy, Business Consultant Chennai, MSME Growth Coach, Analytics Spire Founder, BITS Pilani"
-        url="https://www.analyticsspire.com/about"
+        url="https://analyticsspire.com/about"
         schemaType="Breadcrumb"
       />
       {/* Header */}

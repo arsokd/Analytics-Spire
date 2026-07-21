@@ -13,7 +13,7 @@ export const EventsPage: React.FC = () => {
         title="MSME Digital Transformation Workshops & Seminars | Analytics Spire"
         description="Join our upcoming digital transformation workshops, financial literacy panels, and small business growth summits across India."
         keywords="MSME Workshops, Business Seminars, Anand Rengasamy, Analytics Spire, Chennai Events"
-        url="https://www.analyticsspire.com/events"
+        url="https://analyticsspire.com/events"
         schemaType="Breadcrumb"
       />
       {/* Header */}

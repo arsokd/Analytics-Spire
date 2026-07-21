@@ -18,7 +18,7 @@ export const HomePage: React.FC = () => {
         title="MSME Business Consultant & Automation Expert | Analytics Spire"
         description="Analytics Spire helps Indian MSMEs cut costs and scale with data-driven consulting and AI automation. Led by Anand Rengasamy. Book a free consultation."
         keywords="MSME Business Consultant India, Business Coach Chennai, Automation for Small Business, Anand Rengasamy, Analytics Spire, Low Code CRM"
-        url="https://www.analyticsspire.com"
+        url="https://analyticsspire.com"
         schemaType="Organization"
       />
       {/* Hero Section */}

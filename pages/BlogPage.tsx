@@ -167,7 +167,7 @@ export const BlogPage: React.FC = () => {
       <SEO 
         title={currentPost ? currentPost.seoTitle : "MSME Growth & Automation Blog | Analytics Spire"}
         description={currentPost ? currentPost.seoDesc : "Practical tips on business automation, cost-cutting and scaling for Indian MSME owners. Insights from consultant Anand Rengasamy at Analytics Spire."}
-        url={`https://www.analyticsspire.com/blog${currentSlug ? `?post=${currentSlug}` : ''}`}
+        url={`https://analyticsspire.com/blog${currentSlug ? `?post=${currentSlug}` : ''}`}
       />
 
       {/* Hero Banner */}

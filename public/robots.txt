@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.analyticsspire.com/sitemap.xml
+Sitemap: https://analyticsspire.com/sitemap.xml

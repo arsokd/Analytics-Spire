@@ -26,7 +26,7 @@ export const MediaPage: React.FC = () => {
         title="MSME Training & Business Podcasts | Analytics Spire"
         description="Watch and listen to expert business training videos, financial literacy workshops, and small business growth podcasts by Anand Rengasamy."
         keywords="MSME Training, Business Podcasts, Anand Rengasamy, Analytics Spire, Financial Literacy"
-        url="https://www.analyticsspire.com/media"
+        url="https://analyticsspire.com/media"
         schemaType="Breadcrumb"
       />
       {/* Header */}

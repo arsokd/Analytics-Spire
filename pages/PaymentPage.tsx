@@ -40,7 +40,7 @@ export const PaymentPage: React.FC = () => {
         title="Secure Consultation Payment | Analytics Spire"
         description="Make secure payments for your MSME business consulting, coaching sessions, or specialized training programs with Analytics Spire."
         keywords="Secure Payment, Razorpay, MSME Consulting, Analytics Spire"
-        url="https://www.analyticsspire.com/payment"
+        url="https://analyticsspire.com/payment"
         schemaType="Breadcrumb"
       />
       <div className="max-w-4xl mx-auto">

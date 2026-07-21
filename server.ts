@@ -170,7 +170,7 @@ async function startServer() {
     "@type": "Organization",
     "name": "Analytics Spire",
     "alternateName": "Anand Rengasamy Business Consulting & Automation",
-    "url": "https://www.analyticsspire.com",
+    "url": "https://analyticsspire.com",
     "logo": "https://ui-avatars.com/api/?name=Analytics+Spire&background=0284c7&color=fff&bold=true&size=512",
     "description": "Analytics Spire helps Indian MSMEs cut costs and scale with data-driven consulting and AI automation. Led by Anand Rengasamy.",
     "founder": {
@@ -205,7 +205,7 @@ async function startServer() {
     "provider": {
       "@type": "Organization",
       "name": "Analytics Spire",
-      "url": "https://www.analyticsspire.com"
+      "url": "https://analyticsspire.com"
     },
     "areaServed": {
       "@type": "Country",
@@ -312,7 +312,7 @@ async function startServer() {
         );
         
         // Dynamic Canonical Tag injection
-        const canonicalUrl = `https://www.analyticsspire.com${requestPath === '/' ? '' : requestPath}`;
+        const canonicalUrl = `https://analyticsspire.com${requestPath === '/' ? '' : requestPath}`;
         const canonicalTag = `<link rel="canonical" href="${canonicalUrl}" />`;
         
         // Dynamic JSON-LD Structured Data selection and injection
@@ -330,7 +330,7 @@ async function startServer() {
               "@type": "ListItem",
               "position": 1,
               "name": "Home",
-              "item": "https://www.analyticsspire.com"
+              "item": "https://analyticsspire.com"
             }
           ];
           pathParts.forEach((part, index) => {
@@ -339,7 +339,7 @@ async function startServer() {
               "@type": "ListItem",
               "position": index + 2,
               "name": pageName,
-              "item": `https://www.analyticsspire.com/${pathParts.slice(0, index + 1).join('/')}`
+              "item": `https://analyticsspire.com/${pathParts.slice(0, index + 1).join('/')}`
             });
           });
           schemaToInject = {

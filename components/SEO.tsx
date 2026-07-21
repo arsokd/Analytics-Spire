@@ -16,7 +16,7 @@ export const SEO: React.FC<SEOProps> = ({
   description = "Analytics Spire provides Business Consultancy, Coaching, and Automation services for MSMEs. Led by Anand Rengasamy, we help businesses scale with data-driven strategies.",
   keywords = "Business Consulting MSME India, MSME Growth Coach Chennai, Business Automation Services, Analytics Spire Anand Rengasamy, Low Code CRM",
   image = "https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
-  url = "https://www.analyticsspire.com",
+  url = "https://analyticsspire.com",
   type = "website",
   schemaType
 }) => {
@@ -29,7 +29,7 @@ export const SEO: React.FC<SEOProps> = ({
     "@type": "Organization",
     "name": "Analytics Spire",
     "alternateName": "Anand Rengasamy Business Consulting & Automation",
-    "url": "https://www.analyticsspire.com",
+    "url": "https://analyticsspire.com",
     "logo": "https://ui-avatars.com/api/?name=Analytics+Spire&background=0284c7&color=fff&bold=true&size=512",
     "description": "Analytics Spire helps Indian MSMEs cut costs and scale with data-driven consulting and AI automation. Led by Anand Rengasamy.",
     "founder": {
@@ -65,7 +65,7 @@ export const SEO: React.FC<SEOProps> = ({
     "provider": {
       "@type": "Organization",
       "name": "Analytics Spire",
-      "url": "https://www.analyticsspire.com"
+      "url": "https://analyticsspire.com"
     },
     "areaServed": {
       "@type": "Country",
@@ -151,7 +151,7 @@ export const SEO: React.FC<SEOProps> = ({
         "@type": "ListItem",
         "position": 1,
         "name": "Home",
-        "item": "https://www.analyticsspire.com"
+        "item": "https://analyticsspire.com"
       }
     ];
 
@@ -161,7 +161,7 @@ export const SEO: React.FC<SEOProps> = ({
         "@type": "ListItem",
         "position": index + 2,
         "name": pageName,
-        "item": `https://www.analyticsspire.com/${pathParts.slice(0, index + 1).join('/')}`
+        "item": `https://analyticsspire.com/${pathParts.slice(0, index + 1).join('/')}`
       });
     });
 

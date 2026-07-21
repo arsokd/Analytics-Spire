@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 
-const DOMAIN = 'https://www.analyticsspire.com';
+const DOMAIN = 'https://analyticsspire.com';
 
 // Dynamically read routes from App.tsx using multiple fallback locations
 let routes = [];
@@ -124,7 +124,7 @@ const organizationSchema = {
   "@type": "Organization",
   "name": "Analytics Spire",
   "alternateName": "Anand Rengasamy Business Consulting & Automation",
-  "url": "https://www.analyticsspire.com",
+  "url": "https://analyticsspire.com",
   "logo": "https://ui-avatars.com/api/?name=Analytics+Spire&background=0284c7&color=fff&bold=true&size=512",
   "description": "Analytics Spire helps Indian MSMEs cut costs and scale with data-driven consulting and AI automation. Led by Anand Rengasamy.",
   "founder": {
@@ -159,7 +159,7 @@ const serviceSchema = {
   "provider": {
     "@type": "Organization",
     "name": "Analytics Spire",
-    "url": "https://www.analyticsspire.com"
+    "url": "https://analyticsspire.com"
   },
   "areaServed": {
     "@type": "Country",

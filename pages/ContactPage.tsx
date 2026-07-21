@@ -91,7 +91,7 @@ export const ContactPage: React.FC = () => {
         title="Contact Analytics Spire | Free MSME Consultation"
         description="Get in touch with Analytics Spire for a free consultation. Business consulting, coaching and automation for MSMEs across India. Call or message us today."
         keywords="Contact Analytics Spire, Book MSME Consultation, Anand Rengasamy, Chennai, India"
-        url="https://www.analyticsspire.com/contact"
+        url="https://analyticsspire.com/contact"
         schemaType="Breadcrumb"
       />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

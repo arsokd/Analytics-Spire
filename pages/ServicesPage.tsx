@@ -22,7 +22,7 @@ export const ServicesPage: React.FC = () => {
         title="MSME Consulting, Coaching & Automation Services | Analytics Spire"
         description="Explore Analytics Spire's consulting, coaching and no-code automation services for Indian MSMEs. Cut costs and scale faster. Book a free consultation today."
         keywords="MSME Automation Services, CRM, telecalling, inventory, attendance, payroll, finance systems, Analytics Spire"
-        url="https://www.analyticsspire.com/services"
+        url="https://analyticsspire.com/services"
         schemaType="Service"
       />
       {/* Services Hero */}

@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const DOMAIN = 'https://www.analyticsspire.com';
+const DOMAIN = 'https://analyticsspire.com';
 
 // 1. Dynamically read routes from App.tsx using multiple fallback locations
 let discoveredRoutes = [];
