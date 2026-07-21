@@ -127,11 +127,11 @@ async function startServer() {
       h1: 'Latest articles, guides, and insights on MSME growth',
       content: 'Read expert insights, real case studies, and guide articles on MSME business consulting, growth strategies, and no-code automation systems.'
     },
-    '/blog/no-code-automation-manufacturing-msme-india': {
-      title: 'No-Code Automation for Small Manufacturing MSMEs in India',
-      description: 'A practical, no-jargon guide to no-code automation for small manufacturing businesses in India. Automate attendance, stock, orders and reports — no coding needed.',
-      h1: 'No-Code Automation for Small Manufacturing Businesses in India: A Practical Starter Guide',
-      content: 'If you run a small manufacturing unit in India, your day probably involves an attendance register at the gate, stock counts scribbled in a notebook, order enquiries buried in WhatsApp, and someone re-typing everything into Tally at month-end. This is exactly where no-code automation for a small business in India changes the game: you get software to do the repetitive work for you, without hiring a developer or writing a single line of code.'
+    '/blog/automate-small-manufacturing-business-india': {
+      title: 'How to Automate a Small Manufacturing Business in India',
+      description: 'A practical, jargon-free guide to automating a small manufacturing business in India affordably — attendance, stock, orders and reports — without hiring a developer.',
+      h1: 'How to Automate Your Small Manufacturing Business in India (at an Affordable Price)',
+      content: 'If you run a small manufacturing unit in India, your day probably involves an attendance register at the gate, stock counts scribbled in a notebook, order enquiries buried in WhatsApp, and someone re-typing everything into Tally at month-end. It works — but it eats hours, invites mistakes, and keeps you doing data-entry instead of growing the business. The good news: you can automate a small manufacturing business in India using simple, affordable tools — without hiring a developer or buying expensive custom software.'
     },
     '/contact': {
       title: 'Contact Analytics Spire | Free MSME Consultation',

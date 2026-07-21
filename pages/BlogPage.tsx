@@ -24,19 +24,19 @@ export const BlogPage: React.FC = () => {
 
   const blogPosts: BlogPost[] = [
     {
-      title: "No-Code Automation for Small Manufacturing Businesses in India: A Practical Starter Guide",
-      slug: "no-code-automation-manufacturing-msme-india",
+      title: "How to Automate Your Small Manufacturing Business in India (at an Affordable Price)",
+      slug: "automate-small-manufacturing-business-india",
       date: "July 20, 2026",
       readTime: "7 min read",
       category: "Automation",
-      summary: "A practical, no-jargon guide to no-code automation for small manufacturing businesses in India. Automate attendance, stock, orders and reports — no coding needed.",
-      seoTitle: "No-Code Automation for Small Manufacturing MSMEs in India",
-      seoDesc: "A practical, no-jargon guide to no-code automation for small manufacturing businesses in India. Automate attendance, stock, orders and reports — no coding needed.",
+      summary: "A practical, jargon-free guide to automating a small manufacturing business in India affordably — attendance, stock, orders and reports — without hiring a developer.",
+      seoTitle: "How to Automate a Small Manufacturing Business in India",
+      seoDesc: "A practical, jargon-free guide to automating a small manufacturing business in India affordably — attendance, stock, orders and reports — without hiring a developer.",
       additionalSchemas: [
         {
           "@context": "https://schema.org",
           "@type": "Article",
-          "headline": "No-Code Automation for Small Manufacturing Businesses in India: A Practical Starter Guide",
+          "headline": "How to Automate Your Small Manufacturing Business in India (at an Affordable Price)",
           "author": {
             "@type": "Person",
             "name": "Anand Rengasamy"
@@ -59,7 +59,7 @@ export const BlogPage: React.FC = () => {
           "mainEntity": [
             {
               "@type": "Question",
-              "name": "Do I need any coding or technical skills to use no-code automation?",
+              "name": "Do I need any coding or technical skills to automate my business?",
               "acceptedAnswer": {
                 "@type": "Answer",
                 "text": "No. These tools are built for non-technical business owners. If you can use WhatsApp and a spreadsheet, you can start."
@@ -96,22 +96,22 @@ export const BlogPage: React.FC = () => {
         <article className="space-y-6 text-gray-300 leading-relaxed text-lg">
           <img 
             src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1200&q=80" 
-            alt="Small manufacturing MSME owner in India using a no-code automation app on a smartphone." 
+            alt="Small manufacturing MSME owner in India using a business automation app on a smartphone." 
             className="w-full h-72 object-cover rounded-xl my-6 border border-gray-800" 
           />
           <p>
-            If you run a small manufacturing unit in India, your day probably involves an attendance register at the gate, stock counts scribbled in a notebook, order enquiries buried in WhatsApp, and someone re-typing everything into Tally at month-end. It works — but it eats hours, invites mistakes, and keeps you doing data-entry instead of growing the business. This is exactly where no-code automation for a small business in India changes the game: you get software to do the repetitive work for you, without hiring a developer or writing a single line of code.
+            If you run a small manufacturing unit in India, your day probably involves an attendance register at the gate, stock counts scribbled in a notebook, order enquiries buried in WhatsApp, and someone re-typing everything into Tally at month-end. It works — but it eats hours, invites mistakes, and keeps you doing data-entry instead of growing the business. The good news: you can automate a small manufacturing business in India using simple, affordable tools — without hiring a developer or buying expensive custom software.
           </p>
           <p>
-            This guide explains, in plain language, what no-code automation is, which parts of a manufacturing MSME you should automate first, the affordable tools that work well in the Indian context, and a simple step-by-step way to begin.
+            This guide explains, in plain language, what business automation really means, which parts of a manufacturing MSME you should automate first, the affordable tools that work well in the Indian context, and a simple step-by-step way to begin.
           </p>
 
-          <h2 className="text-2xl font-bold text-white mt-8 mb-4">What "no-code automation" actually means</h2>
+          <h2 className="text-2xl font-bold text-white mt-8 mb-4">What business automation actually means (in plain terms)</h2>
           <p>
-            "No-code" tools let you build apps and automations by clicking, dragging, and filling in forms — the way you'd build a slide or a spreadsheet — instead of programming. "Automation" simply means the software does a task automatically once you set it up: for example, the moment a worker marks attendance on a phone, it updates the payroll sheet on its own.
+            Automation simply means letting software do a repetitive task for you once you set it up. For example, the moment a worker marks attendance on a phone, it updates the payroll sheet on its own — no one re-enters anything.
           </p>
           <p>
-            Put together, no-code automation lets a non-technical business owner replace manual registers, repeated data entry, and follow-up chasing with simple systems that run themselves. You stay in control; the software just removes the drudgery.
+            The best part for a small manufacturer: modern tools let you set this up by clicking and filling in forms — the way you'd build a spreadsheet — so you don't need any coding or a programmer. You stay in control; the software just removes the drudgery.
           </p>
 
           <h2 className="text-2xl font-bold text-white mt-8 mb-4">Why it matters especially for Indian manufacturing MSMEs</h2>
@@ -154,15 +154,15 @@ export const BlogPage: React.FC = () => {
             Give supervisors a simple form or app to log daily production, machine downtime, or job status. That data rolls up into a live dashboard, so you can see your unit's performance from your phone instead of waiting for end-of-day reports.
           </p>
 
-          <h2 className="text-2xl font-bold text-white mt-8 mb-4">Affordable no-code tools that work well in India</h2>
+          <h2 className="text-2xl font-bold text-white mt-8 mb-4">Affordable tools that work well in India</h2>
           <p>
-            You can run most of the above with a small, practical toolkit:
+            You can run most of the above with a small, practical toolkit — all usable without coding:
           </p>
           <ul className="list-disc pl-6 space-y-2 text-gray-400">
             <li><strong>Google Sheets + Google Forms</strong> — free, familiar, and powerful for tracking and simple automation.</li>
             <li><strong>WhatsApp Business</strong> — free; the front door for most MSME customer communication.</li>
             <li><strong>Zoho</strong> — an Indian software suite with affordable CRM, inventory, and forms, built with local businesses in mind.</li>
-            <li><strong>No-code app builders (such as Glide or AppSheet)</strong> — turn a spreadsheet into a mobile app your team can use, with free or low-cost tiers.</li>
+            <li><strong>Simple app builders (such as Glide or AppSheet)</strong> — turn a spreadsheet into a mobile app your team can use, with free or low-cost tiers.</li>
             <li><strong>Automation connectors (such as Make, Zapier, or n8n)</strong> — the "glue" that passes information between your tools automatically.</li>
             <li><strong>Tally</strong> — keep it as your accounts backbone, and connect your automations to it rather than replacing it.</li>
           </ul>
@@ -193,7 +193,7 @@ export const BlogPage: React.FC = () => {
           <h2 className="text-2xl font-bold text-white mt-8 mb-4">Frequently asked questions</h2>
           <div className="space-y-4">
             <div>
-              <p className="font-semibold text-white">Do I need any coding or technical skills to use no-code automation?</p>
+              <p className="font-semibold text-white">Do I need any coding or technical skills to automate my business?</p>
               <p className="text-gray-400">No. These tools are built for non-technical business owners. If you can use WhatsApp and a spreadsheet, you can start.</p>
             </div>
             <div>
@@ -212,7 +212,7 @@ export const BlogPage: React.FC = () => {
 
           <h2 className="text-2xl font-bold text-white mt-8 mb-4">Ready to automate your manufacturing unit?</h2>
           <p>
-            No-code automation lets a small manufacturer in India cut manual work, reduce errors, and free up hours — starting with tools you may already have. The key is to begin with one process and grow from there.
+            Automation lets a small manufacturer in India cut manual work, reduce errors, and free up hours — starting with tools you may already have, and without hiring a developer. The key is to begin with one process and grow from there.
           </p>
           <p>
             At Analytics Spire, we help Indian MSMEs identify exactly where automation will save the most time and money, and set it up for you end to end. <Link to="/contact" className="text-brand-400 underline hover:text-white transition">Book a free consultation</Link> to map your first automation, or <Link to="/services" className="text-brand-400 underline hover:text-white transition">explore our services</Link> to see how we work.
