@@ -19,8 +19,8 @@ export const ServicesPage: React.FC = () => {
   return (
     <div className="bg-black min-h-screen pb-24 font-sans text-white">
       <SEO 
-        title="MSME Automation Services: CRM, Inventory, Payroll | Analytics Spire"
-        description="Explore Analytics Spire's no-code automation services for MSMEs — CRM, telecalling, inventory, attendance, payroll, and finance systems. See what fits your business."
+        title="MSME Consulting, Coaching & Automation Services | Analytics Spire"
+        description="Explore Analytics Spire's consulting, coaching and no-code automation services for Indian MSMEs. Cut costs and scale faster. Book a free consultation today."
         keywords="MSME Automation Services, CRM, telecalling, inventory, attendance, payroll, finance systems, Analytics Spire"
         url="https://www.analyticsspire.com/services"
         schemaType="Service"
