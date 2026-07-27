@@ -2,6 +2,26 @@ import express from 'express';
 import path from 'path';
 import fs from 'fs';
 import { createServer as createViteServer } from 'vite';
+import { GoogleGenAI } from '@google/genai';
+
+let aiClient: GoogleGenAI | null = null;
+function getGeminiClient(): GoogleGenAI {
+  if (!aiClient) {
+    const apiKey = process.env.GEMINI_API_KEY;
+    if (!apiKey) {
+      throw new Error('GEMINI_API_KEY environment variable is required');
+    }
+    aiClient = new GoogleGenAI({
+      apiKey,
+      httpOptions: {
+        headers: {
+          'User-Agent': 'aistudio-build',
+        },
+      },
+    });
+  }
+  return aiClient;
+}
 
 async function startServer() {
   const app = express();
@@ -99,6 +119,94 @@ async function startServer() {
     } catch (error: any) {
       console.error('Proxy submit-lead failed gracefully:', error.message);
       res.status(500).json({ error: 'Proxy lead submission failed', message: error.message });
+    }
+  });
+
+  // AI Chatbot Route (SpireAI)
+  app.post('/api/chat', express.json(), async (req, res) => {
+    try {
+      const { message, history } = req.body || {};
+      if (!message || typeof message !== 'string') {
+        return res.status(400).json({ error: 'A valid message string is required.' });
+      }
+
+      const systemInstruction = `You are SpireAI, the official AI Business Assistant for Analytics Spire (www.analyticsspire.com) — an elite management consulting, business automation, and executive coaching firm for Indian Micro, Small, and Medium Enterprises (MSMEs), led by Founder & Principal Consultant Anand Rengasamy (30+ years corporate/engineering experience, BITS Pilani alumnus).
+
+Your primary goals:
+1. Provide warm, practical, concise, and highly actionable advice to Indian small business owners, manufacturers, traders, and entrepreneurs on topics like cost reduction, process automation, inventory control, cash flow management, digital marketing, staff training, and market size estimation.
+2. Answer questions about Analytics Spire's consulting services, training workshops, and no-code/low-code business automation.
+3. Encourage users to schedule a free 1-on-1 consultation or connect via WhatsApp/Email.
+
+Key Information about Analytics Spire:
+- Founder & Principal Consultant: Anand Rengasamy (BITS Pilani alumnus, 30+ yrs engineering & management leadership).
+- Core Services:
+  • Management Consulting & Strategy
+  • Business Analytics & Custom Dashboards
+  • No-Code/Low-Code Process Automation (Google Sheets/Apps Script, Custom Web Apps)
+  • Executive Coaching & Staff Skill Development
+  • Cost Reduction & Cash Flow Optimization
+  • Digital Marketing Strategy for MSMEs
+  • Market Size Estimation & Consumer Insights
+- Contact Details:
+  • Email: connect@analyticspire.com
+  • Phone/WhatsApp: +91 72000 72302
+  • Location: Chennai, India (serving MSMEs across India)
+- Important Pages:
+  • Services: /services
+  • About Anand Rengasamy: /about
+  • Book Consultation / Contact: /contact
+  • Blog & Growth Articles: /blog
+  • Events & Workshops: /events
+
+Tone & Formatting Guidelines:
+- Concise, clear, professional, empathetic to Indian MSME constraints.
+- Use clean formatting with bullet points where appropriate.
+- Include relative Markdown links (e.g. [Services Page](/services) or [Contact Page](/contact)) when referencing pages.
+- Keep responses focused (typically 2-4 short paragraphs or bullet lists).`;
+
+      const ai = getGeminiClient();
+
+      const formattedContents: Array<{ role: 'user' | 'model'; parts: Array<{ text: string }> }> = [];
+
+      if (Array.isArray(history)) {
+        for (const item of history) {
+          if (item && item.role && item.text) {
+            formattedContents.push({
+              role: item.role === 'user' ? 'user' : 'model',
+              parts: [{ text: String(item.text) }]
+            });
+          }
+        }
+      }
+
+      formattedContents.push({
+        role: 'user',
+        parts: [{ text: message }]
+      });
+
+      const response = await ai.models.generateContent({
+        model: 'gemini-3.6-flash',
+        contents: formattedContents,
+        config: {
+          systemInstruction,
+          temperature: 0.7,
+        }
+      });
+
+      const replyText = response.text || "I apologize, but I am unable to generate a response right now. Please feel free to reach out directly to Anand Rengasamy at connect@analyticspire.com or via WhatsApp at +91 72000 72302.";
+
+      return res.json({ reply: replyText });
+    } catch (error: any) {
+      console.error('Chatbot API Error:', error);
+      if (error.message && error.message.includes('GEMINI_API_KEY')) {
+        return res.status(200).json({
+          reply: "Hello! SpireAI is currently running in offline mode. You can learn about our services on our [Services Page](/services) or book a free 1-on-1 consultation directly on our [Contact Page](/contact) or via WhatsApp at +91 72000 72302!"
+        });
+      }
+      return res.status(500).json({
+        error: 'Failed to process chat message',
+        message: error.message || 'Server error'
+      });
     }
   });
 

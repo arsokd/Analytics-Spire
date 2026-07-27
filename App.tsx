@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route, Navigate, useLocation } from 'react-route
 import { MessageCircle } from 'lucide-react';
 import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
+import { Chatbot } from './components/Chatbot';
 import { HomePage } from './pages/HomePage';
 import { AboutPage } from './pages/AboutPage';
 import { ServicesPage } from './pages/ServicesPage';
@@ -69,6 +70,9 @@ const AppContent: React.FC = () => {
         </Routes>
       </main>
       {!isLandingPage && <Footer />}
+
+      {/* Floating AI Assistant Chatbot */}
+      <Chatbot />
 
       {/* Floating WhatsApp Button */}
       <a
