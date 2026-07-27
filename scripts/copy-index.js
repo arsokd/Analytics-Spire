@@ -45,8 +45,26 @@ if (routes.length === 0) {
   routes = ['about', 'services', 'blog', 'media', 'events', 'contact', 'payment', 'webinar', 'moringa'];
 }
 
-// Explicitly ensure the 9 subpages are always present in addition to dynamically discovered routes
-const coreSubPages = ['about', 'services', 'blog', 'media', 'events', 'contact', 'payment', 'webinar', 'moringa'];
+// Explicitly ensure the subpages and blog posts are always pre-rendered in addition to dynamically discovered routes
+const coreSubPages = [
+  'about', 'services', 'blog', 'media', 'events', 'contact', 'payment', 'webinar', 'moringa',
+  'services/business-analytics',
+  'services/business-automation',
+  'services/strategic-marketing',
+  'services/operational-excellence',
+  'services/finance-management',
+  'services/inventory-management',
+  'services/training-and-development',
+  'services/market-estimation-consumer-behaviour',
+  'blog/automate-small-manufacturing-business-india',
+  'blog/business-analytics-for-msme-india',
+  'blog/cash-flow-management-small-business-india',
+  'blog/reduce-inventory-costs-small-business-india',
+  'blog/digital-marketing-for-msme-india',
+  'blog/improve-operational-efficiency-msme-india',
+  'blog/employee-training-msme-india',
+  'blog/market-size-estimation-consumer-behaviour-india'
+];
 coreSubPages.forEach(p => {
   if (!routes.includes(p)) {
     routes.push(p);
@@ -74,6 +92,54 @@ const PAGE_METADATA = {
     description: 'Explore Analytics Spire\'s consulting, coaching and no-code automation services for Indian MSMEs. Cut costs and scale faster. Book a free consultation today.',
     h1: 'Automation and consulting services for growing MSMEs',
     content: "Explore Analytics Spire's no-code automation services for MSMEs — CRM, telecalling, inventory, attendance, payroll, and finance systems. See what fits your business."
+  },
+  '/services/business-analytics': {
+    title: 'Business Analytics Services for MSMEs | Analytics Spire',
+    description: 'Transform Tally and Excel data into real-time visual dashboards. Make data-backed decisions that boost profit margins and lower operating expenses for Indian MSMEs.',
+    h1: 'Business Analytics Services for Indian MSMEs',
+    content: 'Bridging the gaps through data-driven solutions and market insight validation. Analyzing Business & Market Insights, sales, debtor aging, and profit dashboards.'
+  },
+  '/services/business-automation': {
+    title: 'Business Automation Services for MSMEs | Analytics Spire',
+    description: 'Replace manual tasks with affordable no-code workflows. Automate WhatsApp leads, quote generation, order tracking, and invoice follow-ups for Indian MSMEs.',
+    h1: 'Business Automation Services for Indian MSMEs',
+    content: 'Digitalizing business operations and creating dynamic, interactive dashboards for quantifiable output. WhatsApp automation, mobile CRM, order tracking, and Tally sync.'
+  },
+  '/services/strategic-marketing': {
+    title: 'Strategic Marketing Consulting for MSMEs | Analytics Spire',
+    description: 'Build predictable lead generation pipelines across Google, Meta, and LinkedIn for Indian MSMEs. Transition from word-of-mouth reliance to digital customer acquisition.',
+    h1: 'Strategic Marketing Consulting for Indian MSMEs',
+    content: 'Comprehensive market estimation, consumer behaviour analysis, and strategic digital marketing advice. Target B2B campaigns, high-converting landing pages, and CAC tracking.'
+  },
+  '/services/operational-excellence': {
+    title: 'Operational Excellence & Lean Consulting | Analytics Spire',
+    description: 'Streamline shop-floor execution, eliminate material waste, and optimize machine utilization using Lean principles, visual SOPs, and shift review routines for Indian MSMEs.',
+    h1: 'Operational Excellence & Lean Consulting for Indian MSMEs',
+    content: 'Optimizing supply chains and processes through technology integration, value stream mapping, bottleneck audits, and scrap reduction frameworks.'
+  },
+  '/services/finance-management': {
+    title: 'Finance & Cash Flow Management Consulting | Analytics Spire',
+    description: 'Master cash flow, shorten debtor collections, and manage working capital with confidence. Build 13-week liquidity forecasts and bankable financial projections for Indian MSMEs.',
+    h1: 'Finance & Cash Flow Management Consulting for Indian MSMEs',
+    content: 'Advanced financial modelling, budgeting, cash flow forecasting, debtor aging credit control, and bank loan syndication CMA data prep.'
+  },
+  '/services/inventory-management': {
+    title: 'Inventory Management & Stock Control Services | Analytics Spire',
+    description: 'Optimize warehouse stock levels, prevent fast-mover stockouts, and unlock capital trapped in dead inventory with ABC/XYZ matrixes and mobile barcode scanning for Indian MSMEs.',
+    h1: 'Inventory Management & Stock Control Services for Indian MSMEs',
+    content: 'Optimizing stock levels, reducing carrying costs, reorder point alerts, mobile barcode scanning, and Tally inventory sync.'
+  },
+  '/services/training-and-development': {
+    title: 'Employee & Supervisory Training Services | Analytics Spire',
+    description: 'Upskill technical, sales, and middle-management teams with energetic bilingual workshops. Build accountable shift supervisors and high-performing sales reps for Indian MSMEs.',
+    h1: 'Employee & Supervisory Training Services for Indian MSMEs',
+    content: 'Trained over 4,000 professionals across technical, sales, leadership, and customer service domains. B2B consultative sales, supervisory leadership, and shop-floor 5S SOPs.'
+  },
+  '/services/market-estimation-consumer-behaviour': {
+    title: 'Market Estimation & Consumer Behaviour Research | Analytics Spire',
+    description: 'Validate expansion plans with empirical market size calculations (TAM/SAM/SOM), primary buyer surveys, competitor pricing benchmarks, and consumer behavior profiling for Indian MSMEs.',
+    h1: 'Market Estimation & Consumer Behaviour Research for Indian MSMEs',
+    content: 'Empirical market size modeling (TAM/SAM/SOM), primary buyer surveys, field research, price elasticity studies, and competitor channel benchmarking.'
   },
   '/blog': {
     title: 'MSME Growth & Automation Blog | Analytics Spire',
@@ -325,6 +391,18 @@ function processHtml(templateContent, requestPath) {
   const canonicalUrl = `${DOMAIN}${requestPath === '/' ? '' : requestPath}`;
   const canonicalTag = `<link rel="canonical" href="${canonicalUrl}" />`;
 
+  // Open Graph & Twitter Tags
+  const ogTags = `
+  <meta property="og:type" content="${requestPath.startsWith('/blog/') ? 'article' : 'website'}" />
+  <meta property="og:title" content="${metadata.title}" />
+  <meta property="og:description" content="${metadata.description}" />
+  <meta property="og:url" content="${canonicalUrl}" />
+  <meta property="og:image" content="https://analyticsspire.com/logo.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="${metadata.title}" />
+  <meta name="twitter:description" content="${metadata.description}" />
+  <meta name="twitter:image" content="https://analyticsspire.com/logo.png" />`;
+
   // Schema selection
   let schemaToInject = organizationSchema;
   if (requestPath.includes('/services')) {
@@ -365,7 +443,7 @@ function processHtml(templateContent, requestPath) {
   // Inject in head
   html = html.replace(
     '</head>',
-    `  ${canonicalTag}\n  ${schemaString}\n</head>`
+    `  ${canonicalTag}${ogTags}\n  ${schemaString}\n</head>`
   );
 
   // Inject hidden crawler-friendly text in root

@@ -32,7 +32,8 @@ try {
       if (p.endsWith('/')) {
         p = p.slice(0, -1);
       }
-      if (p !== '*' && p !== '/*') {
+      // EXCLUDE parameterized route templates like 'blog/:slug' and wildcards
+      if (p !== '*' && p !== '/*' && !p.includes(':')) {
         routesSet.add(p);
       }
     }
@@ -49,56 +50,77 @@ if (discoveredRoutes.length === 0) {
   discoveredRoutes = ['', 'about', 'services', 'blog', 'media', 'events', 'contact', 'payment', 'webinar', 'moringa'];
 }
 
-// Explicitly ensure the 10 core pages are always present in addition to dynamically discovered routes
+// Ensure non-parameterized core pages are present
 const corePages = ['', 'about', 'services', 'blog', 'media', 'events', 'contact', 'payment', 'webinar', 'moringa'];
 corePages.forEach(p => {
-  if (!discoveredRoutes.includes(p)) {
+  if (!discoveredRoutes.includes(p) && !p.includes(':')) {
     discoveredRoutes.push(p);
   }
 });
 
-// Ensure root is in there and normalize
+// Explicitly add resolved real blog post URLs with genuine publish/edit dates
+const realBlogPosts = [
+  { path: 'blog/automate-small-manufacturing-business-india', lastmod: '2026-07-20' },
+  { path: 'blog/business-analytics-for-msme-india', lastmod: '2026-07-20' },
+  { path: 'blog/cash-flow-management-small-business-india', lastmod: '2026-07-20' },
+  { path: 'blog/reduce-inventory-costs-small-business-india', lastmod: '2026-07-20' },
+  { path: 'blog/digital-marketing-for-msme-india', lastmod: '2026-07-20' },
+  { path: 'blog/improve-operational-efficiency-msme-india', lastmod: '2026-07-20' },
+  { path: 'blog/employee-training-msme-india', lastmod: '2026-07-20' },
+  { path: 'blog/market-size-estimation-consumer-behaviour-india', lastmod: '2026-07-20' }
+];
+
+// Clean out any parameterized routes from discoveredRoutes
+discoveredRoutes = discoveredRoutes.filter(r => !r.includes(':'));
+
+// Ensure root is at beginning
 if (!discoveredRoutes.includes('')) {
   discoveredRoutes.unshift('');
 }
 
-// Map to XML entries with specific prioritizations
-const today = new Date().toISOString().split('T')[0];
+// Map to XML entries with specific priorities and genuine lastmod dates (no changefreq)
 const routes = discoveredRoutes.map(routePath => {
-  let changefreq = 'weekly';
   let priority = '0.8';
 
   if (routePath === '') {
-    changefreq = 'daily';
     priority = '1.0';
   } else if (routePath === 'blog') {
-    changefreq = 'daily';
     priority = '0.9';
   } else if (routePath === 'services') {
-    changefreq = 'weekly';
     priority = '0.8';
   } else if (routePath === 'payment') {
-    changefreq = 'monthly';
     priority = '0.5';
   } else if (routePath === 'contact') {
-    changefreq = 'monthly';
     priority = '0.6';
   }
 
+  // Check if it's a blog post with a genuine lastmod date
+  const blogMatch = realBlogPosts.find(b => b.path === routePath);
+  const lastmod = blogMatch ? blogMatch.lastmod : null;
+
   return {
     path: routePath,
-    changefreq,
+    lastmod,
     priority
   };
 });
 
-// Build Sitemap
+// Also append blog posts if not already included
+realBlogPosts.forEach(bp => {
+  if (!routes.some(r => r.path === bp.path)) {
+    routes.push({
+      path: bp.path,
+      lastmod: bp.lastmod,
+      priority: '0.8'
+    });
+  }
+});
+
+// Build Sitemap without changefreq, and with lastmod only when genuine edit dates exist
 const sitemapContent = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ${routes.map(r => `  <url>
-    <loc>${DOMAIN}${r.path ? '/' + r.path : ''}</loc>
-    <lastmod>${today}</lastmod>
-    <changefreq>${r.changefreq}</changefreq>
+    <loc>${DOMAIN}${r.path ? '/' + r.path : ''}</loc>${r.lastmod ? `\n    <lastmod>${r.lastmod}</lastmod>` : ''}
     <priority>${r.priority}</priority>
   </url>`).join('\n')}
 </urlset>`;

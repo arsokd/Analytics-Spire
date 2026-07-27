@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, TrendingUp, Shield, Users, Globe, BarChart, Zap, Video, BookOpen, Quote } from 'lucide-react';
-import { SEO } from '../components/SEO';
+import { SEO, faqSchema } from '../components/SEO';
 import { useData } from '../context/DataContext';
 import { trackEvent } from '../utils/analytics';
 
@@ -17,9 +17,9 @@ export const HomePage: React.FC = () => {
       <SEO 
         title="MSME Business Consultant & Automation Expert | Analytics Spire"
         description="Analytics Spire helps Indian MSMEs cut costs and scale with data-driven consulting and AI automation. Led by Anand Rengasamy. Book a free consultation."
-        keywords="MSME Business Consultant India, Business Coach Chennai, Automation for Small Business, Anand Rengasamy, Analytics Spire, Low Code CRM"
         url="https://analyticsspire.com"
-        schemaType="Organization"
+        schemaType="ProfessionalService"
+        additionalSchemas={[faqSchema]}
       />
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center pt-20 overflow-hidden bg-[#030712]">
@@ -151,16 +151,20 @@ export const HomePage: React.FC = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-0.5 bg-gray-800 border border-gray-800">
-             {/* Dynamic Cards from Services (First 3) */}
-             {data.services.slice(0, 3).map((service, index) => (
+             {/* Dynamic Cards from Services */}
+             {data.services.map((service, index) => (
                <div key={index} className="bg-gray-900 p-10 hover:bg-gray-800 transition duration-300 group min-h-[300px] flex flex-col justify-between">
                  <div>
                    <BarChart className="w-10 h-10 text-brand-500 mb-6" />
-                   <h3 className="font-heading text-2xl font-bold text-white mb-2">{service.title}</h3>
+                   <h3 className="font-heading text-2xl font-bold text-white mb-2">
+                     <Link to={service.slug || "/services"} className="hover:text-brand-400 transition">
+                       {service.title}
+                     </Link>
+                   </h3>
                    <p className="text-gray-400 line-clamp-2">{service.description}</p>
                  </div>
-                 <Link to="/services">
-                   <ArrowRight className="text-brand-500 opacity-0 group-hover:opacity-100 transform -translate-x-4 group-hover:translate-x-0 transition duration-300" />
+                 <Link to={service.slug || "/services"} className="inline-flex items-center text-brand-400 font-semibold text-sm mt-4 group-hover:text-white transition">
+                   Learn More <ArrowRight className="ml-2 text-brand-500 transform group-hover:translate-x-1 transition duration-300" size={16} />
                  </Link>
                </div>
              ))}

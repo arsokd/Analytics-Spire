@@ -32,6 +32,7 @@ export const SERVICES_DATA: ServiceItem[] = [
     category: 'Analytics',
     description: 'Bridging the gaps through data-driven solutions and market insight validation.',
     iconName: 'BarChart',
+    slug: '/services/business-analytics',
     details: [
       'Analyzing Business & Market Insights',
       'Validating Hypothesis through Market Estimation & Consumer Behaviour',
@@ -45,6 +46,7 @@ export const SERVICES_DATA: ServiceItem[] = [
     category: 'Technology',
     description: 'Digitalizing business operations and creating dynamic, interactive dashboards for quantifiable output.',
     iconName: 'Cpu',
+    slug: '/services/business-automation',
     details: [
       'Setting Business Operation Processes',
       'Digitalizing Business Operations',
@@ -58,6 +60,7 @@ export const SERVICES_DATA: ServiceItem[] = [
     category: 'Growth',
     description: 'Comprehensive market estimation, consumer behaviour analysis, and strategic digital marketing advice.',
     iconName: 'Megaphone',
+    slug: '/services/strategic-marketing',
     details: [
       'Market Estimation & Consumer Behaviour Analysis',
       'Strategic Planning',
@@ -70,6 +73,7 @@ export const SERVICES_DATA: ServiceItem[] = [
     category: 'Operations',
     description: 'Optimizing supply chains and processes through technology integration and waste reduction.',
     iconName: 'Settings',
+    slug: '/services/operational-excellence',
     details: [
       'Process Optimization',
       'Supply Chain Management',
@@ -83,6 +87,7 @@ export const SERVICES_DATA: ServiceItem[] = [
     category: 'Finance',
     description: 'Advanced financial modelling, budgeting, and cash flow management for informed scaling.',
     iconName: 'TrendingUp',
+    slug: '/services/finance-management',
     details: [
       'Budgeting, Planning & Forecasting',
       'Cash Flow Management',
@@ -96,10 +101,37 @@ export const SERVICES_DATA: ServiceItem[] = [
     category: 'Operations',
     description: 'Optimizing stock levels, reducing carrying costs, and improving order fulfillment through data-driven tracking and analysis.',
     iconName: 'Package',
+    slug: '/services/inventory-management',
     details: [
       'Real-time Stock Tracking',
       'Demand Forecasting',
       'Warehouse Optimization'
+    ]
+  },
+  {
+    id: '7',
+    title: 'Training & Development',
+    category: 'Upskilling',
+    description: 'Trained over 4,000 professionals across technical, sales, leadership, and customer service domains.',
+    iconName: 'BookOpen',
+    slug: '/services/training-and-development',
+    details: [
+      'B2B Consultative Sales Training',
+      'Supervisory Leadership & Shift Management',
+      'Technical 5S & Shop-Floor SOPs'
+    ]
+  },
+  {
+    id: '8',
+    title: 'Market Estimation & Consumer Behaviour',
+    category: 'Research',
+    description: 'Empirical market size modeling (TAM/SAM/SOM), primary buyer surveys, and price elasticity studies for expansion.',
+    iconName: 'Search',
+    slug: '/services/market-estimation-consumer-behaviour',
+    details: [
+      'TAM, SAM & SOM Market Modeling',
+      'Primary Buyer Surveys & Field Research',
+      'Competitor Pricing & Channel Benchmarking'
     ]
   }
 ];

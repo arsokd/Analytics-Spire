@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Mail, MapPin, Send, Phone, Building2, Users, AlertCircle, IndianRupee, Lock, ShieldCheck, ArrowRight, X, Loader2 } from 'lucide-react';
+import { Mail, MapPin, Send, Phone, Building2, Users, AlertCircle, IndianRupee, Lock, ShieldCheck, ArrowRight, X, Loader2, Clock } from 'lucide-react';
 import { useData } from '../context/DataContext';
 import { api } from '../services/api';
 import { SEO } from '../components/SEO';
@@ -90,40 +90,97 @@ export const ContactPage: React.FC = () => {
       <SEO 
         title="Contact Analytics Spire | Free MSME Consultation"
         description="Get in touch with Analytics Spire for a free consultation. Business consulting, coaching and automation for MSMEs across India. Call or message us today."
-        keywords="Contact Analytics Spire, Book MSME Consultation, Anand Rengasamy, Chennai, India"
         url="https://analyticsspire.com/contact"
-        schemaType="Breadcrumb"
+        schemaType="ProfessionalService"
       />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header Section */}
-        <div className="mb-16 border-l-4 border-brand-500 pl-8">
+        <div className="mb-12 border-l-4 border-brand-500 pl-8">
           <h1 className="font-heading text-4xl md:text-6xl font-bold text-white mb-4 tracking-tight">Get in touch with Analytics Spire</h1>
-          <p className="text-xl text-gray-400 max-w-2xl font-light">
-            Securely verify your identity and share your business landscape for a preliminary assessment.
+          <p className="text-xl text-gray-300 max-w-3xl font-light leading-relaxed">
+            When you reach out to Analytics Spire, our consulting team immediately reviews your enquiry to understand your business goals and operational challenges. We will get back to you within 24 hours to schedule a free 1-on-1 strategic consultation. During this session, we will discuss tailored solutions for business automation, cost reduction, and growth scaling designed specifically for your MSME.
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-3 gap-0 border border-gray-800 bg-gray-900">
-          {/* Contact Info */}
-          <div className="lg:col-span-1 bg-gray-950 p-10 border-r border-gray-800">
-            <h2 className="font-heading text-2xl font-bold text-white mb-10">Get in Touch</h2>
-            <div className="space-y-10">
-              <div className="group">
-                <div className="flex items-center mb-2">
-                  <Mail className="w-5 h-5 text-brand-500 mr-3" />
-                  <h3 className="text-sm font-bold text-gray-400 uppercase tracking-widest">Email</h3>
+        <div className="grid lg:grid-cols-3 gap-0 border border-gray-800 bg-gray-900 mb-16">
+          {/* Contact Info & Map */}
+          <div className="lg:col-span-1 bg-gray-950 p-8 border-r border-gray-800 flex flex-col justify-between">
+            <div>
+              <h2 className="font-heading text-2xl font-bold text-white mb-8">Contact Information</h2>
+              <div className="space-y-8">
+                
+                {/* Office Address */}
+                <div className="group">
+                  <div className="flex items-center mb-2">
+                    <MapPin className="w-5 h-5 text-brand-500 mr-3 flex-shrink-0" />
+                    <h3 className="text-xs font-bold text-gray-400 uppercase tracking-widest">Headquarters</h3>
+                  </div>
+                  <address className="not-italic text-base text-gray-300 leading-relaxed pl-8">
+                    <strong className="text-white block font-bold text-lg mb-1">Analytics Spire</strong>
+                    W-583, School Road, D-Sector<br />
+                    Anna Nagar West Extension<br />
+                    Chennai - 600101<br />
+                    Tamil Nadu, India
+                  </address>
                 </div>
-                <a href={`mailto:${data.config.contactEmail}`} className="text-lg text-white hover:text-brand-400 transition border-b border-gray-700 pb-1 hover:border-brand-400">
-                  {data.config.contactEmail}
-                </a>
+
+                {/* Phone */}
+                <div className="group">
+                  <div className="flex items-center mb-2">
+                    <Phone className="w-5 h-5 text-brand-500 mr-3 flex-shrink-0" />
+                    <h3 className="text-xs font-bold text-gray-400 uppercase tracking-widest">Phone</h3>
+                  </div>
+                  <div className="pl-8">
+                    <a href="tel:+917200072302" className="text-lg text-white font-semibold hover:text-brand-400 transition border-b border-gray-700 pb-0.5 hover:border-brand-400">
+                      +91 72000 72302
+                    </a>
+                  </div>
+                </div>
+
+                {/* Email */}
+                <div className="group">
+                  <div className="flex items-center mb-2">
+                    <Mail className="w-5 h-5 text-brand-500 mr-3 flex-shrink-0" />
+                    <h3 className="text-xs font-bold text-gray-400 uppercase tracking-widest">Email</h3>
+                  </div>
+                  <div className="pl-8">
+                    <a href={`mailto:${data.config.contactEmail}`} className="text-lg text-white font-medium hover:text-brand-400 transition border-b border-gray-700 pb-0.5 hover:border-brand-400">
+                      {data.config.contactEmail}
+                    </a>
+                  </div>
+                </div>
+
+                {/* Working Hours */}
+                <div className="group">
+                  <div className="flex items-center mb-2">
+                    <Clock className="w-5 h-5 text-brand-500 mr-3 flex-shrink-0" />
+                    <h3 className="text-xs font-bold text-gray-400 uppercase tracking-widest">Working Hours</h3>
+                  </div>
+                  <div className="pl-8">
+                    <p className="text-base text-gray-300 font-medium">Monday to Saturday: 9:30am - 6:30pm</p>
+                    <p className="text-xs text-gray-500 mt-1">Sunday: Closed</p>
+                  </div>
+                </div>
+
               </div>
-              <div className="group">
-                 <div className="flex items-center mb-2">
-                  <MapPin className="w-5 h-5 text-brand-500 mr-3" />
-                  <h3 className="text-sm font-bold text-gray-400 uppercase tracking-widest">Headquarters</h3>
-                </div>
-                <p className="text-lg text-white leading-relaxed">Chennai, India</p>
+            </div>
+
+            {/* Embedded Google Map */}
+            <div className="mt-8 pt-8 border-t border-gray-800">
+              <h3 className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-3">Our Office Location</h3>
+              <div className="overflow-hidden rounded-lg border border-gray-800 shadow-md">
+                <iframe 
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3886.002824248881!2d80.18731111527038!3d13.098939990772412!2m3!1f0!1f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a52638848b5258f%3A0x8e82110c4d92ef1!2sW-583%2C%20School%20Rd%2C%20D-Sector%2C%20Anna%20Nagar%20West%20Extension%2C%20Chennai%2C%20Tamil%20Nadu%20600101!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" 
+                  width="100%" 
+                  height="220" 
+                  style={{ border: 0 }} 
+                  allowFullScreen={false} 
+                  loading="lazy" 
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title="Analytics Spire Office Location - Anna Nagar West Extension, Chennai"
+                  className="w-full"
+                ></iframe>
               </div>
             </div>
           </div>

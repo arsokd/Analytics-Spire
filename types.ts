@@ -11,6 +11,7 @@ export interface ServiceItem {
   description: string;
   category: string;
   iconName: string;
+  slug?: string;
   details?: string[]; // Optional array of strings for bullet points
   imageUrl?: string; // Image from Google Sheet
 }

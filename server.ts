@@ -452,7 +452,22 @@ Tone & Formatting Guidelines:
     
     app.get('*all', (req, res) => {
       const requestPath = req.path.replace(/\/$/, '') || '/';
-      const metadata = PAGE_METADATA[requestPath] || PAGE_METADATA['/'];
+      const isUnknownBlogSlug = requestPath.startsWith('/blog/') && !PAGE_METADATA[requestPath];
+      
+      let statusCode = 200;
+      let metadata = PAGE_METADATA[requestPath];
+      
+      if (isUnknownBlogSlug) {
+        statusCode = 404;
+        metadata = {
+          title: '404 Page Not Found | Analytics Spire',
+          description: 'The requested blog post could not be found.',
+          h1: '404 - Article Not Found',
+          content: 'The article you are looking for does not exist or may have been moved.'
+        };
+      } else if (!metadata) {
+        metadata = PAGE_METADATA['/'];
+      }
       
       const indexPath = path.join(distPath, 'index.html');
       if (fs.existsSync(indexPath)) {
@@ -471,7 +486,20 @@ Tone & Formatting Guidelines:
         // Dynamic Canonical Tag injection
         const canonicalUrl = `https://analyticsspire.com${requestPath === '/' ? '' : requestPath}`;
         const canonicalTag = `<link rel="canonical" href="${canonicalUrl}" />`;
-        
+        const noindexTag = isUnknownBlogSlug ? `<meta name="robots" content="noindex" />` : '';
+
+        // Open Graph & Twitter Tags
+        const ogTags = `
+  <meta property="og:type" content="${requestPath.startsWith('/blog/') ? 'article' : 'website'}" />
+  <meta property="og:title" content="${metadata.title}" />
+  <meta property="og:description" content="${metadata.description}" />
+  <meta property="og:url" content="${canonicalUrl}" />
+  <meta property="og:image" content="https://analyticsspire.com/logo.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="${metadata.title}" />
+  <meta name="twitter:description" content="${metadata.description}" />
+  <meta name="twitter:image" content="https://analyticsspire.com/logo.png" />`;
+
         // Dynamic JSON-LD Structured Data selection and injection
         let schemaToInject: any = organizationSchema;
         if (requestPath.includes('/services')) {
@@ -513,7 +541,7 @@ Tone & Formatting Guidelines:
         // Inject inside the head
         html = html.replace(
           '</head>',
-          `  ${canonicalTag}\n  ${schemaString}\n</head>`
+          `  ${canonicalTag}\n  ${noindexTag}\n${ogTags}\n  ${schemaString}\n</head>`
         );
         
         // Inject pre-rendered semantic HTML fallback inside #root for crawlers to pick up immediately
@@ -542,7 +570,7 @@ Tone & Formatting Guidelines:
         );
         
         res.setHeader('Content-Type', 'text/html');
-        res.status(200).send(html);
+        res.status(statusCode).send(html);
       } else {
         res.sendFile(indexPath);
       }

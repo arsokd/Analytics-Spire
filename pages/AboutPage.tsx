@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { BookOpen, Briefcase, GraduationCap, Target } from 'lucide-react';
 import { VALUES, BUSINESS_ASSOCIATIONS, TOOLS } from '../constants';
 import { useData } from '../context/DataContext';
-import { SEO } from '../components/SEO';
+import { SEO, personSchema, professionalServiceSchema } from '../components/SEO';
 
 export const AboutPage: React.FC = () => {
   const { data } = useData();
@@ -13,12 +13,12 @@ export const AboutPage: React.FC = () => {
       <SEO 
         title="About Analytics Spire | MSME Consultant Anand Rengasamy"
         description="Meet Anand Rengasamy and Analytics Spire. 30 years of engineering and business experience helping Indian MSMEs grow through consulting, coaching and automation."
-        keywords="Anand Rengasamy, Business Consultant Chennai, MSME Growth Coach, Analytics Spire Founder, BITS Pilani"
         url="https://analyticsspire.com/about"
-        schemaType="Breadcrumb"
+        schemaType="Person"
+        additionalSchemas={[professionalServiceSchema]}
       />
       {/* Header */}
-      <div className="bg-gray-900 py-16 border-b border-gray-800">
+      <div id="anand-rengasamy" className="bg-gray-900 py-16 border-b border-gray-800 scroll-mt-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <p className="text-brand-500 font-bold tracking-widest uppercase text-sm mb-2">Our Founder</p>
           <h1 className="font-heading text-4xl md:text-5xl font-bold text-white mb-4">Meet the consultant behind Analytics Spire</h1>

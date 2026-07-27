@@ -8,6 +8,14 @@ import { Chatbot } from './components/Chatbot';
 import { HomePage } from './pages/HomePage';
 import { AboutPage } from './pages/AboutPage';
 import { ServicesPage } from './pages/ServicesPage';
+import { BusinessAnalyticsPage } from './pages/services/BusinessAnalyticsPage';
+import { BusinessAutomationPage } from './pages/services/BusinessAutomationPage';
+import { StrategicMarketingPage } from './pages/services/StrategicMarketingPage';
+import { OperationalExcellencePage } from './pages/services/OperationalExcellencePage';
+import { FinanceManagementPage } from './pages/services/FinanceManagementPage';
+import { InventoryManagementPage } from './pages/services/InventoryManagementPage';
+import { TrainingDevelopmentPage } from './pages/services/TrainingDevelopmentPage';
+import { MarketEstimationPage } from './pages/services/MarketEstimationPage';
 import { ContactPage } from './pages/ContactPage';
 import { EventsPage } from './pages/EventsPage';
 import { MediaPage } from './pages/MediaPage';
@@ -50,6 +58,14 @@ const AppContent: React.FC = () => {
           <Route path="/" element={<HomePage />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/services" element={<ServicesPage />} />
+          <Route path="/services/business-analytics" element={<BusinessAnalyticsPage />} />
+          <Route path="/services/business-automation" element={<BusinessAutomationPage />} />
+          <Route path="/services/strategic-marketing" element={<StrategicMarketingPage />} />
+          <Route path="/services/operational-excellence" element={<OperationalExcellencePage />} />
+          <Route path="/services/finance-management" element={<FinanceManagementPage />} />
+          <Route path="/services/inventory-management" element={<InventoryManagementPage />} />
+          <Route path="/services/training-and-development" element={<TrainingDevelopmentPage />} />
+          <Route path="/services/market-estimation-consumer-behaviour" element={<MarketEstimationPage />} />
           <Route path="/media" element={<MediaPage />} />
           <Route path="/events" element={<EventsPage />} />
           <Route path="/contact" element={<ContactPage />} />

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Phone } from 'lucide-react';
 import { NAVIGATION_LINKS, COMPANY_NAME } from '../constants';
 import { useData } from '../context/DataContext';
 
@@ -33,11 +33,6 @@ export const Navbar: React.FC = () => {
         <div className="flex justify-between items-center h-20">
           <div className="flex items-center">
             <Link to="/" className="flex items-center group">
-              {/* 
-                  HOW TO CHANGE THE LOGO:
-                  1. Upload your logo image to the "public" folder and name it "logo.png"
-                  2. OR change the "src" below to a web link (e.g., "https://example.com/logo.png")
-              */}
               <div className="bg-white/95 px-4 py-2 rounded-lg shadow-xl border border-gray-200 group-hover:bg-white transition duration-300 flex items-center">
                  <img 
                    src={data.config.logoUrl || `https://ui-avatars.com/api/?name=${encodeURIComponent(COMPANY_NAME)}&background=0284c7&color=fff&bold=true`} 
@@ -47,7 +42,6 @@ export const Navbar: React.FC = () => {
                    className="h-12 w-auto object-contain" 
                    referrerPolicy="no-referrer"
                    onError={(e) => {
-                     // Fallback if image is missing
                      const target = e.target as HTMLImageElement;
                      const fallback = `https://ui-avatars.com/api/?name=${encodeURIComponent(COMPANY_NAME)}&background=0284c7&color=fff&bold=true`;
                      if (target.src !== fallback) {
@@ -77,15 +71,30 @@ export const Navbar: React.FC = () => {
               </Link>
             ))}
             
+            <a 
+              href="tel:+917200072302" 
+              className="px-3 py-2 text-sm font-semibold text-brand-400 hover:text-white transition-colors flex items-center gap-1.5"
+            >
+              <Phone size={14} />
+              +91 72000 72302
+            </a>
+
             <Link
               to="/contact"
-              className="ml-6 px-8 py-3 rounded-full bg-gradient-to-r from-brand-600 to-brand-400 text-white text-sm font-bold hover:from-brand-500 hover:to-brand-300 transition-all duration-300 shadow-[0_0_20px_rgba(2,132,199,0.4)] hover:shadow-[0_0_30px_rgba(2,132,199,0.6)] transform hover:-translate-y-0.5 active:scale-95"
+              className="ml-2 px-6 py-2.5 rounded-full bg-gradient-to-r from-brand-600 to-brand-400 text-white text-sm font-bold hover:from-brand-500 hover:to-brand-300 transition-all duration-300 shadow-[0_0_20px_rgba(2,132,199,0.4)] hover:shadow-[0_0_30px_rgba(2,132,199,0.6)] transform hover:-translate-y-0.5 active:scale-95"
             >
               Get Started
             </Link>
           </div>
 
-          <div className="flex items-center md:hidden">
+          <div className="flex items-center md:hidden gap-3">
+            <a 
+              href="tel:+917200072302" 
+              className="text-brand-400 hover:text-white text-xs font-bold flex items-center gap-1 bg-gray-900 border border-gray-800 px-3 py-1.5 rounded-full"
+            >
+              <Phone size={12} />
+              +91 72000 72302
+            </a>
             <button
               onClick={() => setIsOpen(!isOpen)}
               className="text-gray-300 hover:text-white focus:outline-none p-2 rounded-md hover:bg-gray-800"
@@ -116,7 +125,13 @@ export const Navbar: React.FC = () => {
                 {link.name}
               </Link>
             ))}
-            <div className="pt-4">
+            <div className="pt-2">
+              <a 
+                href="tel:+917200072302" 
+                className="block w-full text-center px-4 py-3 rounded-lg bg-gray-900 text-brand-400 font-bold border border-gray-800 mb-2"
+              >
+                Call: +91 72000 72302
+              </a>
               <Link
                 to="/contact"
                 onClick={() => setIsOpen(false)}

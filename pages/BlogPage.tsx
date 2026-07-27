@@ -147,7 +147,7 @@ export const BlogPage: React.FC = () => {
 
           <h2 className="text-2xl font-bold text-white mt-8 mb-4">Invest where the demand actually is</h2>
           <p>
-            Knowing your market size and your customers turns risky bets into confident moves. At Analytics Spire, we help Indian MSMEs estimate market potential and decode customer behaviour before they invest. <Link to="/contact" className="text-brand-400 underline hover:text-white transition">Book a free consultation</Link> and we&apos;ll help you size your next opportunity. See our full approach on our <Link to="/services" className="text-brand-400 underline hover:text-white transition">services page</Link>.
+            Knowing your market size and your customers turns risky bets into confident moves. At Analytics Spire, we help Indian MSMEs estimate market potential and decode customer behaviour before they invest. <Link to="/contact" className="text-brand-400 underline hover:text-white transition">Book a free consultation</Link> and we&apos;ll help you size your next opportunity. See our full approach on our <Link to="/services/market-estimation-consumer-behaviour" className="text-brand-400 underline hover:text-white transition">Market Estimation & Consumer Behaviour service page</Link>.
           </p>
         </article>
       )
@@ -271,7 +271,7 @@ export const BlogPage: React.FC = () => {
 
           <h2 className="text-2xl font-bold text-white mt-8 mb-4">Build a team your business can rely on</h2>
           <p>
-            A capable, well-trained team is what lets a business grow beyond its owner. At Analytics Spire, we design practical, hands-on training for Indian MSMEs across technical, sales, marketing, and soft skills. <Link to="/contact" className="text-brand-400 underline hover:text-white transition">Book a free consultation</Link> and we'll help you find the skill gaps holding your business back. Explore our training programs on our <Link to="/services" className="text-brand-400 underline hover:text-white transition">services page</Link>.
+            A capable, well-trained team is what lets a business grow beyond its owner. At Analytics Spire, we design practical, hands-on training for Indian MSMEs across technical, sales, marketing, and soft skills. <Link to="/contact" className="text-brand-400 underline hover:text-white transition">Book a free consultation</Link> and we'll help you find the skill gaps holding your business back. Explore our dedicated <Link to="/services/training-and-development" className="text-brand-400 underline hover:text-white transition">Training & Development service page</Link>.
           </p>
         </article>
       )
@@ -399,7 +399,7 @@ export const BlogPage: React.FC = () => {
 
           <h2 className="text-2xl font-bold text-white mt-8 mb-4">Run a leaner, faster business</h2>
           <p>
-            Every hour and rupee you save on waste drops straight to your bottom line. At Analytics Spire, we help Indian MSMEs find and fix the bottlenecks slowing their operations — often without any major spend. <Link to="/contact" className="text-brand-400 underline hover:text-white transition">Book a free consultation</Link> and we'll help you spot your biggest efficiency win. See how we work on our <Link to="/services" className="text-brand-400 underline hover:text-white transition">services page</Link>.
+            Every hour and rupee you save on waste drops straight to your bottom line. At Analytics Spire, we help Indian MSMEs find and fix the bottlenecks slowing their operations — often without any major spend. <Link to="/contact" className="text-brand-400 underline hover:text-white transition">Book a free consultation</Link> and we'll help you spot your biggest efficiency win. See how we work on our <Link to="/services/operational-excellence" className="text-brand-400 underline hover:text-white transition">Operational Excellence service page</Link>.
           </p>
         </article>
       )
@@ -523,7 +523,7 @@ export const BlogPage: React.FC = () => {
 
           <h2 className="text-2xl font-bold text-white mt-8 mb-4">Get a marketing system that actually brings enquiries</h2>
           <p>
-            Consistent marketing turns your business from "found by luck" into "found on purpose." At Analytics Spire, we help Indian MSMEs build simple, affordable marketing systems that bring a steady flow of the right customers. <Link to="/contact" className="text-brand-400 underline hover:text-white transition">Book a free consultation</Link> and we'll map the two channels that will work best for your business. Learn more on our <Link to="/services" className="text-brand-400 underline hover:text-white transition">services page</Link>.
+            Consistent marketing turns your business from "found by luck" into "found on purpose." At Analytics Spire, we help Indian MSMEs build simple, affordable marketing systems that bring a steady flow of the right customers. <Link to="/contact" className="text-brand-400 underline hover:text-white transition">Book a free consultation</Link> and we'll map the two channels that will work best for your business. Learn more on our <Link to="/services/strategic-marketing" className="text-brand-400 underline hover:text-white transition">Strategic Marketing service page</Link>.
           </p>
         </article>
       )
@@ -651,7 +651,7 @@ export const BlogPage: React.FC = () => {
 
           <h2 className="text-2xl font-bold text-white mt-8 mb-4">Free up the cash trapped in your stock</h2>
           <p>
-            The right inventory levels can release lakhs in tied-up cash and protect your margins. At Analytics Spire, we help Indian MSMEs set up practical, data-driven inventory systems that cut costs without risking stockouts. <Link to="/contact" className="text-brand-400 underline hover:text-white transition">Book a free consultation</Link> and we'll help you find the dead stock and cash hiding in your shelves. More on our approach: <Link to="/services" className="text-brand-400 underline hover:text-white transition">our services</Link>.
+            The right inventory levels can release lakhs in tied-up cash and protect your margins. At Analytics Spire, we help Indian MSMEs set up practical, data-driven inventory systems that cut costs without risking stockouts. <Link to="/contact" className="text-brand-400 underline hover:text-white transition">Book a free consultation</Link> and we'll help you find the dead stock and cash hiding in your shelves. More on our approach on our <Link to="/services/inventory-management" className="text-brand-400 underline hover:text-white transition">Inventory Management service page</Link>.
           </p>
         </article>
       )
@@ -779,7 +779,7 @@ export const BlogPage: React.FC = () => {
 
           <h2 className="text-2xl font-bold text-white mt-8 mb-4">Take control of your cash</h2>
           <p>
-            Steady cash flow is what lets you sleep at night and grow with confidence. At Analytics Spire, we help Indian MSMEs build simple cash forecasts and collection systems that end the month-end scramble. <Link to="/contact" className="text-brand-400 underline hover:text-white transition">Book a free consultation</Link> and we'll help you map your next 90 days of cash. See how we work on our <Link to="/services" className="text-brand-400 underline hover:text-white transition">services page</Link>.
+            Steady cash flow is what lets you sleep at night and grow with confidence. At Analytics Spire, we help Indian MSMEs build simple cash forecasts and collection systems that end the month-end scramble. <Link to="/contact" className="text-brand-400 underline hover:text-white transition">Book a free consultation</Link> and we'll help you map your next 90 days of cash. See our <Link to="/services/finance-management" className="text-brand-400 underline hover:text-white transition">Finance Management service page</Link>.
           </p>
         </article>
       )
@@ -909,7 +909,7 @@ export const BlogPage: React.FC = () => {
 
           <h2 className="text-2xl font-bold text-white mt-8 mb-4">Turn your numbers into decisions</h2>
           <p>
-            Your business is already generating the data you need to grow — the missing piece is turning it into clear, confident decisions. At Analytics Spire, we help Indian MSMEs set up simple, practical analytics that answer the questions that matter to your bottom line. <Link to="/contact" className="text-brand-400 underline hover:text-white transition">Book a free consultation</Link> and we'll show you the three numbers you should be watching every week. Prefer to see the full picture first? <Link to="/services" className="text-brand-400 underline hover:text-white transition">Explore our services</Link>.
+            Your business is already generating the data you need to grow — the missing piece is turning it into clear, confident decisions. At Analytics Spire, we help Indian MSMEs set up simple, practical analytics that answer the questions that matter to your bottom line. <Link to="/contact" className="text-brand-400 underline hover:text-white transition">Book a free consultation</Link> and we'll show you the three numbers you should be watching every week. Prefer to see the full picture first? Explore our dedicated <Link to="/services/business-analytics" className="text-brand-400 underline hover:text-white transition">Business Analytics service page</Link>.
           </p>
         </article>
       )
@@ -1106,7 +1106,7 @@ export const BlogPage: React.FC = () => {
             Automation lets a small manufacturer in India cut manual work, reduce errors, and free up hours — starting with tools you may already have, and without hiring a developer. The key is to begin with one process and grow from there.
           </p>
           <p>
-            At Analytics Spire, we help Indian MSMEs identify exactly where automation will save the most time and money, and set it up for you end to end. <Link to="/contact" className="text-brand-400 underline hover:text-white transition">Book a free consultation</Link> to map your first automation, or <Link to="/services" className="text-brand-400 underline hover:text-white transition">explore our services</Link> to see how we work.
+            At Analytics Spire, we help Indian MSMEs identify exactly where automation will save the most time and money, and set it up for you end to end. <Link to="/contact" className="text-brand-400 underline hover:text-white transition">Book a free consultation</Link> to map your first automation, or <Link to="/services/business-automation" className="text-brand-400 underline hover:text-white transition">explore our Business Automation service page</Link> to see how we work.
           </p>
         </article>
       )
@@ -1253,6 +1253,31 @@ export const BlogPage: React.FC = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [currentSlug]);
 
+  // Handle unknown blog post slugs with a proper 404 page and noindex meta tag
+  if (currentSlug && !currentPost) {
+    return (
+      <div className="bg-black min-h-screen text-white font-sans flex flex-col justify-center items-center py-32 px-4 text-center">
+        <SEO 
+          title="404 Page Not Found | Analytics Spire"
+          description="The requested blog post could not be found."
+          url={`https://analyticsspire.com/blog/${currentSlug}`}
+          noindex={true}
+        />
+        <h1 className="font-heading text-7xl font-extrabold text-white mb-4">404</h1>
+        <h2 className="text-2xl font-bold text-gray-200 mb-4">Article Not Found</h2>
+        <p className="text-gray-400 max-w-md mb-8 leading-relaxed">
+          The article you are looking for does not exist or may have been moved.
+        </p>
+        <button 
+          onClick={() => navigate('/blog')} 
+          className="bg-brand-600 hover:bg-brand-500 text-white font-bold px-8 py-3 rounded-lg transition tracking-wide text-sm uppercase"
+        >
+          Return to Blog
+        </button>
+      </div>
+    );
+  }
+
   return (
     <div className="bg-black min-h-screen text-white font-sans">
       <SEO 
@@ -1292,8 +1317,10 @@ export const BlogPage: React.FC = () => {
                   AR
                 </div>
                 <div className="ml-3">
-                  <p className="text-sm font-bold text-white">Anand Rengasamy</p>
-                  <p className="text-xs text-gray-400">Founder, Analytics Spire</p>
+                  <Link to="/about" className="text-sm font-bold text-white hover:text-brand-400 transition block">
+                    By Anand Rengasamy
+                  </Link>
+                  <p className="text-xs text-gray-400">Founder & Principal Business Consultant, Analytics Spire</p>
                 </div>
               </div>
             </div>

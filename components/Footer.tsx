@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Mail, MapPin } from 'lucide-react';
+import { Mail, MapPin, Phone } from 'lucide-react';
 import { COMPANY_NAME } from '../constants';
 import { useData } from '../context/DataContext';
 
@@ -51,6 +51,15 @@ export const Footer: React.FC = () => {
           <div>
             <h3 className="text-lg font-bold mb-6 text-white font-heading">Contact Info</h3>
             <div className="space-y-4 text-gray-400">
+              <div className="flex items-start group">
+                <div className="bg-gray-800 p-2 rounded-lg mr-3 group-hover:bg-brand-900/50 transition">
+                   <Phone size={18} className="text-brand-400" />
+                </div>
+                <div>
+                  <p className="text-xs uppercase tracking-widest text-gray-500 mb-1">Phone</p>
+                  <a href="tel:+917200072302" className="hover:text-white transition font-medium">+91 72000 72302</a>
+                </div>
+              </div>
               <div className="flex items-start group">
                 <div className="bg-gray-800 p-2 rounded-lg mr-3 group-hover:bg-brand-900/50 transition">
                    <Mail size={18} className="text-brand-400" />
