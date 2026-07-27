@@ -77,12 +77,20 @@ export const Chatbot: React.FC = () => {
         }),
       });
 
-      if (!res.ok) {
-        throw new Error(`Server returned status ${res.status}`);
+      const contentType = res.headers.get('content-type') || '';
+      let aiReply = '';
+
+      if (res.ok && contentType.includes('application/json')) {
+        const data = await res.json();
+        aiReply = data.reply;
+      } else if (contentType.includes('application/json')) {
+        const data = await res.json();
+        aiReply = data.reply || data.error;
       }
 
-      const data = await res.json();
-      const aiReply = data.reply || "I apologize, but I am unable to generate a response right now. Please reach out to us at connect@analyticspire.com or via WhatsApp at +91 72000 72302.";
+      if (!aiReply) {
+        aiReply = "Hello! SpireAI is ready to connect. If you are viewing on your custom domain, please ensure `GEMINI_API_KEY` is configured in your Netlify Environment Settings. Alternatively, book a free consultation on our [Contact Page](/contact) or via WhatsApp (+91 72000 72302)!";
+      }
 
       const aiMsg: Message = {
         id: `ai-${Date.now()}`,
@@ -97,7 +105,7 @@ export const Chatbot: React.FC = () => {
       const fallbackMsg: Message = {
         id: `ai-error-${Date.now()}`,
         role: 'model',
-        text: "I'm having trouble connecting right now. You can view our [Services Page](/services) or connect with Anand Rengasamy directly on our [Contact Page](/contact) or via WhatsApp (+91 72000 72302).",
+        text: "SpireAI assistant is currently offline on static hosting. To enable AI replies on analyticspire.com, please add `GEMINI_API_KEY` in your Netlify site environment settings. You can also view our [Services Page](/services) or reach Anand Rengasamy directly on our [Contact Page](/contact) or via WhatsApp (+91 72000 72302).",
         timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
       };
       setMessages((prev) => [...prev, fallbackMsg]);
