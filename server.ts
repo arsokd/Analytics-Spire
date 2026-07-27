@@ -7,22 +7,19 @@ import { GoogleGenAI } from '@google/genai';
 let aiClient: GoogleGenAI | null = null;
 function getGeminiClient(): GoogleGenAI {
   if (!aiClient) {
-    const apiKey =
+    const rawKey =
       process.env.GEMINI_API_KEY_Chatbot ||
       process.env.GEMINI_API_KEY_CHATBOT ||
+      process.env.GEMINI_API_KEY_chatbot ||
       process.env.GEMINI_API_KEY ||
-      process.env.VITE_GEMINI_API_KEY;
+      process.env.VITE_GEMINI_API_KEY ||
+      process.env.GEMINI_KEY;
+
+    const apiKey = rawKey ? rawKey.trim() : '';
     if (!apiKey) {
       throw new Error('GEMINI_API_KEY environment variable is required');
     }
-    aiClient = new GoogleGenAI({
-      apiKey,
-      httpOptions: {
-        headers: {
-          'User-Agent': 'aistudio-build',
-        },
-      },
-    });
+    aiClient = new GoogleGenAI({ apiKey });
   }
   return aiClient;
 }
@@ -189,7 +186,7 @@ Tone & Formatting Guidelines:
       });
 
       const response = await ai.models.generateContent({
-        model: 'gemini-3.6-flash',
+        model: 'gemini-2.5-flash',
         contents: formattedContents,
         config: {
           systemInstruction,

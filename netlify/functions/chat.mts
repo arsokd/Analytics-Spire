@@ -42,15 +42,19 @@ export default async (req: Request) => {
     });
   }
 
-  const apiKey =
+  const rawKey =
     process.env.GEMINI_API_KEY_Chatbot ||
     process.env.GEMINI_API_KEY_CHATBOT ||
+    process.env.GEMINI_API_KEY_chatbot ||
     process.env.GEMINI_API_KEY ||
-    process.env.VITE_GEMINI_API_KEY;
+    process.env.VITE_GEMINI_API_KEY ||
+    process.env.GEMINI_KEY;
+
+  const apiKey = rawKey ? rawKey.trim() : '';
   if (!apiKey) {
     return new Response(
       JSON.stringify({
-        reply: "Hello! SpireAI is in setup mode. To enable AI responses on analyticspire.com, please add `GEMINI_API_KEY` in your Netlify Site Configuration (Environment Variables). In the meantime, feel free to book a free 1-on-1 consultation on our [Contact Page](/contact) or via WhatsApp (+91 72000 72302)!"
+        reply: "Hello! SpireAI is ready. To enable AI responses on analyticspire.com, please ensure your environment variable in Netlify is named `GEMINI_API_KEY` and trigger a **Re-deploy** (Clear cache and deploy site) in Netlify so the new key takes effect."
       }),
       { status: 200, headers: { 'Content-Type': 'application/json' } }
     );
@@ -65,14 +69,7 @@ export default async (req: Request) => {
       });
     }
 
-    const ai = new GoogleGenAI({
-      apiKey,
-      httpOptions: {
-        headers: {
-          'User-Agent': 'aistudio-build',
-        },
-      },
-    });
+    const ai = new GoogleGenAI({ apiKey });
 
     const formattedContents: Array<{ role: 'user' | 'model'; parts: Array<{ text: string }> }> = [];
 
@@ -93,7 +90,7 @@ export default async (req: Request) => {
     });
 
     const response = await ai.models.generateContent({
-      model: 'gemini-3.6-flash',
+      model: 'gemini-2.5-flash',
       contents: formattedContents,
       config: {
         systemInstruction: SYSTEM_INSTRUCTION,
