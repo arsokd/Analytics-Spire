@@ -1,6 +1,7 @@
 import React from 'react';
 import { useData } from '../context/DataContext';
 import { Briefcase, User } from 'lucide-react';
+import { SEO, professionalServiceSchema } from '../components/SEO';
 
 export const ExpertisePage: React.FC = () => {
   const { data } = useData();
@@ -9,6 +10,13 @@ export const ExpertisePage: React.FC = () => {
 
   return (
     <div className="bg-black min-h-screen pb-24 font-sans text-white">
+      <SEO
+        title="Our Expertise & Industry Veterans | Analytics Spire"
+        description="Meet the network of seasoned industry veterans and domain experts behind Analytics Spire's consulting engagements for Indian MSMEs."
+        url="https://analyticsspire.com/expertise"
+        schemaType="ProfessionalService"
+        additionalSchemas={[professionalServiceSchema]}
+      />
       {/* Header */}
       <div className="relative pt-32 pb-20 border-b border-gray-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

@@ -42,6 +42,7 @@ export const Footer: React.FC = () => {
               <li><Link to="/" className="hover:text-brand-400 transition flex items-center"><span className="w-1.5 h-1.5 bg-brand-500 rounded-full mr-2"></span>Home</Link></li>
               <li><Link to="/about" className="hover:text-brand-400 transition flex items-center"><span className="w-1.5 h-1.5 bg-brand-500 rounded-full mr-2"></span>About Us</Link></li>
               <li><Link to="/services" className="hover:text-brand-400 transition flex items-center"><span className="w-1.5 h-1.5 bg-brand-500 rounded-full mr-2"></span>Services</Link></li>
+              <li><Link to="/expertise" className="hover:text-brand-400 transition flex items-center"><span className="w-1.5 h-1.5 bg-brand-500 rounded-full mr-2"></span>Our Expertise</Link></li>
               <li><Link to="/media" className="hover:text-brand-400 transition flex items-center"><span className="w-1.5 h-1.5 bg-brand-500 rounded-full mr-2"></span>Media & Podcast</Link></li>
               <li><Link to="/contact" className="hover:text-brand-400 transition flex items-center"><span className="w-1.5 h-1.5 bg-brand-500 rounded-full mr-2"></span>Contact</Link></li>
             </ul>
@@ -87,8 +88,8 @@ export const Footer: React.FC = () => {
             © {new Date().getFullYear()} {COMPANY_NAME}. All rights reserved.
           </p>
           <div className="flex space-x-6 mt-4 md:mt-0 text-sm text-gray-500">
-             <a href="#" className="hover:text-white">Privacy Policy</a>
-             <a href="#" className="hover:text-white">Terms of Service</a>
+             <Link to="/privacy-policy" className="hover:text-white">Privacy Policy</Link>
+             <Link to="/terms-of-service" className="hover:text-white">Terms of Service</Link>
           </div>
         </div>
       </div>

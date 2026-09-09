@@ -1,4 +1,6 @@
 User-agent: *
 Allow: /
+Disallow: /login
+Disallow: /dashboard
 
 Sitemap: https://analyticsspire.com/sitemap.xml

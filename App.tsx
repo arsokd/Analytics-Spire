@@ -23,7 +23,14 @@ import { PaymentPage } from './pages/PaymentPage';
 import { WebinarLandingPage } from './pages/WebinarLandingPage';
 import { MoringaLandingPage } from './pages/MoringaLandingPage';
 import { BlogPage } from './pages/BlogPage';
+import { ExpertisePage } from './pages/ExpertisePage';
+import { LoginPage } from './pages/LoginPage';
+import { DashboardPage } from './pages/DashboardPage';
+import { PrivacyPolicyPage } from './pages/PrivacyPolicyPage';
+import { TermsOfServicePage } from './pages/TermsOfServicePage';
+import { ProtectedRoute } from './components/ProtectedRoute';
 import { DataProvider } from './context/DataContext';
+import { AuthProvider } from './context/AuthContext';
 import { trackPageView, trackEvent } from './utils/analytics';
 
 const AppContent: React.FC = () => {
@@ -66,12 +73,24 @@ const AppContent: React.FC = () => {
           <Route path="/services/inventory-management" element={<InventoryManagementPage />} />
           <Route path="/services/training-and-development" element={<TrainingDevelopmentPage />} />
           <Route path="/services/market-estimation-consumer-behaviour" element={<MarketEstimationPage />} />
+          <Route path="/expertise" element={<ExpertisePage />} />
           <Route path="/media" element={<MediaPage />} />
           <Route path="/events" element={<EventsPage />} />
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/payment" element={<PaymentPage />} />
           <Route path="/webinar" element={<WebinarLandingPage />} />
           <Route path="/moringa" element={<MoringaLandingPage />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route
+            path="/dashboard"
+            element={
+              <ProtectedRoute>
+                <DashboardPage />
+              </ProtectedRoute>
+            }
+          />
+          <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
+          <Route path="/terms-of-service" element={<TermsOfServicePage />} />
           <Route path="/blog" element={<BlogPage />} />
           <Route path="/blog/automate-small-manufacturing-business-india" element={<BlogPage />} />
           <Route path="/blog/business-analytics-for-msme-india" element={<BlogPage />} />
@@ -112,9 +131,11 @@ const AppContent: React.FC = () => {
 const App: React.FC = () => {
   return (
     <DataProvider>
-      <BrowserRouter>
-        <AppContent />
-      </BrowserRouter>
+      <AuthProvider>
+        <BrowserRouter>
+          <AppContent />
+        </BrowserRouter>
+      </AuthProvider>
     </DataProvider>
   );
 };
