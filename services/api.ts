@@ -411,9 +411,13 @@ export const api = {
       console.error("CSV login failed:", error);
     }
 
-    // Last fallback for demo
+    // Last fallback for demo (used when neither the server proxy, Apps Script,
+    // nor the published CSV are reachable/configured)
     if (email === 'admin@analyticsspire.com' && pass === 'admin123') {
       return { email, name: 'Anand Rengasamy', role: 'admin' };
+    }
+    if (email === 'client@test.com' && pass === 'client123') {
+      return { email, name: 'Demo Client', role: 'client' };
     }
     return null;
   },

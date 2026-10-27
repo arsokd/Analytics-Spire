@@ -1,16 +1,25 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, Phone } from 'lucide-react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Menu, X, Phone, LayoutDashboard, LogOut, LogIn } from 'lucide-react';
 import { NAVIGATION_LINKS, COMPANY_NAME } from '../constants';
 import { useData } from '../context/DataContext';
+import { useAuth } from '../context/AuthContext';
 
 export const Navbar: React.FC = () => {
   const { data } = useData();
+  const { user, logout } = useAuth();
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
 
   const isActive = (path: string) => location.pathname === path;
+
+  const handleLogout = () => {
+    logout();
+    setIsOpen(false);
+    navigate('/');
+  };
 
   // Add shadow on scroll
   useEffect(() => {
@@ -79,6 +88,37 @@ export const Navbar: React.FC = () => {
               +91 72000 72302
             </a>
 
+            {user ? (
+              <>
+                <Link
+                  to="/dashboard"
+                  className={`px-3 py-2 text-sm font-medium transition-all duration-200 flex items-center gap-1.5 ${
+                    isActive('/dashboard') ? 'text-white' : 'text-gray-300 hover:text-white'
+                  }`}
+                >
+                  <LayoutDashboard size={14} />
+                  Dashboard
+                </Link>
+                <button
+                  onClick={handleLogout}
+                  className="px-3 py-2 text-sm font-medium text-gray-300 hover:text-white transition-all duration-200 flex items-center gap-1.5"
+                >
+                  <LogOut size={14} />
+                  Logout
+                </button>
+              </>
+            ) : (
+              <Link
+                to="/login"
+                className={`px-3 py-2 text-sm font-medium transition-all duration-200 flex items-center gap-1.5 ${
+                  isActive('/login') ? 'text-white' : 'text-gray-300 hover:text-white'
+                }`}
+              >
+                <LogIn size={14} />
+                Login
+              </Link>
+            )}
+
             <Link
               to="/contact"
               className="ml-2 px-6 py-2.5 rounded-full bg-gradient-to-r from-brand-600 to-brand-400 text-white text-sm font-bold hover:from-brand-500 hover:to-brand-300 transition-all duration-300 shadow-[0_0_20px_rgba(2,132,199,0.4)] hover:shadow-[0_0_30px_rgba(2,132,199,0.6)] transform hover:-translate-y-0.5 active:scale-95"
@@ -125,9 +165,41 @@ export const Navbar: React.FC = () => {
                 {link.name}
               </Link>
             ))}
+            {user ? (
+              <>
+                <Link
+                  to="/dashboard"
+                  onClick={() => setIsOpen(false)}
+                  className={`block px-3 py-3 rounded-md text-base font-medium flex items-center gap-2 ${
+                    isActive('/dashboard') ? 'bg-gray-800 text-brand-400' : 'text-gray-300 hover:bg-gray-800 hover:text-white'
+                  }`}
+                >
+                  <LayoutDashboard size={16} />
+                  Dashboard
+                </Link>
+                <button
+                  onClick={handleLogout}
+                  className="w-full text-left px-3 py-3 rounded-md text-base font-medium text-gray-300 hover:bg-gray-800 hover:text-white flex items-center gap-2"
+                >
+                  <LogOut size={16} />
+                  Logout
+                </button>
+              </>
+            ) : (
+              <Link
+                to="/login"
+                onClick={() => setIsOpen(false)}
+                className={`block px-3 py-3 rounded-md text-base font-medium flex items-center gap-2 ${
+                  isActive('/login') ? 'bg-gray-800 text-brand-400' : 'text-gray-300 hover:bg-gray-800 hover:text-white'
+                }`}
+              >
+                <LogIn size={16} />
+                Login
+              </Link>
+            )}
             <div className="pt-2">
-              <a 
-                href="tel:+917200072302" 
+              <a
+                href="tel:+917200072302"
                 className="block w-full text-center px-4 py-3 rounded-lg bg-gray-900 text-brand-400 font-bold border border-gray-800 mb-2"
               >
                 Call: +91 72000 72302

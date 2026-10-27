@@ -32,8 +32,10 @@ try {
       if (p.endsWith('/')) {
         p = p.slice(0, -1);
       }
-      // EXCLUDE parameterized route templates like 'blog/:slug' and wildcards
-      if (p !== '*' && p !== '/*' && !p.includes(':')) {
+      // EXCLUDE parameterized route templates like 'blog/:slug', wildcards,
+      // and private/auth-gated routes that should not be publicly indexed
+      const PRIVATE_ROUTES = ['login', 'dashboard'];
+      if (p !== '*' && p !== '/*' && !p.includes(':') && !PRIVATE_ROUTES.includes(p)) {
         routesSet.add(p);
       }
     }
@@ -127,6 +129,8 @@ ${routes.map(r => `  <url>
 
 const robotsContent = `User-agent: *
 Allow: /
+Disallow: /login
+Disallow: /dashboard
 
 Sitemap: ${DOMAIN}/sitemap.xml
 `;

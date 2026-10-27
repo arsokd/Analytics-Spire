@@ -73,7 +73,6 @@ export const PaymentPage: React.FC = () => {
               <CreditCard className="w-6 h-6 text-brand-500" />
             </div>
             <h3 className="text-white font-bold mb-2">Multiple Options</h3>
-            <h3 className="text-white font-bold mb-2">Multiple Options</h3>
             <p className="text-gray-500 text-sm">Pay via UPI, Cards, Netbanking, or Wallets</p>
           </div>
         </div>
@@ -251,8 +250,8 @@ export const PaymentPage: React.FC = () => {
                     <div className="bg-gray-950 border border-gray-800 p-8 rounded-2xl mb-8">
                       <p className="text-brand-400 font-bold uppercase tracking-widest text-sm mb-4">Action Required</p>
                       <h4 className="text-xl font-bold text-white mb-6">Join our exclusive WhatsApp community for all updates & links.</h4>
-                      <a 
-                        href="https://chat.whatsapp.com/YOUR_LINK_HERE" 
+                      <a
+                        href={`https://wa.me/917200072302?text=${encodeURIComponent(`Hi, I just paid for "${selectedService}" and would like to join the community / confirm my spot.`)}`}
                         target="_blank"
                         referrerPolicy="no-referrer"
                         className="inline-flex items-center gap-3 bg-[#25D366] hover:bg-[#128C7E] text-white px-8 py-5 rounded-2xl text-xl font-black transition-all shadow-[0_0_30px_rgba(37,211,102,0.3)] hover:scale-105 active:scale-95"
